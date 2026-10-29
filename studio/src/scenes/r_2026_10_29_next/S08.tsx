@@ -98,7 +98,7 @@ const GhostRow: React.FC<{ y: number; glow: boolean; middleLift: (i: number) => 
 /* ---------------- copy cursor: short orange streak running along the floor onto the row ---------------- */
 const CopyCursor: React.FC<{ x: number; opacity: number }> = ({ x, opacity }) =>
   opacity <= 0 ? null : (
-    <group position={[x, 0.03, 0.34]}>
+    <group position={[x, 0.03, 0.1]}>
       <mesh position={[-0.9, 0, 0]}>
         <boxGeometry args={[1.8, 0.04, 0.06]} />
         <meshStandardMaterial color="#FF8000" emissive="#FF6A00" emissiveIntensity={1.1} transparent opacity={opacity} />
@@ -155,7 +155,7 @@ const Scene: React.FC<SceneProps> = (props) => {
     <Shell props={props} tone="dark">
       <Studio3D tone="dark" camera={{ from: [-26, 3, 2], target: [0, 0, 0], fov: 30 }}>
         <CamRig />
-        <fog attach="fog" args={["#0B0B0B", 13, 40]} />
+        <fog attach="fog" args={["#0B0B0B", 13, 36]} />
         {written > 0 && (
           <TileRow chars={FAKE} position={[0, ROW_Y, 0]} only={[0, written]} glow={locked ? ENDS : []} />
         )}
@@ -169,8 +169,8 @@ const Scene: React.FC<SceneProps> = (props) => {
           <EnergyArcs x={pLastBase[0]} y={pLastBase[1]} width={Math.max(60, farW * 1.4)} height={Math.max(36, farW * 0.6)} count={7} startFrame={fMatch} intensity={0.8} />
         </>
       )}
-      <Callout text="FIRST 4 ✓" at={pFirst} label={[cx(pFirst[0] + 40), pFirst[1] - 170]} startFrame={fEnds} />
-      <Callout text="LAST 4 ✓" at={pLast} label={[cx(pLast[0] - 20), pLast[1] - 200]} startFrame={fMatch} />
+      <Callout text="FIRST 4 ✓" at={pFirst} label={[cx(pFirst[0] + 40), Math.max(430, pFirst[1] - 170)]} startFrame={fEnds} />
+      <Callout text="LAST 4 ✓" at={pLast} label={[cx(pLast[0] - 60), Math.max(430, pLast[1] - 200)]} startFrame={fMatch} />
       <Callout text="MIDDLE ✗" at={pMid} label={[cx(pMid[0] + 200), pMid[1] + 200]} startFrame={fMiddle} />
       <Disclaimer text="Magnified illustration · addresses are made up" />
     </Shell>
