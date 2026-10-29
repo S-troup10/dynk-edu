@@ -43,7 +43,7 @@ const sheetS = (frame: number, fps: number, inAt: number, outAt: number, outFram
   const down = easeIn(interpolate(frame, [outAt, outAt + outFrames], [0, 1], clamp));
   return up * (1 - down);
 };
-const LIFT = 1.45; // while the sheet is up, aim lower so the tile row rides in the top third (screen y ≈ 480)
+const LIFT = 1.85; // while the sheet is up, aim lower so the tile row rides in the top third (clear of the sheet top at 640 px)
 const LoopRig: React.FC<{ inAt: number; outAt: number; outFrames: number }> = ({ inAt, outAt, outFrames }) => {
   const f = useCurrentFrame();
   const { durationInFrames, fps } = useVideoConfig();
