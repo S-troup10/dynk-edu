@@ -33,12 +33,12 @@ const CUT_C = Math.round(3.5 * S);
 const camAt = (f: number, dur: number): Cam => {
   // A: 3/4 high side angle on the whole row (row reads as a diagonal into depth), slow push
   if (f < CUT_B)
-    return shot(f, 0, CUT_B, { pos: [-24, 9.4, 3.6], target: [0.5, -1.3, 0], fov: 30 }, { pos: [-22.2, 7.6, 3.1], target: [0.5, -1.25, 0], fov: 30 });
+    return shot(f, 0, CUT_B, { pos: [-25, 8.5, 5.6], target: [0.8, -1.4, -0.6], fov: 30 }, { pos: [-23, 7.2, 5.0], target: [0.8, -1.3, -0.6], fov: 30 });
   // B: low side angle along the row, ends + middle in perspective
   if (f < CUT_C)
-    return shot(f, CUT_B, CUT_C, { pos: [-19, 1.9, 1.9], target: [0, -0.3, 0], fov: 30 }, { pos: [-18.4, 1.8, 1.8], target: [0.2, -0.3, 0], fov: 30 });
+    return shot(f, CUT_B, CUT_C, { pos: [-19.5, 2.6, 3.2], target: [0.4, -0.6, -1.0], fov: 30 }, { pos: [-19, 2.5, 3.0], target: [0.6, -0.6, -1.0], fov: 30 });
   // C: rack toward the middle (drift along the row), still holding both ends
-  return shot(f, CUT_C, dur, { pos: [-18.4, 1.8, 1.8], target: [0.2, -0.3, 0], fov: 30 }, { pos: [-17, 2.0, 1.55], target: [1.6, -0.6, 0], fov: 30 });
+  return shot(f, CUT_C, dur, { pos: [-19, 2.5, 3.0], target: [0.6, -0.6, -1.0], fov: 30 }, { pos: [-17.5, 2.6, 2.6], target: [1.6, -0.9, -0.9], fov: 30 });
 };
 
 const CamRig: React.FC = () => {
@@ -101,11 +101,11 @@ const CopyCursor: React.FC<{ x: number; opacity: number }> = ({ x, opacity }) =>
     <group position={[x, 0.03, 0.34]}>
       <mesh position={[-0.9, 0, 0]}>
         <boxGeometry args={[1.8, 0.04, 0.06]} />
-        <meshStandardMaterial color="#FF8000" emissive="#FF6A00" emissiveIntensity={2.2} transparent opacity={opacity} toneMapped={false} />
+        <meshStandardMaterial color="#FF8000" emissive="#FF6A00" emissiveIntensity={1.1} transparent opacity={opacity} />
       </mesh>
       <mesh position={[-3.0, 0, 0]}>
         <boxGeometry args={[2.4, 0.025, 0.04]} />
-        <meshStandardMaterial color="#FF8000" emissive="#FF6A00" emissiveIntensity={1.2} transparent opacity={opacity * 0.35} toneMapped={false} />
+        <meshStandardMaterial color="#FF8000" emissive="#FF6A00" emissiveIntensity={0.8} transparent opacity={opacity * 0.35} />
       </mesh>
     </group>
   );
@@ -155,6 +155,7 @@ const Scene: React.FC<SceneProps> = (props) => {
     <Shell props={props} tone="dark">
       <Studio3D tone="dark" camera={{ from: [-26, 3, 2], target: [0, 0, 0], fov: 30 }}>
         <CamRig />
+        <fog attach="fog" args={["#0B0B0B", 13, 40]} />
         {written > 0 && (
           <TileRow chars={FAKE} position={[0, ROW_Y, 0]} only={[0, written]} glow={locked ? ENDS : []} />
         )}
