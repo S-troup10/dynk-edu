@@ -124,7 +124,7 @@ const LiftedRow: React.FC<{ lift: number; glow: number }> = ({ lift, glow }) => 
         <meshBasicMaterial map={glowTex} transparent opacity={0.32 * glow * pulse} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
       </mesh>
       {/* side walls: the row rises out of its slot as a block */}
-      <RoundedBox args={[1.38, ROW_H - 0.01, Math.max(0.006, lift + 0.004)]} radius={0.003} smoothness={2} position={[0, 0, 0.074 + (lift + 0.004) / 2]}>
+      <RoundedBox args={[1.38, ROW_H - 0.01, Math.max(0.004, lift)]} radius={0.002} smoothness={2} position={[0, 0, 0.073 + Math.max(0.004, lift) / 2]}>
         <meshStandardMaterial color="#0b0c0e" metalness={0.3} roughness={0.5} />
       </RoundedBox>
       {/* the row itself */}
@@ -156,9 +156,9 @@ const Scene: React.FC<SceneProps> = (props) => {
   const lifted = f >= fLook;
   const screen = f < CUT ? UI.send : lifted ? GAP_IMG : UI.historyPlanted;
 
-  // callout: dot on the row's right end (the "…9c2E"), label up-right of it, tracking the camera.
-  const dot = projectPx([-0.14, ROW_Y - 0.03, 0.08 + lift], f, durationInFrames);
-  const label: [number, number] = [Math.min(800, dot[0] + 300), dot[1] - 170];
+  // callout: dot on the orange rim's top edge (right half), label up-right of it, tracking the camera.
+  const dot = projectPx([0.3, ROW_Y + ROW_H / 2 + 0.017, 0.078 + lift], f, durationInFrames);
+  const label: [number, number] = [Math.min(840, dot[0] + 110), dot[1] - 110];
 
   return (
     <Shell props={props} tone="dark">

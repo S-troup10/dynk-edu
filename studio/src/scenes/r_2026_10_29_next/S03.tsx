@@ -147,8 +147,8 @@ const Scene: React.FC<SceneProps> = (props) => {
       <Sequence from={CUT} durationInFrames={durationInFrames - CUT} layout="none">
         <Shot swapAt={swapAt} pressAt={pressAt} offset={CUT} dur={durationInFrames - CUT} />
       </Sequence>
-      {f >= swapAt && <Callout text="COPY" at={[mx, my]} label={[Math.max(160, Math.min(900, mx - 40)), my + 300]} startFrame={swapAt} accent tone="light" />}
-      <Disclaimer text="Illustration" tone="light" />
+      {f >= swapAt && <Callout text="COPY" at={[mx, my]} label={[Math.max(160, Math.min(900, mx - 40)), my + 300]} startFrame={swapAt} accent tone="dark" />}
+      <Disclaimer text="Illustration" tone={f < CUT ? "light" : "dark"} />
     </Shell>
   );
 };
