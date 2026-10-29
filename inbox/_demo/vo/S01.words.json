@@ -1,0 +1,42 @@
+{
+ "durationSec": 4.872,
+ "words": [
+  {
+   "text": "In",
+   "start": 0.102,
+   "end": 0.191
+  },
+  {
+   "text": "November 2022",
+   "start": 0.204,
+   "end": 1.582
+  },
+  {
+   "text": "the",
+   "start": 1.875,
+   "end": 1.952
+  },
+  {
+   "text": "exchange",
+   "start": 1.964,
+   "end": 2.589
+  },
+  {
+   "text": "FTX",
+   "start": 2.742,
+   "end": 3.329
+  },
+  {
+   "text": "froze",
+   "start": 3.342,
+   "end": 3.648
+  },
+  {
+   "text": "withdrawals",
+   "start": 3.661,
+   "end": 4.426
+  }
+ ],
+ "text": "In November 2022, the exchange FTX froze withdrawals.",
+ "voice": "en-US-AndrewNeural"
+}

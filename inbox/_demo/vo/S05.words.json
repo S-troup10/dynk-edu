@@ -1,0 +1,42 @@
+{
+ "durationSec": 2.184,
+ "words": [
+  {
+   "text": "Follow",
+   "start": 0.14,
+   "end": 0.37
+  },
+  {
+   "text": "for",
+   "start": 0.383,
+   "end": 0.523
+  },
+  {
+   "text": "more",
+   "start": 0.536,
+   "end": 0.816
+  },
+  {
+   "text": "on",
+   "start": 0.829,
+   "end": 0.969
+  },
+  {
+   "text": "owning",
+   "start": 1.084,
+   "end": 1.301
+  },
+  {
+   "text": "your",
+   "start": 1.314,
+   "end": 1.429
+  },
+  {
+   "text": "money",
+   "start": 1.441,
+   "end": 1.735
+  }
+ ],
+ "text": "Follow for more on owning your money.",
+ "voice": "en-US-AndrewNeural"
+}

@@ -1,0 +1,3 @@
+- c_reuters.mp4: Reuters — "Crypto Weekly: FTX's missing money" (https://www.youtube.com/watch?v=NIauWOt5rqc&t=6s)
+- c_bloomberg.mp4: Bloomberg News — "FTX Files for Bankruptcy as Sam Bankman Fried Resigns as CEO" (https://www.youtube.com/watch?v=tQizqRPS5gE&t=3s)
+- c_abc.mp4: ABC News — "Timeline: FTX's historic collapse l ABC News" (https://www.youtube.com/watch?v=hpZRtsGQK4Q&t=8s)

@@ -1,0 +1,77 @@
+{
+ "durationSec": 5.448,
+ "words": [
+  {
+   "text": "Self-custody",
+   "start": 0.115,
+   "end": 0.702
+  },
+  {
+   "text": "flips",
+   "start": 0.714,
+   "end": 1.008
+  },
+  {
+   "text": "that",
+   "start": 1.02,
+   "end": 1.339
+  },
+  {
+   "text": "You",
+   "start": 1.76,
+   "end": 1.862
+  },
+  {
+   "text": "hold",
+   "start": 1.875,
+   "end": 2.079
+  },
+  {
+   "text": "the",
+   "start": 2.092,
+   "end": 2.156
+  },
+  {
+   "text": "keys",
+   "start": 2.168,
+   "end": 2.704
+  },
+  {
+   "text": "so",
+   "start": 2.946,
+   "end": 3.087
+  },
+  {
+   "text": "no",
+   "start": 3.099,
+   "end": 3.329
+  },
+  {
+   "text": "exchange",
+   "start": 3.342,
+   "end": 3.827
+  },
+  {
+   "text": "can",
+   "start": 3.839,
+   "end": 3.992
+  },
+  {
+   "text": "freeze",
+   "start": 4.005,
+   "end": 4.362
+  },
+  {
+   "text": "what's",
+   "start": 4.375,
+   "end": 4.579
+  },
+  {
+   "text": "yours",
+   "start": 4.592,
+   "end": 5.0
+  }
+ ],
+ "text": "Self-custody flips that. You hold the keys, so no exchange can freeze what's yours.",
+ "voice": "en-US-AndrewNeural"
+}

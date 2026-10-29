@@ -1,0 +1,9 @@
+{
+  "name": "dynk-video-pipeline",
+  "private": true,
+  "type": "module",
+  "description": "DYNK education video pipeline helpers (Playwright screen recording)",
+  "dependencies": {
+    "playwright": "1.64.0"
+  }
+}

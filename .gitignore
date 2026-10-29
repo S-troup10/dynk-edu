@@ -1,0 +1,19 @@
+node_modules/
+studio/node_modules/
+studio/public/runs/
+studio/public/talk/
+.rec-*/
+.DS_Store
+.env
+.env.*
+*.key
+
+# Runs are heavy and local. Only finished videos are committed, on purpose, with `git add -f`.
+runs/*
+!runs/.gitkeep
+
+# Reference downloads of other creators' reels stay on the machine (copyright); only notes are committed.
+references/**/*.mp4
+references/**/*.m4a
+references/**/*.wav
+references/speedy_devv/

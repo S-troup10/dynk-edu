@@ -1,0 +1,57 @@
+{
+ "durationSec": 3.168,
+ "words": [
+  {
+   "text": "More",
+   "start": 0.102,
+   "end": 0.242
+  },
+  {
+   "text": "than",
+   "start": 0.255,
+   "end": 0.37
+  },
+  {
+   "text": "a",
+   "start": 0.383,
+   "end": 0.421
+  },
+  {
+   "text": "million",
+   "start": 0.434,
+   "end": 0.867
+  },
+  {
+   "text": "customers",
+   "start": 0.88,
+   "end": 1.454
+  },
+  {
+   "text": "couldn't",
+   "start": 1.467,
+   "end": 1.786
+  },
+  {
+   "text": "get",
+   "start": 1.798,
+   "end": 1.964
+  },
+  {
+   "text": "their",
+   "start": 1.977,
+   "end": 2.105
+  },
+  {
+   "text": "money",
+   "start": 2.117,
+   "end": 2.423
+  },
+  {
+   "text": "out",
+   "start": 2.436,
+   "end": 2.704
+  }
+ ],
+ "text": "More than a million customers couldn't get their money out.",
+ "voice": "en-US-AndrewNeural"
+}

@@ -1,0 +1,97 @@
+{
+ "durationSec": 6.792,
+ "words": [
+  {
+   "text": "Because",
+   "start": 0.102,
+   "end": 0.37
+  },
+  {
+   "text": "on",
+   "start": 0.383,
+   "end": 0.497
+  },
+  {
+   "text": "an",
+   "start": 0.51,
+   "end": 0.599
+  },
+  {
+   "text": "exchange",
+   "start": 0.612,
+   "end": 1.314
+  },
+  {
+   "text": "the",
+   "start": 1.518,
+   "end": 1.62
+  },
+  {
+   "text": "coins",
+   "start": 1.633,
+   "end": 1.977
+  },
+  {
+   "text": "aren't",
+   "start": 1.99,
+   "end": 2.27
+  },
+  {
+   "text": "really",
+   "start": 2.283,
+   "end": 2.5
+  },
+  {
+   "text": "yours",
+   "start": 2.513,
+   "end": 3.023
+  },
+  {
+   "text": "The",
+   "start": 3.444,
+   "end": 3.495
+  },
+  {
+   "text": "exchange",
+   "start": 3.508,
+   "end": 4.094
+  },
+  {
+   "text": "holds",
+   "start": 4.107,
+   "end": 4.388
+  },
+  {
+   "text": "the",
+   "start": 4.401,
+   "end": 4.49
+  },
+  {
+   "text": "keys",
+   "start": 4.503,
+   "end": 5.025
+  },
+  {
+   "text": "You",
+   "start": 5.446,
+   "end": 5.536
+  },
+  {
+   "text": "hold",
+   "start": 5.548,
+   "end": 5.74
+  },
+  {
+   "text": "an",
+   "start": 5.753,
+   "end": 5.842
+  },
+  {
+   "text": "IOU",
+   "start": 5.855,
+   "end": 6.339
+  }
+ ],
+ "text": "Because on an exchange, the coins aren't really yours. The exchange holds the keys. You hold an IOU.",
+ "voice": "en-US-AndrewNeural"
+}
