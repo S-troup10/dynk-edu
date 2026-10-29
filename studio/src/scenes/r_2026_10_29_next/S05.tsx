@@ -8,7 +8,7 @@ import { interpolate, useCurrentFrame, Easing } from "remotion";
 import { useThree } from "@react-three/fiber";
 import { RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
-import { Shell, Studio3D, Mat, Callout, Disclaimer, type SceneProps } from "../../kit";
+import { Shell, Studio3D, Mat, Callout, Disclaimer, PhraseCaption, type SceneProps } from "../../kit";
 import { REAL, FAKE, Tile, TileRow, FIRST4, LAST4 } from "./_shared";
 
 type Vec3 = [number, number, number];
@@ -157,7 +157,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       // C · hard cut close on the stopped row's start, track right + pull out until both ends show
       { start: fStarts, end: fYours, from: [-2.0, 1.2, 6.5], to: [0, 1.6, 23.5], tFrom: [-2.2, 1.2, 0], tTo: [0, 1.4, -0.3], fov: 32 },
       // D · slow push in, gentle drift, both ends + ghost in frame
-      { start: fYours, end: total + 10, from: [0, 1.6, 23.5], to: [0.25, 1.55, 22.8], tFrom: [0, 1.4, -0.3], tTo: [0.1, 1.38, -0.3], fov: 32 },
+      { start: fYours, end: total + 10, from: [0, 1.6, 23.5], to: [2.6, 2.3, 22.6], tFrom: [0, 1.4, -0.3], tTo: [0.05, 1.35, -0.3], fov: 32 },
     ],
     [fChurn, fStarts, fYours, total],
   );
@@ -199,7 +199,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const heroR = project(shots, Math.max(f, fEnds), [heroLocalX(9.5), HERO_Y + 0.28, HERO_Z]);
 
   return (
-    <Shell props={props} tone="dark">
+    <Shell props={props} tone="dark" captions={false}>
       <Studio3D tone="dark" camera={{ from: [0, 1.5, 22], to: [0, 1.5, 22], target: [0, 1.2, 0], fov: 32 }}>
         <CamRig shots={shots} />
         <Generator f={f} />
@@ -250,6 +250,8 @@ const Scene: React.FC<SceneProps> = (props) => {
           <Callout text="" at={heroR} label={[540, Math.max(heroL[1] + 230, 1180)]} startFrame={fEnds} accent />
         </>
       )}
+      {/* own captions: 7-word phrases so "until one starts and ends like yours" stays one phrase with [ends] boxed */}
+      <PhraseCaption words={props.vo?.words ?? []} tone="dark" keywords={(props.captionKeywords as string[]) ?? []} maxWords={7} />
       <Disclaimer text="Magnified illustration · addresses are made up" tone="dark" />
     </Shell>
   );

@@ -14,7 +14,6 @@ import { UI } from "./_shared";
 type Vec3 = [number, number, number];
 const FPS = 30;
 const clamp = { extrapolateLeft: "clamp" as const, extrapolateRight: "clamp" as const };
-const easeOut = Easing.bezier(0.22, 1, 0.36, 1);
 const easeInOut = Easing.bezier(0.45, 0, 0.35, 1);
 
 // Assets cut from ui-history-planted.png (rows 239–361 px of 700×1500): the planted row alone, and the screen with that slot empty.
@@ -38,10 +37,10 @@ const CUT = 41; // "It" at 1.365 s
 const poseAt = (f: number, dur: number): Pose => {
   if (f < CUT) {
     // macro of the To field → whole phone (pull back and up)
-    const p = easeOut(interpolate(f, [0, CUT], [0, 1], clamp));
+    const p = Easing.bezier(0.4, 0.05, 0.25, 1)(interpolate(f, [0, CUT], [0, 1], clamp));
     return {
-      pos: lerp3([0.1, PHONE_POS[1] + TO_Y - 0.08, 3.5], [0.05, 1.8, 10.4], p),
-      target: lerp3([0.0, PHONE_POS[1] + TO_Y - 0.05, 0], [0, 1.36, 0], p),
+      pos: lerp3([-0.1, PHONE_POS[1] + TO_Y - 0.06, 3.7], [0.05, 1.8, 10.4], p),
+      target: lerp3([-0.08, PHONE_POS[1] + TO_Y - 0.04, 0], [0, 1.36, 0], p),
       fov: 30,
     };
   }

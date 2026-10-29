@@ -135,8 +135,8 @@ const Lookalikes: React.FC<{ campaignF: number; landF: number }> = ({ campaignF,
   const { fps } = useVideoConfig();
   const keys = [
     { f: 0, pos: [0.3, 2.0, 6.2] as V3, tgt: [0, 1.2, -3] as V3 },
-    { f: Math.round(1.55 * fps), pos: [0.15, 2.5, 8.8] as V3, tgt: [0, 1.25, -3] as V3 },
-    { f: Math.round(3.75 * fps), pos: [-0.2, 3.1, 10.2] as V3, tgt: [0, 1.2, -3] as V3 },
+    { f: Math.round(1.55 * fps), pos: [0.15, 2.5, 8.8] as V3, tgt: [0, 1.1, -3] as V3 },
+    { f: Math.round(3.75 * fps), pos: [-0.2, 3.1, 10.2] as V3, tgt: [0, 0.98, -3] as V3 },
   ];
   return (
     <AbsoluteFill>
@@ -148,7 +148,7 @@ const Lookalikes: React.FC<{ campaignF: number; landF: number }> = ({ campaignF,
       </Studio3D>
       <CountNumber startF={campaignF} landF={landF} />
       <Callout text="ONE CAMPAIGN" at={[600, 900]} label={[540, 800]} startFrame={campaignF} />
-      <Disclaimer text="Values illustrative · addresses are made up" y={1478} />
+      <Disclaimer text="Values illustrative · addresses are made up" y={1482} />
     </AbsoluteFill>
   );
 };
