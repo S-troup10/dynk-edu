@@ -157,7 +157,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       // C · hard cut close on the stopped row's start, track right + pull out until both ends show
       { start: fStarts, end: fYours, from: [-2.0, 1.2, 6.5], to: [0, 1.6, 23.5], tFrom: [-2.2, 1.2, 0], tTo: [0, 1.4, -0.3], fov: 32 },
       // D · slow push in, gentle drift, both ends + ghost in frame
-      { start: fYours, end: total + 10, from: [0, 1.6, 23.5], to: [0.3, 1.55, 22.0], tFrom: [0, 1.4, -0.3], tTo: [0.1, 1.38, -0.3], fov: 32 },
+      { start: fYours, end: total + 10, from: [0, 1.6, 23.5], to: [0.25, 1.55, 22.8], tFrom: [0, 1.4, -0.3], tTo: [0.1, 1.38, -0.3], fov: 32 },
     ],
     [fChurn, fStarts, fYours, total],
   );

@@ -42,7 +42,7 @@ const camAt = (f: number, total: number): Cam => {
   if (f < C_START) {
     const p = interpolate(f, [B_START, C_START], [0, 1], clamp);
     const pos = lerp3([LAST_C - 0.75, 0.92, 4.0], [LAST_C + 0.35, 0.86, 3.7], p);
-    return { pos, target: [pos[0] + 0.15, 0.78, 0], fov: 30, fogNear: 7, fogFar: 20 };
+    return { pos, target: [pos[0] + 0.15, 0.42, 0], fov: 30, fogNear: 7, fogFar: 20 };
   }
   const p = easeIO(interpolate(f, [C_START, total - 1], [0, 1], clamp));
   // look back along the row from beyond its LAST4 end: portrait-friendly perspective, both ends in frame
@@ -123,7 +123,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const aPt = P([tileX(4), ROW_Y + 0.12, 0.05]);
   const bPt = P([tileX(39), ROW_Y - 0.1, 0.05]);
   const cFirst = P([FIRST_C, ROW_Y + GHOST_DY + 0.3, 0]);
-  const cLast = P([LAST_C, ROW_Y - 0.3, 0.05]);
+  const cLast = P([LAST_C, ROW_Y - 0.12, 0.05]);
 
   return (
     <Shell props={props} tone="dark">
