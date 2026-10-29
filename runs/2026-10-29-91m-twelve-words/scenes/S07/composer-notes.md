@@ -1,0 +1,5 @@
+# S07 composer notes
+- Shots (hard cuts): A f0-24 2D macro, chat bubble types itself out (orange = "12-word recovery phrase"); B f24-46 2D, second angle, typing finishes; C f46-62 2D, orange strike draws through bubble f46-50 on "never", callout REAL SUPPORT NEVER ASKS (leader to strike end); D f62-84 3D, 12 orange tiles, chrome padlock lowers in front, camera rising; E f84-111 3D, closer, shackle closes by "words." (f97), thud f98.
+- SFX: type ticks every 3 frames f1-40 (0.22), click f46, whoosh_soft f62, thud f98. Disclaimer "Illustration" all scene.
+- Checked: stills (2 rounds) for framing, caption overlap, callout leader; full render + contact sheet viewed (renders/S07.mp4, review/S07/contact_sheet.jpg). Typing speed raised after still round 2 (finishes by ~f36); seen correct in the render.
+- Verdict: PASS-WITH-ISSUES. Minor: chrome padlock shackle passes through the caption band for ~6 frames while lowering at f62-68 (3D shot D); macro shot E crops edge tiles by design. Loudness -16.6 LUFS (cutter will normalise).

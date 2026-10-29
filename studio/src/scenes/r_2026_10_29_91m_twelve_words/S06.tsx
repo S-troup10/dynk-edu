@@ -89,7 +89,7 @@ const ShotA: React.FC<{ stopAt: number }> = ({ stopAt }) => {
             glow={spinning} dim={!spinning} spin={sp} spinWord={spinning ? word : undefined} />
         );
       })}
-      {!spinning && <pointLight color="#ffffff" intensity={900} distance={60} decay={1.6} position={[0, 5, 12]} />}
+      {!spinning && <pointLight color="#ffffff" intensity={260} distance={60} decay={1.6} position={[0, 2.2, 14]} />}
     </Studio3D>
   );
 };
@@ -260,7 +260,7 @@ const CoinArc: React.FC<{ count?: number }> = ({ count = 16 }) => {
 };
 
 const ShotE: React.FC = () => {
-  const shot: Shot = { from: [2.0, 2.9, 13.8], to: [1.2, 3.1, 11.4], tFrom: [-0.35, 2.3, 0], tTo: [-0.7, 2.9, -0.6], fov: 30, len: 38 };
+  const shot: Shot = { from: [2.0, 2.9, 13.8], to: [1.2, 3.1, 11.4], tFrom: [-0.35, 2.3, 0], tTo: [-0.1, 2.9, -0.6], fov: 30, len: 38 };
   return (
     <Studio3D tone="dark" shadows={false} camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
       <CamRig shot={shot} />

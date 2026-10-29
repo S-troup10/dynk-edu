@@ -1,0 +1,6 @@
+# S01 composer notes — HOOK (136 f, 4.53 s)
+Shots (hard cuts): 1 f0–20 3D coin column, orange coins lifting off past lens (orange + motion on f0, cover) · 2 f20–42 2D wallet, 783 BTC ticking down, BALANCE callout · 3 f42–68 2D slam, chrome orange "$91," / "000,000" lands by "million" (f47), `783 BTC · 19 AUG 2025`, sub_drop · 4 f68–90 3D stream of orange coins out of a phone · 5 f90–114 2D "Sent −783.00 BTC" card, orange border, ONE TRANSACTION, click · 6 f114–136 2D balance to 0.00000000, push-in, thud at zero (f122).
+Big text layer `$91M GONE.` (white) / `NOBODY HACKED HIM.` (orange, f10) over shots 1–2 only, y≈1160, with a bottom scrim. Disclaimer all scene.
+Deviation: `$91,000,000` is stacked on two lines (Orbitron is too wide for one line at 150 px inside the safe zone), "$91," ~330 px + "000,000" ~168 px.
+Checked: 2 still rounds (frames 0,12,30,55,80,105,128 then 0,12,30,80,105), then full render + contact sheet. Fixed: callout/label clash, safe-zone width, caption-band overlap in shot 6, phone cropping in shot 4.
+Verdict: PASS-WITH-ISSUES — shot 4's phone is a plain dark slab with a text plane (no real UI) and the shot-6/shot-4 tweaks made after the last still round were only checked on the contact sheet.

@@ -1,0 +1,6 @@
+# S04 composer notes
+- Shots (hard cuts): 1) f0-23 3D macro "1 abandon" top-left of word wall, callout WORD #1 | 2) f23-48 3D macro "2048 zoo" bottom-right, callout WORD #2,048, tick | 3) f48-75 3D, 12 orange tiles pop forward (2-frame stagger, z 2.6, scale 1.3), camera pulls back, click | 4) f75-140 2D, 39-digit 2^128 builds group by group (13 groups, 4/3/3/3 lines, chrome Orbitron), last group "456" lands orange on "combinations" (f110) with sub_drop 0.55, held 30 frames; label POSSIBLE 12-WORD PHRASES + 2^128 callout; slow push/yaw drift.
+- Added a dark scrim over the caption band on 3D shots 1-3 so wall text never fights the captions. Added "Illustration · BIP-39 word list" disclaimer on shots 1-3 (not in the brief); shot 4 uses the specified text.
+- Digit size is 80 px, not 92-110: Orbitron is wide and 100 px overflowed the safe zone on the 4-group line.
+- Checked: round-1 stills (frames 4-128), one round-2 fix pass (scrim, callout placement, digit size) verified only via the full render contact sheet (round-2 stills were killed by a timeout), 1 full render.
+- Verdict: PASS-WITH-ISSUES. Minor: in shot 1 the disclaimer text sits over a wall tile (193 blossom); shot 3 is dense mid-pop.
