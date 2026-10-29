@@ -2,23 +2,39 @@
 // Composer agents edit only their own scene file, never this registry.
 import type React from "react";
 import Demo_S01 from "./_demo/S01";
-import r_2026_10_26_mt_gox_ten_year_wait_S01 from "./r_2026_10_26_mt_gox_ten_year_wait/S01";
-import r_2026_10_26_mt_gox_ten_year_wait_S02 from "./r_2026_10_26_mt_gox_ten_year_wait/S02";
-import r_2026_10_26_mt_gox_ten_year_wait_S03 from "./r_2026_10_26_mt_gox_ten_year_wait/S03";
-import r_2026_10_26_mt_gox_ten_year_wait_S04 from "./r_2026_10_26_mt_gox_ten_year_wait/S04";
-import r_2026_10_26_mt_gox_ten_year_wait_S05 from "./r_2026_10_26_mt_gox_ten_year_wait/S05";
-import r_2026_10_26_mt_gox_ten_year_wait_S06 from "./r_2026_10_26_mt_gox_ten_year_wait/S06";
-import r_2026_10_26_mt_gox_ten_year_wait_S07 from "./r_2026_10_26_mt_gox_ten_year_wait/S07";
-import r_2026_10_26_mt_gox_ten_year_wait_S08 from "./r_2026_10_26_mt_gox_ten_year_wait/S08";
+import r_2026_10_29_next_S01 from "./r_2026_10_29_next/S01";
+import r_2026_10_29_next_S02 from "./r_2026_10_29_next/S02";
+import r_2026_10_29_next_S03 from "./r_2026_10_29_next/S03";
+import r_2026_10_29_next_S04 from "./r_2026_10_29_next/S04";
+import r_2026_10_29_next_S05 from "./r_2026_10_29_next/S05";
+import r_2026_10_29_next_S06 from "./r_2026_10_29_next/S06";
+import r_2026_10_29_next_S07 from "./r_2026_10_29_next/S07";
+import r_2026_10_29_next_S08 from "./r_2026_10_29_next/S08";
+import r_2026_10_29_next_S09 from "./r_2026_10_29_next/S09";
+import r_2026_10_29_next_S10 from "./r_2026_10_29_next/S10";
+import r_2026_10_29_next_S11 from "./r_2026_10_29_next/S11";
+import r_2026_10_29_next_S12 from "./r_2026_10_29_next/S12";
+import r_2026_10_29_next_S13 from "./r_2026_10_29_next/S13";
+import r_2026_10_29_next_S14 from "./r_2026_10_29_next/S14";
+import r_2026_10_29_next_S15 from "./r_2026_10_29_next/S15";
+import r_2026_10_29_next_S16 from "./r_2026_10_29_next/S16";
 
 export const scenes: { id: string; component: React.FC<any> }[] = [
   { id: "demo-S01", component: Demo_S01 },
-  { id: "2026-10-26-mt-gox-ten-year-wait-S01", component: r_2026_10_26_mt_gox_ten_year_wait_S01 },
-  { id: "2026-10-26-mt-gox-ten-year-wait-S02", component: r_2026_10_26_mt_gox_ten_year_wait_S02 },
-  { id: "2026-10-26-mt-gox-ten-year-wait-S03", component: r_2026_10_26_mt_gox_ten_year_wait_S03 },
-  { id: "2026-10-26-mt-gox-ten-year-wait-S04", component: r_2026_10_26_mt_gox_ten_year_wait_S04 },
-  { id: "2026-10-26-mt-gox-ten-year-wait-S05", component: r_2026_10_26_mt_gox_ten_year_wait_S05 },
-  { id: "2026-10-26-mt-gox-ten-year-wait-S06", component: r_2026_10_26_mt_gox_ten_year_wait_S06 },
-  { id: "2026-10-26-mt-gox-ten-year-wait-S07", component: r_2026_10_26_mt_gox_ten_year_wait_S07 },
-  { id: "2026-10-26-mt-gox-ten-year-wait-S08", component: r_2026_10_26_mt_gox_ten_year_wait_S08 },
+  { id: "2026-10-29-next-S01", component: r_2026_10_29_next_S01 },
+  { id: "2026-10-29-next-S02", component: r_2026_10_29_next_S02 },
+  { id: "2026-10-29-next-S03", component: r_2026_10_29_next_S03 },
+  { id: "2026-10-29-next-S04", component: r_2026_10_29_next_S04 },
+  { id: "2026-10-29-next-S05", component: r_2026_10_29_next_S05 },
+  { id: "2026-10-29-next-S06", component: r_2026_10_29_next_S06 },
+  { id: "2026-10-29-next-S07", component: r_2026_10_29_next_S07 },
+  { id: "2026-10-29-next-S08", component: r_2026_10_29_next_S08 },
+  { id: "2026-10-29-next-S09", component: r_2026_10_29_next_S09 },
+  { id: "2026-10-29-next-S10", component: r_2026_10_29_next_S10 },
+  { id: "2026-10-29-next-S11", component: r_2026_10_29_next_S11 },
+  { id: "2026-10-29-next-S12", component: r_2026_10_29_next_S12 },
+  { id: "2026-10-29-next-S13", component: r_2026_10_29_next_S13 },
+  { id: "2026-10-29-next-S14", component: r_2026_10_29_next_S14 },
+  { id: "2026-10-29-next-S15", component: r_2026_10_29_next_S15 },
+  { id: "2026-10-29-next-S16", component: r_2026_10_29_next_S16 },
 ];
