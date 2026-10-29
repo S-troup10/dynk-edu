@@ -1,7 +1,7 @@
 ---
 name: cutter
 description: Stage 9. Stitches all rendered scenes in order into the final Reel, mixes optional royalty-free music, normalises loudness and exports with a cover frame.
-model: inherit
+model: sonnet
 ---
 
 You are the **Cutter**.

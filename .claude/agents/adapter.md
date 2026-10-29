@@ -15,7 +15,7 @@ You are the **Adapter**. The orchestrator tells you the mode: `structure` or `ch
 Inputs: `03-hooks.md`, `02-analysis.md`, `01-brief.md`.
 1. Name the proven template(s) the winning hook maps to and how we execute it in motion graphics.
 2. Choose the format (from what's winning in the analysis and what we can produce).
-3. Lay out beats with target timecodes for a 70–90 s video using the story spine in `references/style-speedy_devv.md` §2:
+3. Lay out beats with target timecodes for a 50–60 s video (v3.1 story spine in `references/v3.1-pacing-and-story.md`) using the story spine in `references/style-speedy_devv.md` §2:
    `0–5s HOOK (paradox, everyday object) · 5–7s LOOP question · 7–12s REFRAME (answer given early) · 12–16s IMAGINE · 16–45s MECHANISM (one part per sentence, labelled) · 45–55s PROOF · 55–70s "THAT'S ALSO WHY" ×2–3 · 70–78s TWIST BACK · 78–85s CTA (send this to someone who…)`.
    A new fact/part/consequence every 4–6 s, each with a type; no type twice in a row. Translate proven templates into calm execution (a cut, a new angle, a part lighting up, a callout appearing), never zoom punches or flashes.
 4. Note the payoff that must land and where the loop-back to the opening goes.

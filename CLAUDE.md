@@ -2,7 +2,7 @@
 
 This folder makes short educational Instagram Reels for **@dynkeducation**: DYNK is a non-custodial crypto wallet, and the account teaches self-custody, data sovereignty and safe, cheap transacting. Everything here is **education**, not promotion or financial advice.
 
-**House look (v3): read `references/style-speedy_devv.md` first.** Hooks, story and pacing modelled on @speedy_devv's top non-avatar reels: a paradox about an everyday object, the answer given away early, magnified 3D cutaways with callout labels, one orange glowing system per shot, sentence-building captions with one boxed keyword, "that's also why" consequences, and a specific "send this to someone who…" CTA, 70–90 s. No mascot. `references/style-0x100x.md` (v2) still supplies the 3D studio materials, real-footage proof beats and name cards; where they disagree, the speedy file wins.
+**House look (v3): read `references/style-speedy_devv.md` first.** Hooks, story and pacing modelled on @speedy_devv's top non-avatar reels: a paradox about an everyday object, the answer given away early, magnified 3D cutaways with callout labels, one orange glowing system per shot, sentence-building captions with one boxed keyword, "that's also why" consequences, and a specific "send this to someone who…" CTA. **v3.1 (30 Oct 2026): 50–60 s, fast cuts, a real story spine — read `references/v3.1-pacing-and-story.md`; where it disagrees with the speedy file on length, pacing or hook, v3.1 wins.** No mascot. `references/style-0x100x.md` (v2) still supplies the 3D studio materials, real-footage proof beats and name cards; where they disagree, the speedy file wins.
 
 Start a video with `/make-video` (optionally with a topic hint). Pick up a run part-way with `/make-video resume <run-id> <stage>`.
 
@@ -38,6 +38,9 @@ brain ─▶ analyzer ─▶ hook ─▶ adapter(structure) ─▶ scripter ─�
 
 `runs/<id>/STATUS.md` tracks stage, loop count and gates. Every agent updates it when done.
 
+## Models (usage)
+Opus (the main session) makes every decision: topic, hook, script, direction, `_shared.tsx`, review. Sonnet does execution: composers (`model: sonnet` in `.claude/agents/composer.md`) and the cutter. Brief composers with a detailed shot list so Sonnet needs no judgement calls. 11 parallel composers can hit the 5-hour usage limit: cap still checks at 2 rounds and 1 full render each; resume stopped composers with SendMessage instead of respawning.
+
 ## Talking-head mode (`/talk-video`)
 A separate pipeline for one-take, to-camera explainers with its own "paper" look (marker drawings on paper, native TikTok Sans captions), not the 3D house style: `talk-scripter` → (team films) → `tools/talk/ingest.py` → `board-director` writes `edl.json` → `tools/talk/resolve_edl.py` → `tools/talk/render.sh`. Rules: `references/talking-head-explainer-style.md`. Details: `TALK_PIPELINE.md`. The house rules below apply to it too.
 
@@ -46,10 +49,10 @@ A separate pipeline for one-take, to-camera explainers with its own "paper" look
 - **Education first.** Teach one idea per video. No price talk, no "returns", "gains", "yield", "APY" (annual percentage yield), "passive income", "to the moon", "guaranteed", "not financial advice" bait. No telling people to buy DYNK. CTA is follow/save/share or "try it in the DYNK app" at most.
 - **Never invent facts.** Product claims must come from `brand/dynk-context.md`. Crypto facts must be general and correct. If unsure, cut the claim.
 - **Never invent data.** View counts, creators and audio names come from what the analyzer actually saw. If something wasn't observed, say so.
-- **Pacing (v3).** A new fact, part or consequence every 4–6 s, a new angle or camera move every 1.5–3 s, nothing static over 3 s. No zoom punches, flashes, wipes or shakes: attention comes from content and camera, not effects.
+- **Pacing (v3.1).** A new fact, part or consequence every 3–5 s, a hard cut or new angle every 0.6–1.5 s (hook: every 0.5–0.8 s), nothing static over 1 s, objects arrive in 4–8 frames. No zoom punches, flashes, wipes or shakes: attention comes from content and camera, not effects.
 - **Real footage.** Short clips (0.8–3 s, ~8 s total) of real public interviews/news, always credited in the caption, never used to put words in someone's mouth. Never AI-generate real people, logos or charts.
 - **Real numbers.** Every number on screen is real and its source goes in the caption.
-- **Hooks have three layers.** Visual (a magnified illustration, already moving on frame 1, that proves the paradox muted), audio (the paradox line, ≤20 words, both halves by 5 s), on-screen text (the sentence-building caption with one boxed keyword). Then the loop question by ~7 s and the answer by ~12 s.
+- **Hooks have three layers.** Visual (5–6 hard cuts in the first ~4.5 s, orange + motion on frame 0 since it is also the cover), audio (a stakes line from a real story, ≤15 words, paradox complete by ~5 s), on-screen text (the sentence-building caption PLUS a big 2-line text hook, e.g. "$91M GONE. / NOBODY HACKED HIM.", over the first ~1.3 s). Then the loop question by ~7 s and the answer by ~12 s.
 - **Audio.** The export carries polished voiceover + v2 SFX + the ambient bed `brand/audio/music/bed_drone.wav`. Trending audio is optional, attached in the Instagram app at upload at 5–8 %, never baked in.
 - **Brand.** Colours, type, motion and logo rules come only from `brand/tokens.json` (`v2` + `v3` blocks), `brand/brand.md`, `references/style-speedy_devv.md` and `references/style-0x100x.md`. One orange glowing system per shot. Never open on the logo. No mascot or cartoon presenter.
 - **Safe zone.** Text and key visuals stay inside `tokens.video.safeZone` (Instagram's UI covers the top, the caption block and the right-hand buttons).
@@ -69,7 +72,7 @@ A separate pipeline for one-take, to-camera explainers with its own "paper" look
 
 ## Video spec
 
-9:16, 1080×1920, 30 fps, H.264, 70–90 seconds unless the brief says otherwise, loudness −14 LUFS (loudness units relative to full scale, Instagram's target), captions burned in.
+9:16, 1080×1920, 30 fps, H.264, 50–60 seconds unless the brief says otherwise, loudness −14 LUFS (loudness units relative to full scale, Instagram's target), captions burned in.
 
 ## Running in the cloud (Claude Code on the web)
 

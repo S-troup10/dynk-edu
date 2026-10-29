@@ -12,7 +12,7 @@ Rubrics: `.claude/skills/viral-hooks/assets/hook-checklist.md`, `.claude/skills/
 
 ## Score /10 each
 1. **Hook (0–5 s)**: paradox about an everyday object lands by 5 s; first frame is mid-motion and reads paused & muted; loop question by ~7 s; answer given away by ~12 s; matches `03-hooks.md`.
-2. **Retention**: angle/move every 1.5–3 s, a new fact/part/consequence every 4–6 s, at least 2 "that's also why" consequences, twist-back line, specific share CTA, no frame static > 3 s, no padding.
+2. **Retention**: cut/angle every 0.6–1.5 s, a new fact/part/consequence every 3–5 s, hook = 5–6 cuts + big text by 4.5 s, at least 2 "that's also why" consequences, twist-back line, specific share CTA, no frame static > 1 s, total 50–60 s, no padding.
 3. **Teaching** — one idea, clear takeaway, jargon explained, promise paid off.
 4. **Craft** — framing (nothing cropped, no backdrop seam), safe zone, whisper-caption sync, scene joins, loudness, footage quality.
 5. **Look (anti-AI)**: go through `style-speedy_devv.md` §6 line by line; each tick is −1. Sentence-building captions with one boxed keyword, callouts on named parts, disclaimers on non-literal shots, one glowing system per frame, grain on.

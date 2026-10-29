@@ -39,3 +39,15 @@ git clone <this repo> && cd dynk-video-pipeline
 bash setup-cloud.sh
 claude          # then /make-video
 ```
+
+## Lessons from the 30 Oct 2026 cloud run (`runs/2026-10-29-91m-twelve-words`)
+- **Voice:** if `speech.platform.bing.com` is blocked, use the offline voice: `pip install kokoro-onnx soundfile`, download
+  the two model files from GitHub releases (see `tools/tts_kokoro.py` header), then
+  `python3 tools/tts_kokoro.py --batch runs/<id>/vo_lines.json --outdir runs/<id>/audio/vo --speed 1.12`.
+  A line can carry `"say"` (spoken form, e.g. "two-thousand-and-forty-eight") separate from `"text"` (caption form, "2,048").
+- **Browser:** if Remotion can't download its headless shell (`remotion.media` blocked), use Playwright's:
+  `REMOTION_BROWSER=/opt/pw-browsers/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell`.
+  `tools/render_locked.sh` and `tools/still.sh` set it by default.
+- **Speed:** 2 CPUs + swangle ≈ 2 s per 3D frame (a 56 s video ≈ 1 h of rendering). Renders are serialised with a
+  lock (`tools/render_locked.sh`); composers check with `tools/still.sh runs/<id> S01 0,30,60` first.
+- **Pushing:** runs/ is gitignored; force-add the final mp4, cover and run docs (`git add -f`).

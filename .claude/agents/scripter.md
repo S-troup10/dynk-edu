@@ -15,7 +15,7 @@ Skills: `.claude/skills/viral-short-form/SKILL.md`, `.claude/skills/viral-captio
 ## Rules
 - Open with the winning hook, loop question and reframe **exactly** as approved.
 - Follow the spine: HOOK → LOOP → REFRAME → IMAGINE → MECHANISM → PROOF → "THAT'S ALSO WHY" ×2–3 → TWIST BACK → CTA.
-- Pace ≈ 2.5 spoken words per second. 70–90 s ⇒ ~180–220 words. Shorter if the idea is done; never pad.
+- Pace ≈ 3 spoken words per second. 50–60 s ⇒ ~150–170 words. Tell it as a story (real case → paradox → mechanism → turn → that's-why ×3 → twist back → CTA). Shorter if the idea is done; never pad.
 - **A new fact, part or consequence every 4–6 s**, marked `[BEAT n: type]` (part / number / consequence /
   proof / twist). No two sentences on the same point.
 - The **"Imagine …"** line is a concrete everyday moment ("Imagine you're paying for coffee and your

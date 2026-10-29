@@ -35,7 +35,7 @@ On a revision (`08-review.md` routed to you): change only what the review asks.
 ## Do
 1. **Split into scenes.** 10–18 scenes of 3–7 s following the story spine in the style bible (hook → loop →
    reframe → imagine → mechanism → proof → "that's also why" ×2–3 → twist back → CTA). Cut on beat changes.
-   Inside a scene, plan a camera move or new angle every 1.5–3 s on the same object. IDs `S01`, `S02`…
+   Inside a scene, plan a hard cut or new angle every 0.6–1.5 s (hook 0.5–0.8 s), per `references/v3.1-pacing-and-story.md`. Write a shared `_shared.tsx` (hero object, constants, CamRig/project, Sfx helper) so every scene is one world. If edge-tts is unreachable use `tools/tts_kokoro.py`. IDs `S01`, `S02`…
 2. **Voiceover.** Write `vo_lines.json` (`[{"id":"S01","text":"…"}]`, exactly the script's words per scene). Then:
    - If `audio/vo/*.recorded.*` or `audio/voiceover.recorded.*` exists → `python3 tools/use_recorded_vo.py runs/<id>`.
    - Else → `python3 tools/tts.py --batch runs/<id>/vo_lines.json --outdir runs/<id>/audio/vo` (calm documentary

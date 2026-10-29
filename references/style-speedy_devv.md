@@ -118,7 +118,7 @@ The single most recognisable part of the look. Copy exactly.
 
 ## 5. Motion and pacing
 
-- **Shot change every 1.5–3 s.** Most changes are camera moves or a new angle on the *same* object
+- **Shot change every 1.5–3 s** (superseded by v3.1: 0.6–1.5 s, see `v3.1-pacing-and-story.md`). Most changes are camera moves or a new angle on the *same* object
   (macro → top-down → cross-section), not new objects. It feels continuous but never static.
 - **Hard cuts** between angles; soft cross-dissolve only into an "Imagine…" scenario. No zoom punches,
   flashes, whip pans, shakes, glitch.
