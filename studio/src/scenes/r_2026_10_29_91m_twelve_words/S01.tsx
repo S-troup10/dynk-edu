@@ -169,7 +169,7 @@ const ShotSlam: React.FC<{ land: number }> = ({ land }) => {
 const STREAM_N = 24;
 const streamPt = (p: number, k: number): Vec3 => {
   // quadratic bezier from the phone screen up and out to the right, into the dark
-  const a: Vec3 = [-0.8, 1.75, 0.5], b: Vec3 = [0.2, 3.5, 1.0], c: Vec3 = [3.0, 3.9, -2.0];
+  const a: Vec3 = [-0.2, 1.75, 0.5], b: Vec3 = [0.6, 3.5, 1.0], c: Vec3 = [3.0, 3.9, -2.0];
   const u = 1 - p;
   const wob = Math.sin(k * 2.7) * 0.12;
   return [u * u * a[0] + 2 * u * p * b[0] + p * p * c[0], u * u * a[1] + 2 * u * p * b[1] + p * p * c[1] + wob, u * u * a[2] + 2 * u * p * b[2] + p * p * c[2]];
@@ -187,7 +187,7 @@ const PhoneStream: React.FC = () => {
   return (
     <>
       <CamRig shot={shot} />
-      <group position={[-0.95, 0.15, 0]} rotation={[0, 0.45, 0]}>
+      <group position={[-0.45, 0.15, 0]} rotation={[0, 0.45, 0]}>
         <Phone position={[0, 1.55, 0]} rotation={[0, 0, 0]} scale={0.82} />
         <mesh position={[0, 1.55, 0.1]}>
           <planeGeometry args={[1.05, 0.52]} />
@@ -195,7 +195,7 @@ const PhoneStream: React.FC = () => {
         </mesh>
       </group>
       {coins}
-      <pointLight position={[0.3, 2.8, 1.8]} color="#FF8000" intensity={7} distance={7} decay={2} />
+      <pointLight position={[1.4, 3.4, 2.6]} color="#FF8000" intensity={4} distance={7} decay={2} />
     </>
   );
 };
