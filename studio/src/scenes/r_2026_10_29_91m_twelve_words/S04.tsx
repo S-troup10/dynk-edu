@@ -117,12 +117,12 @@ const ShotPop: React.FC = () => {
 /* ---------- Shot 4: the 39-digit number ---------- */
 const GROUPS = BIG.split(","); // 13 groups of 3 digits = 39 digits
 const LINES: number[][] = [[0, 1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]];
-const DIGIT = 100;
+const DIGIT = 80;   // Orbitron is wide: 80 px keeps the 4-group line inside the safe zone
 
 const BigNumber: React.FC<{ landAt: number[] }> = ({ landAt }) => {
   const f = useCurrentFrame();
   return (
-    <div style={{ position: "absolute", left: 0, right: 0, top: 690, display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
+    <div style={{ position: "absolute", left: 0, right: 0, top: 730, display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
       {LINES.map((line, li) => (
         <div key={li} style={{ display: "flex", whiteSpace: "nowrap", fontFamily: brand.display, fontWeight: 800, fontSize: DIGIT, lineHeight: 1.05, letterSpacing: -2 }}>
           {line.map((gi) => {
@@ -169,11 +169,11 @@ const ShotNumber: React.FC<{ landAt: number[]; lastAt: number }> = ({ landAt, la
       <AbsoluteFill style={{ background: `radial-gradient(ellipse 60% 38% at 62% 62%, rgba(255,128,0,${0.2 * glow}) 0%, transparent 70%)` }} />
       <AbsoluteFill style={{ perspective: 1500, transform: `translate(${tx}px, ${ty}px)` }}>
         <AbsoluteFill style={{ transform: `scale(${sc}) rotateY(${ry}deg) rotateZ(${rz}deg)`, transformOrigin: "50% 50%" }}>
-          <div style={{ position: "absolute", left: 96, top: 596, opacity: labelOp, fontFamily: brand.body, fontWeight: 600, fontSize: 28, letterSpacing: 7, color: "rgba(255,255,255,0.55)" }}>
+          <div style={{ position: "absolute", left: 150, top: 642, opacity: labelOp, fontFamily: brand.body, fontWeight: 600, fontSize: 28, letterSpacing: 7, color: "rgba(255,255,255,0.55)" }}>
             POSSIBLE 12-WORD PHRASES
           </div>
           <BigNumber landAt={landAt} />
-          <Callout text="2¹²⁸" at={[900, 830]} label={[950, 1308]} startFrame={Math.max(0, lastAt - 22)} size={30} />
+          <Callout text="2¹²⁸" at={[838, 1112]} label={[900, 1250]} startFrame={Math.max(0, lastAt - 22)} size={30} />
         </AbsoluteFill>
       </AbsoluteFill>
     </AbsoluteFill>

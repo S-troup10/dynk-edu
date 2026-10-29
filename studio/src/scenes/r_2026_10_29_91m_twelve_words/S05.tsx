@@ -42,7 +42,7 @@ const Instances: React.FC<{ list: P[]; accent?: boolean }> = ({ list, accent = f
       m.makeScale(p.s, p.s, p.s).setPosition(p.x, 0.88 * p.s, p.z);
       head.current!.setMatrixAt(i, m);
       if (!accent) {
-        col.setHSL(0, 0, 0.2 + 0.16 * rand(i * 3.1 + list.length));
+        col.setHSL(0, 0, 0.1 + 0.13 * rand(i * 3.1 + list.length));
         body.current!.setColorAt(i, col);
         head.current!.setColorAt(i, col);
       }
@@ -97,9 +97,9 @@ const CROWD_BACK = makeCrowd(34, 44, 0.6, -2.2, 101, (x, z) => Math.abs(x) < 1.5
 const CROWD_SIDE = makeCrowd(34, 10, 0.6, 3.5, 301, (x) => Math.abs(x) < 2.3);
 
 const HEROES: { pos: Vec3; base: number }[] = [
-  { pos: [-0.95, 0, 0.25], base: 1_204_883_517 },
+  { pos: [-0.8, 0, 0.2], base: 1_204_883_517 },
   { pos: [0.05, 0, -0.5], base: 7_730_126_044 },
-  { pos: [0.95, 0, 0.3], base: 3_381_902_276 },
+  { pos: [0.8, 0, 0.25], base: 3_381_902_276 },
 ];
 const HERO_SCALE = 1.35;
 const GUESS_PER_FRAME = 1_000_000_000 / 30;
@@ -144,7 +144,7 @@ const Shot2: React.FC<{ shot: Shot; start: number; callAt?: number }> = ({ shot,
         );
       })}
       {callAt !== undefined && (
-        <Callout text="1,000,000,000 GUESSES / SEC — EACH" at={mid} label={[540, 1325]} startFrame={callAt} />
+        <Callout text="1,000,000,000 GUESSES / SEC — EACH" at={mid} label={[540, 1345]} startFrame={callAt} />
       )}
     </AbsoluteFill>
   );
@@ -164,7 +164,7 @@ const w2s = (wx: number, wy: number, S: number, fx: number, fy: number, rot = 0)
 const BAR = { x: 100, w: 880, y: 960, h: 24 };
 
 /** The age-of-the-universe bar: drawn to `p`, with an orange time-marker at `cursor` (0..1) trailing a short orange streak. */
-const AgeBar: React.FC<{ p: number; cursor?: number; labels?: boolean }> = ({ p, cursor, labels = true }) => {
+const AgeBar: React.FC<{ p: number; cursor?: number; labels?: boolean; stickyX?: number; right?: boolean }> = ({ p, cursor, labels = true, stickyX = 0, right = true }) => {
   const cx = cursor === undefined ? undefined : BAR.x + BAR.w * cursor;
   return (
     <>
@@ -183,9 +183,9 @@ const AgeBar: React.FC<{ p: number; cursor?: number; labels?: boolean }> = ({ p,
           boxShadow: "0 0 26px 8px rgba(255,128,0,0.75), 0 0 80px 20px rgba(255,128,0,0.35)" }} />
       )}
       {labels && (
-        <div style={{ position: "absolute", left: BAR.x, top: BAR.y - 70, fontFamily: brand.body, fontWeight: 700, fontSize: 26, letterSpacing: 3.2, color: "rgba(255,255,255,0.92)", whiteSpace: "nowrap" }}>AGE OF THE UNIVERSE</div>
+        <div style={{ position: "absolute", left: Math.max(BAR.x, stickyX), top: BAR.y - 70, fontFamily: brand.body, fontWeight: 700, fontSize: 26, letterSpacing: 3.2, color: "rgba(255,255,255,0.92)", whiteSpace: "nowrap" }}>AGE OF THE UNIVERSE</div>
       )}
-      {labels && p > 0.97 && (
+      {labels && right && p > 0.97 && (
         <div style={{ position: "absolute", left: BAR.x + BAR.w, top: BAR.y - 70, transform: "translateX(-100%)", fontFamily: brand.body, fontWeight: 700, fontSize: 26, letterSpacing: 3.2, color: "rgba(255,255,255,0.55)", whiteSpace: "nowrap" }}>13.8 BILLION YEARS</div>
       )}
     </>
@@ -202,7 +202,7 @@ const Shot3a: React.FC<{ len: number }> = ({ len }) => {
   return (
     <AbsoluteFill>
       <Cam2D S={S} fx={fx} fy={BAR.y - 36 / S} rot={interpolate(t, [0, 1], [-1.5, 0.5])}>
-        <AgeBar p={p} cursor={p < 1 ? p : 1} />
+        <AgeBar p={p} cursor={p < 1 ? p : 1} stickyX={fx - 420 / S} right={false} />
       </Cam2D>
     </AbsoluteFill>
   );
@@ -338,9 +338,9 @@ const Scene: React.FC<SceneProps> = (props) => {
   const c4b = W(props, "the", 2, 4.951) + 1; // "…times the age"
   const c4c = W(props, "universe", 0, 5.902);
 
-  const shot1: Shot = { from: [0.7, 0.8, 7.2], to: [-0.5, 4.6, 4.2], tFrom: [0, 0.9, -9], tTo: [0, 0.2, -13], fov: 58, len: c2a };
-  const shot2a: Shot = { from: [-2.5, 1.45, 5.4], to: [-1.5, 1.35, 4.3], tFrom: [0.3, 1.0, 0], tTo: [0.1, 1.0, 0], fov: 42, len: c2b - c2a };
-  const shot2b: Shot = { from: [2.7, 2.3, 4.7], to: [1.2, 1.9, 3.8], tFrom: [-0.2, 1.0, 0], tTo: [0, 1.0, 0], fov: 42, len: c3a - c2b };
+  const shot1: Shot = { from: [0.7, 2.0, 7.2], to: [-0.5, 7.5, 3.5], tFrom: [0, -0.6, -9], tTo: [0, -1.0, -11], fov: 58, len: c2a };
+  const shot2a: Shot = { from: [-3.2, 1.6, 8.0], to: [-1.8, 1.5, 6.9], tFrom: [0.3, 1.0, 0], tTo: [0.1, 1.0, 0], fov: 42, len: c2b - c2a };
+  const shot2b: Shot = { from: [3.4, 2.6, 7.6], to: [1.8, 2.1, 6.6], tFrom: [-0.2, 1.0, 0], tTo: [0, 1.0, 0], fov: 42, len: c3a - c2b };
 
   const sfxTicks: number[] = [];
   for (let k = 37; k < c3a - 2; k += 4) if (k !== c2b) sfxTicks.push(k);

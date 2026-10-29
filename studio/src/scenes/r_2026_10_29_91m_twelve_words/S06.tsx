@@ -89,7 +89,7 @@ const ShotA: React.FC<{ stopAt: number }> = ({ stopAt }) => {
             glow={spinning} dim={!spinning} spin={sp} spinWord={spinning ? word : undefined} />
         );
       })}
-      {!spinning && <pointLight color="#ffffff" intensity={55} distance={40} position={[0, 4.5, 11]} />}
+      {!spinning && <pointLight color="#ffffff" intensity={900} distance={60} decay={1.6} position={[0, 5, 12]} />}
     </Studio3D>
   );
 };

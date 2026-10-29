@@ -250,7 +250,7 @@ const ShotZero: React.FC = () => {
   const v = 783 * (1 - p);
   return (
     <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 38%, #17181c 0%, #0e0f11 70%)" }}>
-      <Cam2D s={[1.12, 1.52]} x={[-22, -70]} y={[-60, -250]} r={[-1, 0.6]} len={22} origin="50% 30%">
+      <Cam2D s={[1.1, 1.42]} x={[-8, -26]} y={[-6, -64]} r={[-1, 0.6]} len={22} origin="50% 30%">
         <BalancePhone value={v} f={f} ticking={f < 8} reveal={1} dim={f >= 8} tilt={14} />
       </Cam2D>
     </AbsoluteFill>
