@@ -37,16 +37,25 @@ const uAt = (f: number, last: number) => {
   }
   return u;
 };
-const LoopRig: React.FC = () => {
+/** Sheet presence 0..1 (spring up at inAt, ease-in down from outAt). Drives the sheet AND the camera tilt. */
+const sheetS = (frame: number, fps: number, inAt: number, outAt: number, outFrames: number) => {
+  const up = spring({ frame: frame - inAt, fps, config: { damping: 22, stiffness: 120 } });
+  const down = easeIn(interpolate(frame, [outAt, outAt + outFrames], [0, 1], clamp));
+  return up * (1 - down);
+};
+const LIFT = 1.45; // while the sheet is up, aim lower so the tile row rides in the top third (screen y ≈ 480)
+const LoopRig: React.FC<{ inAt: number; outAt: number; outFrames: number }> = ({ inAt, outAt, outFrames }) => {
   const f = useCurrentFrame();
-  const { durationInFrames } = useVideoConfig();
+  const { durationInFrames, fps } = useVideoConfig();
   const { camera } = useThree();
   useLayoutEffect(() => {
     const u = uAt(f, durationInFrames - 1);
+    const s = sheetS(f, fps, inAt, outAt, outFrames);
     camera.position.set(...lerp3(A_FROM, A_TO, u));
     (camera as THREE.PerspectiveCamera).fov = A_FOV;
     (camera as THREE.PerspectiveCamera).updateProjectionMatrix();
-    camera.lookAt(...lerp3(A_TFROM, A_TTO, u));
+    const t = lerp3(A_TFROM, A_TTO, u);
+    camera.lookAt(t[0], t[1] - LIFT * s, t[2]);
   });
   return null;
 };
@@ -62,9 +71,7 @@ const ShareSheetOverlay: React.FC<{ inAt: number; pickAt: number; sendAt: number
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const up = spring({ frame: frame - inAt, fps, config: { damping: 22, stiffness: 120 } });
-  const down = easeIn(interpolate(frame, [outAt, outAt + outFrames], [0, 1], clamp));
-  const s = up * (1 - down);
+  const s = sheetS(frame, fps, inAt, outAt, outFrames);
   if (s <= 0.001) return null;
   const pickP = ease(interpolate(frame, [pickAt, pickAt + 6], [0, 1], clamp));
   const sendP = interpolate(frame, [sendAt, sendAt + 3], [0, 1], clamp);
@@ -132,7 +139,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       {/* slow L→R track that lands exactly on S01's frame-0 pose on the last frame */}
       {/* same Studio3D args as S01 shot A so fog/lighting match; LoopRig overrides the camera each frame */}
       <Studio3D tone="dark" camera={{ from: A_FROM, target: A_TFROM, fov: A_FOV }}>
-        <LoopRig />
+        <LoopRig inAt={send - 2} outAt={outAt} outFrames={outFrames} />
         <TileRow chars={REAL} only={[0, 14]} />
       </Studio3D>
       <Disclaimer text="Magnified illustration · addresses are made up" />

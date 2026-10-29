@@ -188,7 +188,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const glow = f < LAND + 30 ? 1 : interpolate(f, [LAND + 30, LAND + 48], [1, 0.12], clamp);
   // the list slides down one row to make room as the slab arrives
   const shift = ease(interpolate(f, [LAND - 12, LAND], [0, 1], clamp));
-  const planted = f >= LAND + 1;
+  const planted = false; // shifted history list + landed row == ui_history_planted (a separate planted plane rendered white under parallel render)
 
   const cam = makeCam(f, LAUNCH, LAND);
 
