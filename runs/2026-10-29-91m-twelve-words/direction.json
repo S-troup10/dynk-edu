@@ -1,0 +1,142 @@
+{
+ "runId": "2026-10-29-91m-twelve-words",
+ "fps": 30,
+ "scenes": [
+  {
+   "id": "S01",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S01.mp3"
+   },
+   "padSec": 0.12,
+   "captionKeywords": [
+    "million",
+    "transaction"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S02",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S02.mp3"
+   },
+   "padSec": 0.12,
+   "captionKeywords": [
+    "hacked",
+    "guessed",
+    "could"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S03",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S03.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "twelve",
+    "2,048."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S04",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S04.mp3"
+   },
+   "padSec": 0.35,
+   "captionKeywords": [
+    "abandon",
+    "zoo",
+    "combinations"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S05",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S05.mp3"
+   },
+   "padSec": 0.2,
+   "captionKeywords": [
+    "billion",
+    "hundred"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S06",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S06.mp3"
+   },
+   "padSec": 0.2,
+   "captionKeywords": [
+    "guess",
+    "support",
+    "exchange",
+    "trusted"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S07",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S07.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "never"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S08",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S08.mp3"
+   },
+   "padSec": 0.2,
+   "captionKeywords": [
+    "screenshots",
+    "kaspersky",
+    "photos"
+   ],
+   "captionEmoji": {
+    "screenshots": "\ud83d\udcf1"
+   }
+  },
+  {
+   "id": "S09",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S09.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "thief"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S10",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S10.mp3"
+   },
+   "padSec": 0.2,
+   "captionKeywords": [
+    "crack",
+    "handed"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S11",
+   "vo": {
+    "file": "runs/2026-10-29-91m-twelve-words/audio/vo/S11.mp3"
+   },
+   "padSec": 0.9,
+   "captionKeywords": [
+    "camera"
+   ],
+   "captionEmoji": {}
+  }
+ ]
+}

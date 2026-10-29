@@ -1,0 +1,13 @@
+[
+ {"id":"S01","text":"One man lost $91 million in bitcoin, in a single transaction.","say":"One man lost ninety-one million-dollars in bitcoin, in a single transaction."},
+ {"id":"S02","text":"Nobody hacked him. Nobody guessed his keys. Nobody could."},
+ {"id":"S03","text":"Because your wallet comes down to twelve words, from a list of 2,048.","say":"Because your wallet comes down to twelve words, from a list of two-thousand-and-forty-eight."},
+ {"id":"S04","text":"Abandon, to zoo. Pick twelve, and you get this many combinations."},
+ {"id":"S05","text":"If everyone on Earth guessed a billion a second, trying them all would take about a hundred times the age of the universe."},
+ {"id":"S06","text":"So the thieves didn't guess. They pretended to be support, for his wallet maker and his exchange. And he trusted them."},
+ {"id":"S07","text":"That's why real support will never ask for your twelve words."},
+ {"id":"S08","text":"It's why screenshots are risky. In 2025, Kaspersky found apps on the App Store and Google Play scanning people's photos for those words.","say":"It's why screenshots are risky. In twenty-twenty-five, Kaspersky found apps on the App Store and Google Play scanning people's photos for those words."},
+ {"id":"S09","text":"And it's why any site asking you to verify your phrase is the thief."},
+ {"id":"S10","text":"So nobody can crack your twelve words. They can only be handed over."},
+ {"id":"S11","text":"Send this to someone who keeps theirs in their camera roll."}
+]
