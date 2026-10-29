@@ -49,7 +49,7 @@ const camAt = (f: number): Cam => {
     return { pos: lerp3([-2.0, 3.1, 15.6], [-0.9, 2.7, 14.4], p), target: lerp3([0.15, 1.6, 0], [0.2, 1.65, 0], p), fov: 32 };
   }
   const p = inOut(interpolate(f, [CUT_B, 209], [0, 1], clamp));
-  return { pos: lerp3([1.6, 1.2, 14.8], [0.8, 0.8, 13.4], p), target: lerp3([0.15, 1.9, 0], [0.25, 1.55, 0], p), fov: 32 };
+  return { pos: lerp3([1.6, 1.2, 14.8], [0.8, 0.8, 13.4], p), target: lerp3([0.05, 1.9, 0], [0.12, 1.55, 0], p), fov: 32 };
 };
 const CamRig: React.FC<{ offset: number }> = ({ offset }) => {
   const f = useCurrentFrame() + offset;
@@ -175,8 +175,8 @@ const Scene: React.FC<SceneProps> = (props) => {
   // Plates (0–59)
   const plateA = f < 27;
   const pushA = 1 + 0.06 * ease(interpolate(f, [0, 27], [0, 1], clamp));
-  const pushB = 1.0 + 0.1 * ease(interpolate(f, [27, 60], [0, 1], clamp));
-  const driftB = interpolate(f, [27, 60], [10, -14], clamp);
+  const pushB = 1.0 + 0.07 * ease(interpolate(f, [27, 60], [0, 1], clamp));
+  const driftB = interpolate(f, [27, 60], [8, -8], clamp);
 
   // 3D label anchors (absolute frames)
   const small = project(f, SMALL_END);
@@ -189,9 +189,9 @@ const Scene: React.FC<SceneProps> = (props) => {
       {f < 60 ? (
         <AbsoluteFill style={{ background: "#0E0F11" }}>
           {plateA ? (
-            <DocPlate src={PROOF.title} srcW={1290} srcH={840} cropH={700} width={930} centerY={930} push={pushA} origin={[0.35, 0.6]} />
+            <DocPlate src={PROOF.title} srcW={1290} srcH={840} cropH={700} width={860} centerY={930} push={pushA} origin={[0.35, 0.6]} />
           ) : (
-            <DocPlate src={PROOF.may3} srcW={1170} srcH={474} width={940} centerY={930} push={pushB} origin={[0.72, 0.5]} drift={driftB} />
+            <DocPlate src={PROOF.may3} srcW={1170} srcH={474} width={860} centerY={930} push={pushB} origin={[0.72, 0.5]} drift={driftB} />
           )}
           <Callout text="Source: Chainalysis" at={plateA ? [300, 700] : [300, 760]} label={[300, 600]} startFrame={9} />
           <Typewriter text="3 May 2024" startFrame={6} y={1260} size={34} cps={14} />

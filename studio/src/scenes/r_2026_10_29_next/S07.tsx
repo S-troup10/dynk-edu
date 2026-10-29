@@ -40,7 +40,7 @@ const KEYS: Key[] = [
   { t: 0.0, pos: [0.3, 8.6, 1.4], tgt: [0.05, 0.6, -0.6] },
   { t: 1.55, pos: [0.1, 7.9, 0.5], tgt: [0, 0.8, -1.15] },    // push in on the planted row
   { t: 2.35, pos: [-0.1, 7.8, 1.0], tgt: [0, 0.8, -0.7] },    // "beside" → track down to the real row
-  { t: 3.6, pos: [-0.25, 8.2, 0.6], tgt: [0, 0.8, -1.0] },    // back up, both rows in view
+  { t: 3.6, pos: [-0.25, 8.1, 0.75], tgt: [0, 0.8, -0.9] },    // back up, both rows in view
 ];
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 const camAt = (sec: number) => {
@@ -161,7 +161,7 @@ const RowSlab: React.FC<{ kind: "received" | "sent"; accent?: boolean; startZ: n
 const Slot: React.FC<{ z: number; p: number }> = ({ z, p }) => (
   <mesh position={[0, GLASS_Y + 0.004, z]} rotation={[-Math.PI / 2, 0, 0]}>
     <planeGeometry args={[ROW_W - 0.04, ROW_H - 0.02]} />
-    <meshBasicMaterial color="#030303" transparent opacity={0.97 * p} depthWrite={false} />
+    <meshBasicMaterial color="#030303" transparent opacity={p} depthWrite={false} />
   </mesh>
 );
 

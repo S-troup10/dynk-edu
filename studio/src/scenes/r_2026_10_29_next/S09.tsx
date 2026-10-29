@@ -93,7 +93,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const sink = (1 - fade) * 0.25;
 
   const camA = { from: [0.1, 2.4, 12.4] as Vec3, to: [0.8, 2.1, 11.2] as Vec3, target: [-0.05, 1.15, 0.2] as Vec3, fov: 32, startFrame: 0, durationFrames: fCut };
-  const camB = { from: [4.6, 1.3, 8.4] as Vec3, to: [3.9, 1.05, 7.6] as Vec3, target: [0.05, 0.3, 1.25] as Vec3, fov: 30, startFrame: fCut, durationFrames: 99 - fCut };
+  const camB = { from: [4.6, 1.3, 8.4] as Vec3, to: [4.0, 1.12, 8.5] as Vec3, target: [0.2, 0.3, 1.25] as Vec3, fov: 30, startFrame: fCut, durationFrames: 99 - fCut };
   const cam = f < fCut ? camA : camB;
 
   return (

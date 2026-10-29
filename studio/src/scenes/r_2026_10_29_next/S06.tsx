@@ -209,13 +209,13 @@ const Scene: React.FC<SceneProps> = (props) => {
         <CamRig cam={cam} />
       </Studio3D>
 
-      {f >= LAND + 2 && (
-        <Callout text="0.00 received" accent startFrame={Math.round(2.45 * fps)}
-          at={amountPt} label={[770, 440]} size={26} />
+      {f >= LAND - 4 && (
+        <Callout text="0.00 received" accent startFrame={LAND - 4}
+          at={amountPt} label={[770, 400]} size={26} />
       )}
       {f >= Math.round(look * fps) && (
         <Callout text="from lookalike" startFrame={Math.round(look * fps)}
-          at={addrPt} label={[310, 440]} size={26} />
+          at={addrPt} label={[310, 400]} size={26} />
       )}
       <Disclaimer text="Magnified illustration · addresses are made up" />
     </Shell>

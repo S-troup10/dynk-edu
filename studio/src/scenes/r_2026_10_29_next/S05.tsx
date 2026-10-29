@@ -151,11 +151,11 @@ const Scene: React.FC<SceneProps> = (props) => {
   const shots: Shot[] = useMemo(
     () => [
       // A · low macro at the generator mouth, rows nosing out slowly
-      { start: 0, end: fChurn, from: [-2.2, 0.75, 3.6], to: [-1.6, 0.85, 3.3], tFrom: [4.5, 1.25, -0.6], tTo: [4.5, 1.3, -0.7], fov: 32 },
+      { start: 0, end: fChurn, from: [-1.0, 1.0, 6.0], to: [-0.4, 1.05, 5.5], tFrom: [4.5, 1.25, -0.6], tTo: [4.5, 1.3, -0.7], fov: 32 },
       // B · wider 3/4 from the right as the rows stream past at speed
-      { start: fChurn, end: fStarts, from: [7.4, 3.4, 10.5], to: [6.4, 3.0, 11.2], tFrom: [2.4, 1.2, -0.8], tTo: [1.8, 1.15, -0.8], fov: 32 },
+      { start: fChurn, end: fStarts, from: [7.4, 3.4, 10.5], to: [6.4, 3.0, 11.2], tFrom: [3.4, 1.2, -0.8], tTo: [2.9, 1.15, -0.8], fov: 32 },
       // C · hard cut close on the stopped row's start, track right + pull out until both ends show
-      { start: fStarts, end: fYours, from: [-2.2, 1.15, 4.6], to: [0, 1.6, 23.5], tFrom: [-2.2, 1.2, 0], tTo: [0, 1.4, -0.3], fov: 32 },
+      { start: fStarts, end: fYours, from: [-2.0, 1.2, 6.5], to: [0, 1.6, 23.5], tFrom: [-2.2, 1.2, 0], tTo: [0, 1.4, -0.3], fov: 32 },
       // D · slow push in, gentle drift, both ends + ghost in frame
       { start: fYours, end: total + 10, from: [0, 1.6, 23.5], to: [0.3, 1.55, 22.0], tFrom: [0, 1.4, -0.3], tTo: [0.1, 1.38, -0.3], fov: 32 },
     ],
@@ -200,11 +200,11 @@ const Scene: React.FC<SceneProps> = (props) => {
 
   return (
     <Shell props={props} tone="dark">
-      <Studio3D tone="dark" camera={{ from: [0, 1.5, 15], to: [0, 1.5, 15], target: [0, 1.2, 0], fov: 32 }}>
+      <Studio3D tone="dark" camera={{ from: [0, 1.5, 22], to: [0, 1.5, 22], target: [0, 1.2, 0], fov: 32 }}>
         <CamRig shots={shots} />
         <Generator f={f} />
 
-        {live.map((fr) => {
+        {f < fStarts && live.map((fr) => {
           const centreOffset = (fr.a + (FRAG_N - 1) / 2 - (REAL.length - 1) / 2) * GAP;
           return (
             <TileRow key={`${fr.li}-${fr.k}`} chars={fr.addr} only={[fr.a, fr.a + FRAG_N]}

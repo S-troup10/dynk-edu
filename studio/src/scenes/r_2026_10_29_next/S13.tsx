@@ -119,7 +119,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const halfX = 0.1 + 0.2 * open + 0.35 * gone;   // hinge offset from centre
 
   // ends: left group rises to the top row, right group drops into the bottom row
-  const qL = prog(f, tHide, tHide + 24, inOut);
+  const qL = prog(f, tHide + 8, tHide + 32, inOut);
   const qR = prog(f, tHide + 14, tHide + 40, inOut);
 
   const midTiles = MID.split("").map((ch, k) => {
@@ -182,7 +182,7 @@ const Scene: React.FC<SceneProps> = (props) => {
         <Callout text="SHORTENED" at={shortAnchor} label={[300, 700]} />
       </Sequence>
       <Sequence from={tHide + 7}>
-        <Callout text="HIDDEN" accent at={hiddenAnchor} label={[205, 470]} />
+        <Callout text="HIDDEN" accent at={hiddenAnchor} label={[150, 440]} />
       </Sequence>
       <Disclaimer text="Magnified illustration · addresses are made up" />
     </Shell>

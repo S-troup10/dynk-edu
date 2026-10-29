@@ -89,7 +89,7 @@ const FRAGS = [
 // Bleachers: each row further back and higher, alternating x so the wall reads as many, not a grid.
 const ROWS: { pos: V3; frag: string }[] = FRAGS.map((frag, i) => ({
   frag,
-  pos: [(i % 2 ? 0.23 : -0.23) + (i % 3) * 0.15, 0.27 + i * 0.62, -i * 1.6],
+  pos: [(i % 2 ? 0.23 : -0.23) + (i % 3) * 0.15, 0.27 + i * 0.34, -i * 1.6],
 }));
 
 const Wall: React.FC<{ campaignF: number; landF: number }> = ({ campaignF, landF }) => {
@@ -134,9 +134,9 @@ const CountNumber: React.FC<{ startF: number; landF: number }> = ({ startF, land
 const Lookalikes: React.FC<{ campaignF: number; landF: number }> = ({ campaignF, landF }) => {
   const { fps } = useVideoConfig();
   const keys = [
-    { f: 0, pos: [0.3, 2.0, 5.6] as V3, tgt: [0, 1.0, -3] as V3 },
-    { f: Math.round(1.55 * fps), pos: [0.15, 2.4, 8.6] as V3, tgt: [0, 1.25, -3] as V3 },
-    { f: Math.round(3.75 * fps), pos: [-0.2, 3.1, 10.2] as V3, tgt: [0, 1.5, -3] as V3 },
+    { f: 0, pos: [0.3, 2.0, 6.2] as V3, tgt: [0, 1.2, -3] as V3 },
+    { f: Math.round(1.55 * fps), pos: [0.15, 2.5, 8.8] as V3, tgt: [0, 1.25, -3] as V3 },
+    { f: Math.round(3.75 * fps), pos: [-0.2, 3.1, 10.2] as V3, tgt: [0, 1.3, -3] as V3 },
   ];
   return (
     <AbsoluteFill>
@@ -147,8 +147,8 @@ const Lookalikes: React.FC<{ campaignF: number; landF: number }> = ({ campaignF,
         </group>
       </Studio3D>
       <CountNumber startF={campaignF} landF={landF} />
-      <Callout text="ONE CAMPAIGN" at={[540, 1010]} label={[540, 860]} startFrame={campaignF} />
-      <Disclaimer text="Values illustrative · addresses are made up" y={1490} />
+      <Callout text="ONE CAMPAIGN" at={[600, 975]} label={[540, 845]} startFrame={campaignF} />
+      <Disclaimer text="Values illustrative · addresses are made up" y={1500} />
     </AbsoluteFill>
   );
 };
