@@ -1,0 +1,35 @@
+# 08 — Review: 2026-10-29-next ("The address you copied was a scammer's")
+
+**Verdict: PASS** (loop 0 of 2). Compliance passes, and every score is 7 or higher. Three optional polish items are listed below. None of them blocks posting.
+
+Reviewed: `final/2026-10-29-next.mp4` (86.0 s, 1080×1920, 30 fps, −14.3 LUFS). I checked all 172 review frames at 0.5 s steps, plus full-size stills at 38.0, 42.0, 63.0, 64.0, 69.5, 82.0, 84.8 s and the last frame against frame 0. I read the script, caption, cut notes, clips notes and the composer notes for S03, S05, S07, S08, S09, S10, S11, S13 and S16, and checked them against `style-speedy_devv.md` §6.
+
+## Scores
+
+| # | Area | Score | Why |
+|---|---|---|---|
+| 1 | Hook (0–5 s) | **8** | The row is moving on frame 0. `7A3f` turns orange by 0.5 s, the LAST 4 end locks with the arc spark at 3.0 s, and the mismatched MIDDLE shows at 3.5–4.5 s, so the paradox reads with the sound off. Both halves are spoken by ~5 s ("scammer" lands at 4.8–5.5 s). The loop question "So what did you miss" is on screen at 6.0–7.0 s, and the answer ("lookalike, planted in your own history") is given at 9.5–11.5 s. The VO is the `03-hooks.md` winner, word for word. **−2:** frame 0 on its own is only grey tiles and "You checked". Nothing glows yet, so the paused first frame and the cover don't show the paradox. |
+| 2 | Retention | **8** | The angle or move changes every 1.5–3 s almost everywhere. A new beat lands every 3.2–5.6 s. There are three consequences (zero/dust 57.5 s, the three dots 63 s, saved contact 68 s), the twist back at 73.5 s re-uses the hook's words, and the CTA names a specific behaviour. Nothing pads. **Soft spots:** 35.5–37.5 s, where the payoff shot opens on dim, thin diagonal rows with nothing lit; the lock screen at 57–63 s, which keeps one framing for ~6 s (only a slow push); and the share sheet at 82–85 s, which holds still for ~3 s (only a camera drift on the tiles above it). |
+| 3 | Teaching | **9** | It teaches one idea (lookalike planted by a dust transfer, so check the whole address and pay a saved contact). It defines the address, explains the generator, shows why the attack works and says it can't be undone. Real proof follows. The takeaway is said out loud and spelled out in the caption. No unexplained jargon ("dust" has a callout and the caption explains it). |
+| 4 | Craft | **7** | The joins are clean, the S02→S03 dissolve works, the loop is seamless (the last frame matches frame 0 exactly), loudness is on target, captions sync with the words, the safe zone holds and there is no backdrop seam. **Flaws:** (a) at 42.0 s the landed coin turns chrome and edge-on and sits on the `c2` tiles as an unreadable white bracket that looks like a glitch. (b) At 69.5–71.5 s the "finger" is a plain pale capsule that covers the SAVED CONTACT callout and reads as a stick, not a thumb. (c) In the payoff at 38–40 s the middle characters are too small and foreshortened to compare, so "MIDDLE ✗" carries the point only through colour. (d) At 53.5–54 s tile rows overlap at the cut into the 82,031 wall. (e) At 64.0 s the opened `…` is an orange striped block (the accordion), which is abstract for about 1 s. |
+| 5 | Look (anti-AI, speedy §6) | **8** | §6 line by line: hook object + 5 s ✓ · loop by 7 s / answer by 12 s ✓ · ≥2 consequences ✓ (3) · sentence-building captions, one boxed keyword per phrase ✓ · static >3 s: none clearly over (the share sheet ~3 s and the lock screen are borderline, with camera drift) ✓ · one orange system per frame ✓ (the arc spark sits with the lit ends and stays one system; the $68M coin is the only accent in S10) · callouts on named parts + disclaimers on every non-literal shot ✓ ("Illustration · generic wallet screen" on the picker, "Values illustrative" on the wall) · no hype, title card or logo open ✓ · no mascot ✓ · no unsourced number or AI person/logo ✓ · specific CTA ✓. **0 ticks.** The −2 is for the cheap capsule finger and the coin artifact, which are the two least "photoreal macro" moments. Grain and vignette are present. |
+| 5b | Honesty | **9** | Every number ($68M, 3 May 2024, 82,031, "six days later") is sourced in the caption (Chainalysis, MetaMask, TRM). The proof plate is the real Chainalysis text, and it even shows "returned the original $68 million". All on-screen addresses are made-up strings, and the caption plus the disclaimer say so. No footage was used, so there is nothing to credit (`clips/credits.md` is empty and correct). The VO says "over eighty-two thousand lookalikes", while Chainalysis says 82,031 *potential* lookalike addresses. This is acceptable, but "potential" would be stricter. |
+| 6 | Compliance | **PASS** | No price talk, returns, yield or guarantees, and no "buy DYNK". The VO makes no DYNK claim. The contact picker is generic: no logo, no DYNK name, and it doesn't claim to detect or block anything. The "pay a contact / username / QR" behaviour matches `dynk-context.md` (website) anyway. CTA = follow + send. |
+
+## Optional polish (not required for PASS)
+Only do these if Cooper wants a v1.1 before posting. They are in route order (the earliest route comes first):
+1. **composer:S08** — Payoff legibility. Open on a lit, closer angle (no dim 2 s on near-empty rows). At "The middle never did", hold a frame where 4–6 middle tiles of both rows sit large and side by side, so the different characters are readable with the sound off.
+2. **composer:S09** — Keep the coin orange-to-grey and face-on when it lands (or fade it out as it lands). Don't leave a chrome edge-on coin on `c2`. Also keep it clear of the tiles.
+3. **composer:S14** — Replace the capsule with a proper finger/thumb silhouette (or a simple press ripple, like S03), and move the SAVED CONTACT callout so the finger never covers it.
+4. (cutter, optional) Use a cover frame from ~3.5 s (both ends orange + MIDDLE callout) instead of frame 0, so the grid thumbnail shows the paradox. Keep frame 0 as the video's first frame.
+
+## Three strongest moments
+1. **0.5–4.5 s, the hook:** the FIRST 4 glows, the LAST 4 locks with the arc spark and the MIDDLE flips. You get the whole paradox without sound.
+2. **53.5–56.5 s, the 82,031 wall:** the orange counter climbs over a wall of made-up addresses. It's real scale, shown visually, and sourced.
+3. **63–68 s, "the three dots hide exactly what's different":** the `…` splits open and 32 hidden middle characters unfold in orange. This is the most "speedy" cutaway in the video, and it's a consequence viewers have personally seen.
+
+## Trending sound reminder
+The analyzer saw **no trending sound** this run (cloud fallback, `02-analysis.md`). Ship with the baked VO + `bed_drone.wav`. Only attach a sound in the Instagram app at 5–8 % if a live check from the Mac finds one on current #addresspoisoning reels. Don't bake one in.
+
+## Prediction (judgement, not data)
+Weakest metric: **3-second hold.** The opening line is long (18 words) and frame 0 is a grey tile row with no glow yet, so some scrollers leave before the orange ends land at 0.5–3 s. Retention after 7 s should be solid.

@@ -1,0 +1,18 @@
+[
+  {"id": "S01", "text": "You checked the first four and last four characters, they matched, and the money still went to a scammer."},
+  {"id": "S02", "text": "So what did you miss? It wasn't really your address. It was a lookalike, planted in your own history."},
+  {"id": "S03", "text": "Imagine paying a friend back with the address you copied last week."},
+  {"id": "S04", "text": "A wallet address is a long string of characters. Most people skip the middle."},
+  {"id": "S05", "text": "A scammer's computer churns out addresses until one starts and ends like yours."},
+  {"id": "S06", "text": "Then it sends you a tiny amount, often zero, from the lookalike."},
+  {"id": "S07", "text": "Now it sits in your history, beside the real one."},
+  {"id": "S08", "text": "Next time, you copy the top one. The ends match. The middle never did."},
+  {"id": "S09", "text": "Once it's sent, no bank can pull it back."},
+  {"id": "S10", "text": "In May 2024, someone sent a small test, then about sixty-eight million dollars to a lookalike."},
+  {"id": "S11", "text": "It was returned after a negotiation. That campaign had over eighty-two thousand lookalikes."},
+  {"id": "S12", "text": "That's also why strangers send you tiny or zero amounts. Never copy those."},
+  {"id": "S13", "text": "And it's why the three dots in a shortened address hide exactly what's different."},
+  {"id": "S14", "text": "And it's why paying a saved contact, username or QR code beats pasting."},
+  {"id": "S15", "text": "So nobody broke into your wallet. You checked the ends, they matched, and you sent it yourself."},
+  {"id": "S16", "text": "Follow me, and send this to someone who only checks the first and last few characters."}
+]
