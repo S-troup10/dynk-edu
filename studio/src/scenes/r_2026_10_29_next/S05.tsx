@@ -195,8 +195,8 @@ const Scene: React.FC<SceneProps> = (props) => {
 
   /* callouts */
   const genPt = project(shots, Math.max(f, fComputer), [EMIT_X - 0.05, 2.35, 0.9]);
-  const heroL = project(shots, Math.max(f, fEnds), [heroLocalX(3.5), HERO_Y + 0.28, HERO_Z]);
-  const heroR = project(shots, Math.max(f, fEnds), [heroLocalX(9.5), HERO_Y + 0.28, HERO_Z]);
+  const heroL = project(shots, Math.max(f, fEnds), [heroLocalX(3.5), HERO_Y - 0.27, HERO_Z + 0.05]);
+  const heroR = project(shots, Math.max(f, fEnds), [heroLocalX(9.5), HERO_Y - 0.27, HERO_Z + 0.05]);
 
   return (
     <Shell props={props} tone="dark" captions={false}>

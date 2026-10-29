@@ -110,7 +110,7 @@ const CountNumber: React.FC<{ startF: number; landF: number }> = ({ startF, land
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   const p = interpolate(f, [startF, landF], [0, 1], clamp);
-  const eased = 1 - Math.pow(1 - p, 2.2);
+  const eased = 1 - Math.pow(1 - p, 1.6);
   const v = Math.round(82031 * eased);
   const s = spring({ frame: f - startF, fps, config: { damping: 20, stiffness: 120 } });
   const land = spring({ frame: f - landF, fps, config: { damping: 14, stiffness: 140 } });
@@ -147,7 +147,7 @@ const Lookalikes: React.FC<{ campaignF: number; landF: number }> = ({ campaignF,
         </group>
       </Studio3D>
       <CountNumber startF={campaignF} landF={landF} />
-      <Callout text="ONE CAMPAIGN" at={[600, 900]} label={[540, 800]} startFrame={campaignF} />
+      <Callout text="ONE CAMPAIGN" at={[600, 965]} label={[540, 800]} startFrame={campaignF} />
       <Disclaimer text="Values illustrative · addresses are made up" y={1482} />
     </AbsoluteFill>
   );

@@ -151,7 +151,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       {f >= C_START && (
         <>
           <Callout text="FIRST 4" at={cFirst} label={[Math.max(170, cFirst[0] - 90), cFirst[1] - 170]} startFrame={C_START - 12} />
-          <Callout text="LAST 4" at={cLast} label={[Math.min(850, cLast[0] + 110), Math.min(1445, cLast[1] + 170)]} startFrame={C_START - 12} />
+          <Callout text="LAST 4" at={cLast} label={[Math.max(200, cLast[0] - 230), Math.min(1420, cLast[1] + 130)]} startFrame={C_START - 12} />
         </>
       )}
 
