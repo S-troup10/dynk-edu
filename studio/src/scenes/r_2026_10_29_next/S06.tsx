@@ -217,7 +217,7 @@ const Scene: React.FC<SceneProps> = (props) => {
         <Callout text="from lookalike" startFrame={Math.round(look * fps)}
           at={addrPt} label={[310, 400]} size={26} />
       )}
-      <Disclaimer text="Magnified illustration · addresses are made up" />
+      <Disclaimer text="Magnified illustration · addresses are made up" y={1500} />
     </Shell>
   );
 };

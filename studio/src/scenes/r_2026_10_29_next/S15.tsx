@@ -34,14 +34,15 @@ type Cam = { pos: Vec3; target: Vec3; fov: number; fogNear: number; fogFar: numb
 const camAt = (f: number, total: number): Cam => {
   if (f < B_START) {
     // S01 0.0–1.4 s track, same from/to/fov, stretched over 2.6 s. Linear so frame 0 is already moving.
-    const p = interpolate(f, [0, B_START], [0, 1], clamp);
+    // same path as S01 but slower: the full from→to would take 96 frames; we cut away at 78 (p≈0.81)
+    const p = interpolate(f, [0, 96], [0, 1], clamp);
     const pos = lerp3([tileX(1) - 0.6, 0.55, 2.2], [tileX(6), 0.5, 2.0], p);
     return { pos, target: [pos[0] + 0.12, 0.28, 0], fov: 30, fogNear: 5.2, fogFar: 18 };
   }
   if (f < C_START) {
     const p = interpolate(f, [B_START, C_START], [0, 1], clamp);
     const pos = lerp3([LAST_C - 0.75, 0.92, 4.0], [LAST_C + 0.35, 0.86, 3.7], p);
-    return { pos, target: [pos[0] + 0.15, 0.64, 0], fov: 30, fogNear: 7, fogFar: 20 };
+    return { pos, target: [pos[0] + 0.15, 0.78, 0], fov: 30, fogNear: 7, fogFar: 20 };
   }
   const p = easeIO(interpolate(f, [C_START, total - 1], [0, 1], clamp));
   // look back along the row from beyond its LAST4 end: portrait-friendly perspective, both ends in frame
@@ -126,7 +127,7 @@ const Scene: React.FC<SceneProps> = (props) => {
 
   return (
     <Shell props={props} tone="dark">
-      <Studio3D tone="dark" shadows={false} camera={{ from: cam.pos, target: cam.target, fov: cam.fov }}>
+      <Studio3D tone="dark" shadows={false} floor={f < C_START} camera={{ from: cam.pos, target: cam.target, fov: cam.fov }}>
         <ShotRig cam={cam} />
         <ContactShadows position={[0, 0.005, 0]} opacity={0.85} scale={[26, 6]} blur={2.6} far={4} resolution={1024} color="#000000" frames={Infinity} />
         <TileRow chars={REAL} glow={glow} />
@@ -146,7 +147,7 @@ const Scene: React.FC<SceneProps> = (props) => {
 
       {/* callouts on their words */}
       {f < B_START && <Callout text="FIRST 4" at={aPt} label={[290, 495]} startFrame={GLOW_FIRST} />}
-      {f >= B_START && f < C_START && <Callout text="LAST 4" at={bPt} label={[830, 1445]} startFrame={GLOW_LAST} />}
+      {f >= B_START && f < C_START && <Callout text="LAST 4" at={bPt} label={[830, 1460]} startFrame={GLOW_LAST} />}
       {f >= C_START && (
         <>
           <Callout text="FIRST 4" at={cFirst} label={[Math.max(170, cFirst[0] - 90), cFirst[1] - 170]} startFrame={C_START - 12} />
