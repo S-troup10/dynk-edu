@@ -41,7 +41,7 @@ const poseAt = (f: number, dur: number): Pose => {
     const p = easeOut(interpolate(f, [0, CUT], [0, 1], clamp));
     return {
       pos: lerp3([0.1, PHONE_POS[1] + TO_Y - 0.08, 3.5], [0.05, 1.8, 10.4], p),
-      target: lerp3([0.0, PHONE_POS[1] + TO_Y - 0.05, 0], [0, 1.62, 0], p),
+      target: lerp3([0.0, PHONE_POS[1] + TO_Y - 0.05, 0], [0, 1.36, 0], p),
       fov: 30,
     };
   }
@@ -172,7 +172,7 @@ const Scene: React.FC<SceneProps> = (props) => {
         <Preload srcs={[UI.historyPlanted, GAP_IMG, ROW_IMG]} />
       </Studio3D>
       <Callout text="Planted" at={dot} label={label} startFrame={fPlanted} accent />
-      <Disclaimer text="Magnified illustration · addresses are made up" />
+      <Disclaimer text="Magnified illustration · addresses are made up" y={1480} />
     </Shell>
   );
 };
