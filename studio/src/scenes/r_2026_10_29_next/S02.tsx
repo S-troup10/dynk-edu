@@ -40,8 +40,8 @@ const poseAt = (f: number, dur: number): Pose => {
     // macro of the To field → whole phone (pull back and up)
     const p = easeOut(interpolate(f, [0, CUT], [0, 1], clamp));
     return {
-      pos: lerp3([0.28, PHONE_POS[1] + TO_Y + 0.05, 2.9], [0.05, 1.8, 10.4], p),
-      target: lerp3([0.02, PHONE_POS[1] + TO_Y, 0], [0, 1.62, 0], p),
+      pos: lerp3([0.1, PHONE_POS[1] + TO_Y - 0.08, 3.5], [0.05, 1.8, 10.4], p),
+      target: lerp3([0.0, PHONE_POS[1] + TO_Y - 0.05, 0], [0, 1.62, 0], p),
       fov: 30,
     };
   }
@@ -50,8 +50,8 @@ const poseAt = (f: number, dur: number): Pose => {
   const v = 0.18 + 0.82 * u; // start already moving
   const w = interpolate(f, [CUT, dur], [0, 1], clamp);
   return {
-    pos: bez3([1.45, 2.0, 7.0], [0.15, 1.92, 5.4], [1.0, 2.2, 5.0], v),
-    target: lerp3([0.0, 2.15, 0], [0.08, 2.42, 0.1], w),
+    pos: bez3([1.9, 1.75, 8.2], [0.6, 1.7, 6.6], [1.5, 1.95, 6.1], v),
+    target: lerp3([0.02, 2.05, 0], [0.1, 2.2, 0.1], w),
     fov: 31,
   };
 };
@@ -110,8 +110,8 @@ const LiftedRow: React.FC<{ lift: number; glow: number }> = ({ lift, glow }) => 
   const frame = useCurrentFrame();
   const pulse = 0.9 + 0.1 * Math.sin(frame / 6);
   const rim = useMemo(() => {
-    const outer = roundedRect(1.46, ROW_H + 0.07, 0.06);
-    const hole = roundedRect(1.4, ROW_H + 0.01, 0.04);
+    const outer = roundedRect(1.43, ROW_H + 0.034, 0.045);
+    const hole = roundedRect(1.4, ROW_H + 0.006, 0.035);
     outer.holes.push(hole as unknown as THREE.Path);
     return new THREE.ShapeGeometry(outer, 12);
   }, []);
@@ -120,11 +120,11 @@ const LiftedRow: React.FC<{ lift: number; glow: number }> = ({ lift, glow }) => 
     <group position={[0, ROW_Y, 0]}>
       {/* soft orange bloom on the screen under the row */}
       <mesh position={[0, 0, 0.0755]} scale={[1 + 0.08 * lift / 0.15, 1, 1]}>
-        <planeGeometry args={[2.0, 0.85]} />
-        <meshBasicMaterial map={glowTex} transparent opacity={0.55 * glow * pulse} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
+        <planeGeometry args={[1.75, 0.55]} />
+        <meshBasicMaterial map={glowTex} transparent opacity={0.32 * glow * pulse} blending={THREE.AdditiveBlending} depthWrite={false} toneMapped={false} />
       </mesh>
-      {/* thin backing slab (gives the lifted row thickness) */}
-      <RoundedBox args={[1.4, ROW_H, 0.025]} radius={0.01} smoothness={2} position={[0, 0, z - 0.014]}>
+      {/* side walls: the row rises out of its slot as a block */}
+      <RoundedBox args={[1.38, ROW_H - 0.01, Math.max(0.006, lift + 0.004)]} radius={0.003} smoothness={2} position={[0, 0, 0.074 + (lift + 0.004) / 2]}>
         <meshStandardMaterial color="#0b0c0e" metalness={0.3} roughness={0.5} />
       </RoundedBox>
       {/* the row itself */}
@@ -134,7 +134,7 @@ const LiftedRow: React.FC<{ lift: number; glow: number }> = ({ lift, glow }) => 
       </mesh>
       {/* orange rim — the ONE glowing system */}
       <mesh geometry={rim} position={[0, 0, z + 0.002]}>
-        <meshStandardMaterial color="#FF8000" emissive="#FF6A00" emissiveIntensity={1.6 * glow} transparent opacity={glow} toneMapped={false} />
+        <meshStandardMaterial color="#FF8000" emissive="#FF6A00" emissiveIntensity={1.2 * glow} transparent opacity={glow} toneMapped={false} />
       </mesh>
     </group>
   );
@@ -157,8 +157,8 @@ const Scene: React.FC<SceneProps> = (props) => {
   const screen = f < CUT ? UI.send : lifted ? GAP_IMG : UI.historyPlanted;
 
   // callout: dot on the row's right end (the "…9c2E"), label up-right of it, tracking the camera.
-  const dot = projectPx([0.18, ROW_Y + 0.02, 0.076 + lift], f, durationInFrames);
-  const label: [number, number] = [Math.min(780, dot[0] + 230), dot[1] - 190];
+  const dot = projectPx([-0.14, ROW_Y - 0.03, 0.08 + lift], f, durationInFrames);
+  const label: [number, number] = [Math.min(800, dot[0] + 300), dot[1] - 170];
 
   return (
     <Shell props={props} tone="dark">

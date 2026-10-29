@@ -81,7 +81,7 @@ const AddressRow: React.FC = () => {
   return (
     <group>
       {REAL.split("").map((ch, i) => {
-        const at = -4 + i * 1.05;                     // build front: frame 0 already mid-build
+        const at = -10 + i * 1.2;                    // build front: frame 0 already mid-build
         const s = spring({ frame: f - at, fps, config: { damping: 16, stiffness: 150 } });
         if (f < at) return null;
         const mi = MIDDLE.indexOf(i);

@@ -41,11 +41,12 @@ const camAt = (f: number, total: number): Cam => {
   if (f < C_START) {
     const p = interpolate(f, [B_START, C_START], [0, 1], clamp);
     const pos = lerp3([LAST_C - 0.75, 0.92, 4.0], [LAST_C + 0.35, 0.86, 3.7], p);
-    return { pos, target: [pos[0] + 0.15, 0.56, 0], fov: 30, fogNear: 7, fogFar: 20 };
+    return { pos, target: [pos[0] + 0.15, 0.64, 0], fov: 30, fogNear: 7, fogFar: 20 };
   }
   const p = easeIO(interpolate(f, [C_START, total - 1], [0, 1], clamp));
-  const pos = lerp3([LAST_C + 1.6, 1.35, 4.4], [LAST_C + 4.6, 2.5, 6.6], p);
-  const target = lerp3([LAST_C - 2.2, 0.55, 0], [1.2, 0.5, 0], p);
+  // look back along the row from beyond its LAST4 end: portrait-friendly perspective, both ends in frame
+  const pos = lerp3([14.5, 1.4, 1.5], [20, 2.4, 1.8], p);
+  const target = lerp3([6.5, 0.5, 0], [2, 0.5, 0], p);
   const d = Math.hypot(pos[0] - target[0], pos[1] - target[1], pos[2] - target[2]);
   return { pos, target, fov: 32, fogNear: d + 4, fogFar: d + 26 };
 };
@@ -144,12 +145,12 @@ const Scene: React.FC<SceneProps> = (props) => {
       )}
 
       {/* callouts on their words */}
-      {f < B_START && <Callout text="FIRST 4" at={aPt} label={[300, 560]} startFrame={GLOW_FIRST} />}
-      {f >= B_START && f < C_START && <Callout text="LAST 4" at={bPt} label={[760, 1360]} startFrame={GLOW_LAST} />}
+      {f < B_START && <Callout text="FIRST 4" at={aPt} label={[290, 495]} startFrame={GLOW_FIRST} />}
+      {f >= B_START && f < C_START && <Callout text="LAST 4" at={bPt} label={[830, 1445]} startFrame={GLOW_LAST} />}
       {f >= C_START && (
         <>
-          <Callout text="FIRST 4" at={cFirst} label={[cFirst[0] + 40, cFirst[1] - 150]} startFrame={C_START - 12} />
-          <Callout text="LAST 4" at={cLast} label={[Math.min(860, cLast[0] + 120), cLast[1] + 190]} startFrame={C_START - 12} />
+          <Callout text="FIRST 4" at={cFirst} label={[Math.max(170, cFirst[0] - 90), cFirst[1] - 170]} startFrame={C_START - 12} />
+          <Callout text="LAST 4" at={cLast} label={[Math.min(850, cLast[0] + 110), Math.min(1445, cLast[1] + 170)]} startFrame={C_START - 12} />
         </>
       )}
 

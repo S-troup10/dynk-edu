@@ -30,7 +30,6 @@ const FadeGroup: React.FC<{ opacity: number; children: React.ReactNode }> = ({ o
       (Array.isArray(m) ? m : [m]).forEach((mm) => {
         mm.transparent = opacity < 0.999;
         mm.opacity = opacity;
-        mm.depthWrite = opacity > 0.5;
       });
     });
   });
@@ -61,7 +60,7 @@ const RowFragment: React.FC = () => (
 // World placement
 const PHONE_POS: Vec3 = [-0.62, 1.75, -1.1];
 const PHONE_SCALE = 0.72;
-const ROW_POS: Vec3 = [0.3, 0, 1.25];
+const ROW_POS: Vec3 = [0.05, 0, 1.25];
 const ROW_SCALE = 0.55;
 const ROW_ROT = -0.32;
 const COIN_FROM: Vec3 = [-0.55, 1.95, -1.0];
@@ -90,19 +89,21 @@ const Scene: React.FC<SceneProps> = (props) => {
   // after landing the coin settles (small bounce) and turns grey
   const settle = landed ? Math.exp(-(f - fLand) / 4) * Math.sin((f - fLand) / 2.2) * 0.06 : 0;
   // dissolve on "back"
-  const fade = 1 - Easing.inOut(Easing.sin)(interpolate(f, [fBack, 99], [0, 1], clamp));
-  const sink = (1 - fade) * 0.35;
+  const fade = 1 - 0.85 * Easing.inOut(Easing.sin)(interpolate(f, [fBack, 110], [0, 1], clamp));
+  const sink = (1 - fade) * 0.25;
 
-  const camA = { from: [0.3, 2.4, 11.6] as Vec3, to: [1.0, 2.1, 10.3] as Vec3, target: [0.05, 1.15, 0.2] as Vec3, fov: 32, startFrame: 0, durationFrames: fCut };
-  const camB = { from: [4.6, 1.3, 8.4] as Vec3, to: [3.9, 1.05, 7.6] as Vec3, target: [0.3, 0.3, 1.25] as Vec3, fov: 30, startFrame: fCut, durationFrames: 99 - fCut };
+  const camA = { from: [0.1, 2.4, 12.4] as Vec3, to: [0.8, 2.1, 11.2] as Vec3, target: [-0.05, 1.15, 0.2] as Vec3, fov: 32, startFrame: 0, durationFrames: fCut };
+  const camB = { from: [4.6, 1.3, 8.4] as Vec3, to: [3.9, 1.05, 7.6] as Vec3, target: [0.05, 0.3, 1.25] as Vec3, fov: 30, startFrame: fCut, durationFrames: 99 - fCut };
   const cam = f < fCut ? camA : camB;
 
   return (
     <Shell props={props} tone="dark">
       <Studio3D tone="dark" camera={cam}>
+        {f < fCut && (
         <Enter at={-8} position={PHONE_POS} from={[0, -0.3, 0]} float={0.03}>
           <Phone screen={UI.send} position={[0, 0, 0]} rotation={[0, 0.28, 0]} scale={PHONE_SCALE} />
         </Enter>
+        )}
 
         <group position={[ROW_POS[0], ROW_POS[1] - sink, ROW_POS[2] - sink * 1.4]} rotation={[0, ROW_ROT, 0]} scale={ROW_SCALE}>
           <FadeGroup opacity={fade}>
@@ -126,7 +127,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       </Studio3D>
 
       {f >= fCut && (
-        <Callout text="IRREVERSIBLE" at={[540, 1120]} label={[540, 1330]} startFrame={fPull} tone="dark" size={26} />
+        <Callout text="IRREVERSIBLE" at={[610, 1090]} label={[540, 1330]} startFrame={fPull} tone="dark" size={26} />
       )}
       <Disclaimer text="Magnified illustration" tone="dark" />
     </Shell>

@@ -32,9 +32,9 @@ const toWorld = (lx: number, ly: number, lz = 0.08): Vec3 => {
 /* ---------- camera paths (we drive from=to per frame so we can project callouts exactly) ---------- */
 const ROW = toWorld(...px(330, 300)); // top row "Sent 0x7A3f…9c2E"
 const MENU = toWorld(...px(315, 396)); // "Copy address" item
-const shotA = { from: [-2.6, 8.6, 8.6] as Vec3, to: [-1.0, 7.6, 7.1] as Vec3, target: [0, PHONE_Y, 0.15] as Vec3, fov: 32 };
+const shotA = { from: [-2.1, 7.4, 7.4] as Vec3, to: [-0.8, 6.5, 6.1] as Vec3, target: [0, PHONE_Y, 0.15] as Vec3, fov: 32 };
 const add = (a: Vec3, b: Vec3): Vec3 => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
-const shotB = { from: add(MENU, [1.7, 2.9, 3.4]), to: add(MENU, [1.15, 2.45, 2.9]), target: [MENU[0] + 0.1, MENU[1], MENU[2] + 0.35] as Vec3, fov: 32 };
+const shotB = { from: add(MENU, [1.55, 3.3, 3.9]), to: add(MENU, [1.1, 2.9, 3.35]), target: [MENU[0] + 0.3, MENU[1], MENU[2] + 0.55] as Vec3, fov: 32 };
 const camAt = (f: number) => {
   if (f < CUT) {
     const t = smooth(interpolate(f, [0, CUT], [0, 1], clamp));

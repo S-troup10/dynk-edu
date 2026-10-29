@@ -20,11 +20,11 @@ type Vec3 = [number, number, number];
 // (its camAt: q = 0.75p + 0.25·easeOutCubic(p), p = f/42), so S16 travels the same line backwards-extended (u ≤ 0)
 // and ramps up to that speed in the last frames, landing exactly on u = 0 on its last frame.
 const F4C = (tileX(2) + tileX(5)) / 2;
-const A_FROM: Vec3 = [F4C - 1.9, 0.62, 7.2], A_TO: Vec3 = [F4C + 0.9, 0.5, 6.6];
-const A_TFROM: Vec3 = [F4C - 0.9, 0.42, 0], A_TTO: Vec3 = [F4C + 0.25, 0.4, 0];
+const A_FROM: Vec3 = [F4C - 2.6, 0.95, 11.2], A_TO: Vec3 = [F4C + 1.1, 0.8, 10.2];
+const A_TFROM: Vec3 = [F4C - 0.7, 0.5, 0], A_TTO: Vec3 = [F4C + 0.3, 0.45, 0];
 const A_FOV = 30;
 const V_END = 1.5 / 42; // S01's du/df on frame 0
-const V_SLOW = 0.0022;   // slow track during the sheet
+const V_SLOW = 0.0015;   // slow track during the sheet
 const RAMP = 20;         // frames to match S01's speed
 const lerp3 = (a: Vec3, b: Vec3, u: number): Vec3 => [a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, a[2] + (b[2] - a[2]) * u];
 /** u(f): integral of velocity from f to the last frame, negated, so u(last) = 0. */

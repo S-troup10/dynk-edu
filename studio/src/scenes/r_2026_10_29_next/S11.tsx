@@ -98,7 +98,7 @@ const Wall: React.FC<{ campaignF: number; landF: number }> = ({ campaignF, landF
   return (
     <>
       {ROWS.map((r, i) => (
-        <Enter key={i} at={i === 0 ? -8 : Math.round(campaignF + ((i - 1) / (ROWS.length - 1)) * span)} position={r.pos} from={[0, -0.5, 0]} float={0.02}>
+        <Enter key={i} at={i < 3 ? -8 - i * 3 : Math.round(campaignF + ((i - 3) / (ROWS.length - 3)) * span)} position={r.pos} from={[0, -0.5, 0]} float={0.02}>
           <TileRow chars={r.frag} position={[0, 0, 0]} />
         </Enter>
       ))}
@@ -134,9 +134,9 @@ const CountNumber: React.FC<{ startF: number; landF: number }> = ({ startF, land
 const Lookalikes: React.FC<{ campaignF: number; landF: number }> = ({ campaignF, landF }) => {
   const { fps } = useVideoConfig();
   const keys = [
-    { f: 0, pos: [0, 1.6, 5] as V3, tgt: [0, 1.9, -3] as V3 },
-    { f: Math.round(1.55 * fps), pos: [0.15, 2.0, 8.2] as V3, tgt: [0, 2.2, -3] as V3 },
-    { f: Math.round(3.75 * fps), pos: [-0.2, 2.6, 9.4] as V3, tgt: [0, 2.6, -3] as V3 },
+    { f: 0, pos: [0.3, 2.0, 5.6] as V3, tgt: [0, 1.0, -3] as V3 },
+    { f: Math.round(1.55 * fps), pos: [0.15, 2.4, 8.6] as V3, tgt: [0, 1.25, -3] as V3 },
+    { f: Math.round(3.75 * fps), pos: [-0.2, 3.1, 10.2] as V3, tgt: [0, 1.5, -3] as V3 },
   ];
   return (
     <AbsoluteFill>
@@ -148,7 +148,7 @@ const Lookalikes: React.FC<{ campaignF: number; landF: number }> = ({ campaignF,
       </Studio3D>
       <CountNumber startF={campaignF} landF={landF} />
       <Callout text="ONE CAMPAIGN" at={[540, 1010]} label={[540, 860]} startFrame={campaignF} />
-      <Disclaimer text="Values illustrative · addresses are made up" />
+      <Disclaimer text="Values illustrative · addresses are made up" y={1490} />
     </AbsoluteFill>
   );
 };

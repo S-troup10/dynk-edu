@@ -32,7 +32,7 @@ const GHOST_Z = -0.9;
 const LANES: { y: number; z: number; phase: number }[] = [
   { y: 0.4, z: 0.75, phase: 1.3 },
   { y: 1.72, z: 0.55, phase: 4.9 },
-  { y: 1.05, z: -1.3, phase: 2.6 },
+  { y: 1.75, z: -2.5, phase: 2.6 },
   { y: 2.38, z: -0.75, phase: 6.4 },
   { y: 0.42, z: -2.05, phase: 0.2 },
 ];
@@ -151,13 +151,13 @@ const Scene: React.FC<SceneProps> = (props) => {
   const shots: Shot[] = useMemo(
     () => [
       // A · low macro at the generator mouth, rows nosing out slowly
-      { start: 0, end: fChurn, from: [2.35, 0.7, 3.5], to: [2.0, 0.8, 3.2], tFrom: [4.3, 1.05, -0.2], tTo: [3.9, 1.1, -0.3], fov: 32 },
+      { start: 0, end: fChurn, from: [-2.2, 0.75, 3.6], to: [-1.6, 0.85, 3.3], tFrom: [4.5, 1.25, -0.6], tTo: [4.5, 1.3, -0.7], fov: 32 },
       // B · wider 3/4 from the right as the rows stream past at speed
-      { start: fChurn, end: fStarts, from: [8.6, 2.7, 8.2], to: [7.6, 2.35, 9.0], tFrom: [1.2, 1.25, -0.6], tTo: [0.6, 1.2, -0.6], fov: 32 },
+      { start: fChurn, end: fStarts, from: [7.4, 3.4, 10.5], to: [6.4, 3.0, 11.2], tFrom: [2.4, 1.2, -0.8], tTo: [1.8, 1.15, -0.8], fov: 32 },
       // C · hard cut close on the stopped row's start, track right + pull out until both ends show
-      { start: fStarts, end: fYours, from: [-2.2, 1.15, 4.6], to: [0, 1.55, 18.5], tFrom: [-2.2, 1.2, 0], tTo: [0, 1.4, -0.3], fov: 32 },
+      { start: fStarts, end: fYours, from: [-2.2, 1.15, 4.6], to: [0, 1.6, 23.5], tFrom: [-2.2, 1.2, 0], tTo: [0, 1.4, -0.3], fov: 32 },
       // D · slow push in, gentle drift, both ends + ghost in frame
-      { start: fYours, end: total + 10, from: [0, 1.55, 18.5], to: [0.35, 1.5, 17.0], tFrom: [0, 1.4, -0.3], tTo: [0.1, 1.38, -0.3], fov: 32 },
+      { start: fYours, end: total + 10, from: [0, 1.6, 23.5], to: [0.3, 1.55, 22.0], tFrom: [0, 1.4, -0.3], tTo: [0.1, 1.38, -0.3], fov: 32 },
     ],
     [fChurn, fStarts, fYours, total],
   );
@@ -242,7 +242,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       </Studio3D>
 
       {/* GENERATOR on "computer", shown while the generator is on screen */}
-      {f < fStarts && <Callout text="Generator" at={genPt} label={[Math.min(genPt[0] - 120, 760), Math.max(genPt[1] - 220, 470)]} startFrame={fComputer} />}
+      {f < fStarts && genPt[0] > 60 && genPt[0] < 1020 && <Callout text="Generator" at={genPt} label={[Math.min(genPt[0] - 120, 760), Math.max(genPt[1] - 220, 470)]} startFrame={fComputer} />}
       {/* LOOKALIKE on "ends": leader to the glowing first-4 block, second dot on the last-4 block */}
       {f >= fEnds && (
         <>

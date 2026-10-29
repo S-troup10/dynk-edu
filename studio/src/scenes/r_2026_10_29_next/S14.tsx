@@ -35,11 +35,11 @@ const SHOTS: Shot[] = [
   // 0.0–1.2 s: 3/4 low, slow push on the whole phone
   { a: 0, b: 36, from: [3.2, 0.9, 10.8], to: [2.6, 1.2, 10.0], tFrom: [0, 1.62, 0], tTo: [0, 1.68, 0], fov: 30 },
   // 1.2–2.1 s: push toward the saved-contact row
-  { a: 36, b: 63, from: [1.6, 1.9, 7.4], to: [1.1, 2.1, 6.4], tFrom: [0.05, 2.0, 0], tTo: [0.1, 2.0, 0], fov: 30 },
+  { a: 36, b: 63, from: [1.6, 2.0, 7.6], to: [1.1, 2.25, 6.6], tFrom: [0.05, 2.12, 0], tTo: [0.1, 2.15, 0], fov: 30 },
   // 2.1–3.8 s: higher angle, drifting across the search field from @username to the QR button
   { a: 63, b: 114, from: [-1.6, 4.6, 7.4], to: [-0.5, 4.3, 6.8], tFrom: [-0.15, 2.35, 0], tTo: [0.25, 2.3, 0], fov: 30 },
   // 3.8–5.37 s: slow pull back, near front-on
-  { a: 114, b: 161, from: [0.6, 2.2, 8.0], to: [1.6, 1.8, 11.2], tFrom: [0, 1.75, 0], tTo: [0, 1.62, 0], fov: 30 },
+  { a: 114, b: 161, from: [0.7, 2.2, 9.2], to: [1.6, 1.8, 11.8], tFrom: [0, 1.8, 0], tTo: [0, 1.66, 0], fov: 30 },
 ];
 const lerp3 = (a: Vec3, b: Vec3, p: number): Vec3 => [a[0] + (b[0] - a[0]) * p, a[1] + (b[1] - a[1]) * p, a[2] + (b[2] - a[2]) * p];
 const camAt = (f: number) => {
@@ -103,8 +103,9 @@ const RowOutline: React.FC<{ p: number }> = ({ p }) => {
 /* ---------- fingertip (clay): tip at the group origin, finger runs down-right toward the viewer ---------- */
 type Key = { f: number; at: Vec3; lift: number };
 const FINGER_KEYS: Key[] = [
-  { f: 0, at: [1.6, -2.4, 0], lift: 1.2 },
-  { f: 22, at: [0.75, -0.9, 0], lift: 0.7 },
+  { f: 0, at: [2.6, -3.6, 0], lift: 1.8 },
+  { f: 14, at: [2.2, -2.9, 0], lift: 1.4 },
+  { f: 28, at: [0.9, -0.6, 0], lift: 0.6 },
   { f: 36, at: [SAM_TAP[0], SAM_TAP[1], 0], lift: 0.28 },
   { f: 39, at: [SAM_TAP[0], SAM_TAP[1], 0], lift: 0.0 },   // tap "contact" (click sfx 1.3 s)
   { f: 46, at: [SAM_TAP[0] + 0.05, SAM_TAP[1] - 0.05, 0], lift: 0.3 },
@@ -148,7 +149,8 @@ const Scene: React.FC<SceneProps> = (props) => {
   const outline = ease(interpolate(f, [fContact, fContact + 8], [0, 1], clamp));
 
   // callout anchors follow the parts on screen
-  const pSam = project(f, sp(610, 470));
+  const pSam = project(f, sp(600, 572));
+  const top = project(f, sp(60, 0))[1]; // phone screen top edge (px)
   const pUser = project(f, SEARCH);
   const pQR = project(f, QR);
   const pPaste = project(f, sp(120, 306));
@@ -167,16 +169,16 @@ const Scene: React.FC<SceneProps> = (props) => {
 
       {/* callouts on their words; each lives until the next shot replaces it */}
       {f >= fContact && f < 63 && (
-        <Callout text="Saved contact" accent at={pSam} label={[Math.min(pSam[0] + 40, 860), pSam[1] - 190]} startFrame={fContact} />
+        <Callout text="Saved contact" accent at={pSam} label={[Math.min(pSam[0], 800), pSam[1] + 230]} startFrame={fContact} />
       )}
       {f >= fUser && f < 114 && (
-        <Callout text="@username" at={pUser} label={[Math.max(pUser[0] - 60, 220), pUser[1] - 200]} startFrame={fUser} />
+        <Callout text="@username" at={pUser} label={[Math.max(pUser[0] - 40, 230), Math.max(top - 40, 440)]} startFrame={fUser} />
       )}
       {f >= fQR && f < 114 && (
-        <Callout text="QR" at={pQR} label={[Math.min(pQR[0] + 40, 900), pQR[1] - 260]} startFrame={fQR} />
+        <Callout text="QR" at={pQR} label={[Math.min(pQR[0] + 20, 880), Math.max(top - 40, 440)]} startFrame={fQR} />
       )}
       {f >= fPaste && (
-        <Callout text="Nothing to paste" at={pPaste} label={[Math.max(pPaste[0] - 20, 280), pPaste[1] - 170]} startFrame={fPaste} />
+        <Callout text="Nothing to paste" at={pPaste} label={[Math.max(pPaste[0] + 40, 300), Math.max(top - 40, 440)]} startFrame={fPaste} />
       )}
       <Disclaimer text="Illustration · generic wallet screen" />
     </Shell>

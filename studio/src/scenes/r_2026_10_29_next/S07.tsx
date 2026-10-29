@@ -37,7 +37,7 @@ const SLAB2_END: Vec3 = [0, 1.0, -0.55];
 /* ---------------- camera path (keyframes in seconds) ---------------- */
 type Key = { t: number; pos: Vec3; tgt: Vec3 };
 const KEYS: Key[] = [
-  { t: 0.0, pos: [0.3, 8.6, 1.0], tgt: [0.05, 0.6, -1.0] },
+  { t: 0.0, pos: [0.3, 8.6, 1.4], tgt: [0.05, 0.6, -0.6] },
   { t: 1.55, pos: [0.1, 7.9, 0.5], tgt: [0, 0.8, -1.15] },    // push in on the planted row
   { t: 2.35, pos: [-0.1, 7.8, 1.0], tgt: [0, 0.8, -0.7] },    // "beside" → track down to the real row
   { t: 3.6, pos: [-0.25, 8.2, 0.6], tgt: [0, 0.8, -1.0] },    // back up, both rows in view
@@ -161,7 +161,7 @@ const RowSlab: React.FC<{ kind: "received" | "sent"; accent?: boolean; startZ: n
 const Slot: React.FC<{ z: number; p: number }> = ({ z, p }) => (
   <mesh position={[0, GLASS_Y + 0.004, z]} rotation={[-Math.PI / 2, 0, 0]}>
     <planeGeometry args={[ROW_W - 0.04, ROW_H - 0.02]} />
-    <meshBasicMaterial color="#030303" transparent opacity={0.88 * p} depthWrite={false} />
+    <meshBasicMaterial color="#030303" transparent opacity={0.97 * p} depthWrite={false} />
   </mesh>
 );
 
@@ -185,7 +185,7 @@ const Scene: React.FC<SceneProps> = (props) => {
 
   // callout anchors from the live camera
   const e1: Vec3 = [SLAB1_END[0] - SLAB_W / 2 + 0.15, SLAB1_END[1] + drift(0), SLAB1_END[2] - SLAB_H / 2 - 0.02];
-  const e2: Vec3 = [SLAB2_END[0] + SLAB_W / 2 - 0.15, SLAB2_END[1] + drift(2), SLAB2_END[2] - SLAB_H / 2 - 0.02];
+  const e2: Vec3 = [SLAB2_END[0] - SLAB_W / 2 + 0.2, SLAB2_END[1] + drift(2), SLAB2_END[2] - SLAB_H / 2 - 0.02];
   const a1 = project(sec, e1);
   const a2 = project(sec, e2);
 
@@ -206,7 +206,7 @@ const Scene: React.FC<SceneProps> = (props) => {
         )}
       </Studio3D>
       <Callout text="Lookalike" accent at={a1} label={[a1[0] + 70, a1[1] - 60]} startFrame={fHistory} />
-      <Callout text="Real" at={a2} label={[a2[0] - 60, a2[1] - 70]} startFrame={fReal} />
+      <Callout text="Real" at={a2} label={[a2[0] + 70, a2[1] - 62]} startFrame={fReal} />
       <Disclaimer text="Magnified illustration · addresses are made up" />
     </Shell>
   );

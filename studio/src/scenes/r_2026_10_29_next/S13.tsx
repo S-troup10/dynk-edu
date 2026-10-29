@@ -42,11 +42,11 @@ const camAt = (f: number, tDots: number, tHide: number): Cam => {
     // higher 3/4 as it opens
     return { pos: lerp3([1.45, 1.5, 3.2], [1.05, 1.62, 2.7], p), target: lerp3([0, 0.2, 0], [0, 0.22, 0], p), fov };
   }
-  if (f < 124) {
-    const p = prog(f, tHide, 124, inOut);
+  if (f < 116) {
+    const p = prog(f, tHide, 116, inOut);
     return { pos: lerp3([1.05, 1.62, 2.7], [0.55, 2.05, 13.9], p), target: lerp3([0, 0.22, 0], [0.1, 1.5, 0], p), fov };
   }
-  const p = prog(f, 124, 160, (x) => x);
+  const p = prog(f, 116, 160, (x) => x);
   return { pos: lerp3([0.55, 2.05, 13.9], [-0.45, 1.85, 13.3], p), target: [0.1, 1.5, 0], fov };
 };
 
@@ -175,14 +175,13 @@ const Scene: React.FC<SceneProps> = (props) => {
           )}
           {/* the hidden middle: packed inside the dots, then unfolding */}
           {f >= tDots && midTiles}
-          {f >= tDots && <pointLight position={[0, Y0 + 0.1, 0.35]} color="#FF8000" intensity={1.2 * open * (1 - gone)} distance={1.2} />}
         </group>
       </Studio3D>
 
       <Sequence from={tShort} durationInFrames={tHide - tShort}>
         <Callout text="SHORTENED" at={shortAnchor} label={[300, 700]} />
       </Sequence>
-      <Sequence from={tHide + 3}>
+      <Sequence from={tHide + 7}>
         <Callout text="HIDDEN" accent at={hiddenAnchor} label={[205, 470]} />
       </Sequence>
       <Disclaimer text="Magnified illustration · addresses are made up" />

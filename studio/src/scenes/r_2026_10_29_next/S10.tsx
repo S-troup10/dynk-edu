@@ -46,10 +46,10 @@ type Cam = { pos: Vec3; target: Vec3; fov: number };
 const camAt = (f: number): Cam => {
   if (f < CUT_B) {
     const p = ease(interpolate(f, [60, CUT_B], [0, 1], clamp));
-    return { pos: lerp3([0.0, 2.9, 13.8], [0.5, 2.5, 12.4], p), target: lerp3([0.1, 1.65, 0], [0.2, 1.7, 0], p), fov: 32 };
+    return { pos: lerp3([-2.0, 3.1, 15.6], [-0.9, 2.7, 14.4], p), target: lerp3([0.15, 1.6, 0], [0.2, 1.65, 0], p), fov: 32 };
   }
   const p = inOut(interpolate(f, [CUT_B, 209], [0, 1], clamp));
-  return { pos: lerp3([1.2, 1.15, 12.6], [0.7, 0.75, 11.0], p), target: lerp3([0.2, 1.95, 0], [0.35, 1.55, 0], p), fov: 32 };
+  return { pos: lerp3([1.6, 1.2, 14.8], [0.8, 0.8, 13.4], p), target: lerp3([0.15, 1.9, 0], [0.25, 1.55, 0], p), fov: 32 };
 };
 const CamRig: React.FC<{ offset: number }> = ({ offset }) => {
   const f = useCurrentFrame() + offset;
@@ -76,8 +76,8 @@ const project = (f: number, p: Vec3): [number, number] => {
 };
 
 /* ------------------------------------------------------------------ layout ------------------------------------------------------------------ */
-const ROW_SCALE = 0.46;
-const ROW_X = 0.95;
+const ROW_SCALE = 0.42;
+const ROW_X = 0.9;
 const REAL_Y = 2.25;
 const FAKE_Y = 1.0;
 const TILE_TOP = 0.25 * ROW_SCALE; // half tile height
@@ -86,7 +86,7 @@ const SMALL_R = 0.15;
 const BIG_R = 0.27;
 const SMALL_END: Vec3 = [ROW_X + 0.15, REAL_Y + TILE_TOP + SMALL_R + 0.01, 0.02];
 const BIG_END: Vec3 = [ROW_X, FAKE_Y + TILE_TOP + BIG_R + 0.01, 0.02];
-const PHONE_OUT: Vec3 = [-1.05, 1.75, 0.75];
+const PHONE_OUT: Vec3 = [-0.85, 1.75, 0.6];
 
 const smallPath = new THREE.QuadraticBezierCurve3(new THREE.Vector3(...PHONE_OUT), new THREE.Vector3(0.0, 3.25, 0.5), new THREE.Vector3(...SMALL_END));
 // Big coin: heads for the REAL row first, then veers down to the lookalike.
@@ -112,10 +112,12 @@ const PathCoin: React.FC<{ curve: THREE.Curve<THREE.Vector3>; p: number; radius:
       {trail && dots.map((d, i) => (i / 48 <= p && i / 48 > p - 0.55 ? (
         <mesh key={i} position={d}><sphereGeometry args={[0.018, 8, 8]} /><meshBasicMaterial color="#7d7d7d" /></mesh>
       ) : null))}
-      <group position={pos} rotation={[Math.PI / 2, flipY, spin]}>
-        <Coin radius={radius} accent={accent} position={[0, 0, 0]} />
+      <group position={pos} rotation={[0, flipY, 0]}>
+        <group rotation={[Math.PI / 2, spin, 0]}>
+          <Coin radius={radius} accent={accent} position={[0, 0, 0]} />
+        </group>
       </group>
-      {glow > 0 && <pointLight position={[pos[0], pos[1], pos[2] + 0.5]} color="#FF8000" intensity={glow} distance={2.2} decay={2} />}
+      {glow > 0 && <pointLight position={[pos[0], pos[1], pos[2] + 0.5]} color="#FF8000" intensity={glow} distance={1.6} decay={2} />}
     </group>
   );
 };
@@ -129,8 +131,8 @@ const Stage: React.FC<{ offset: number }> = ({ offset }) => {
   return (
     <>
       <CamRig offset={offset} />
-      <Enter at={-6} position={[-1.35, 0, 0.55]} float={0.02}>
-        <Phone screen={UI.send} position={[0, 1.65, 0]} rotation={[0, 0.42, 0]} scale={0.72} />
+      <Enter at={-6} position={[-1.15, 0, 0.4]} float={0.02}>
+        <Phone screen={UI.send} position={[0, 1.65, 0]} rotation={[0, 0.42, 0]} scale={0.66} />
       </Enter>
       <Enter at={-4} position={[ROW_X, REAL_Y, 0]} float={0.015}>
         <group scale={ROW_SCALE}><TileRow chars={shortOf(REAL)} position={[0, 0, 0]} /></group>
@@ -139,7 +141,7 @@ const Stage: React.FC<{ offset: number }> = ({ offset }) => {
         <group scale={ROW_SCALE}><TileRow chars={shortOf(FAKE)} position={[0, 0, 0]} /></group>
       </Enter>
       <PathCoin curve={smallPath} p={ps} radius={SMALL_R} trail={f < 150} />
-      <PathCoin curve={bigPath} p={pb} radius={BIG_R} accent glow={pb > 0 ? 1.2 + landed * 0.8 : 0} />
+      <PathCoin curve={bigPath} p={pb} radius={BIG_R} accent glow={pb > 0 ? 0.8 + landed * 0.5 : 0} />
     </>
   );
 };
@@ -180,7 +182,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const small = project(f, SMALL_END);
   const bigPos = pointOn(bigPath, progress(f, BIG_T));
   const big = project(f, bigPos);
-  const fakeLeft = project(f, [ROW_X - 1.2, FAKE_Y - TILE_TOP, 0]);
+  const fakeLeft = project(f, [ROW_X - 0.86, FAKE_Y - TILE_TOP, 0.05]);
 
   return (
     <Shell props={props} tone="dark">
@@ -205,7 +207,7 @@ const Scene: React.FC<SceneProps> = (props) => {
         <>
           <Callout text="Test" at={[small[0] + 6, small[1] - 14]} label={[small[0] + 40, small[1] - 120]} startFrame={fTest} />
           {f >= fMillion && (
-            <Callout text="$68M" accent size={34} at={[big[0] - 4, big[1] - 30]} label={[big[0] - 150, big[1] - 150]} startFrame={fMillion} />
+            <Callout text="$68M" accent size={34} at={[big[0] - 4, big[1] - 30]} label={[big[0] - 210, big[1] - 18]} startFrame={fMillion} />
           )}
           <CalloutBelow text="Lookalike" at={[fakeLeft[0], fakeLeft[1] + 4]} label={[fakeLeft[0] + 30, fakeLeft[1] + 120]} startFrame={fLook} />
           <Disclaimer text="Magnified illustration · addresses are made up" />

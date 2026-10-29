@@ -69,7 +69,7 @@ const makeCam = (f: number, launch: number, land: number): Cam => {
   }
   // C2: over-the-shoulder push onto the row's sender address ("from the lookalike")
   const t = seg(100, 150);
-  return { pos: lerpV([-0.75, 2.85, 5.7], [-0.45, 2.75, 5.0], t), target: lerpV([-0.1, 2.35, 0], [-0.12, 2.4, 0], t), fov: 30 };
+  return { pos: lerpV([-0.75, 2.95, 6.7], [-0.5, 2.85, 6.1], t), target: lerpV([0.0, 2.25, 0], [-0.02, 2.3, 0], t), fov: 30 };
 };
 
 const projCam = new THREE.PerspectiveCamera(30, 1080 / 1920, 0.1, 200);
@@ -153,7 +153,7 @@ const RowSlab: React.FC<{ pos: Vec3; rot: Vec3; glow: number; scale: number }> =
   return (
     <group position={pos} rotation={rot} scale={scale}>
       <RoundedBox args={[GLASS_W + 0.05, ROW_H + 0.05, 0.03]} radius={0.02} smoothness={3} position={[0, 0, -0.012]}>
-        <meshStandardMaterial color="#FF8000" metalness={0.4} roughness={0.3} emissive="#FF6A00" emissiveIntensity={0.25 + 1.6 * glow} toneMapped={false} />
+        <meshStandardMaterial color="#FF8000" metalness={0.4} roughness={0.3} emissive="#FF5A00" emissiveIntensity={0.15 + 0.45 * glow} />
       </RoundedBox>
       <mesh position={[0, 0, 0.0045]}>
         <planeGeometry args={[GLASS_W - 0.01, ROW_H - 0.012]} />
@@ -195,7 +195,6 @@ const Scene: React.FC<SceneProps> = (props) => {
   // callout anchors (phone-local) → screen px
   const amountPt = project(cam, [pxX(583), pxY(284), Z_GLASS + 0.02]);
   const addrPt = project(cam, [pxX(150), pxY(320), Z_GLASS + 0.02]);
-  const clampX = (x: number) => Math.min(860, Math.max(150, x));
 
   return (
     <Shell props={props} tone="dark">
@@ -212,11 +211,11 @@ const Scene: React.FC<SceneProps> = (props) => {
 
       {f >= LAND + 2 && (
         <Callout text="0.00 received" accent startFrame={Math.round(2.45 * fps)}
-          at={amountPt} label={[clampX(amountPt[0] - 20), Math.max(470, amountPt[1] - 230)]} size={26} />
+          at={amountPt} label={[770, 440]} size={26} />
       )}
       {f >= Math.round(look * fps) && (
         <Callout text="from lookalike" startFrame={Math.round(look * fps)}
-          at={addrPt} label={[clampX(addrPt[0] + 60), Math.min(1440, addrPt[1] + 330)]} size={26} />
+          at={addrPt} label={[310, 440]} size={26} />
       )}
       <Disclaimer text="Magnified illustration · addresses are made up" />
     </Shell>
