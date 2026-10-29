@@ -81,7 +81,7 @@ const Chat: React.FC<{ n: number; strike: number; cam: Cam2D; f: number }> = ({ 
   );
 };
 
-const typed = (g: number) => Math.min(FULL, 7 + g * 1.3);
+const typed = (g: number) => Math.min(FULL, 8 + g * 1.7);
 
 const CAM_A: Cam2D = { s: [1.42, 1.55], t: [[150, 150], [90, 110]], r: [-2, 0], len: 24 };
 const CAM_B: Cam2D = { s: [1.55, 1.38], t: [[-10, -20], [30, 40]], r: [3, 1], len: 22 };

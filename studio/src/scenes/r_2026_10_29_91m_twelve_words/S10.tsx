@@ -63,7 +63,7 @@ const Tiles: React.FC<{ g: number }> = ({ g }) => (
 const shotA: Shot = { from: [-4.5, 2.2, 15.2], to: [4.2, 1.9, 15.2], tFrom: [-0.3, 1.4, 0], tTo: [0.3, 1.4, 0], fov: 32, len: CUT_B };
 const shotB: Shot = { from: [-2.4, 1.9, 12.4], to: [-0.2, 1.7, 10.6], tFrom: [-1.2, 1.5, 0], tTo: [-0.6, 1.5, 0], fov: 30, len: CUT_C - CUT_B };
 const shotC: Shot = { from: [0.5, 2.3, 19.5], to: [5.4, 2.0, 17.5], tFrom: [0.8, 1.4, 0], tTo: [5.0, 1.5, 0], fov: 33, len: CUT_D - CUT_C };
-const shotD: Shot = { from: [3.0, 1.2, 13.4], to: [4.6, 1.5, 12.2], tFrom: [6.0, 1.6, 0], tTo: [6.5, 1.7, 0], fov: 32, len: 40 };
+const shotD: Shot = { from: [3.4, 1.2, 15.4], to: [5.0, 1.5, 14.2], tFrom: [6.6, 1.6, 0], tTo: [7.0, 1.7, 0], fov: 32, len: 40 };
 
 /** dark clay person silhouette standing in the gloom */
 const Silhouette: React.FC<{ position: Vec3; scale: number }> = ({ position, scale }) => (
@@ -89,8 +89,8 @@ const ShotFrame: React.FC<{ shot: Shot; offset: number; person?: boolean; childr
 
 const CalloutB: React.FC = () => {
   const f = useCurrentFrame();
-  const p = project(shotB, f, [slot(4)[0] - 0.1, slot(4)[1] + 0.27, 0]);
-  return <Callout text="UNCRACKABLE" at={p} label={[Math.min(Math.max(p[0] + 60, 380), 760), p[1] - 210]} startFrame={0} />;
+  const p = project(shotB, f, [slot(1)[0], slot(1)[1] + 0.26, 0]);
+  return <Callout text="UNCRACKABLE" at={p} label={[Math.min(Math.max(p[0] + 30, 380), 760), p[1] - 170]} startFrame={0} />;
 };
 
 const CalloutD: React.FC = () => {

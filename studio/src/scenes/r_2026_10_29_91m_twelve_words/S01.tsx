@@ -24,16 +24,16 @@ const FLYERS = 6;
 const CoinColumn: React.FC = () => {
   const f = useCurrentFrame();
   const STATIC = 10;
-  const shot: Shot = { from: [1.9, 0.45, 4.6], to: [0.7, 3.1, 3.7], tFrom: [0, 1.7, 0], tTo: [0.2, 3.2, 0], fov: 38, len: 20 };
+  const shot: Shot = { from: [1.7, 0.5, 5.4], to: [0.5, 2.5, 4.8], tFrom: [0, 1.9, 0], tTo: [0.3, 2.9, 0], fov: 38, len: 20 };
   const flyers = Array.from({ length: FLYERS }).map((_, j) => {
     const idx = STATIC + (FLYERS - 1 - j); // j=0 is the top coin
-    const s = -11 + j * 3.4;
-    const p = (f - s) / 17;
+    const s = -12 + j * 3.6;
+    const p = (f - s) / 20;
     const base: Vec3 = [Math.sin(idx * 7.3) * 0.03, 0.09 + idx * 0.2, Math.cos(idx * 3.1) * 0.03];
     if (p <= 0) return <Coin key={j} accent radius={0.75} position={base} rotation={[0, idx * 0.7, 0]} />;
     if (p >= 1) return null;
     const e = p * p * 0.55 + p * 0.45;
-    const pos: Vec3 = [base[0] + 4.6 * e, base[1] + 1.6 * Math.sin(p * Math.PI * 0.8) + 0.5 * p, base[2] + 3.6 * e];
+    const pos: Vec3 = [base[0] + 3.4 * e, base[1] + 1.4 * Math.sin(p * Math.PI * 0.8) + 0.9 * p, base[2] + 2.2 * e];
     return <Coin key={j} accent radius={0.75} position={pos} rotation={[p * 5.5 + j, idx * 0.7, p * 3.2 + j * 0.6]} />;
   });
   return (
@@ -82,14 +82,13 @@ const Spark: React.FC<{ r: number; color: string; glow?: boolean }> = ({ r, colo
 const BalancePhone: React.FC<{ value: number; f: number; ticking: boolean; reveal: number; dim?: boolean; tilt?: number }> = ({ value, f, ticking, reveal, dim = false, tilt = 16 }) => {
   const numCol = dim ? "rgba(255,255,255,0.62)" : ORANGE;
   return (
-    <div style={{ position: "absolute", left: 190, top: 395, width: 700, height: 1500, borderRadius: 78, background: "#0b0c0e", border: "3px solid #2a2c31",
-      boxShadow: "0 40px 120px rgba(0,0,0,0.7), inset 0 0 0 10px #111215", transform: `perspective(1700px) rotateX(${tilt}deg) rotateZ(-3deg)`, transformOrigin: "50% 12%",
+    <div style={{ position: "absolute", left: 190, top: 395, width: 700, height: 1500, borderRadius: 78, background: "linear-gradient(180deg,#14151a,#0c0d10)", border: "3px solid #3b3e46",
+      boxShadow: "0 40px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.06), inset 0 0 0 10px #181a1f", transform: `perspective(1700px) rotateX(${tilt}deg) rotateZ(-3deg)`, transformOrigin: "50% 12%",
       fontFamily: brand.body, color: "#fff" }}>
       <div style={{ position: "absolute", left: 44, right: 44, top: 70 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
           <div style={{ width: 54, height: 54, borderRadius: 27, background: "linear-gradient(135deg,#3a3d44,#1b1c20)", border: "2px solid #3a3d44" }} />
           <div style={{ fontSize: 34, fontWeight: 600, letterSpacing: 0.3 }}>Main wallet</div>
-          <div style={{ marginLeft: "auto", fontSize: 24, color: "rgba(255,255,255,0.4)", letterSpacing: 3 }}>BITCOIN</div>
         </div>
         <div style={{ marginTop: 74, fontSize: 30, color: "rgba(255,255,255,0.45)", fontWeight: 500, letterSpacing: 1 }}>Balance</div>
         <div style={{ marginTop: 6, display: "flex", alignItems: "baseline", gap: 16, whiteSpace: "nowrap" }}>
@@ -134,7 +133,7 @@ const ShotBalance: React.FC = () => {
     <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 38%, #17181c 0%, #0e0f11 70%)" }}>
       <Cam2D s={[1.04, 1.16]} x={[0, -26]} y={[0, -50]} r={[1.5, -1]} len={22} origin="50% 30%">
         <BalancePhone value={v} f={f} ticking={f > 0} reveal={0.52 + 0.46 * (p / 0.88)} />
-        <Callout text="BALANCE" at={[770, 642]} label={[860, 520]} startFrame={3} size={26} />
+        <Callout text="BALANCE" at={[790, 640]} label={[850, 520]} startFrame={3} size={26} />
       </Cam2D>
     </AbsoluteFill>
   );
@@ -155,11 +154,11 @@ const ShotSlam: React.FC<{ land: number }> = ({ land }) => {
       <AbsoluteFill style={{ opacity: 0.10, backgroundImage: "repeating-linear-gradient(0deg, #fff 0 2px, transparent 2px 70px)", backgroundPosition: `0 ${f * 9}px`,
         WebkitMaskImage: "radial-gradient(ellipse at 50% 50%, #000 20%, transparent 70%)" }} />
       <Cam2D s={[1.0, 1.1]} x={[10, -26]} y={[0, -34]} r={[-2.2, 0.8]} len={26} origin="50% 46%">
-        <div style={{ position: "absolute", left: 0, right: 0, top: 560, textAlign: "center", transform: `scale(${sc})`, transformOrigin: "50% 50%", opacity: 0.35 + 0.65 * Math.min(1, t * 3) }}>
+        <div style={{ position: "absolute", left: 0, right: 0, top: 650, textAlign: "center", transform: `scale(${sc})`, transformOrigin: "50% 50%", opacity: 0.35 + 0.65 * Math.min(1, t * 3) }}>
           <div style={{ fontFamily: brand.display, fontWeight: 900, fontSize: 330, lineHeight: 1, letterSpacing: -10, ...chrome, filter: "drop-shadow(0 0 50px rgba(255,128,0,0.35)) drop-shadow(0 14px 30px rgba(0,0,0,0.7))" }}>$91,</div>
           <div style={{ fontFamily: brand.display, fontWeight: 900, fontSize: 168, lineHeight: 1, letterSpacing: -4, marginTop: 8, ...chrome, filter: "drop-shadow(0 0 40px rgba(255,128,0,0.3)) drop-shadow(0 10px 24px rgba(0,0,0,0.7))" }}>000,000</div>
         </div>
-        <div style={{ position: "absolute", left: 0, right: 0, top: 1085, textAlign: "center", fontFamily: brand.body, fontWeight: 500, fontSize: 34, letterSpacing: 6,
+        <div style={{ position: "absolute", left: 0, right: 0, top: 1180, textAlign: "center", fontFamily: brand.body, fontWeight: 500, fontSize: 34, letterSpacing: 6,
           color: "rgba(255,255,255,0.5)", opacity: sub, transform: `translateY(${(1 - sub) * 14}px)` }}>783 BTC · 19 AUG 2025</div>
       </Cam2D>
     </AbsoluteFill>
@@ -167,28 +166,28 @@ const ShotSlam: React.FC<{ land: number }> = ({ land }) => {
 };
 
 /* =============================================================== 3D shot 4: stream out of a phone =============================================================== */
-const STREAM_N = 18;
+const STREAM_N = 24;
 const streamPt = (p: number, k: number): Vec3 => {
   // quadratic bezier from the phone screen up and out to the right, into the dark
-  const a: Vec3 = [-0.75, 1.55, 0.5], b: Vec3 = [0.15, 3.4, 0.9], c: Vec3 = [3.2, 3.6, -2.2];
+  const a: Vec3 = [-0.8, 1.75, 0.5], b: Vec3 = [0.2, 3.5, 1.0], c: Vec3 = [3.0, 3.9, -2.0];
   const u = 1 - p;
   const wob = Math.sin(k * 2.7) * 0.12;
   return [u * u * a[0] + 2 * u * p * b[0] + p * p * c[0], u * u * a[1] + 2 * u * p * b[1] + p * p * c[1] + wob, u * u * a[2] + 2 * u * p * b[2] + p * p * c[2]];
 };
 const PhoneStream: React.FC = () => {
   const f = useCurrentFrame();
-  const shot: Shot = { from: [-0.9, 1.1, 7.0], to: [0.7, 2.1, 6.0], tFrom: [-0.45, 1.6, 0], tTo: [0.55, 2.5, 0], fov: 40, len: 22 };
+  const shot: Shot = { from: [-0.5, 1.1, 7.4], to: [0.5, 2.0, 6.6], tFrom: [-0.35, 1.9, 0], tTo: [0.15, 2.5, 0], fov: 40, len: 22 };
   const screen = React.useMemo(() => glyphTexture("783.00 BTC", { font: "700 150px 'DejaVu Sans Mono', monospace", w: 1024, h: 512, fg: "#FF8000", bg: "#0b0c0e" }), []);
   const coins = Array.from({ length: STREAM_N }).map((_, k) => {
-    const s = -12 + k * 1.15;
-    const p = (f - s) / 17;
+    const s = -14 + k * 1.0;
+    const p = (f - s) / 18;
     if (p <= 0 || p >= 1) return null;
-    return <Coin key={k} accent radius={0.2} position={streamPt(p, k)} rotation={[Math.PI / 2 + Math.sin(k) * 0.4, 0, p * 7 + k]} />;
+    return <Coin key={k} accent radius={0.24} position={streamPt(p, k)} rotation={[Math.PI / 2 + Math.sin(k) * 0.4, 0, p * 7 + k]} />;
   });
   return (
     <>
       <CamRig shot={shot} />
-      <group position={[-0.95, 0.15, 0]} rotation={[0, 0.5, 0]}>
+      <group position={[-0.95, 0.15, 0]} rotation={[0, 0.45, 0]}>
         <Phone position={[0, 1.55, 0]} rotation={[0, 0, 0]} scale={0.82} />
         <mesh position={[0, 1.55, 0.1]}>
           <planeGeometry args={[1.05, 0.52]} />
@@ -209,17 +208,17 @@ const ShotTx: React.FC = () => {
   const pulse = 0.75 + 0.25 * Math.sin(f / 2.6);
   return (
     <AbsoluteFill style={{ background: "radial-gradient(circle at 50% 46%, #17181c 0%, #0e0f11 72%)" }}>
-      <Cam2D s={[1.0, 1.13]} x={[-8, 22]} y={[10, -14]} r={[-1.2, 0.9]} len={24} origin="50% 48%">
+      <Cam2D s={[1.0, 1.08]} x={[-8, 14]} y={[10, -14]} r={[-1.2, 0.9]} len={24} origin="50% 48%">
         {/* ghost rows for context, blurred */}
         {[-1, 1].map((d) => [1, 2].map((n) => (
-          <div key={`${d}${n}`} style={{ position: "absolute", left: 110, right: 110, top: 800 + d * (n * 190) - 70, height: 120, borderRadius: 30, background: "rgba(255,255,255,0.04)",
+          <div key={`${d}${n}`} style={{ position: "absolute", left: 110, right: 110, top: 940 + d * (n * 190) - 70, height: 120, borderRadius: 30, background: "rgba(255,255,255,0.04)",
             border: "2px solid rgba(255,255,255,0.05)", filter: "blur(3px)", opacity: n === 1 ? 0.8 : 0.45, display: "flex", alignItems: "center", padding: "0 34px", gap: 24 }}>
             <div style={{ width: 52, height: 52, borderRadius: 26, background: "rgba(255,255,255,0.1)" }} />
             <div style={{ width: 210, height: 16, borderRadius: 8, background: "rgba(255,255,255,0.12)" }} />
             <div style={{ marginLeft: "auto", width: 130, height: 16, borderRadius: 8, background: "rgba(255,255,255,0.09)" }} />
           </div>
         )))}
-        <div style={{ position: "absolute", left: 90, width: 900, top: 650, height: 310, borderRadius: 44, background: "linear-gradient(160deg,#1b1c20,#111216)", transform: `scale(${sc})`,
+        <div style={{ position: "absolute", left: 120, width: 840, top: 790, height: 310, borderRadius: 44, background: "linear-gradient(160deg,#1b1c20,#111216)", transform: `scale(${sc})`,
           border: `3px solid ${ORANGE}`, boxShadow: `0 0 ${60 * pulse}px rgba(255,128,0,0.45), 0 0 140px rgba(255,128,0,0.18), 0 30px 80px rgba(0,0,0,0.6)`,
           fontFamily: brand.body, color: "#fff", padding: "40px 44px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
@@ -228,9 +227,9 @@ const ShotTx: React.FC = () => {
             </div>
             <div>
               <div style={{ fontSize: 56, fontWeight: 600, lineHeight: 1.05 }}>Sent</div>
-              <div style={{ fontSize: 32, color: "rgba(255,255,255,0.5)", marginTop: 6, fontWeight: 400 }}>to bc1q…(unknown)</div>
+              <div style={{ fontSize: 30, color: "rgba(255,255,255,0.5)", marginTop: 6, fontWeight: 400 }}>to bc1q…(unknown)</div>
             </div>
-            <div style={{ marginLeft: "auto", fontFamily: mono, fontWeight: 700, fontSize: 50, color: "#fff", letterSpacing: -2, whiteSpace: "nowrap" }}>−783.00 BTC</div>
+            <div style={{ marginLeft: "auto", fontFamily: mono, fontWeight: 700, fontSize: 42, color: "#fff", letterSpacing: -2, whiteSpace: "nowrap" }}>−783.00 BTC</div>
           </div>
           <div style={{ marginTop: 34, height: 2, background: "rgba(255,255,255,0.1)" }} />
           <div style={{ marginTop: 26, display: "flex", alignItems: "center", gap: 16, fontSize: 30, color: "rgba(255,255,255,0.7)", letterSpacing: 0.5 }}>
@@ -238,7 +237,7 @@ const ShotTx: React.FC = () => {
             1 confirmation
           </div>
         </div>
-        <Callout text="ONE TRANSACTION" at={[930, 652]} label={[790, 520]} startFrame={5} size={28} />
+        <Callout text="ONE TRANSACTION" at={[930, 792]} label={[800, 660]} startFrame={5} size={28} />
       </Cam2D>
     </AbsoluteFill>
   );
@@ -262,10 +261,10 @@ const ShotZero: React.FC = () => {
 const HookText: React.FC = () => {
   const f = useCurrentFrame();
   const t2 = outE(interpolate(f, [10, 14], [0, 1], clamp));
-  const base: React.CSSProperties = { fontFamily: brand.body, fontWeight: 800, fontSize: 84, lineHeight: 1.04, letterSpacing: -1.5, whiteSpace: "nowrap", textShadow: "0 4px 24px rgba(0,0,0,0.85), 0 0 3px rgba(0,0,0,0.6)" };
+  const base: React.CSSProperties = { fontFamily: brand.body, fontWeight: 800, fontSize: 80, lineHeight: 1.04, letterSpacing: -1.5, whiteSpace: "nowrap", textShadow: "0 4px 24px rgba(0,0,0,0.85), 0 0 3px rgba(0,0,0,0.6)" };
   return (
     <AbsoluteFill>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 1000, height: 480, background: "linear-gradient(180deg, rgba(8,8,10,0) 0%, rgba(8,8,10,0.72) 55%, rgba(8,8,10,0.78) 100%)" }} />
+      <div style={{ position: "absolute", left: 0, right: 0, top: 1000, height: 920, background: "linear-gradient(180deg, rgba(8,8,10,0) 0%, rgba(8,8,10,0.72) 22%, rgba(8,8,10,0.8) 100%)" }} />
       <div style={{ position: "absolute", left: 90, top: 1160 }}>
         <div style={{ ...base, color: "#fff" }}>$91M GONE.</div>
         <div style={{ ...base, color: ORANGE, opacity: t2, transform: `translateX(${(1 - t2) * -44}px)`, marginTop: 6 }}>NOBODY HACKED HIM.</div>
@@ -284,12 +283,12 @@ const Scene: React.FC<SceneProps> = (props) => {
   return (
     <Shell props={props} tone="dark">
       <Sequence {...seq(0)} layout="none">
-        <Studio3D tone="dark" shadows={false} accentRim camera={{ from: [1.9, 0.45, 4.6], target: [0, 1.7, 0], fov: 38 }}><CoinColumn /></Studio3D>
+        <Studio3D tone="dark" shadows={false} accentRim camera={{ from: [1.7, 0.5, 5.4], target: [0, 1.9, 0], fov: 38 }}><CoinColumn /></Studio3D>
       </Sequence>
       <Sequence {...seq(1)} layout="none"><ShotBalance /></Sequence>
       <Sequence {...seq(2)} layout="none"><ShotSlam land={land} /></Sequence>
       <Sequence {...seq(3)} layout="none">
-        <Studio3D tone="dark" shadows={false} accentRim camera={{ from: [-0.9, 1.1, 7.0], target: [-0.45, 1.6, 0], fov: 40 }}><PhoneStream /></Studio3D>
+        <Studio3D tone="dark" shadows={false} accentRim camera={{ from: [-0.5, 1.1, 7.4], target: [-0.35, 1.9, 0], fov: 40 }}><PhoneStream /></Studio3D>
       </Sequence>
       <Sequence {...seq(4)} layout="none"><ShotTx /></Sequence>
       <Sequence from={CUT[5]} durationInFrames={Math.max(1, total - CUT[5])} layout="none"><ShotZero /></Sequence>

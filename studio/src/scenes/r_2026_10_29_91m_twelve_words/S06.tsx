@@ -89,17 +89,18 @@ const ShotA: React.FC<{ stopAt: number }> = ({ stopAt }) => {
             glow={spinning} dim={!spinning} spin={sp} spinWord={spinning ? word : undefined} />
         );
       })}
+      {!spinning && <pointLight color="#ffffff" intensity={55} distance={40} position={[0, 4.5, 11]} />}
     </Studio3D>
   );
 };
 
 /* ================= SHOT B — 2D: lock screen, notification drops in ================= */
-const CAM_B: Cam2 = { s: [1.0, 1.16], x: [26, -20], y: [8, -64], r: [-2.2, 1.0], len: 47 };
+const CAM_B: Cam2 = { s: [0.98, 1.08], x: [26, -20], y: [30, -10], r: [-2.2, 1.0], len: 47 };
 const ShotB: React.FC<{ noteAt: number; calloutAt: number }> = ({ noteAt, calloutAt }) => {
   const f = useCurrentFrame();
   const p = land(f, noteAt, 6);
   const dropY = (1 - p) * -300;
-  const NX = 170, NY = 905, NW = 740, NH = 262;
+  const NX = 170, NY = 905, NW = 740, NH = 236;
   const at = px(CAM_B, f, [NX + NW * 0.62, NY]);
   return (
     <Bg2D>
@@ -124,7 +125,7 @@ const ShotB: React.FC<{ noteAt: number; calloutAt: number }> = ({ noteAt, callou
             <div style={{ position: "absolute", left: 134, top: 34, fontFamily: FONT, fontWeight: 700, fontSize: 38, color: "#fff" }}>Support</div>
             <div style={{ position: "absolute", right: 36, top: 42, fontFamily: FONT, fontWeight: 500, fontSize: 28, color: "rgba(255,255,255,0.45)" }}>now</div>
             <div style={{ position: "absolute", left: 134, top: 86, right: 30, fontFamily: FONT, fontWeight: 500, fontSize: 36, lineHeight: 1.22, color: "rgba(255,255,255,0.92)" }}>
-              Security alert on your wallet. Reply to verify.
+              Security alert on your wallet.<br />Reply to verify.
             </div>
           </div>
         </div>
@@ -139,16 +140,16 @@ const ShotB: React.FC<{ noteAt: number; calloutAt: number }> = ({ noteAt, callou
 
 /* ================= SHOTS C / D — 2D: fake support threads ================= */
 type Bubble = { text: string; at: number; orange?: boolean; w: number };
-const PX0 = 90, PY0 = 400, PW = 900, PH = 1100;
+const PX0 = 90, PY0 = 420, PW = 900, PH = 960;
 
-const Thread: React.FC<{ cam: Cam2; name: string; glyph: "headset" | "building"; typingAt: number; bubbles: Bubble[]; callout: { text: string; at: number } }> = ({
-  cam, name, glyph, typingAt, bubbles, callout,
+const Thread: React.FC<{ cam: Cam2; name: string; glyph: "headset" | "building"; tickX: number; typingAt: number; bubbles: Bubble[]; callout: { text: string; at: number } }> = ({
+  cam, name, glyph, tickX, typingAt, bubbles, callout,
 }) => {
   const f = useCurrentFrame();
   // layout positions of bubbles (stacked)
   let y = 640;
   const laid = bubbles.map((b) => {
-    const lines = Math.ceil((b.text.length * 22) / (b.w - 76));
+    const lines = b.text.split("\n").length;
     const h = lines * 56 + 52;
     const top = y;
     y += h + 26;
@@ -156,7 +157,8 @@ const Thread: React.FC<{ cam: Cam2; name: string; glyph: "headset" | "building";
   });
   const firstAt = bubbles[0].at;
   const showTyping = f >= typingAt && f < firstAt;
-  const tick = px(cam, f, [PX0 + 66 + 200 + (name.length > 14 ? 40 : 0) + 0, PY0 + 74]);
+  const tick = px(cam, f, [tickX, PY0 + 74]);
+  const lab = px(cam, f, [tickX + 110, PY0 + 74 + 130]);
   return (
     <Bg2D>
       <Cam2D cam={cam}>
@@ -173,7 +175,6 @@ const Thread: React.FC<{ cam: Cam2; name: string; glyph: "headset" | "building";
             <FakeTick size={34} />
           </div>
           <div style={{ position: "absolute", left: 196, top: 88, fontFamily: FONT, fontWeight: 500, fontSize: 27, color: "rgba(255,255,255,0.4)" }}>online</div>
-          <div style={{ position: "absolute", left: 0, right: 0, top: 176, textAlign: "center", fontFamily: FONT, fontWeight: 500, fontSize: 26, color: "rgba(255,255,255,0.32)" }}>Today 2:07</div>
           {/* typing dots */}
           {showTyping && (
             <div style={{ position: "absolute", left: 36, top: 240, width: 150, height: 76, borderRadius: 38, background: "#1b1c20", display: "flex", alignItems: "center", justifyContent: "center", gap: 12 }}>
@@ -193,7 +194,7 @@ const Thread: React.FC<{ cam: Cam2; name: string; glyph: "headset" | "building";
                 <div style={{ position: "relative", borderRadius: 40, borderTopLeftRadius: 12, padding: "24px 32px", background: "#1b1c20",
                   border: b.orange ? `2.5px solid ${ORANGE}` : "1.5px solid rgba(255,255,255,0.08)",
                   boxShadow: b.orange ? "0 0 36px rgba(255,128,0,0.40)" : "none",
-                  fontFamily: FONT, fontWeight: 500, fontSize: 44, lineHeight: "56px", color: "rgba(255,255,255,0.95)" }}>{b.text}</div>
+                  fontFamily: FONT, fontWeight: 500, fontSize: 44, lineHeight: "56px", whiteSpace: "pre-line", color: "rgba(255,255,255,0.95)" }}>{b.text}</div>
               </div>
             );
           })}
@@ -202,13 +203,13 @@ const Thread: React.FC<{ cam: Cam2; name: string; glyph: "headset" | "building";
           <div style={{ position: "absolute", left: 66, bottom: 52, fontFamily: FONT, fontSize: 34, color: "rgba(255,255,255,0.28)" }}>Message</div>
         </div>
       </Cam2D>
-      <Callout text={callout.text} at={tick} label={[Math.min(tick[0] + 250, 800), tick[1] + 170]} startFrame={callout.at} accent size={26} />
+      <Callout text={callout.text} at={tick} label={lab} startFrame={callout.at} accent size={26} />
     </Bg2D>
   );
 };
 
-const CAM_C: Cam2 = { s: [1.0, 1.13], x: [34, -30], y: [-6, -40], r: [1.6, -0.8], len: 37 };
-const CAM_D: Cam2 = { s: [1.13, 1.0], x: [-34, 30], y: [-40, 4], r: [-1.4, 1.0], len: 36 };
+const CAM_C: Cam2 = { s: [1.0, 1.07], x: [34, -30], y: [30, 16], r: [1.6, -0.8], len: 37 };
+const CAM_D: Cam2 = { s: [1.07, 1.0], x: [-34, 30], y: [16, 30], r: [-1.4, 1.0], len: 36 };
 
 /* ================= SHOT E — 3D: phone on a plinth, orange coin arc leaves it ================= */
 const ScreenFace: React.FC = () => {
@@ -259,11 +260,11 @@ const CoinArc: React.FC<{ count?: number }> = ({ count = 16 }) => {
 };
 
 const ShotE: React.FC = () => {
-  const shot: Shot = { from: [4.6, 2.9, 12.6], to: [3.0, 3.1, 10.2], tFrom: [-0.9, 2.2, 0], tTo: [-1.5, 2.9, -0.6], fov: 30, len: 38 };
+  const shot: Shot = { from: [2.0, 2.9, 13.8], to: [1.2, 3.1, 11.4], tFrom: [-0.35, 2.3, 0], tTo: [-0.7, 2.9, -0.6], fov: 30, len: 38 };
   return (
     <Studio3D tone="dark" shadows={false} camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
       <CamRig shot={shot} />
-      <Plinth position={[0.6, 0, 0]} radius={1.25} height={0.55} mat="clay" />
+      <Plinth position={[0.6, 0, 0]} radius={1.25} height={0.55} mat="ink" />
       <group position={[0.6, 2.2, 0]} rotation={[-0.08, 0.38, 0.04]}>
         <Phone position={[0, 0, 0]} rotation={[0, 0, 0]} />
         <ScreenFace />
@@ -302,16 +303,16 @@ const Scene: React.FC<SceneProps> = (props) => {
         <ShotB noteAt={fPretended - cB} calloutAt={fSupport - cB} />
       </Sequence>
       <Sequence from={cC} durationInFrames={cD - cC} layout="none">
-        <Thread cam={CAM_C} name="Wallet Support" glyph="headset" typingAt={2} callout={{ text: "FAKE: WALLET MAKER", at: fWallet - cC }}
+        <Thread cam={CAM_C} name="Wallet Support" glyph="headset" tickX={620} typingAt={2} callout={{ text: "FAKE: WALLET MAKER", at: fWallet - cC }}
           bubbles={[
-            { text: "We detected unusual activity on your device…", at: fWallet - cC, orange: true, w: 780 },
+            { text: "We detected unusual activity\non your device…", at: fWallet - cC, orange: true, w: 780 },
             { text: "Please reply to confirm it's you.", at: fMaker - cC + 3, w: 660 },
           ]} />
       </Sequence>
       <Sequence from={cD} durationInFrames={cE - cD} layout="none">
-        <Thread cam={CAM_D} name="Exchange Support" glyph="building" typingAt={1} callout={{ text: "FAKE: EXCHANGE", at: fExchange - cD }}
+        <Thread cam={CAM_D} name="Exchange Support" glyph="building" tickX={692} typingAt={1} callout={{ text: "FAKE: EXCHANGE", at: fExchange - cD }}
           bubbles={[
-            { text: "Your account will be frozen in 30 minutes…", at: fAnd - cD + 5, orange: true, w: 780 },
+            { text: "Your account will be frozen\nin 30 minutes…", at: fAnd - cD + 5, orange: true, w: 780 },
             { text: "Verify now to keep access.", at: fExchange - cD + 5, w: 600 },
           ]} />
       </Sequence>
