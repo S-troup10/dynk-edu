@@ -45,7 +45,8 @@ def probe_duration(path):
 async def speak(text, mp3_path, voice, rate, pitch="+0Hz"):
     import edge_tts  # pip install edge-tts
 
-    comm = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch, boundary="WordBoundary")
+    comm = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch, boundary="WordBoundary",
+                                proxy=os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy") or None)
     words = []
     with open(mp3_path, "wb") as f:
         async for chunk in comm.stream():
