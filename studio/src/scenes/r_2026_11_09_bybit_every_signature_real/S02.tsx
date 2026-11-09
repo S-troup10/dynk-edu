@@ -32,7 +32,7 @@ const LockStage: React.FC<{ shot: Shot }> = ({ shot }) => (
 );
 
 const SHOT_A: Shot = { from: [5.6, 1.3, 7.6], to: [1.6, 2.0, 8.6], tFrom: [0, 1.3, 0], tTo: [0, 1.4, 0], fov: 32, len: 26 };
-const SHOT_B: Shot = { from: [-2.3, 1.0, 6.2], to: [1.8, 1.4, 5.8], tFrom: [0, 1.0, 0], tTo: [0, 1.05, 0], fov: 32, len: 24 };
+const SHOT_B: Shot = { from: [-3.6, 1.1, 8.2], to: [2.6, 1.7, 7.9], tFrom: [0, 1.3, 0], tTo: [0, 1.35, 0], fov: 32, len: 24 };
 
 const ShotA: React.FC = () => (
   <Studio3D tone="dark" shadows={false} camera={{ from: SHOT_A.from, target: [0, 1.3, 0], fov: 32 }}>
@@ -44,10 +44,10 @@ const ShotB: React.FC<{ keysF: number }> = ({ keysF }) => {
   const f = useCurrentFrame();
   const [kx, ky] = project(SHOT_B, f, [0, LOCK_Y - 0.05 * LOCK_S, 0.31 * LOCK_S * 0.9]);
   // keep the callout label away from the caption band and on the open side of the frame
-  const lx = 770, ly = 640;
+  const lx = 790, ly = 700;
   return (
     <>
-      <Studio3D tone="dark" shadows={false} camera={{ from: SHOT_B.from, target: [0, 0.95, 0], fov: 32 }}>
+      <Studio3D tone="dark" shadows={false} camera={{ from: SHOT_B.from, target: [0, 1.3, 0], fov: 32 }}>
         <LockStage shot={SHOT_B} />
       </Studio3D>
       <Callout text="KEYS: SAFE" at={[kx, ky]} label={[lx, ly]} startFrame={Math.max(0, keysF - 4)} accent />

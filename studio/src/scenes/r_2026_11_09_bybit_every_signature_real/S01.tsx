@@ -174,7 +174,7 @@ const Stamp: React.FC<{ at: number; pos: Vec3 }> = ({ at, pos }) => {
     <group position={pos} scale={t * 1.0}>
       <mesh rotation-x={Math.PI / 2}><cylinderGeometry args={[0.26, 0.26, 0.05, 48]} /><Mat kind="accent" /></mesh>
       <mesh position={[0, 0, 0.03]}><circleGeometry args={[0.235, 48]} /><meshBasicMaterial map={tex} toneMapped={false} /></mesh>
-      <pointLight color="#FF8000" intensity={1.6} distance={2.2} decay={2} position={[0, 0, 0.5]} />
+      <pointLight color="#FF8000" intensity={0.5} distance={1.8} decay={2} position={[0, 0, 0.5]} />
     </group>
   );
 };
