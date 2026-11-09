@@ -25,7 +25,11 @@ const px = (c: Cam2, f: number, p: [number, number]): [number, number] => {
 const Cam2D: React.FC<{ cam: Cam2; children: React.ReactNode }> = ({ cam, children }) => {
   const f = useCurrentFrame();
   const { s, x, y, r } = cam2At(cam, f);
-  return <AbsoluteFill style={{ transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s})`, transformOrigin: "540px 960px" }}>{children}</AbsoluteFill>;
+  return (
+    <AbsoluteFill style={{ WebkitMaskImage: "linear-gradient(to bottom, transparent 360px, #000 410px)", maskImage: "linear-gradient(to bottom, transparent 360px, #000 410px)" }}>
+      <AbsoluteFill style={{ transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s})`, transformOrigin: "540px 960px" }}>{children}</AbsoluteFill>
+    </AbsoluteFill>
+  );
 };
 const Bg2D: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <AbsoluteFill style={{ background: "radial-gradient(110% 70% at 50% 45%, #1d1f23 0%, #121316 55%, #0b0b0b 100%)" }}>{children}</AbsoluteFill>
