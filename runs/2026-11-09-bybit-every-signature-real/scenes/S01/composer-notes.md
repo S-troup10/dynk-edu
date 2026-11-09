@@ -1,0 +1,6 @@
+# S01 composer notes (hook, 167 f)
+- Shots (hard cuts): f0-18 3D coin column w/ orange flyers; f18-36 2D COLD WALLET plate, 401,347.00 ETH ticking down (callout DRAINING instead of a duplicate COLD WALLET); f36-54 3D orange coin river out of dark plinth; f54-95 2D chrome $1.5B slam + "401,347 ETH · 21 FEB 2025" (sub_drop); f95-135 3D three SignCards, camera tracking, orange check stamps at local f5/14/24 (wider than the 4f in the brief so each is on screen); f135-167 3D orange Confirm button pressed (dip at local f22), callout SIGNED ✓, thud on "real".
+- Hook text layer f0-36 ($1.5 BILLION. / EVERY SIGNATURE REAL. at 74px so it fits the width), gone on cut 3. Disclaimer as directed.
+- Checked: stills at 0,12,28,45,70,110,150 and the full-render contact sheet. Frame 0 has orange and motion; no caption collisions.
+- Last tweak (button label plane shrunk, camera pulled back to fit the full card) was verified only in the contact sheet (f4.5-5.0 s): button and label look right.
+- Verdict: PASS-WITH-ISSUES. The orange check stamps on the cards (f100-125) read as soft orange blobs/half-discs at the card edge; the check glyph is hard to see. Orange floor glow under the final button is a bit strong near the disclaimer. Ran out of render budget (1 full render used) to fix.
