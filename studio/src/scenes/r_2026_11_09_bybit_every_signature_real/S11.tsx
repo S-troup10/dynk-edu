@@ -9,11 +9,11 @@ const CARD_Y = 1.2;
 const BTN: Vec3 = [0, CARD_Y - 0.4677, 0.05];
 
 // padlock shots (grey chrome, intact), camera orbiting
-const P1: Shot = { from: [-3.4, 1.7, 5.6], to: [-0.9, 1.5, 6.4], tFrom: [0, 1.0, 0], tTo: [0, 1.0, 0], fov: 32, len: 26 };
-const P2: Shot = { from: [3.6, 1.2, 4.8], to: [1.4, 1.5, 6.0], tFrom: [0, 1.0, 0], tTo: [0, 1.05, 0], fov: 32, len: 26 };
+const P1: Shot = { from: [-4.2, 1.9, 6.3], to: [-1.2, 1.6, 7.3], tFrom: [0, 1.39, 0], tTo: [0, 1.39, 0], fov: 32, len: 26 };
+const P2: Shot = { from: [4.3, 1.5, 6.0], to: [1.6, 1.6, 7.2], tFrom: [0, 1.39, 0], tTo: [0, 1.39, 0], fov: 32, len: 26 };
 // card macro on the Confirm button
-const C1: Shot = { from: [-1.6, 1.15, 4.6], to: [-0.6, 0.95, 3.7], tFrom: [-0.3, 0.9, 0], tTo: [0, 0.78, 0], fov: 32, len: 28 };
-const C2: Shot = { from: [0.9, 0.9, 3.6], to: [0.3, 0.85, 3.0], tFrom: [0, 0.78, 0], tTo: [0, 0.76, 0], fov: 32, len: 24 };
+const C1: Shot = { from: [-1.4, 1.3, 5.8], to: [-0.5, 1.2, 5.4], tFrom: [-0.2, 1.04, 0], tTo: [0, 1.04, 0], fov: 32, len: 28 };
+const C2: Shot = { from: [0.8, 1.1, 5.2], to: [0.3, 1.1, 4.8], tFrom: [0, 1.0, 0], tTo: [0, 1.0, 0], fov: 32, len: 24 };
 
 const Scene: React.FC<SceneProps> = (props) => {
   const tThey = W(props, "They", 0, 1.77);
@@ -46,13 +46,13 @@ const Scene: React.FC<SceneProps> = (props) => {
           <SignCard lines={[{ text: "Confirm transaction", size: 58 }, { text: SAW[1], size: 44, color: "#9a9a9a" }, { text: SAW[2], size: 44, color: "#9a9a9a" }]}
             button="Confirm" glow position={[0, CARD_Y, 0]} />
         </Studio3D>
-        <Callout text="SIGNATURE" at={project(C1, 10, [0.55, BTN[1], BTN[2]])} label={[760, 1230]} startFrame={4} accent />
+        <Callout text="SIGNATURE" at={project(C1, 10, [0.7, BTN[1], BTN[2]])} label={[690, 1400]} startFrame={4} accent />
       </Sequence>
       {/* 2b press + coins streaming away behind */}
       <Sequence from={cutC} durationInFrames={props.durationInFrames - cutC} layout="none">
         <PressShot />
         <Sfx name="click" at={tSig - cutC} volume={0.4} />
-        <Callout text="SIGNATURE" at={project(C2, 10, [0.55, BTN[1], BTN[2]])} label={[760, 1230]} startFrame={0} accent />
+        <Callout text="SIGNATURE" at={project(C2, 10, [0.7, BTN[1], BTN[2]])} label={[690, 1400]} startFrame={0} accent />
       </Sequence>
       <Sfx name="whoosh_soft" at={cutB} volume={0.3} />
       <Sfx name="whoosh_soft" at={a2} volume={0.25} />
@@ -81,7 +81,7 @@ const PressShot: React.FC = () => {
         </mesh>
       )}
       {[0, 1, 2, 3, 4, 5].map((i) => (
-        <ArcTravel key={i} from={[-1.2 + i * 0.35, 1.4 + (i % 2) * 0.3, -1.2]} to={[3.4, 2.2 + (i % 3) * 0.4, -6]} p={coinP(i)} height={1.2} trail={false} />
+        <ArcTravel key={i} from={[1.0 + i * 0.1, 0.9 + (i % 2) * 0.4, -0.4]} to={[4.5, 2.5 + (i % 3) * 0.5, -6]} p={coinP(i)} height={1.2} trail={false} />
       ))}
     </Studio3D>
   );

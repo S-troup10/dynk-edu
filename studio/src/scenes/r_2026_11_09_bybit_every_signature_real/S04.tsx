@@ -100,7 +100,7 @@ const CodeLayer: React.FC<{ f: number; ghost?: number }> = ({ f, ghost }) => {
       <div style={{ position: "absolute", left: 14 + (1 - slideT) * 940, top: INJ_Y, width: 872, height: INJ_H, borderRadius: 14, boxSizing: "border-box",
         background: glow ? "#1a0f05" : "rgba(26,15,5,0.0)", border: `2.5px solid ${ORANGE}`, opacity: op,
         boxShadow: `0 0 ${glow ? 44 : 30}px rgba(255,128,0,${glow ? 0.5 : 0.7}), inset 0 0 26px rgba(255,128,0,0.14)` }}>
-        {INJ.map((full, i) => (
+        {ghost === undefined && INJ.map((full, i) => (
           <div key={i} style={{ position: "absolute", left: 22, top: 8 + i * LH, fontFamily: MONO, fontWeight: 700, fontSize: 28, lineHeight: `${LH}px`, whiteSpace: "pre", color: ORANGE }}>
             {lines[i]}
             {typing && i === lastIdx && caretOn && <span style={{ display: "inline-block", width: 14, height: 30, marginLeft: 2, background: ORANGE, verticalAlign: "middle" }} />}
@@ -158,7 +158,7 @@ const Browser: React.FC<{ f: number; page: boolean }> = ({ f, page }) => (
       <>
         <PageLayer f={f} />
         {/* the orange code still glows through the page */}
-        <div style={{ position: "absolute", left: 0, top: 0, right: 0, bottom: 0, opacity: interpolate(f, [50, 62], [0, 1], clamp) * 0.32, pointerEvents: "none" }}>
+        <div style={{ position: "absolute", left: 0, top: 0, right: 0, bottom: 0, opacity: interpolate(f, [50, 62], [0, 1], clamp) * 0.5, pointerEvents: "none" }}>
           <CodeLayer f={f} ghost={1} />
         </div>
       </>
@@ -200,8 +200,8 @@ const BACK = [
   { text: SIGNED[2], size: 40, weight: 600, color: "#ffd2a6" },
 ];
 const CY = 1.2;
-const D: Shot = { from: [-3.0, 2.3, 8.4], to: [-1.5, 1.8, 7.0], tFrom: [0.1, 1.2, 0], tTo: [0, 1.25, 0], fov: 32, len: 27 };
-const E: Shot = { from: [-1.7, 1.5, 4.6], to: [-0.4, 1.35, 3.3], tFrom: [0, 1.35, 0], tTo: [-0.1, 1.28, 0], fov: 32, len: 27 };
+const D: Shot = { from: [-3.0, 2.3, 9.6], to: [-1.8, 1.9, 8.5], tFrom: [0.1, 1.2, 0], tTo: [0, 1.25, 0], fov: 32, len: 27 };
+const E: Shot = { from: [-1.5, 1.5, 4.9], to: [-0.7, 1.35, 3.7], tFrom: [-0.45, 1.33, 0], tTo: [-0.55, 1.28, 0], fov: 32, len: 27 };
 const F: Shot = { from: [-2.6, 1.6, 8.2], to: [-0.8, 1.45, 6.8], tFrom: [0, 1.2, 0], tTo: [0, 1.22, 0], fov: 32, len: 44 };
 
 const FlipCard: React.FC<{ flipAt: number; len?: number }> = ({ flipAt, len = 8 }) => {
@@ -213,7 +213,7 @@ const FlipCard: React.FC<{ flipAt: number; len?: number }> = ({ flipAt, len = 8 
   return (
     <group position={[0, CY + lift, 0]} rotation={[0, Math.PI * t, 0]} scale={sc}>
       <SignCard lines={FRONT} button="Confirm" position={[0, 0, 0.045]} />
-      <SignCard lines={BACK} button="Sign" glow rotation={[0, Math.PI, 0]} position={[0, 0, -0.045]} />
+      {t > 0.001 && <SignCard lines={BACK} button="Sign" glow rotation={[0, Math.PI, 0]} position={[0, 0, -0.045]} />}
     </group>
   );
 };
@@ -230,7 +230,7 @@ const Scene: React.FC<SceneProps> = (props) => {
     <Shell props={props} tone="dark">
       <Sequence from={0} durationInFrames={bAt} layout="none"><BrowserShot shot={SA} from={0} /></Sequence>
       <Sequence from={bAt} durationInFrames={cAt - bAt} layout="none">
-        <BrowserShot shot={SB} from={bAt} callout={{ text: "INJECTED CODE", at: Math.max(code, bAt + 3), pt: [930, 1060], lab: [800, 1340] }} />
+        <BrowserShot shot={SB} from={bAt} callout={{ text: "INJECTED CODE", at: Math.max(code, bAt + 3), pt: [930, 1060], lab: [790, 1545] }} />
       </Sequence>
       <Sequence from={cAt} durationInFrames={dAt - cAt} layout="none"><BrowserShot shot={SC} from={cAt} page /></Sequence>
 
@@ -239,7 +239,7 @@ const Scene: React.FC<SceneProps> = (props) => {
           <CamRig shot={D} />
           <FlipCard flipAt={999} />
         </Studio3D>
-        <Callout text="WHAT THE SCREEN SHOWED" at={[540, 1190]} label={[540, 1390]} startFrame={screen - dAt + 2} size={24} />
+        <Callout text="WHAT THE SCREEN SHOWED" at={[540, 1285]} label={[540, 1395]} startFrame={screen - dAt + 2} size={24} />
       </Sequence>
       <Sequence from={eAt} durationInFrames={fAt - eAt} layout="none">
         <Studio3D tone="dark" shadows={false} camera={{ from: E.from, target: E.tFrom, fov: E.fov }}>
@@ -255,7 +255,8 @@ const Scene: React.FC<SceneProps> = (props) => {
         <Callout text="WHAT THEY REALLY SIGNED" at={[Math.min(Math.max(px, 160), 920), Math.min(py, 1180)]} label={[540, 1400]} startFrame={another + 6 - fAt} accent size={26} />
       </Sequence>
 
-      <Disclaimer text="Illustration · per NCC Group analysis, Mar 2025" />
+      <Sequence from={0} durationInFrames={eAt} layout="none"><Disclaimer text="Illustration · per NCC Group analysis, Mar 2025" /></Sequence>
+      <Sequence from={fAt} layout="none"><Disclaimer text="Illustration · per NCC Group analysis, Mar 2025" /></Sequence>
 
       <Sfx name="type" at={TYPE0 + 2} volume={0.25} />
       <Sfx name="whoosh_soft" at={bAt} volume={0.28} />

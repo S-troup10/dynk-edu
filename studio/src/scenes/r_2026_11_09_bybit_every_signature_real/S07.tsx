@@ -151,11 +151,11 @@ const BrowserShot: React.FC<{ shot: Shot2; from: number; callout?: { text: strin
 };
 
 /* ---------------- 3D ---------------- */
-const SHOT_D: Shot = { len: 27, from: [-4.2, 2.3, 6.2], to: [3.4, 2.0, 6.6], tFrom: [0, 1.65, 0], tTo: [0, 1.65, 0], fov: 32 };
-const SHOT_E: Shot = { len: 27, from: [-4.4, 1.1, 5.2], to: [-0.6, 1.5, 5.6], tFrom: [-2.2, 0.9, 0], tTo: [0, 0.8, 0], fov: 32 };
-const SHOT_F: Shot = { len: 26, from: [0.2, 1.7, 6.4], to: [3.0, 1.5, 5.0], tFrom: [0.5, 0.6, 0], tTo: [2.2, 0.7, 0], fov: 32 };
-const SPENDER: Vec3 = [2.6, 0.62, 0];
-const STACK_X = -2.6, N_COINS = 11, COIN_R = 0.42;
+const SHOT_D: Shot = { len: 27, from: [-4.6, 2.4, 8.4], to: [3.8, 2.2, 8.8], tFrom: [0, 1.65, 0], tTo: [0, 1.65, 0], fov: 32 };
+const SHOT_E: Shot = { len: 27, from: [-1.6, 2.2, 6.6], to: [0.9, 1.7, 5.2], tFrom: [0, 0.6, -2], tTo: [0, 0.6, -3], fov: 32 };
+const SHOT_F: Shot = { len: 26, from: [2.6, 1.9, -0.6], to: [1.4, 1.6, -1.8], tFrom: [0, 0.8, -4], tTo: [0, 0.8, -5], fov: 32 };
+const SPENDER: Vec3 = [0, 0.7, -5];
+const STACK_Z = 2, N_COINS = 11, COIN_R = 0.38;
 const E0 = 118; // first coin leaves
 const coinStart = (i: number) => E0 + 2 + (N_COINS - 1 - i) * 2.7; // top coin (i = N-1) leaves first
 const COIN_LEN = 16;
@@ -168,11 +168,11 @@ const Coins: React.FC<{ from: number }> = ({ from }) => {
         const y0 = 0.1 + i * 0.19;
         const t = interpolate(f, [coinStart(i), coinStart(i) + COIN_LEN], [0, 1], clamp);
         const p = Easing.in(Easing.quad)(t);
-        const x = STACK_X + (SPENDER[0] - 0.55 - STACK_X) * p;
+        const z = STACK_Z + (SPENDER[2] + 0.5 - STACK_Z) * p;
         const y = y0 + (0.1 - y0) * eo(f, coinStart(i), coinStart(i) + 5);
         const sc = 1 - interpolate(t, [0.88, 1], [0, 1], clamp);
         if (sc < 0.02) return null;
-        return <Coin key={i} radius={COIN_R} position={[x, y, 0]} rotation={[0, i * 0.7 + p * 5, 0]} />;
+        return <Coin key={i} radius={COIN_R} position={[0, y, z]} rotation={[0, i * 0.7 + p * 5, 0]} />;
       }).map((el, i) => el && <group key={i} scale={1}>{el}</group>)}
     </>
   );
@@ -181,7 +181,7 @@ const Coins: React.FC<{ from: number }> = ({ from }) => {
 const Spender: React.FC<{ glow?: number }> = () => (
   <SignCard
     glow
-    position={SPENDER} rotation={[0, -0.32, 0]} scale={0.62}
+    position={SPENDER} rotation={[0, 0, 0]} scale={0.8}
     lines={[{ text: "Spender", size: 40, color: "#9a9a9a", weight: 500 }, { text: "0x9f…e2", size: 78, mono: true, weight: 700 }, { text: "unknown", size: 44, color: ORANGE, weight: 600 }]}
   />
 );
@@ -198,7 +198,7 @@ const ShotD: React.FC = () => {
       <Studio3D tone="dark" shadows={false} camera={{ from: SHOT_D.from, to: SHOT_D.to, target: SHOT_D.tFrom, fov: 32, startFrame: 0, durationFrames: 1 }}>
         <CamRig shot={SHOT_D} />
         <group scale={0.92 + 0.08 * enter}>
-          <SignCard glow position={pos} rotation={[0, 0, 0]} scale={1.15}
+          <SignCard glow position={pos} rotation={[0, 0, 0]} scale={1}
             lines={[{ text: "Permit", size: 70, weight: 800 }, { text: "Spender: 0x9f…e2 (unknown)", size: 46, weight: 500, color: "#d8d8d8" }, { text: "Amount: Unlimited", size: 56, weight: 700, color: ORANGE }]}
             button="Sign" />
         </group>
@@ -218,7 +218,7 @@ const ShotCoins: React.FC<{ shot: Shot; from: number; callout?: boolean }> = ({ 
         {Array.from({ length: 1 }).map((_, k) => <React.Fragment key={k}><Spender /></React.Fragment>)}
         <Coins from={from} />
       </Studio3D>
-      {callout && <Callout text="PERMISSION TO SPEND" at={[sx, sy]} label={[Math.min(800, Math.max(330, sx - 60)), Math.max(560, sy - 190)]} startFrame={W0 - from} accent />}
+      {callout && <Callout text="PERMISSION TO SPEND" at={[sx, sy]} label={[Math.min(780, Math.max(330, sx + 120)), Math.max(560, sy - 230)]} startFrame={W0 - from} accent />}
     </AbsoluteFill>
   );
 };

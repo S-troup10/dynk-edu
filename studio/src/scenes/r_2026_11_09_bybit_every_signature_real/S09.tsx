@@ -31,7 +31,7 @@ const Device: React.FC = () => (
 );
 
 const SHOT_A: Shot = { from: [-3.6, 1.7, 7.8], to: [-2.0, 1.55, 6.5], tFrom: [0, 1.15, 0], tTo: [0, 1.25, 0], fov: 32, len: 30 };
-const SHOT_B: Shot = { from: [2.3, 1.55, 6.4], to: [0.5, 1.4, 5.0], tFrom: [0, 1.25, 0], tTo: [0, 1.25, 0], fov: 32, len: 34 };
+const SHOT_B: Shot = { from: [2.8, 1.6, 8.2], to: [0.9, 1.45, 6.6], tFrom: [0, 1.25, 0], tTo: [0, 1.25, 0], fov: 32, len: 34 };
 
 const DeviceShot: React.FC<{ shot: Shot; callout?: boolean }> = ({ shot, callout }) => {
   const lf = useCurrentFrame();
@@ -43,7 +43,7 @@ const DeviceShot: React.FC<{ shot: Shot; callout?: boolean }> = ({ shot, callout
         <Plinth position={[0, 0, 0]} radius={1.7} height={0.5} mat="graphite" />
         <Device />
       </Studio3D>
-      {callout && <Callout text="YOUR WALLET" at={[px - 20, py + 70]} label={[Math.min(px + 40, 800), py - 20 < 470 ? 470 : py - 20]} startFrame={0} />}
+      {callout && <Callout text="YOUR WALLET" at={[px - 30, py + 30]} label={[Math.min(px + 60, 800), Math.max(py - 130, 450)]} startFrame={0} />}
     </AbsoluteFill>
   );
 };
@@ -121,7 +121,7 @@ const BrowserShot: React.FC<{ shot: Cam2; from: number; callout?: boolean }> = (
           <Page f={f} />
         </div>
       </AbsoluteFill>
-      {callout && <Callout text="WEBSITE" at={[ax, ay]} label={[ax + 150, ay + 190]} startFrame={4} />}
+      {callout && <Callout text="WEBSITE" at={[ax, ay]} label={[ax + 300, ay + 40]} startFrame={4} />}
     </AbsoluteFill>
   );
 };

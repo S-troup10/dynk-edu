@@ -31,11 +31,11 @@ const LockStage: React.FC<{ shot: Shot }> = ({ shot }) => (
   </>
 );
 
-const SHOT_A: Shot = { from: [4.2, 1.1, 6.0], to: [0.9, 1.7, 6.9], tFrom: [0, 1.5, 0], tTo: [0, 1.6, 0], fov: 32, len: 26 };
-const SHOT_B: Shot = { from: [-1.7, 1.0, 4.6], to: [1.4, 1.3, 4.3], tFrom: [0, 0.95, 0], tTo: [0, 1.0, 0], fov: 32, len: 24 };
+const SHOT_A: Shot = { from: [5.6, 1.3, 7.6], to: [1.6, 2.0, 8.6], tFrom: [0, 1.3, 0], tTo: [0, 1.4, 0], fov: 32, len: 26 };
+const SHOT_B: Shot = { from: [-2.3, 1.0, 6.2], to: [1.8, 1.4, 5.8], tFrom: [0, 1.0, 0], tTo: [0, 1.05, 0], fov: 32, len: 24 };
 
 const ShotA: React.FC = () => (
-  <Studio3D tone="dark" shadows={false} camera={{ from: SHOT_A.from, target: [0, 1.5, 0], fov: 32 }}>
+  <Studio3D tone="dark" shadows={false} camera={{ from: SHOT_A.from, target: [0, 1.3, 0], fov: 32 }}>
     <LockStage shot={SHOT_A} />
   </Studio3D>
 );
@@ -158,7 +158,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       </Sequence>
       <Sequence from={cut2b} durationInFrames={cut3 - cut2b} layout="none">
         <Backdrop />
-        <Cam2D s0={1.2} s1={1.3} x0={150} x1={20} len={cut3 - cut2b}><Slots base={0} /></Cam2D>
+        <Cam2D s0={1.1} s1={1.2} x0={120} x1={30} len={cut3 - cut2b}><Slots base={0} /></Cam2D>
       </Sequence>
       <Sequence from={cut3} durationInFrames={end - cut3} layout="none">
         <Backdrop />

@@ -103,10 +103,10 @@ const ShotWallet: React.FC = () => {
 
 /* =============================================================== shot 3: coin river =============================================================== */
 const RIVER_N = 11;
-const RFROM: Vec3 = [-2.0, 1.0, 0.4], RTO: Vec3 = [4.4, 3.6, -5.5];
+const RFROM: Vec3 = [-1.2, 1.0, 0.4], RTO: Vec3 = [4.6, 3.4, -5.0];
 const CoinRiver: React.FC = () => {
   const f = useCurrentFrame();
-  const shot: Shot = { from: [-1.2, 1.6, 9.4], to: [1.8, 2.6, 7.4], tFrom: [0.4, 1.8, 0], tTo: [1.4, 2.6, -1.5], fov: 36, len: 18 };
+  const shot: Shot = { from: [0, 1.9, 10.8], to: [1.4, 2.5, 9.2], tFrom: [0.9, 1.9, 0], tTo: [1.4, 2.4, -1], fov: 44, len: 18 };
   const coins = Array.from({ length: RIVER_N }).map((_, k) => {
     const p = (f + 8 - k * 2.2) / 22;
     if (p <= 0 || p >= 1) return null;
@@ -121,10 +121,10 @@ const CoinRiver: React.FC = () => {
   return (
     <>
       <CamRig shot={shot} />
-      <Plinth position={[-2.0, 0, 0.4]} radius={1.25} height={0.9} mat="graphite" />
-      <mesh position={[-2.0, 0.92, 0.4]} rotation-x={-Math.PI / 2}><circleGeometry args={[0.95, 64]} /><meshBasicMaterial color="#FF8000" /></mesh>
+      <Plinth position={[-1.2, 0, 0.4]} radius={1.25} height={0.9} mat="graphite" />
+      <mesh position={[-1.2, 0.92, 0.4]} rotation-x={-Math.PI / 2}><circleGeometry args={[0.95, 64]} /><meshBasicMaterial color="#FF8000" /></mesh>
       {coins}
-      <pointLight position={[-1.4, 2.2, 2.2]} color="#FF8000" intensity={6} distance={7} decay={2} />
+      <pointLight position={[-0.8, 2.2, 2.2]} color="#FF8000" intensity={6} distance={7} decay={2} />
     </>
   );
 };
@@ -229,7 +229,7 @@ const HookText: React.FC = () => {
   const f = useCurrentFrame();
   const t1 = outE(interpolate(f, [0, 4], [0.3, 1], clamp));
   const t2 = outE(interpolate(f, [10, 14], [0, 1], clamp));
-  const base: React.CSSProperties = { fontFamily: brand.body, fontWeight: 800, fontSize: 84, lineHeight: 1.04, letterSpacing: -1.5, whiteSpace: "nowrap", textShadow: "0 4px 24px rgba(0,0,0,0.85), 0 0 3px rgba(0,0,0,0.6)" };
+  const base: React.CSSProperties = { fontFamily: brand.body, fontWeight: 800, fontSize: 74, lineHeight: 1.06, letterSpacing: -1.5, whiteSpace: "nowrap", textShadow: "0 4px 24px rgba(0,0,0,0.85), 0 0 3px rgba(0,0,0,0.6)" };
   return (
     <AbsoluteFill>
       <div style={{ position: "absolute", left: 0, right: 0, top: 1000, height: 920, background: "linear-gradient(180deg, rgba(8,8,10,0) 0%, rgba(8,8,10,0.72) 22%, rgba(8,8,10,0.8) 100%)" }} />
@@ -254,7 +254,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       </Sequence>
       <Sequence {...seq(1)} layout="none"><ShotWallet /></Sequence>
       <Sequence {...seq(2)} layout="none">
-        <Studio3D tone="dark" shadows={false} accentRim camera={{ from: [-1.2, 1.6, 9.4], target: [0.4, 1.8, 0], fov: 36 }}><CoinRiver /></Studio3D>
+        <Studio3D tone="dark" shadows={false} accentRim camera={{ from: [0, 1.9, 10.8], target: [0.9, 1.9, 0], fov: 44 }}><CoinRiver /></Studio3D>
       </Sequence>
       <Sequence {...seq(3)} layout="none"><ShotSlam /></Sequence>
       <Sequence {...seq(4)} layout="none">

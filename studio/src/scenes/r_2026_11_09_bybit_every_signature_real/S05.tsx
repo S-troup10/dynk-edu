@@ -43,7 +43,7 @@ const Shot1: React.FC<{ chipAt: number; len: number }> = ({ chipAt, len }) => {
   const fy = interpolate(q, [0, 1], [ROW_Y0 + 4 * ROW_H, ROW_Y0 + 12 * ROW_H]);
   const rot = interpolate(q, [0, 1], [-2.2, 1.0]);
   const chip = interpolate(f, [chipAt, chipAt + 5], [0, 1], { ...clamp, easing: out });
-  const at = w2s(430, ROW_Y0 + 6 * ROW_H, S, fx, fy, rot);
+  const at = w2s(380, ROW_Y0 + 11 * ROW_H, S, fx, fy, rot);
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{ WebkitMaskImage: "linear-gradient(180deg, transparent 350px, #000 450px, #000 1340px, transparent 1440px)", maskImage: "linear-gradient(180deg, transparent 350px, #000 450px, #000 1340px, transparent 1440px)" }}>
@@ -71,7 +71,7 @@ const Shot1: React.FC<{ chipAt: number; len: number }> = ({ chipAt, len }) => {
           })}
         </Cam2D>
       </AbsoluteFill>
-      <Callout text="UNREADABLE" at={at} label={[540, 1330]} startFrame={5} />
+      <Callout text="UNREADABLE" at={at} label={[540, 1390]} startFrame={5} />
     </AbsoluteFill>
   );
 };
@@ -100,7 +100,7 @@ const Slab: React.FC<{ position: Vec3; label: string; vault?: boolean }> = ({ po
   const tex = useMemo(() => slabTex(label, vault), [label, vault]);
   return (
     <group position={position}>
-      <mesh position={[0, 0.17, 0]}><boxGeometry args={[2.3, 0.34, 1.0]} /><Mat kind="clay" /></mesh>
+      <mesh position={[0, 0.17, 0]}><boxGeometry args={[2.3, 0.34, 1.0]} /><meshStandardMaterial color="#1b1c1f" metalness={0.4} roughness={0.5} /></mesh>
       <RoundedBox args={[1.8, 2.2, 0.5]} radius={0.05} smoothness={2} position={[0, 1.44, 0]}>
         {vault ? <Mat kind="graphite" /> : <meshStandardMaterial color="#09090b" metalness={0.3} roughness={0.55} />}
       </RoundedBox>

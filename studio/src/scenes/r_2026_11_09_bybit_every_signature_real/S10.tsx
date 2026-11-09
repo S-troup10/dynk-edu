@@ -110,16 +110,16 @@ const ShotB: React.FC<{ sh: Cam2; blur: number; q: boolean }> = ({ sh, blur, q }
 
 /* ---------- C: 3D sign card + padlock ---------- */
 const LAND = 104; // "sign." (scene frame)
-const SHOT_C: Shot = { from: [2.4, 2.4, 8.2], to: [0.4, 1.9, 6.3], tFrom: [0.3, 1.3, 0], tTo: [0, 1.25, 0], fov: 32, len: 29 };
+const SHOT_C: Shot = { from: [1.8, 2.3, 10.4], to: [0.3, 1.9, 8.8], tFrom: [0.1, 1.3, 0], tTo: [0, 1.25, 0], fov: 32, len: 29 };
 const ShotC: React.FC<{ from: number }> = ({ from }) => {
   const lf = useCurrentFrame();
   const f = from + lf;
   const dim = f >= LAND;
   const drop = interpolate(f, [LAND - 9, LAND], [1, 0], { ...clamp, easing: Easing.in(Easing.quad) });
   const bounce = f > LAND ? Math.max(0, 0.06 * Math.sin((f - LAND) * 1.1) * Math.exp(-(f - LAND) * 0.3)) : 0;
-  const lockY = 1.05 + drop * 3.2 + bounce;
+  const lockY = 0.95 + drop * 3.2 + bounce;
   const lockVisible = f >= LAND - 9;
-  const [tx, ty] = project(SHOT_C, lf, [1.1, 1.95, 0.05]);
+  const [tx, ty] = project(SHOT_C, lf, [0.95, 1.95, 0.05]);
   return (
     <AbsoluteFill>
       <Studio3D tone="dark" shadows={false} camera={{ from: SHOT_C.from, target: SHOT_C.tFrom, fov: SHOT_C.fov }}>
@@ -129,7 +129,7 @@ const ShotC: React.FC<{ from: number }> = ({ from }) => {
           { text: "Spender: 0x9f…e2 (unknown)", size: 48 },
           { text: "Amount: Unlimited", size: 52, weight: 700, color: ORANGE },
         ]} button="Sign" dim={dim} />
-        {lockVisible && <Padlock position={[0.1, lockY, 0.45]} scale={0.8} />}
+        {lockVisible && <Padlock position={[0.1, lockY, 0.45]} scale={0.62} />}
       </Studio3D>
       <Callout text="DON'T SIGN" at={[tx, ty]} label={[Math.min(880, tx + 40), Math.max(500, ty - 130)]} startFrame={LAND - from + 2} size={28} accent />
     </AbsoluteFill>

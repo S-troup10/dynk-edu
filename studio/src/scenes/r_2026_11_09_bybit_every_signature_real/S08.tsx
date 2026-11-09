@@ -25,7 +25,7 @@ const w2s = (wx: number, wy: number, S: number, fx: number, fy: number, rot = 0)
 };
 /** keeps world content out of the caption band (soft mask above y≈390) */
 const Keep: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <AbsoluteFill style={{ WebkitMaskImage: "linear-gradient(180deg, transparent 0px, transparent 350px, #000 405px)", maskImage: "linear-gradient(180deg, transparent 0px, transparent 350px, #000 405px)" }}>{children}</AbsoluteFill>
+  <AbsoluteFill style={{ WebkitMaskImage: "linear-gradient(180deg, transparent 0px, transparent 350px, #000 405px, #000 1390px, transparent 1445px)", maskImage: "linear-gradient(180deg, transparent 0px, transparent 350px, #000 405px, #000 1390px, transparent 1445px)" }}>{children}</AbsoluteFill>
 );
 
 const Tick: React.FC<{ s?: number; on?: number }> = ({ s = 22, on = 1 }) => (
@@ -72,7 +72,7 @@ const Shot1a: React.FC<{ len: number }> = ({ len }) => {
   const f = useCurrentFrame();
   const t = f / len;
   return (
-    <Keep><Cam2D S={interpolate(t, [0, 1], [1.5, 1.12])} fx={interpolate(t, [0, 1], [300, 460])} fy={interpolate(t, [0, 1], [760, 900])} rot={interpolate(t, [0, 1], [-2.2, 0.6])}>
+    <Keep><Cam2D S={interpolate(t, [0, 1], [1.22, 1.02])} fx={interpolate(t, [0, 1], [440, 560])} fy={interpolate(t, [0, 1], [900, 960])} rot={interpolate(t, [0, 1], [-1.8, 0.5])}>
       <Plate f={f} chart={0.12} />
     </Cam2D></Keep>
   );
@@ -174,7 +174,7 @@ const Shot3b: React.FC<{ len: number }> = ({ len }) => {
         <div style={{ position: "absolute", left: 90, top: 975, width: 900, height: 14, borderRadius: 7, background: "rgba(255,255,255,0.08)" }} />
         <div style={{ position: "absolute", left: 90, top: 975, width: 900 * bar, height: 14, borderRadius: 7, background: `linear-gradient(90deg, #B85400, ${ORANGE})`, boxShadow: "0 0 24px rgba(255,128,0,0.7)" }} />
       </Cam2D>
-      <Callout text="DRAINED IN ONE YEAR" at={[Math.min(Math.max(at[0], 120), 960), 1080]} label={[540, 1300]} startFrame={4} />
+      <Callout text="DRAINED IN ONE YEAR" at={[Math.min(Math.max(at[0], 120), 960), 1095]} label={[Math.min(Math.max(at[0], 220), 860), 1230]} startFrame={4} />
     </AbsoluteFill>
   );
 };

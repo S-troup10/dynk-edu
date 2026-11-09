@@ -41,9 +41,9 @@ const BLOB = (
 
 /* ---- the sheet (phone + signature request), drawn in 1080×1920 layout space ---- */
 const BX = 180, BW = 720; // message box x / width
-const BTN = { x: 470, y: 1250, w: 430, h: 124 };
+const BTN = { x: 470, y: 1330, w: 430, h: 124 };
 const Sheet: React.FC<{ rise?: number; expand?: number; chars?: number; press?: number; ripple?: number }> = ({ rise = 0, expand = 0, chars = 0, press = 0, ripple = -1 }) => {
-  const boxH = 290 + 350 * expand;
+  const boxH = 290 + 280 * expand;
   const blob = BLOB.slice(0, Math.max(0, Math.floor(chars)));
   return (
     <AbsoluteFill style={{ transform: `translateY(${rise}px)` }}>
@@ -83,9 +83,9 @@ const Sheet: React.FC<{ rise?: number; expand?: number; chars?: number; press?: 
 };
 
 const CAM_A: Cam2 = { s: [0.9, 1.0], x: [30, -14], y: [10, -10], r: [-3.4, 0.8], len: 45 };
-const CAM_B: Cam2 = { s: [1.1, 1.5], x: [-30, -170], y: [-250, -560], r: [1.2, -1.2], len: 25 };
-const CAM_C: Cam2 = { s: [2.0, 2.3], x: [-190, -230], y: [-730, -790], r: [1.2, -1.0], len: 24 };
-const CAM_D: Cam2 = { s: [1.0, 1.14], x: [34, -34], y: [-90, -140], r: [1.4, -0.8], len: 43 };
+const CAM_B: Cam2 = { s: [1.05, 1.25], x: [-20, -120], y: [-150, -330], r: [1.2, -1.2], len: 25 };
+const CAM_C: Cam2 = { s: [2.0, 2.3], x: [-190, -230], y: [-880, -940], r: [1.2, -1.0], len: 24 };
+const CAM_D: Cam2 = { s: [0.95, 1.05], x: [30, -30], y: [10, -30], r: [1.4, -0.8], len: 43 };
 const CAM_E: Cam2 = { s: [1.6, 2.9], x: [0, 0], y: [64, 116], r: [-1.2, 1.6], len: 34 };
 
 const Scene: React.FC<SceneProps> = (props) => {
