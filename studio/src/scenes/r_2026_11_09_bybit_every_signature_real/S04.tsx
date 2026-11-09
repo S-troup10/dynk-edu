@@ -202,7 +202,7 @@ const BACK = [
 const CY = 1.2;
 const D: Shot = { from: [-3.0, 2.3, 9.6], to: [-1.8, 1.9, 8.5], tFrom: [0.1, 1.2, 0], tTo: [0, 1.25, 0], fov: 32, len: 27 };
 const E: Shot = { from: [-1.5, 1.5, 4.9], to: [-0.7, 1.35, 3.7], tFrom: [-0.45, 1.33, 0], tTo: [-0.55, 1.28, 0], fov: 32, len: 27 };
-const F: Shot = { from: [-2.6, 1.6, 8.2], to: [-0.8, 1.45, 6.8], tFrom: [0, 1.2, 0], tTo: [0, 1.22, 0], fov: 32, len: 44 };
+const F: Shot = { from: [-2.6, 1.6, 9.8], to: [-1.1, 1.45, 8.9], tFrom: [0, 1.2, 0], tTo: [0, 1.22, 0], fov: 32, len: 44 };
 
 const FlipCard: React.FC<{ flipAt: number; len?: number }> = ({ flipAt, len = 8 }) => {
   const f = useCurrentFrame();
@@ -252,7 +252,7 @@ const Scene: React.FC<SceneProps> = (props) => {
           <CamRig shot={F} />
           <FlipCard flipAt={flipAt} />
         </Studio3D>
-        <Callout text="WHAT THEY REALLY SIGNED" at={[Math.min(Math.max(px, 160), 920), Math.min(py, 1180)]} label={[540, 1400]} startFrame={another + 6 - fAt} accent size={26} />
+        <Callout text="WHAT THEY REALLY SIGNED" at={[540, 1300]} label={[540, 1410]} startFrame={another - fAt} accent size={26} />
       </Sequence>
 
       <Sequence from={0} durationInFrames={eAt} layout="none"><Disclaimer text="Illustration · per NCC Group analysis, Mar 2025" /></Sequence>
