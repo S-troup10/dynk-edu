@@ -226,7 +226,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const cMid = Math.round((c401 + cGone) / 2);    // 111
   const cSigned = W(props, "really", 0, 0.394);
 
-  const shot2a: Shot = { from: [-0.6, 2.4, 13.5], to: [0.4, 2.1, 12.0], tFrom: [0.0, 1.5, 0], tTo: [0.2, 1.5, 0], fov: 34, len: cWhole - cHanded };
+  const shot2a: Shot = { from: [-0.6, 2.6, 16.5], to: [0.4, 2.3, 15.0], tFrom: [0.0, 1.5, 0], tTo: [0.2, 1.5, 0], fov: 34, len: cWhole - cHanded };
   const shot2b: Shot = { from: [5.9, 1.0, 6.4], to: [4.1, 1.5, 5.2], tFrom: [2.0, 1.5, 0], tTo: [2.6, 1.5, 0], fov: 34, len: c401 - cWhole };
 
   const ticks: number[] = [];
