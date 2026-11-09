@@ -1,254 +1,206 @@
-// Scene: 2026-11-09-bybit-every-signature-real S05 — "What they really signed handed over the whole wallet. 401,000 ether, gone."
-// Orange system per shot: 1 the delegatecall chip · 2 the lock/key leaving the vault · 3 the draining balance · 4 none (dim, empty).
-// Shots (hard cuts): 1 hex macro (2D) · 2a vault slab, lock detaches (3D) · 2b lock lands on attacker slab (3D) ·
-// 3a balance plate ticking down (2D) · 3b macro along the digits (2D) · 4 plate reads 0.00 ETH, dim (2D).
+// Scene: 2026-11-09-bybit-every-signature-real S05 (v2) — "What they really signed handed over the whole wallet.
+// 401,000 ether, gone."  INK & SIGNATURES world, smooth eased cameras only.
+// Shots (hard cuts): 1 hex calldata ribbon, delegatecall glows (2D, Cam2D) · 2 vault door swings open (3D push-in) ·
+// 3a/3b orange tokens drift out in a gentle arc, two angles (3D) · 4 empty vault interior, camera holds then eases back.
+// Orange system per shot: 1 the delegatecall chip · 2 the glow inside the opening door · 3 the tokens · 4 a last token fading.
 import React, { useMemo } from "react";
-import { AbsoluteFill, Easing, interpolate, Sequence, useCurrentFrame } from "remotion";
-import { RoundedBox } from "@react-three/drei";
+import { AbsoluteFill, interpolate, Sequence, useCurrentFrame } from "remotion";
 import * as THREE from "three";
-import { Shell, Studio3D, Callout, Disclaimer, Mat, Padlock, chromeFill, type SceneProps } from "../../kit";
+import { Shell, Studio3D, Callout, Disclaimer, Mat, type SceneProps } from "../../kit";
 import { brand } from "../../brand";
-import { CamRig, project, W, Sfx, rand, HEX, STORY, ORANGE, clamp, type Shot, type Vec3 } from "./_shared";
+import {
+  Cam2D, CamRig, Token, Sfx, W, rand, ease, HEX, STORY, ORANGE, clamp,
+  type Shot, type Vec3,
+} from "./_shared";
 
-const out = Easing.out(Easing.cubic);
-const inOut = Easing.inOut(Easing.cubic);
 const MONO = "'DejaVu Sans Mono', monospace";
+const VAULT: Vec3 = [0, 1.6, 0];
 
-/* =============================== 2D camera helpers =============================== */
-const Cam2D: React.FC<{ S: number; fx: number; fy: number; rot?: number; children: React.ReactNode }> = ({ S, fx, fy, rot = 0, children }) => (
-  <AbsoluteFill>
-    <div style={{ position: "absolute", left: 0, top: 0, width: 0, height: 0, transformOrigin: "0 0",
-      transform: `translate(540px,960px) rotate(${rot}deg) scale(${S}) translate(${-fx}px,${-fy}px)` }}>{children}</div>
-  </AbsoluteFill>
-);
-const w2s = (wx: number, wy: number, S: number, fx: number, fy: number, rot = 0): [number, number] => {
-  const dx = (wx - fx) * S, dy = (wy - fy) * S, r = (rot * Math.PI) / 180;
-  return [540 + dx * Math.cos(r) - dy * Math.sin(r), 960 + dx * Math.sin(r) + dy * Math.cos(r)];
+/* ---------------------------------------------------------------- shot 1: the unreadable calldata ribbon */
+const HEXBODY = HEX.slice(2);
+const hexSlice = (i: number, len: number) => {
+  const s = HEXBODY.repeat(4);
+  const o = (i * 23) % HEXBODY.length;
+  return s.slice(o, o + len);
 };
-
-/* =============================== shot 1: calldata macro =============================== */
-const ROW_H = 56, ROW_Y0 = 300, ROWS = 40, HEX_BODY = HEX.slice(2);
-const hexRow = (i: number): string[] => {
-  const o = Math.floor(rand(i * 3.7 + 1) * (HEX_BODY.length - 36));
-  const s = (HEX_BODY + HEX_BODY).slice(o, o + 32);
-  return [s.slice(0, 8), s.slice(8, 16), s.slice(16, 24), s.slice(24, 32)];
-};
-const DELEGATE_ROW = 8;
-const Shot1: React.FC<{ chipAt: number; len: number }> = ({ chipAt, len }) => {
+const ROWS = 9;
+const ShotHex: React.FC<{ len: number }> = ({ len }) => {
   const f = useCurrentFrame();
-  const t = interpolate(f, [0, len], [0, 1], clamp);
-  const q = t * 0.7 + out(t) * 0.3;
-  const S = interpolate(q, [0, 1], [1.45, 1.85]);
-  const fx = interpolate(q, [0, 1], [360, 640]);
-  const fy = interpolate(q, [0, 1], [ROW_Y0 + 4 * ROW_H, ROW_Y0 + 12 * ROW_H]);
-  const rot = interpolate(q, [0, 1], [-2.2, 1.0]);
-  const chip = interpolate(f, [chipAt, chipAt + 5], [0, 1], { ...clamp, easing: out });
-  const at = w2s(380, ROW_Y0 + 11 * ROW_H, S, fx, fy, rot);
   return (
-    <AbsoluteFill>
-      <AbsoluteFill style={{ WebkitMaskImage: "linear-gradient(180deg, transparent 350px, #000 450px, #000 1340px, transparent 1440px)", maskImage: "linear-gradient(180deg, transparent 350px, #000 450px, #000 1340px, transparent 1440px)" }}>
-        <Cam2D S={S} fx={fx} fy={fy} rot={rot}>
-          {Array.from({ length: ROWS }).map((_, i) => {
-            const y = ROW_Y0 + i * ROW_H;
-            const g = hexRow(i);
-            const isD = i === DELEGATE_ROW;
-            return (
-              <div key={i} style={{ position: "absolute", left: 130, top: y, display: "flex", gap: 26, fontFamily: MONO, fontSize: 38, lineHeight: `${ROW_H}px`, whiteSpace: "nowrap" }}>
-                <span style={{ color: "rgba(255,255,255,0.14)", width: 70 }}>{(i * 32).toString(16).padStart(4, "0")}</span>
-                {isD ? (
-                  <>
-                    <span style={{ color: "rgba(255,255,255,0.3)" }}>{g[0]}</span>
-                    <span style={{ position: "relative", fontWeight: 700, color: chip > 0.3 ? ORANGE : "rgba(255,255,255,0.3)",
-                      textShadow: `0 0 ${24 * chip}px rgba(255,128,0,${0.85 * chip})`, letterSpacing: 1 }}>
-                      <span style={{ position: "absolute", left: -12, right: -12, top: 6, bottom: 6, borderRadius: 10, background: `rgba(255,128,0,${0.14 * chip})`, border: `1.5px solid rgba(255,128,0,${0.7 * chip})` }} />
-                      <span style={{ position: "relative" }}>delegatecall</span>
+    <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 50%, #17181b 0%, #0e0f11 70%)" }}>
+      <AbsoluteFill style={{ WebkitMaskImage: "linear-gradient(to bottom, transparent 0px, transparent 400px, #000 560px, #000 1360px, transparent 1480px)" }}>
+        <Cam2D shot={{ from: { x: 170, y: 10, s: 1.0 }, to: { x: -150, y: -10, s: 1.14 }, len }}>
+          <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: 1920, perspective: 1800 }}>
+            <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: 1920, transformStyle: "preserve-3d",
+              transform: "rotateX(34deg) rotateZ(-7deg) rotateY(-14deg)" }}>
+              {Array.from({ length: ROWS }).map((_, i) => {
+                const mid = i === Math.floor(ROWS / 2);
+                const dist = Math.abs(i - Math.floor(ROWS / 2));
+                return (
+                  <div key={i} style={{ position: "absolute", left: 0, width: 1080, top: 960 + (i - Math.floor(ROWS / 2)) * 104 - 34, height: 68,
+                    display: "flex", justifyContent: "center", alignItems: "center", whiteSpace: "nowrap", fontFamily: MONO, fontWeight: 600,
+                    fontSize: 56, letterSpacing: 2, color: `rgba(255,255,255,${0.34 - dist * 0.05})`, overflow: "visible" }}>
+                    <span style={{ flex: "none", width: 0, display: "flex", justifyContent: "flex-end" }}>
+                      <span style={{ flex: "none", paddingRight: mid ? 250 : 0, transform: "translateX(0)" }}>{hexSlice(i, 56)}</span>
                     </span>
-                    <span style={{ color: "rgba(255,255,255,0.3)" }}>{g[3]}</span>
-                  </>
-                ) : g.map((c, k) => <span key={k} style={{ color: `rgba(255,255,255,${k % 2 ? 0.2 : 0.34})` }}>{c}</span>)}
-              </div>
-            );
-          })}
+                    {mid ? (
+                      <span style={{ flex: "none", color: "#ffd9b0", fontWeight: 800, padding: "4px 18px", borderRadius: 12,
+                        background: "rgba(255,128,0,0.22)", border: `3px solid ${ORANGE}`,
+                        textShadow: `0 0 18px ${ORANGE}, 0 0 44px ${ORANGE}`, boxShadow: `0 0 36px rgba(255,128,0,0.55)`,
+                        opacity: interpolate(f, [2, 9], [0.0, 1], clamp) }}>delegatecall</span>
+                    ) : null}
+                    <span style={{ flex: "none", width: 0, display: "flex", justifyContent: "flex-start" }}>
+                      <span style={{ flex: "none", paddingLeft: mid ? 250 : 0 }}>{hexSlice(i + 5, 56)}</span>
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <Callout text="UNREADABLE TO HUMANS" at={[540, 960]} label={[540, 700]} startFrame={8} accent={false} />
         </Cam2D>
       </AbsoluteFill>
-      <Callout text="UNREADABLE" at={at} label={[540, 1390]} startFrame={5} />
     </AbsoluteFill>
   );
 };
 
-/* =============================== shots 2a / 2b: vault → attacker (3D) =============================== */
-const COLD: Vec3 = [-2.6, 0, 0], ATT: Vec3 = [2.6, 0, 0];
-const slabTex = (label: string, vault: boolean) => {
-  const c = document.createElement("canvas"); c.width = 720; c.height = 880;
-  const x = c.getContext("2d")!;
-  x.fillStyle = vault ? "#17181b" : "#060607"; x.fillRect(0, 0, 720, 880);
-  x.strokeStyle = vault ? "#34363b" : "#1c1c1f"; x.lineWidth = 6; x.strokeRect(12, 12, 696, 856);
-  if (vault) {
-    x.strokeStyle = "#2f3136"; x.lineWidth = 5;
-    for (const r of [190, 150, 60]) { x.beginPath(); x.arc(360, 330, r, 0, Math.PI * 2); x.stroke(); }
-    for (let a = 0; a < 6; a++) { const t = (a * Math.PI) / 3; x.beginPath(); x.moveTo(360 + Math.cos(t) * 60, 330 + Math.sin(t) * 60); x.lineTo(360 + Math.cos(t) * 150, 330 + Math.sin(t) * 150); x.stroke(); }
-  } else {
-    x.strokeStyle = "#17171a"; x.lineWidth = 5; x.setLineDash([18, 16]); x.strokeRect(150, 150, 420, 400); x.setLineDash([]);
-  }
-  x.fillStyle = vault ? "#d8d8d8" : "#5a5a5e"; x.font = "700 70px Outfit, 'DejaVu Sans', sans-serif"; x.textAlign = "center"; x.textBaseline = "middle";
-  (x as any).letterSpacing = "8px";
-  x.fillText(label, 360, 740);
-  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
-  return t;
-};
-const Slab: React.FC<{ position: Vec3; label: string; vault?: boolean }> = ({ position, label, vault = false }) => {
-  const tex = useMemo(() => slabTex(label, vault), [label, vault]);
+/* ---------------------------------------------------------------- 3D world: open vault + token stream */
+const NTOK = 40;
+const TOK_T0 = 80;   // global frame the first token leaves (≈ "401,000")
+const TOK_DUR = 58;
+const tokStart = (i: number) => TOK_T0 + i * 1.0;
+
+const glowTex = (() => {
+  let t: THREE.CanvasTexture | null = null;
+  return () => {
+    if (t) return t;
+    const c = document.createElement("canvas"); c.width = 256; c.height = 256;
+    const x = c.getContext("2d")!;
+    const g = x.createRadialGradient(128, 128, 6, 128, 128, 128);
+    g.addColorStop(0, "rgba(255,150,40,0.55)"); g.addColorStop(0.55, "rgba(255,110,0,0.18)"); g.addColorStop(1, "rgba(0,0,0,0)");
+    x.fillStyle = g; x.fillRect(0, 0, 256, 256);
+    t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+  };
+})();
+
+/* local copy of the multisig vault door (the shared one has its back wall lying flat); all three keys turned */
+const Vault: React.FC<{ position: Vec3; open: number }> = ({ position, open }) => {
+  const holes: Vec3[] = [[-0.55, 0.35, 0.2], [0.55, 0.35, 0.2], [0, -0.55, 0.2]];
   return (
     <group position={position}>
-      <mesh position={[0, 0.17, 0]}><boxGeometry args={[2.3, 0.34, 1.0]} /><meshStandardMaterial color="#1b1c1f" metalness={0.4} roughness={0.5} /></mesh>
-      <RoundedBox args={[1.8, 2.2, 0.5]} radius={0.05} smoothness={2} position={[0, 1.44, 0]}>
-        {vault ? <Mat kind="graphite" /> : <meshStandardMaterial color="#09090b" metalness={0.3} roughness={0.55} />}
-      </RoundedBox>
-      <mesh position={[0, 1.44, 0.2515]}>
-        <planeGeometry args={[1.72, 2.1]} />
-        <meshStandardMaterial map={tex} roughness={0.5} metalness={0.1} emissive="#ffffff" emissiveMap={tex} emissiveIntensity={vault ? 0.4 : 0.25} />
-      </mesh>
+      <mesh><torusGeometry args={[1.55, 0.14, 24, 96]} /><Mat kind="graphite" /></mesh>
+      <mesh position={[0, 0, -0.9]} rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[1.5, 1.5, 1.8, 64, 1, true]} /><meshStandardMaterial color="#0b0b0c" side={THREE.BackSide} roughness={0.7} /></mesh>
+      <mesh position={[0, 0, -1.8]} rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[1.5, 1.5, 0.05, 64]} /><meshStandardMaterial color="#060607" /></mesh>
+      <group position={[-1.4, 0, 0]} rotation={[0, -open * 1.9, 0]}>
+        <group position={[1.4, 0, 0]}>
+          <mesh rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[1.4, 1.4, 0.32, 96]} /><Mat kind="chrome" /></mesh>
+          <mesh position={[0, 0, 0.17]} rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[1.15, 1.15, 0.04, 96]} /><Mat kind="graphite" /></mesh>
+          {holes.map((h, i) => (
+            <group key={i} position={h}>
+              <mesh rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[0.2, 0.2, 0.06, 48]} /><Mat kind="accent" /></mesh>
+              <mesh position={[0, 0, 0.04]} rotation={[0, 0, Math.PI / 2]}><boxGeometry args={[0.05, 0.22, 0.04]} /><meshStandardMaterial color="#FFB060" emissive="#FF6A00" emissiveIntensity={1.2} /></mesh>
+            </group>
+          ))}
+          {[0, 1, 2, 3, 4, 5].map((i) => (
+            <mesh key={i} position={[Math.cos(i * Math.PI / 3) * 1.27, Math.sin(i * Math.PI / 3) * 1.27, 0.16]}><sphereGeometry args={[0.05, 12, 8]} /><Mat kind="chrome" /></mesh>
+          ))}
+        </group>
+      </group>
     </group>
   );
 };
-const T0 = 33, T1 = 66; // global frames: lock detaches / lands on "wallet"
-const lockAt = (g: number): { p: Vec3; ry: number } => {
-  const t = inOut(interpolate(g, [T0, T1], [0, 1], clamp));
-  const arc = Math.sin(Math.PI * t);
-  return { p: [COLD[0] + (ATT[0] - COLD[0]) * t, 1.5 + 0.35 * arc, 0.46 + 0.7 * arc], ry: t * Math.PI * 1.0 + arc * 0.0 };
-};
-const Lock: React.FC<{ g: number }> = ({ g }) => {
-  const { p, ry } = lockAt(g);
-  return (
-    <group position={p} rotation={[0, ry * 0, 0]}>
-      <Padlock accent scale={0.46} position={[0, 0, 0]} open={interpolate(g, [T0 - 2, T0 + 5], [0, 0.6], clamp) * (1 - interpolate(g, [T1 - 6, T1], [0, 1], clamp))} />
-    </group>
-  );
-};
-const VaultScene: React.FC<{ g: number }> = ({ g }) => (
+
+const Tokens: React.FC<{ g: number }> = ({ g }) => (
   <>
-    <Slab position={COLD} label="COLD WALLET" vault />
-    <Slab position={ATT} label="ATTACKER" />
-    <Lock g={g} />
+    {Array.from({ length: NTOK }).map((_, i) => {
+      const p = (g - tokStart(i)) / TOK_DUR;
+      if (p < 0 || p > 1) return null;
+      const side = rand(i + 1) < 0.5 ? -1 : 1;
+      const sx = (rand(i + 7) - 0.5) * 1.5, sy = VAULT[1] + (rand(i + 13) - 0.5) * 1.4;
+      const ex = side * (1.2 + rand(i + 21) * 2.6), ey = VAULT[1] + 2.0 + rand(i + 31) * 2.8, ez = 1.5 + rand(i + 41) * 3.0;
+      const q = 1 - Math.pow(1 - p, 2.2); // eased out: leaves briskly, drifts gently
+      const pos: Vec3 = [sx + (ex - sx) * q, sy + (ey - sy) * q + Math.sin(Math.PI * q) * 0.7, -0.9 + (ez + 0.9) * q];
+      const sc = Math.min(1, p * 7) * (1.0 - 0.55 * Math.max(0, (p - 0.65) / 0.35));
+      return <Token key={i} position={pos} rotation={[0.4 + p * 1.5, p * 3 + i, 0.2]} scale={sc * 1.15} />;
+    })}
   </>
 );
-const Shot2: React.FC<{ shot: Shot; start: number; callAt?: number }> = ({ shot, start, callAt }) => {
+
+const World: React.FC<{ g: number }> = ({ g }) => {
+  const open = interpolate(g, [34, 62], [0, 1], { ...clamp, easing: ease });
+  const glowOp = interpolate(g, [38, 66], [0, 1], clamp) * interpolate(g, [128, 156], [1, 0.12], clamp);
+  return (
+    <>
+      <Vault position={VAULT} open={open} />
+      {/* faint warm glow on the vault's back wall: the only light inside */}
+      <mesh position={[0, VAULT[1], -1.7]}>
+        <planeGeometry args={[3.0, 3.0]} />
+        <meshBasicMaterial map={glowTex()} transparent opacity={glowOp} depthWrite={false} toneMapped={false} />
+      </mesh>
+      <Tokens g={g} />
+    </>
+  );
+};
+
+const Shot3D: React.FC<{ shot: Shot; start: number; callout?: boolean }> = ({ shot, start }) => {
   const f = useCurrentFrame();
-  const g = f + start;
-  const lp = lockAt(g).p;
-  const at = project(shot, f, [lp[0], lp[1] - 0.1, lp[2]]);
+  const g = start + f;
   return (
     <AbsoluteFill>
       <Studio3D tone="dark" shadows={false} camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
         <CamRig shot={shot} />
-        <VaultScene g={g} />
+        <World g={g} />
       </Studio3D>
-      {callAt !== undefined && <Callout text="FULL CONTROL" at={at} label={[540, 1290]} startFrame={callAt} accent />}
     </AbsoluteFill>
   );
 };
 
-/* =============================== shots 3 / 4: the balance plate =============================== */
-const ETH0 = 401347;
-const Plate: React.FC<{ value: number; dim?: boolean; zero?: boolean; frac: number }> = ({ value, dim = false, zero = false, frac }) => {
-  const txt = zero ? "0.00" : Math.max(0, Math.round(value)).toLocaleString("en-US");
-  return (
-    <div style={{ position: "absolute", left: 100, top: 720, width: 880, height: 440, borderRadius: 40,
-      background: "linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03) 55%, rgba(255,255,255,0.07))",
-      border: "1.5px solid rgba(255,255,255,0.16)", boxShadow: dim ? "0 30px 80px rgba(0,0,0,0.6)" : "0 30px 80px rgba(0,0,0,0.6), 0 0 90px rgba(255,128,0,0.12)" }}>
-      <div style={{ position: "absolute", left: 56, top: 48, fontFamily: brand.body, fontWeight: 700, fontSize: 26, letterSpacing: 4, color: "rgba(255,255,255,0.55)" }}>COLD WALLET</div>
-      <div style={{ position: "absolute", right: 56, top: 52, fontFamily: brand.body, fontWeight: 600, fontSize: 22, letterSpacing: 3, color: "rgba(255,255,255,0.32)" }}>BALANCE</div>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 138, textAlign: "center", display: "flex", justifyContent: "center", alignItems: "baseline", gap: 22 }}>
-        <span style={{ fontFamily: brand.display, fontWeight: 800, fontSize: 96, letterSpacing: -2, lineHeight: 1, fontVariantNumeric: "tabular-nums",
-          ...(dim ? { color: "rgba(255,255,255,0.28)" } : chromeFill(true)), filter: dim ? undefined : "drop-shadow(0 0 22px rgba(255,128,0,0.35))" }}>{txt}</span>
-        <span style={{ fontFamily: brand.display, fontWeight: 700, fontSize: 40, letterSpacing: 3, color: dim ? "rgba(255,255,255,0.22)" : "rgba(255,255,255,0.6)" }}>ETH</span>
-      </div>
-      <div style={{ position: "absolute", left: 56, right: 56, top: 330, height: 16, borderRadius: 8, background: "rgba(255,255,255,0.08)", overflow: "hidden" }}>
-        <div style={{ width: `${Math.max(0, frac) * 100}%`, height: "100%", borderRadius: 8, background: "linear-gradient(90deg,#B85400,#FF8000)", boxShadow: "0 0 24px rgba(255,128,0,0.8)" }} />
-      </div>
-    </div>
-  );
-};
-const PLATE_C: [number, number] = [540, 940];
-const D0 = 82, D1 = 139; // global frames the balance drains
-const valueAt = (g: number) => ETH0 * (1 - interpolate(g, [D0, D1], [0, 1], { ...clamp, easing: Easing.bezier(0.4, 0, 0.6, 1) }));
-
-const Shot3a: React.FC<{ start: number; len: number }> = ({ start, len }) => {
-  const f = useCurrentFrame();
-  const t = interpolate(f, [0, len], [0, 1], clamp);
-  const q = t * 0.7 + out(t) * 0.3;
-  const v = valueAt(f + start);
-  const S = interpolate(q, [0, 1], [1.0, 1.28]);
-  const fx = interpolate(q, [0, 1], [600, 520]);
-  const rot = interpolate(q, [0, 1], [-2.4, 0.4]);
-  const at = w2s(300, 1050, S, fx, PLATE_C[1], rot);
-  return (
-    <AbsoluteFill>
-      <Cam2D S={S} fx={fx} fy={PLATE_C[1]} rot={rot}><Plate value={v} frac={v / ETH0} /></Cam2D>
-      <Callout text="DRAINING" at={at} label={[300, 1390]} startFrame={4} accent />
-    </AbsoluteFill>
-  );
-};
-const Shot3b: React.FC<{ start: number; len: number }> = ({ start, len }) => {
-  const f = useCurrentFrame();
-  const t = interpolate(f, [0, len], [0, 1], clamp);
-  const q = t * 0.7 + out(t) * 0.3;
-  const v = valueAt(f + start);
-  const S = interpolate(q, [0, 1], [1.5, 1.65]);
-  const fx = interpolate(q, [0, 1], [700, 440]);
-  const rot = interpolate(q, [0, 1], [2.6, 0.6]);
-  return (
-    <AbsoluteFill>
-      <Cam2D S={S} fx={fx} fy={interpolate(q, [0, 1], [930, 950])} rot={rot}><Plate value={v} frac={v / ETH0} /></Cam2D>
-    </AbsoluteFill>
-  );
-};
-const Shot4: React.FC<{ len: number }> = ({ len }) => {
-  const f = useCurrentFrame();
-  const t = interpolate(f, [0, len], [0, 1], clamp);
-  const q = t * 0.7 + out(t) * 0.3;
-  const S = interpolate(q, [0, 1], [1.12, 1.3]);
-  const rot = interpolate(q, [0, 1], [-0.8, 0.8]);
-  return (
-    <AbsoluteFill>
-      <Cam2D S={S} fx={interpolate(q, [0, 1], [500, 580])} fy={PLATE_C[1]} rot={rot}><Plate value={0} zero dim frac={0} /></Cam2D>
-    </AbsoluteFill>
-  );
-};
-
-/* =============================== scene =============================== */
+/* ---------------------------------------------------------------- scene */
 const Scene: React.FC<SceneProps> = (props) => {
   const total = props.durationInFrames ?? 163;
-  const cHanded = W(props, "handed", 0, 1.039);   // 31
-  const cWhole = W(props, "whole", 0, 1.871);     // 56
-  const c401 = W(props, "401,000", 0, 2.733);     // 82
-  const cGone = W(props, "gone", 0, 4.657);       // 140
-  const cMid = Math.round((c401 + cGone) / 2);    // 111
-  const cSigned = W(props, "really", 0, 0.394);
+  const fHanded = W(props, "handed", 0, 1.04);
+  const fTok = W(props, "401,000", 0, 2.73);
+  const fGone = W(props, "gone", 0, 4.66);
+  const cut2 = fHanded, cut3 = fTok - 4, cut3b = cut3 + 34, cut4 = fGone;
 
-  const shot2a: Shot = { from: [-0.6, 2.6, 16.5], to: [0.4, 2.3, 15.0], tFrom: [0.0, 1.5, 0], tTo: [0.2, 1.5, 0], fov: 34, len: cWhole - cHanded };
-  const shot2b: Shot = { from: [5.9, 1.0, 6.4], to: [4.1, 1.5, 5.2], tFrom: [2.0, 1.5, 0], tTo: [2.6, 1.5, 0], fov: 34, len: c401 - cWhole };
-
-  const ticks: number[] = [];
-  for (let k = c401 + 3; k < cGone - 2; k += 4) if (k !== cMid && k !== cMid + 1) ticks.push(k);
+  const shot2: Shot = { from: [1.0, 1.9, 12.6], to: [0.3, 1.7, 8.8], tFrom: [-0.1, 1.6, 0], tTo: [0, 1.6, 0], fov: 32, len: cut3 - cut2 };
+  const shot3a: Shot = { from: [3.0, 1.9, 11.2], to: [1.6, 2.1, 9.4], tFrom: [0, 2.3, 0.5], tTo: [0, 2.6, 0.8], fov: 32, len: cut3b - cut3 };
+  const shot3b: Shot = { from: [-3.0, 2.4, 10.4], to: [-1.6, 2.7, 9.2], tFrom: [0.3, 2.8, 1.0], tTo: [0, 3.0, 1.2], fov: 32, len: cut4 - cut3b };
+  const shot4: Shot = { from: [0.5, 1.6, 6.4], to: [0.2, 1.7, 9.0], tFrom: [0, 1.6, -0.6], tTo: [0, 1.6, 0], fov: 32, len: total - cut4 };
 
   return (
     <Shell props={props} tone="dark">
-      <Sequence from={0} durationInFrames={cHanded} layout="none"><Shot1 chipAt={Math.max(cSigned - 8, 4)} len={cHanded} /></Sequence>
-      <Sequence from={cHanded} durationInFrames={cWhole - cHanded} layout="none"><Shot2 shot={shot2a} start={cHanded} /></Sequence>
-      <Sequence from={cWhole} durationInFrames={c401 - cWhole} layout="none"><Shot2 shot={shot2b} start={cWhole} callAt={8} /></Sequence>
-      <Sequence from={c401} durationInFrames={cMid - c401} layout="none"><Shot3a start={c401} len={cMid - c401} /></Sequence>
-      <Sequence from={cMid} durationInFrames={cGone - cMid} layout="none"><Shot3b start={cMid} len={cGone - cMid} /></Sequence>
-      <Sequence from={cGone} durationInFrames={total - cGone} layout="none"><Shot4 len={total - cGone} /></Sequence>
+      <Sequence from={0} durationInFrames={cut2} layout="none"><ShotHex len={cut2} /></Sequence>
+      <Sequence from={cut2} durationInFrames={cut3 - cut2} layout="none"><Shot3D shot={shot2} start={cut2} /></Sequence>
+      <Sequence from={cut3} durationInFrames={cut3b - cut3} layout="none"><Shot3D shot={shot3a} start={cut3} /></Sequence>
+      <Sequence from={cut3b} durationInFrames={cut4 - cut3b} layout="none"><Shot3D shot={shot3b} start={cut3b} /></Sequence>
+      <Sequence from={cut4} durationInFrames={total - cut4} layout="none"><Shot3D shot={shot4} start={cut4} /></Sequence>
 
-      {/* SFX: whoosh on cuts, soft ticks under the draining balance, thud when the lock lands, silence on "gone" */}
-      {[cHanded, cWhole, c401, cMid].map((f, i) => <Sfx key={f} name="whoosh_soft" at={f} volume={i === 0 ? 0.3 : 0.25} />)}
-      {[3, 9, 15, 21].map((f) => <Sfx key={`ty${f}`} name="type" at={f} volume={0.18} />)}
-      <Sfx name="thud" at={T1 + 1} volume={0.45} />
-      {ticks.map((f) => <Sfx key={`t${f}`} name="tick" at={f} volume={0.12} />)}
+      {/* small grey counter ticks down while the tokens leave */}
+      <Sequence from={cut3} layout="none"><EthCounterGlobal start={cut3} end={fGone} /></Sequence>
 
+      <Sfx name="glint" at={6} volume={0.4} />
+      <Sfx name="click" at={cut2 + 2} volume={0.5} />
+      <Sfx name="whoosh_soft" at={cut2 + 8} volume={0.3} />
+      <Sfx name="sub_drop" at={fTok} volume={0.45} />
       <Disclaimer text={`Illustration · ${STORY.eth} ETH per NCC Group`} />
     </Shell>
+  );
+};
+
+const EthCounterGlobal: React.FC<{ start: number; end: number }> = ({ start, end }) => {
+  const f = useCurrentFrame() + start; // global frame
+  const t = interpolate(f, [start + 2, end + 6], [0, 1], clamp);
+  const e = t * t * (3 - 2 * t);
+  const raw = Math.round(401347 * (1 - e));
+  const v = f >= start + 2 ? Math.max(0, raw - (raw % 2)) : 401347;
+  const frameStep = Math.floor(f / 2); void frameStep;
+  const op = interpolate(f, [start, start + 6], [0, 1], clamp);
+  return (
+    <div style={{ position: "absolute", left: 0, right: 0, top: 1368, textAlign: "center", opacity: op, fontFamily: brand.body,
+      fontWeight: 600, fontSize: 40, letterSpacing: 3, color: "rgba(255,255,255,0.62)", fontVariantNumeric: "tabular-nums" }}>
+      {(f >= end + 6 ? 0 : v).toLocaleString("en-US")} <span style={{ fontSize: 24, letterSpacing: 6, color: "rgba(255,255,255,0.4)" }}>ETH</span>
+    </div>
   );
 };
 
