@@ -152,7 +152,7 @@ const BrowserShot: React.FC<{ shot: Shot2; from: number; callout?: { text: strin
 
 /* ---------------- 3D ---------------- */
 const SHOT_D: Shot = { len: 27, from: [-4.6, 2.4, 8.4], to: [3.8, 2.2, 8.8], tFrom: [0, 1.65, 0], tTo: [0, 1.65, 0], fov: 32 };
-const SHOT_E: Shot = { len: 27, from: [-1.6, 2.2, 6.6], to: [0.9, 1.7, 5.2], tFrom: [0, 0.6, -2], tTo: [0, 0.6, -3], fov: 32 };
+const SHOT_E: Shot = { len: 27, from: [-0.4, 2.7, 10.2], to: [0.9, 2.2, 8.8], tFrom: [0, 0.7, -1.5], tTo: [0, 0.7, -2.5], fov: 32 };
 const SHOT_F: Shot = { len: 26, from: [2.6, 1.9, -0.6], to: [1.4, 1.6, -1.8], tFrom: [0, 0.8, -4], tTo: [0, 0.8, -5], fov: 32 };
 const SPENDER: Vec3 = [0, 0.7, -5];
 const STACK_Z = 2, N_COINS = 11, COIN_R = 0.38;

@@ -194,7 +194,7 @@ const CardRow: React.FC = () => {
 /* =============================================================== shot 6: press the button =============================================================== */
 const PRESS = 22;
 const BTN: Vec3 = [0, 0.78, 0];
-const BtnShot: Shot = { from: [0.5, 1.0, 7.3], to: [0.15, 0.95, 5.9], tFrom: [0, 0.95, 0], tTo: [0, 0.8, 0], fov: 32, len: 32 };
+const BtnShot: Shot = { from: [0.5, 1.0, 9.6], to: [0.15, 0.95, 8.3], tFrom: [0, 1.0, 0], tTo: [0, 0.9, 0], fov: 32, len: 32 };
 const ButtonPress: React.FC = () => {
   const f = useCurrentFrame();
   const dip = interpolate(f, [PRESS, PRESS + 3, PRESS + 9], [0, 1, 0], { ...clamp, easing: Easing.out(Easing.quad) });
@@ -206,7 +206,7 @@ const ButtonPress: React.FC = () => {
       <SignCard glow position={[0, 1.25, 0]} lines={[{ text: "Confirm transaction", size: 54, weight: 700 }, { text: SAW[0], size: 50 }, { text: SAW[1], size: 44, color: "#8a8a8a" }]} />
       <group position={[BTN[0], BTN[1], 0.04 + 0.075 - dip * 0.04]}>
         <RoundedBox args={[1.99, 0.23, 0.15]} radius={0.075} smoothness={3}><Mat kind="accent" /></RoundedBox>
-        <mesh position={[0, 0, 0.076]}><planeGeometry args={[1.5, 0.375]} /><meshBasicMaterial map={tex} toneMapped={false} transparent /></mesh>
+        <mesh position={[0, 0, 0.076]}><planeGeometry args={[0.76, 0.19]} /><meshBasicMaterial map={tex} toneMapped={false} transparent /></mesh>
       </group>
       {ring > 0 && ring < 1 && (
         <mesh position={[0, BTN[1], 0.2]} scale={[1 + ring * 0.22, 1 + ring * 0.9, 1]}>
@@ -261,7 +261,7 @@ const Scene: React.FC<SceneProps> = (props) => {
         <Studio3D tone="dark" shadows={false} camera={{ from: [-2.2, 1.5, 9.6], target: [-2.2, 1.25, 0], fov: 32 }}><CardRow /></Studio3D>
       </Sequence>
       <Sequence from={CUT[5]} durationInFrames={Math.max(1, total - CUT[5])} layout="none">
-        <Studio3D tone="dark" shadows={false} accentRim camera={{ from: [0.5, 1.0, 7.3], target: [0, 0.95, 0], fov: 32 }}>
+        <Studio3D tone="dark" shadows={false} accentRim camera={{ from: [0.5, 1.0, 9.6], target: [0, 1.0, 0], fov: 32 }}>
           <ButtonPress />
         </Studio3D>
         <SignedCallout />

@@ -161,20 +161,20 @@ const Shot3a: React.FC<{ len: number }> = ({ len }) => {
 const Shot3b: React.FC<{ len: number }> = ({ len }) => {
   const f = useCurrentFrame();
   const t = f / len;
-  const q = t * 0.7 + out(t) * 0.3;
-  const S = interpolate(t, [0, 1], [1.5, 1.2]);
-  const fx = interpolate(q, [0, 1], [250, 790]);
-  const fy = 900;
+  const S = interpolate(t, [0, 1], [1.08, 1.0]);
+  const rot = interpolate(t, [0, 1], [2.2, -1.6]);
+  const fx = interpolate(t, [0, 1], [600, 500]);
+  const fy = 930;
   const bar = interpolate(f, [0, len - 3], [0.1, 1], { ...clamp, easing: out });
-  const at = w2s(790, 925, S, fx, fy, interpolate(t, [0, 1], [1.2, -1]));
+  const at = w2s(540, 1030, S, fx, fy, rot);
   return (
     <AbsoluteFill>
-      <Cam2D S={S} fx={fx} fy={fy} rot={interpolate(t, [0, 1], [1.2, -1])}>
-        <div style={{ position: "absolute", left: 60, top: 820, width: 960, textAlign: "center", fontFamily: brand.display, fontWeight: 800, fontSize: 118, letterSpacing: -2, lineHeight: 1, ...chromeFill(true), filter: "drop-shadow(0 0 30px rgba(255,128,0,0.4))", whiteSpace: "nowrap" }}>$494,000,000</div>
-        <div style={{ position: "absolute", left: 90, top: 975, width: 900, height: 14, borderRadius: 7, background: "rgba(255,255,255,0.08)" }} />
-        <div style={{ position: "absolute", left: 90, top: 975, width: 900 * bar, height: 14, borderRadius: 7, background: `linear-gradient(90deg, #B85400, ${ORANGE})`, boxShadow: "0 0 24px rgba(255,128,0,0.7)" }} />
+      <Cam2D S={S} fx={fx} fy={fy} rot={rot}>
+        <div style={{ position: "absolute", left: 0, top: 800, width: 1080, textAlign: "center", fontFamily: brand.display, fontWeight: 800, fontSize: 200, letterSpacing: -5, lineHeight: 1, ...chromeFill(true), filter: "drop-shadow(0 0 36px rgba(255,128,0,0.45))", whiteSpace: "nowrap" }}>$494M</div>
+        <div style={{ position: "absolute", left: 160, top: 1040, width: 760, height: 14, borderRadius: 7, background: "rgba(255,255,255,0.08)" }} />
+        <div style={{ position: "absolute", left: 160, top: 1040, width: 760 * bar, height: 14, borderRadius: 7, background: `linear-gradient(90deg, #B85400, ${ORANGE})`, boxShadow: "0 0 24px rgba(255,128,0,0.7)" }} />
       </Cam2D>
-      <Callout text="DRAINED IN ONE YEAR" at={[Math.min(Math.max(at[0], 120), 960), 1095]} label={[Math.min(Math.max(at[0], 220), 860), 1230]} startFrame={4} />
+      <Callout text="DRAINED IN ONE YEAR" at={[at[0] + 120, at[1] + 28]} label={[at[0] + 120, at[1] + 190]} startFrame={4} />
     </AbsoluteFill>
   );
 };
@@ -212,7 +212,7 @@ const Shot4a: React.FC<{ len: number; start: number; litStart: number; litEnd: n
   const p = interpolate(g, [litStart, litEnd], [0, 1], { ...clamp, easing: Easing.bezier(0.3, 0.1, 0.5, 1) });
   return (
     <AbsoluteFill>
-      <Keep><Cam2D S={Math.exp(interpolate(q, [0, 1], [Math.log(2.6), Math.log(1.08)]))} fx={interpolate(q, [0, 1], [250, 540])} fy={interpolate(q, [0, 1], [640, 960])} rot={interpolate(t, [0, 1], [-2, 0])}>
+      <Keep><Cam2D S={Math.exp(interpolate(q, [0, 1], [Math.log(1.7), Math.log(1.08)]))} fx={interpolate(q, [0, 1], [250, 540])} fy={interpolate(q, [0, 1], [640, 960])} rot={interpolate(t, [0, 1], [-2, 0])}>
         <Field p={p} />
       </Cam2D></Keep>
       <Wallets g={g} start={litStart} end={litEnd} />
