@@ -1,137 +1,147 @@
-# 06 — Direction: "$1.5B, and every signature was real"
+# 06 — Direction v2: "$1.5B, and every signature was real"
 
-Run `2026-11-09-bybit-every-signature-real` · 12 scenes · ~59 s · 1080×1920 · 30 fps · v3.1 (read
-`references/v3.1-pacing-and-story.md`). VO is final (`audio/vo/<SID>.mp3`, word timings in
-`scenes/<SID>/props.json` → `props.vo.words`). Captions are automatic. **Do not touch** VO, captions, `_shared.tsx`,
-`registry.ts`, the kit. Last video in this look: `studio/src/scenes/r_2026_10_29_91m_twelve_words/` (S01 hook,
-S06 phone/chat UI, S09 browser page, S05 big-number/bars) — reuse its techniques, it was approved.
+Run `2026-11-09-bybit-every-signature-real` · 12 scenes · ~59 s · 1080×1920 · 30 fps. **Version 2.** Cooper on v1:
+"script is good, but the video is jittery, and you copied the exact same scenes/screens from the last video instead of
+just keeping the quality." So: same VO, captions, look and quality bar — **a new visual world and smooth motion.**
+Rewrite your scene **from scratch** (don't reuse the existing `<SID>.tsx`, which is v1). Do not touch VO, captions,
+`_shared.tsx`, `registry.ts`, the kit.
 
-## Global rules
-- Keep the v3 look exactly: dark charcoal studio, graphite glass objects, ONE orange glowing system per shot, tiny
-  tracked-caps `Callout`s with leader lines, grey `Disclaimer` bottom-left, grain + vignette (Shell adds these).
-- **Hard cut every 0.6–1.5 s** (hook S01: every 0.5–0.8 s). Nothing holds still > 1 s; objects arrive in 4–8 frames
-  with ease-out; camera always travelling. No zoom punches, flashes, whip pans, shakes, glitch, dissolves.
-- **Land on the word** (`W(props, "word")`). SFX via `<Sfx/>`: whoosh_soft 0.25–0.35 on most cuts, tick/type
-  0.2–0.3, thud/sub_drop 0.5–0.65 only on beats named below. Never two on one frame.
-- Safe zone: own visuals inside x 70–1010, y 380–1500; caption band y 200–360 stays clear (3D objects too — keep
-  card tops below y≈380 on screen). Disclaimer must not sit on top of an object.
-- **2D for UI, numbers, documents, browser, chat (fast to render); 3D for the hero `SignCard`, coins, padlocks.**
-- No real logos or brand UI (no Bybit, Safe, MetaMask, Ethereum logos). Names may appear as plain text in
-  disclaimers/name cards only. Made-up URLs end in `.example`. No real people shown.
-- Big chrome numbers: Orbitron ~80–90 px max per line, or the short form (`$1.5B`) — never overflow the safe zone.
+## 1. Smooth motion (non-negotiable)
+- **2D layers move only through `<Cam2D shot={...}>`** from `_shared` (sub-pixel; plain CSS translate/scale steps 1 px at
+  a time = the jitter). Never animate `translate()`/`scale()`/`top`/`left` on text slowly by hand. Entry animations
+  (an element sliding/scaling in over 4–10 frames) are fine.
+- Every camera move is **eased** (CamRig and Cam2D already ease) and **moderate**: an object should cross the screen in
+  no less than ~0.6 s. Nothing whips past the lens; no strobing streams of objects at >30 px/frame.
+- Cuts every **0.8–1.8 s** (hook: 0.6–0.9 s). A shot can be one smooth, continuous move — let it breathe.
+- Counters: tabular digits (`fontVariantNumeric: "tabular-nums"`), change at most every 2 frames.
+- Still banned: zoom punches, flashes, shakes, whip pans, glitch, dissolves.
 
-## The world (`studio/src/scenes/r_2026_11_09_bybit_every_signature_real/_shared.tsx`)
-- `SignCard` — graphite glass slab 2.4 × 1.5 × 0.08 with a drawn request: `lines` (title + rows), optional
-  `button` ("Confirm" / "Sign"), `glow` (orange border + orange body edges), `dim`. If it stands on the floor its centre
-  y must be ≥ 0.85 (else the bottom sinks into the floor). Full card in portrait ≈ camera distance 6.5–7.5 at fov 32.
-- `SAW` (what the screen showed) / `SIGNED` (what was really signed) / `HEX` (random calldata) / `STORY`
-  ($1.5B, 401,347 ETH, 21 FEB 2025, $494M, 332,000).
-- `CamRig`/`project`, `W`, `Sfx`, `rand` as before. Kit: `Shell`, `Studio3D` (`shadows={false}` unless needed),
-  `Coin`, `CoinStack`, `ArcTravel`, `Phone`, `Padlock`, `Plinth`, `Callout`, `Disclaimer`, `ChromeNumber`, `Counter`,
-  `NameCard`, `Typewriter`, `ShareSheetEnd`.
+## 2. New visual world: INK & SIGNATURES
+Same house look (dark charcoal studio, graphite/chrome, ONE orange glowing system per shot, tracked-caps `Callout`s,
+grey `Disclaimer`, grain + vignette from Shell, captions top). **Orange = ink / signatures** in this video.
+Props in `_shared.tsx` (read it): `Pen` (chrome fountain pen, nib at origin pointing down, `capped` 0..1),
+`InkStroke` (3D glowing ink tube that draws along `points`, e.g. `SIG_POINTS`), `InkPath2D` (2D SVG glowing ink path
+drawn by `progress`; `SIG_D` = a signature), `SignCard` (graphite glass request card), `VaultDoor` (multisig vault with
+3 keyholes, `keys` 0..3 turned, `open` 0..1), `Token` (hex token), `GiftBox` (`open` 0..1), `Magnifier`,
+`PaperStack` (tower of signed sheets, `count`, `grow` 0..1), `Keycap` (big physical CONFIRM key, `press` 0..1),
+`KeyObj` (chrome key), plus `CamRig`/`project`/`W`/`Sfx`/`rand`, `STORY`/`SAW`/`SIGNED`/`HEX`.
 
-## Scenes (frames = 30 fps from scene start; use W() for exact word frames)
+**Banned (these were the $91M video's look — do not use):** `Coin`, `CoinStack`, `ArcTravel`, `Padlock`, `Phone`,
+`ShareSheetEnd`, balance plates ticking down, chrome `$` number slams on black, dot/wallet grids, camera-roll grids,
+chat bubbles/notifications, browser pages with input boxes, word tiles. If unsure: if it looks like the last video,
+don't.
+
+Text on screen: Outfit (`brand.body`); numbers can be Orbitron, ≤ 90 px. Safe zone x 70–1010, y 380–1500; caption band
+y 200–360 clear (mask/fade 2D layers above y 380 if they pan). Disclaimer never on top of an object. No real logos,
+brands or people; made-up URLs end in `.example`.
+
+## 3. Scenes (word frames from `W(props, "word")`)
 
 ### S01 — HOOK (5.6 s) · "The biggest crypto theft ever. $1.5 billion. And every signature was real."
-Six hard cuts, all moving on frame 0, orange visible on frame 0 (it's the cover). Orange system = the money / the sign.
-1. f0–18 ("The biggest") 3D: extreme low macro on a towering `CoinStack` column (orange-topped chrome coins), top
-   coins already lifting off and streaming past the lens; camera rising fast.
-2. f18–36 ("crypto theft") 2D: a vault-like cold-wallet balance plate, big mono `401,347.00 ETH` ticking DOWN fast
-   in orange, grey label `COLD WALLET`. Callout `COLD WALLET`.
-3. f36–54 ("ever.") 3D: a wide shot of a single orange coin river arcing out of a dark plinth into the void (`ArcTravel`
-   with many staggered coins). `whoosh_soft`.
-4. f54–95 ("$1.5 billion.") **the slam**: 2D giant chrome `$1.5B` (or `$1,500,000,000` on two lines ≤ 90 px) lands in
-   5 frames centre, camera drifting; grey line under it `401,347 ETH · 21 FEB 2025`. `sub_drop` 0.6 on land.
-5. f95–135 ("And every") 3D: three `SignCard`s in a row ("Confirm transaction" / "Transfer" / button "Confirm"),
-   camera tracking fast along them; a small orange ✓ stamp lands on each card in turn (4 frames apart). `click`.
-6. f135–end ("signature was real.") macro on the last card's orange "Confirm" button being pressed (button dips),
-   callout `SIGNED ✓`. `thud` 0.45 on "real".
-**Big text hook layer** f0–40 (y≈1150, x=90, Outfit 800 ~84 px): `$1.5 BILLION.` (white) / `EVERY SIGNATURE REAL.`
-(orange, appears f10). Gone hard on cut 3. Disclaimer: "Illustration · amount per FBI, 26 Feb 2025".
+5–6 cuts, smooth; frame 0 already shows orange ink moving (it's the cover).
+1. ("The biggest") 3D macro, low angle: the chrome `Pen` nib gliding left→right across a dark glass surface, laying a
+   glowing `InkStroke` behind it (the stroke draws as the pen moves; camera tracks with the nib).
+2. ("crypto theft ever.") 3D: the `VaultDoor`, heavy and closed, camera pushing in; its three keyholes light orange one
+   by one (keys 0→3 over ~20 frames) — each with a `click`.
+3. ("$1.5 billion.") 2D black: **"$1.5B" handwritten in glowing ink** with `InkPath2D` (you write the stroke paths for
+   "$", "1", ".", "5", "B" — bold handwriting, ~620 px wide, centred y≈900), drawn over ~25 frames, slow Cam2D push;
+   grey small caps under it `401,347 ETH · 21 FEB 2025`. `sub_drop` 0.55 when the "B" completes.
+4. ("And every") 3D: three `SignCard`s standing in a row on the floor, camera dollying along them.
+5. ("signature was real.") a glowing `InkStroke` signature writes itself across the front card's signature line;
+   callout `SIGNED`. `thud` 0.4 on "real".
+**Big text hook** f0–40 (y≈1150, x=90, Outfit 800 ~84 px): `$1.5 BILLION.` (white) / `EVERY SIGNATURE REAL.` (orange,
+from f10). Gone at cut 3. Disclaimer: "Illustration · amount per FBI, 26 Feb 2025".
 
 ### S02 (3.9 s) · "Nobody stole their keys. The exchange's own signers approved it."
-1. ("Nobody stole their keys.") 3D: a chrome `Padlock`, closed and intact, camera orbiting; callout `KEYS: SAFE`.
-2. ("The exchange's own signers") 2D: three signer slots in a row (generic avatar circles, labels `SIGNER 1/2/3`,
-   no faces) each with a hardware-wallet-like small device icon; camera sliding.
-3. ("approved it.") each slot gets an orange `APPROVED` check in sequence (3 frames apart). Callout `3 OF 3 APPROVED`.
-Disclaimer: "Illustration · multisig signers (simplified)".
+1. ("Nobody stole their keys.") 3D: three chrome `KeyObj`s hanging in a row from thin wires, intact and still, slow
+   orbit; callout `KEYS: UNTOUCHED`.
+2. ("The exchange's own signers") 3D: three `Pen`s standing nib-down over three `SignCard`s laid flat (top-down-ish
+   angle), camera rising.
+3. ("approved it.") the three pens sign in sequence (each card gets a short `InkStroke` signature, 6 frames apart);
+   callout `3 OF 3 SIGNED`. Disclaimer: "Illustration · multisig signers (simplified)".
 
 ### S03 (3.2 s) · "Because on their screens, it looked like a routine transfer."
-1. ("Because on their screens,") 3D: `SignCard` with `SAW` lines (title "Confirm transaction", rows SAW[0], SAW[1])
-   and button "Confirm", camera pushing in fast from a high angle.
-2. ("routine transfer.") macro on "Routine internal transfer" text row; callout `LOOKS NORMAL`. Card is grey (not
-   glowing) — orange is only the callout dot/line here.
+1. ("Because on their screens,") 3D: one `SignCard` (SAW lines: "Confirm transaction" / SAW[0] / SAW[1], button
+   "Confirm") floating at eye level, soft reflection below, camera arcing round it slowly.
+2. ("routine transfer.") 2D macro of the text "Routine internal transfer" with a neat grey ✓, Cam2D slide; callout
+   `LOOKS NORMAL`. Grey world — the only orange is the callout.
 
 ### S04 (6.0 s) · "Hackers had slipped code into the wallet's website. The screen showed one transaction. The signature said another."
-The mechanism. Orange system = the injected code / the real transaction.
-1. ("Hackers had slipped code") 2D: a dark browser window (URL `wallet-app.example`), code view; an orange block of
-   JavaScript lines slides into the middle of grey code (typewriter fast). Callout `INJECTED CODE`. `type`.
-2. ("into the wallet's website.") pull back: the code sits behind the friendly web page ("Confirm transaction" UI);
-   page renders over it, orange code still glowing through at low opacity.
-3. ("The screen showed one transaction.") 3D: grey `SignCard` with SAW lines, front, camera left-of-centre.
-4. ("The signature said another.") the card **flips** (rotate Y 180° in 8 frames) — the back is an orange-glowing
-   `SignCard` with SIGNED lines (title "Actually signing", rows SIGNED[0], SIGNED[1], SIGNED[2]); `whoosh_soft`.
-   Callout `WHAT THEY REALLY SIGNED`.
-Disclaimer: "Illustration · per NCC Group analysis, Mar 2025".
+**The reveal — an exploded-view of layers (magnified cutaway).**
+1. ("Hackers had slipped code") 3D: a stack of three thin glass sheets floating apart in depth (exploded view): back =
+   the real request, middle = a sheet of orange code lines (draw as a canvas texture of mono code, orange), front = the
+   friendly website sheet "Confirm transaction · Routine transfer". Camera at a 3/4 angle, slowly orbiting. Callout
+   `INJECTED CODE` on the orange middle sheet.
+2. ("into the wallet's website.") the sheets slide together into one card as the camera comes round to the front:
+   you now see only the friendly front.
+3. ("The screen showed one transaction.") front view, grey card; callout `WHAT THEY SAW`.
+4. ("The signature said another.") the front sheet peels off sideways (rotates away on its left edge) revealing the
+   **orange-glowing real card** behind (SIGNED lines: "Actually signing" / SIGNED[0] / SIGNED[1] / SIGNED[2]);
+   `whoosh_soft`; callout `WHAT THEY SIGNED`. Disclaimer: "Illustration · per NCC Group analysis, Mar 2025".
 
 ### S05 (5.4 s) · "What they really signed handed over the whole wallet. 401,000 ether, gone."
-1. ("What they really signed") 2D macro: raw calldata `HEX` scrolling in mono, unreadable, grey, with
-   `delegatecall` highlighted orange as the camera slides along. Callout `UNREADABLE`.
-2. ("handed over the whole wallet.") 3D: a big vault-like slab labelled `COLD WALLET` on a plinth; an orange key/lock
-   icon detaches from it and slides away to a dark silhouette slab labelled `ATTACKER` (no people). `thud` 0.45.
-3. ("401,000 ether,") 2D: Counter `401,347 ETH` in chrome Orbitron (≤ 90 px) ticking DOWN to 0 fast, orange.
-4. ("gone.") the balance plate reads `0.00 ETH`, dim; camera keeps pushing; silence.
+1. ("What they really signed") 2D: the HEX calldata as a long ribbon of mono text curving in perspective (Cam2D slow
+   push), grey; `delegatecall` glows orange in it. Callout `UNREADABLE TO HUMANS`.
+2. ("handed over the whole wallet.") 3D: the `VaultDoor` swings open (open 0→1 over ~25 frames), camera pushing in.
+3. ("401,000 ether,") 3D: a stream of orange `Token`s floating out of the open vault in a smooth, gentle arc into the
+   dark (moderate speed, staggered, ~40 tokens); small grey counter `401,347 ETH` (tabular) bottom-centre ticking down.
+4. ("gone.") empty vault interior, last token drifting away, camera holds then eases back; silence.
 Disclaimer: "Illustration · 401,347 ETH per NCC Group".
 
 ### S06 (5.7 s) · "Here's the part about you. Every time you tap confirm, you sign a message you probably can't read."
-The turn — from the exchange to the viewer.
-1. ("Here's the part about you.") 2D: phone (generic dark wallet app) rises into frame, camera tilting; the screen
-   shows a generic "Signature request" sheet from `claim-airdrop.example`.
-2. ("Every time you tap confirm,") macro: a thumb-press ripple on the orange "Confirm" button (ripple ring only,
-   no hand). `click`.
-3. ("you sign a message") 2D: the "Message" field expands into a long mono blob (EIP-712-ish fake text / hex), grey.
-4. ("you probably can't read.") camera pushes into the unreadable text until it fills the frame; callout `???`
-   in orange. Disclaimer: "Illustration · made-up site".
+The turn — now it's the viewer's button.
+1. ("Here's the part about you.") 3D: the big `Keycap` (CONFIRM, orange) on the floor in a pool of light, camera
+   descending toward it.
+2. ("Every time you tap confirm,") macro: the keycap presses down (press 0→1→0, 6 frames down, 8 up) — `click`.
+   Callout `YOU, EVERY DAY`.
+3. ("you sign a message") as it presses, a glowing `InkStroke` signature writes itself in the air above the key.
+4. ("you probably can't read.") 2D: the signature dissolves into a dense wall of grey mono message text
+   (EIP-712-ish JSON), Cam2D push in until it's unreadable; one orange `???` callout.
 
 ### S07 (5.7 s) · "That's why fake airdrop sites just ask you to sign. One signature can let them spend your tokens."
-1. ("That's why fake airdrop sites") 2D browser: big "🎁 Claim your airdrop" page (`claim-airdrop.example`), confetti
-   shapes in greys, an orange "Claim" button. Callout `FAKE AIRDROP`.
-2. ("just ask you to sign.") the button press opens a "Signature request" sheet — no gas fee, just "Sign". `click`.
-3. ("One signature") 3D: one orange `SignCard` (title "Permit", rows "Spender: 0x9f…e2 (unknown)",
-   "Amount: Unlimited") floating; camera orbiting.
-4. ("can let them spend your tokens.") 3D/2D: chrome coins slide off a stack toward the unknown spender, in a line.
-   Callout `PERMISSION TO SPEND`. Disclaimer: "Illustration · simplified".
+1. ("That's why fake airdrop sites") 3D: a `GiftBox` on a plinth, glowing ribbon, camera circling; small grey label
+   on a tag `claim-airdrop.example`. Callout `FREE AIRDROP?`.
+2. ("just ask you to sign.") the lid lifts (open 0→1) and inside, instead of a gift, a single `SignCard` rises
+   (title "Sign to claim", button "Sign").
+3. ("One signature") the card flips to show its real fine print, glowing orange: "Permit" / "Spender: 0x9f…e2 (unknown)" /
+   "Amount: UNLIMITED".
+4. ("can let them spend your tokens.") a short chain of `Token`s slides along the floor out of frame toward the
+   spender; callout `PERMISSION TO SPEND` (placed clear of the card). Disclaimer: "Illustration · simplified".
 
 ### S08 (8.4 s) · "In 2024, signature scams drained $494 million from 332,000 wallets."
-Proof beat (real, sourced). Orange system = the totals.
-1. ("In 2024,") 2D: `NameCard` style document plate: "Scam Sniffer · 2024 Web3 phishing report" (text only, no logo),
-   a grey line chart shape rising.
-2. ("signature scams drained") a column of many small signature cards (2D) stacking fast, each with a tiny orange
-   tick — dozens per second.
-3. ("$494 million") giant chrome `$494M` lands centre (sub_drop 0.55), camera drift.
-4. ("from 332,000 wallets.") pull back: a dense dot field / grid of tiny wallet icons fills in to `332,000` (Counter
-   0→332,000 in orange under it). Hold ≥ 0.5 s.
+Proof beat (real). Orange = the signatures on the paper.
+1. ("In 2024,") 2D document plate: "Scam Sniffer · 2024 Web3 phishing report" (text only), Cam2D slow slide.
+2. ("signature scams drained") 3D: a single signed sheet lands on the floor, then sheets pile up fast into a tower
+   (`PaperStack` grow 0→1, count ~400), camera starting low.
+3. ("$494 million") 2D overlay over the tower shot: "$494M" in Outfit 800 ~150 px (white with orange underline drawn
+   as an `InkPath2D` stroke) — NOT a chrome slam. `sub_drop` 0.5.
+4. ("from 332,000 wallets.") the camera rises and pulls back: a whole city of paper towers (6–9 `PaperStack`s at
+   different heights) receding into the dark; tabular counter `332,000 WALLETS` below, clean dark backing.
 Disclaimer: "Source: Scam Sniffer, 2024 report (Jan 2025)".
 
 ### S09 (3.7 s) · "It's why you check what your wallet says, not what the website says."
-1. ("It's why you check what your wallet says,") 3D: a small hardware-wallet-like device / phone on a plinth whose
-   screen shows the true details (orange: "Change wallet logic"); camera pushing in. Callout `YOUR WALLET`.
-2. ("not what the website says.") cut to a 2D browser page saying "Routine transfer ✓" (grey) — an orange strike line
-   draws through it in 4 frames. Callout `WEBSITE`. Disclaimer: "Illustration".
+1. ("It's why you check what your wallet says,") 3D: a small hardware-wallet-like device (a graphite rounded slab with
+   a screen — build from RoundedBox + a canvas texture reading "Change wallet logic" in orange); the `Magnifier` glides
+   over its screen, magnifying the orange line. Callout `YOUR WALLET`.
+2. ("not what the website says.") the camera pulls back to reveal a big grey `SignCard` ("Routine transfer ✓") behind
+   it; an orange `InkPath2D` strike-through draws across that card's text (2D overlay aligned to it). Callout `WEBSITE`.
+Disclaimer: "Illustration".
 
 ### S10 (4.0 s) · "And if it says unlimited, or you can't tell what it does, don't sign."
-1. ("And if it says unlimited,") 2D macro on an approval row `Amount: UNLIMITED`, "UNLIMITED" in orange, camera sliding.
-2. ("or you can't tell what it does,") the HEX blob again, blurred grey, with a `?` callout.
-3. ("don't sign.") 3D: a `SignCard` with button "Sign" — the card goes `dim` and a chrome `Padlock` drops onto it
-   (`thud` 0.5). Callout `DON'T SIGN`.
+1. ("And if it says unlimited,") 2D macro: a fine-print row "Amount: UNLIMITED", "UNLIMITED" underlined with an orange
+   ink stroke; Cam2D slide.
+2. ("or you can't tell what it does,") 3D: the `Pen` hovering over a `SignCard`'s signature line, nib trembling a tiny
+   amount (≤ 0.01 units — subtle, smooth sine, not jittery).
+3. ("don't sign.") the pen lifts away and its cap slides on (`capped` 0→1, `click` on close); the card's line stays
+   empty. Callout `DON'T SIGN`.
 
 ### S11 (3.4 s) · "Hackers don't need your keys. They just need your signature."
-Twist back to the hook's world.
-1. ("Hackers don't need your keys.") 3D: the intact chrome padlock from S02, grey, camera orbiting; callout `KEYS`.
-2. ("They just need your signature.") hard cut: the orange "Confirm" button macro from S01, pressed once, coins
-   streaming away behind it (callback). Callout `SIGNATURE`.
+1. ("Hackers don't need your keys.") 3D: the three hanging `KeyObj`s from S02, now `dim`, slow drift; callout `KEYS`.
+2. ("They just need your signature.") the glowing `InkStroke` signature from the hook writes itself large across the
+   frame in front of the dim keys, camera easing in. Callout `SIGNATURE`.
 
 ### S12 — CTA (3.8 s) · "Send this to someone who taps confirm without reading."
-`ShareSheetEnd` (handle `dynkeducation`) rises on "Send this", contact picked ~f26. Before it rises (f0–10) show the
-orange "Confirm" button being tapped on a phone, so the CTA names the behaviour. Hold the sheet with a slow drift.
-No disclaimer.
+Not the share sheet. 2D, black: a `SignCard`-style request card (2D version is fine) titled "Send this to…", one line
+"someone who taps confirm without reading", and an orange button "Send". On "Send this" the card rises in; on "confirm"
+an orange `InkPath2D` signature writes across the card's signature line; small handle `@dynkeducation` under the card.
+Slow Cam2D drift, hold ≥ 0.6 s at the end. No disclaimer.
