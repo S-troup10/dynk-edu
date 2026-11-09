@@ -180,7 +180,7 @@ const Shot3b: React.FC<{ len: number }> = ({ len }) => {
 };
 
 /* ============================ shot 4: 332,000 wallets ============================ */
-const DOT = { cols: 30, rows: 34, pitch: 28, x0: 120, y0: 420 };
+const DOT = { cols: 30, rows: 30, pitch: 27, x0: 148, y0: 425 };
 const NDOT = DOT.cols * DOT.rows;
 const THR = Array.from({ length: NDOT }, (_, i) => rand(i * 1.7 + 4));
 const Field: React.FC<{ p: number }> = ({ p }) => (
@@ -212,7 +212,7 @@ const Shot4a: React.FC<{ len: number; start: number; litStart: number; litEnd: n
   const p = interpolate(g, [litStart, litEnd], [0, 1], { ...clamp, easing: Easing.bezier(0.3, 0.1, 0.5, 1) });
   return (
     <AbsoluteFill>
-      <Keep><Cam2D S={Math.exp(interpolate(q, [0, 1], [Math.log(2.6), Math.log(1.08)]))} fx={interpolate(q, [0, 1], [250, 540])} fy={interpolate(q, [0, 1], [640, 840])} rot={interpolate(t, [0, 1], [-2, 0])}>
+      <Keep><Cam2D S={Math.exp(interpolate(q, [0, 1], [Math.log(2.6), Math.log(1.08)]))} fx={interpolate(q, [0, 1], [250, 540])} fy={interpolate(q, [0, 1], [640, 820])} rot={interpolate(t, [0, 1], [-2, 0])}>
         <Field p={p} />
       </Cam2D></Keep>
       <Wallets g={g} start={litStart} end={litEnd} />
@@ -226,10 +226,10 @@ const Shot4b: React.FC<{ len: number; start: number; litStart: number; litEnd: n
   const p = interpolate(g, [litStart, litEnd], [0, 1], { ...clamp, easing: Easing.bezier(0.3, 0.1, 0.5, 1) });
   const S = interpolate(t, [0, 1], [1.07, 1.0]);
   const rot = interpolate(t, [0, 1], [0.5, -0.4]);
-  const at = w2s(DOT.x0 + 22 * DOT.pitch, DOT.y0 + 26 * DOT.pitch, S, 540, 840, rot);
+  const at = w2s(DOT.x0 + 22 * DOT.pitch, DOT.y0 + 24 * DOT.pitch, S, 540, 820, rot);
   return (
     <AbsoluteFill>
-      <Keep><Cam2D S={S} fx={540} fy={840} rot={rot}><Field p={p} /></Cam2D></Keep>
+      <Keep><Cam2D S={S} fx={540} fy={820} rot={rot}><Field p={p} /></Cam2D></Keep>
       <Wallets g={g} start={litStart} end={litEnd} />
       <Callout text="WALLETS DRAINED" at={at} label={[760, 1230]} startFrame={14} />
     </AbsoluteFill>
