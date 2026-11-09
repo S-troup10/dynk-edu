@@ -1,19 +1,59 @@
-// Scene: 2026-11-09-bybit-every-signature-real S03
-// STUB (v2). The composer for this scene replaces the body. Read references/style-0x100x.md first.
-// Rules: Shell tone dark|light · one subject per shot · ONE orange accent · camera always slowly moving ·
-// small type (whisper captions are automatic) · land objects on their VO words (props.vo.words[i].start * 30).
-// Worked examples: ../_demo_v2/S01..S05.tsx
+// S03 "Because on their screens, it looked like a routine transfer." — what the signers SAW (grey card, no glow).
 import React from "react";
-import { Shell, Studio3D, CoinStack, Enter, type SceneProps } from "../../kit";
+import { Sequence } from "remotion";
+import { Shell, Studio3D, Callout, Disclaimer, type SceneProps } from "../../kit";
+import { SignCard, CamRig, project, Sfx, W, SAW, type Shot } from "./_shared";
 
-const Scene: React.FC<SceneProps> = (props) => (
-  <Shell props={props} tone="dark">
-    <Studio3D tone="dark" camera={{ from: [0, 2.4, 12], to: [0, 2.1, 10], target: [0, 1, 0] }}>
-      <Enter at={6}>
-        <CoinStack count={7} accentTop />
-      </Enter>
-    </Studio3D>
-  </Shell>
+const LINES = [
+  { text: "Confirm transaction", size: 56, weight: 700 },
+  { text: SAW[0], size: 46, color: "#cfcfcf" },
+  { text: SAW[1], size: 40, color: "#a8a8a8" },
+  { text: SAW[2], size: 44, weight: 700 },
+];
+const ROW: [number, number, number] = [-0.1, 1.265, 0.05];
+
+// A: high angle, pushing in fast
+const A: Shot = { from: [1.6, 4.6, 9.2], to: [0.5, 2.4, 6.6], tFrom: [0, 1.2, 0], tTo: [0, 1.25, 0], fov: 32, len: 28 };
+// B: low angle sliding across the face
+const B: Shot = { from: [-3.4, 0.9, 6.6], to: [-1.3, 1.1, 5.2], tFrom: [0.2, 1.2, 0], tTo: [0, 1.25, 0], fov: 32, len: 32 };
+// C: macro on the "Routine internal transfer" row
+const C: Shot = { from: [0.9, 1.7, 3.0], to: [0.3, 1.4, 2.1], tFrom: [0, 1.3, 0], tTo: [-0.1, 1.27, 0], fov: 32, len: 37 };
+
+const Card: React.FC = () => (
+  <SignCard lines={LINES} button="Confirm" position={[0, 1.2, 0]} />
 );
+
+const Scene: React.FC<SceneProps> = (props) => {
+  const bAt = 28, cAt = 60;
+  const routine = W(props, "routine", 0, 2.33);
+  const [px, py] = project(C, routine - cAt + 6, ROW);
+  return (
+    <Shell props={props} tone="dark">
+      <Sequence from={0} durationInFrames={bAt} layout="none">
+        <Studio3D tone="dark" shadows={false} camera={{ from: A.from, target: A.tFrom, fov: A.fov }}>
+          <CamRig shot={A} />
+          <Card />
+        </Studio3D>
+      </Sequence>
+      <Sequence from={bAt} durationInFrames={cAt - bAt} layout="none">
+        <Studio3D tone="dark" shadows={false} camera={{ from: B.from, target: B.tFrom, fov: B.fov }}>
+          <CamRig shot={B} />
+          <Card />
+        </Studio3D>
+      </Sequence>
+      <Sequence from={cAt} durationInFrames={props.durationInFrames - cAt} layout="none">
+        <Studio3D tone="dark" shadows={false} camera={{ from: C.from, target: C.tFrom, fov: C.fov }}>
+          <CamRig shot={C} />
+          <Card />
+        </Studio3D>
+        <Callout text="LOOKS NORMAL" at={[Math.min(Math.max(px, 120), 960), py + 30]} label={[760, Math.max(py + 190, 760)]} startFrame={routine - cAt + 4} accent size={28} />
+      </Sequence>
+      <Sfx name="whoosh_soft" at={bAt} volume={0.3} />
+      <Sfx name="whoosh_soft" at={cAt} volume={0.3} />
+      <Sfx name="tick" at={routine + 4} volume={0.25} />
+      <Disclaimer text="Illustration · what the signing screen showed (simplified)" />
+    </Shell>
+  );
+};
 
 export default Scene;
