@@ -212,7 +212,7 @@ const Shot4a: React.FC<{ len: number; start: number; litStart: number; litEnd: n
   const p = interpolate(g, [litStart, litEnd], [0, 1], { ...clamp, easing: Easing.bezier(0.3, 0.1, 0.5, 1) });
   return (
     <AbsoluteFill>
-      <Keep><Cam2D S={Math.exp(interpolate(q, [0, 1], [Math.log(2.6), Math.log(1.08)]))} fx={interpolate(q, [0, 1], [250, 540])} fy={interpolate(q, [0, 1], [640, 820])} rot={interpolate(t, [0, 1], [-2, 0])}>
+      <Keep><Cam2D S={Math.exp(interpolate(q, [0, 1], [Math.log(2.6), Math.log(1.08)]))} fx={interpolate(q, [0, 1], [250, 540])} fy={interpolate(q, [0, 1], [640, 960])} rot={interpolate(t, [0, 1], [-2, 0])}>
         <Field p={p} />
       </Cam2D></Keep>
       <Wallets g={g} start={litStart} end={litEnd} />
@@ -226,12 +226,12 @@ const Shot4b: React.FC<{ len: number; start: number; litStart: number; litEnd: n
   const p = interpolate(g, [litStart, litEnd], [0, 1], { ...clamp, easing: Easing.bezier(0.3, 0.1, 0.5, 1) });
   const S = interpolate(t, [0, 1], [1.07, 1.0]);
   const rot = interpolate(t, [0, 1], [0.5, -0.4]);
-  const at = w2s(DOT.x0 + 22 * DOT.pitch, DOT.y0 + 24 * DOT.pitch, S, 540, 820, rot);
+  const at = w2s(DOT.x0 + 22 * DOT.pitch, DOT.y0 + 24 * DOT.pitch, S, 540, 960, rot);
   return (
     <AbsoluteFill>
-      <Keep><Cam2D S={S} fx={540} fy={820} rot={rot}><Field p={p} /></Cam2D></Keep>
+      <Keep><Cam2D S={S} fx={540} fy={960} rot={rot}><Field p={p} /></Cam2D></Keep>
       <Wallets g={g} start={litStart} end={litEnd} />
-      <Callout text="WALLETS DRAINED" at={at} label={[760, 1230]} startFrame={14} />
+      <Callout text="WALLETS DRAINED" at={at} label={[905, 1310]} startFrame={14} />
     </AbsoluteFill>
   );
 };
