@@ -1,0 +1,150 @@
+{
+ "runId": "2026-11-09-bybit-every-signature-real",
+ "fps": 30,
+ "scenes": [
+  {
+   "id": "S01",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S01.mp3"
+   },
+   "padSec": 0.1,
+   "captionKeywords": [
+    "ever.",
+    "real."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S02",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S02.mp3"
+   },
+   "padSec": 0.1,
+   "captionKeywords": [
+    "keys.",
+    "approved"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S03",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S03.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "routine"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S04",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S04.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "code",
+    "one",
+    "another."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S05",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S05.mp3"
+   },
+   "padSec": 0.25,
+   "captionKeywords": [
+    "whole",
+    "gone."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S06",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S06.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "you.",
+    "confirm,",
+    "can't"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S07",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S07.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "sign.",
+    "spend"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S08",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S08.mp3"
+   },
+   "padSec": 0.25,
+   "captionKeywords": [
+    "$494",
+    "332,000"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S09",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S09.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "wallet",
+    "website"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S10",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S10.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "unlimited,",
+    "don't"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S11",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S11.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "keys.",
+    "signature."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S12",
+   "vo": {
+    "file": "runs/2026-11-09-bybit-every-signature-real/audio/vo/S12.mp3"
+   },
+   "padSec": 0.9,
+   "captionKeywords": [
+    "confirm"
+   ],
+   "captionEmoji": {}
+  }
+ ]
+}
