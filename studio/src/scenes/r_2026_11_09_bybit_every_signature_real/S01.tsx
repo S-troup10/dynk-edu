@@ -58,7 +58,7 @@ const GLYPHS: { d: string[]; w: number }[] = [
 ];
 const ShotInk: React.FC<{ len: number; written: number }> = ({ len, written }) => {
   const f = useCurrentFrame();
-  const start = 2, dur = 25;
+  const start = -7, dur = 30; // "$" already half-written on the cut: no dark frames
   const t = (f - start) / dur; // 0..1 over all glyphs
   const wts = GLYPHS.map((g) => g.w);
   const tot = wts.reduce((a, b) => a + b, 0);

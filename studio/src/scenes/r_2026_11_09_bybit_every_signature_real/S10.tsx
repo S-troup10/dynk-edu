@@ -80,7 +80,7 @@ const CardAndPen: React.FC<{ shot: Shot; base: number; callout?: boolean }> = ({
         </mesh>
         <Pen position={penPos} rotation={[0.28, 0, -0.22]} scale={0.6} capped={capped} />
       </Studio3D>
-      {callout && <Callout text="DON'T SIGN" at={[px, py]} label={[Math.min(Math.max(px - 40, 300), 760), Math.max(py - 260, 520)]} startFrame={10} accent />}
+      {callout && <Callout text="DON'T SIGN" at={[px, py]} label={[Math.min(px + 200, 800), py + 210]} startFrame={0} accent />}
     </AbsoluteFill>
   );
 };
