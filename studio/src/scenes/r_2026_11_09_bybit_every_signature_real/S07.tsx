@@ -28,7 +28,7 @@ const Plinth: React.FC = () => (
 const OrangeRing: React.FC = () => (
   <mesh rotation-x={-Math.PI / 2} position={[0, PLINTH_H + 0.006, 0]}>
     <torusGeometry args={[1.95, 0.02, 12, 96]} />
-    <meshStandardMaterial color={ORANGE} emissive={ORANGE} emissiveIntensity={2.4} toneMapped={false} />
+    <meshStandardMaterial color={ORANGE} emissive={ORANGE} emissiveIntensity={1.3} toneMapped={false} />
   </mesh>
 );
 /** small grey gift tag with the fake URL, hanging on the front face of the box */
@@ -58,8 +58,8 @@ const Glow: React.FC<{ pos?: Vec3; i?: number }> = ({ pos = [0.6, 2.2, -2.2], i 
 /* ---------------- cameras ---------------- */
 const CAM_A: Shot = { from: [-5.2, 3.4, 10.4], to: [4.2, 3.0, 10.2], tFrom: [0, 1.7, 0], tTo: [0, 1.8, 0], fov: 32, len: 48 };
 const CAM_B: Shot = { from: [3.4, 3.6, 12.2], to: [-0.6, 3.5, 11.0], tFrom: [0, 2.4, 0], tTo: [0, 2.7, 0], fov: 32, len: 43 };
-const CAM_C: Shot = { from: [1.3, 3.7, 9.6], to: [0.3, 3.3, 8.0], tFrom: [0, 3.1, 0], tTo: [0, 3.15, 0], fov: 32, len: 30 };
-const CAM_D: Shot = { from: [3.0, 1.8, 13.4], to: [0.6, 1.5, 12.0], tFrom: [0.3, 1.3, 0], tTo: [0.2, 1.3, 0], fov: 32, len: 50 };
+const CAM_C: Shot = { from: [0.7, 2.0, 9.2], to: [0.1, 1.9, 8.2], tFrom: [0, 1.9, 0], tTo: [0, 1.9, 0], fov: 32, len: 30 };
+const CAM_D: Shot = { from: [0.9, 1.4, 13.2], to: [0.2, 1.3, 12.2], tFrom: [0, 1.6, 0], tTo: [0, 1.6, 0], fov: 32, len: 50 };
 
 /* ---------------- the card (front: "Sign to claim", back: the real permit) ---------------- */
 const FRONT = [
@@ -119,33 +119,32 @@ const ShotC: React.FC = () => {
   return (
     <Studio3D tone="dark" shadows={false} camera={{ from: CAM_C.from, target: CAM_C.tFrom, fov: CAM_C.fov }}>
       <CamRig shot={CAM_C} />
-      <Plinth /><OrangeRing /><Gift open={1} />
-      <TwoSided position={[0, 3.15, 0.1]} rotY={flip * Math.PI} scale={0.8} />
-      <Glow pos={[0, 3.4, 2.4]} i={7} />
+      <TwoSided position={[0, 1.9, 0]} rotY={flip * Math.PI} scale={0.9} />
+      <Glow pos={[0, 2.2, 3.0]} i={6} />
     </Studio3D>
   );
 };
 
 /* ---------------- shot D ---------------- */
-const CARD_D: Vec3 = [-1.25, 1.95, 0];
+const CARD_D: Vec3 = [0, 2.6, 0];
 const ShotD: React.FC = () => {
   const f = useCurrentFrame();
-  const [ax, ay] = project(CAM_D, f, [CARD_D[0] + 1.05, CARD_D[1] + 0.55, 0]);
+  const [ax, ay] = project(CAM_D, f, [CARD_D[0] + 0.96, CARD_D[1] + 0.2, 0]);
   const toks = [0, 1, 2, 3, 4, 5, 6];
   return (
     <AbsoluteFill>
       <Studio3D tone="dark" shadows={false} camera={{ from: CAM_D.from, target: CAM_D.tFrom, fov: CAM_D.fov }}>
         <CamRig shot={CAM_D} />
-        <TwoSided position={CARD_D} rotY={Math.PI} scale={0.9} />
+        <TwoSided position={CARD_D} rotY={Math.PI} scale={0.8} />
         {toks.map((i) => {
-          const x0 = -1.8 + i * 0.6;
-          const x = x0 + 0.035 * f + 0.0012 * f * f;
-          return <Token key={i} position={[x, 0.36, 0.6]} rotation={[0, 0.25 + x * 0.12, 0]} scale={1.6} />;
+          const x0 = 0.2 + i * 0.6;
+          const x = x0 - (0.035 * f + 0.0014 * f * f);
+          return <Token key={i} position={[x, 0.36, 0.6]} rotation={[0, -0.25 + x * 0.12, 0]} scale={1.6} />;
         })}
         <Glow pos={[0, 2.4, 2.6]} i={7} />
         <Glow pos={[1.5, 0.8, 2.0]} i={3} />
       </Studio3D>
-      <Callout text="PERMISSION TO SPEND" at={[ax, ay]} label={[790, 640]} startFrame={10} accent />
+      <Callout text="PERMISSION TO SPEND" at={[ax, ay]} label={[800, 540]} startFrame={10} accent />
     </AbsoluteFill>
   );
 };
