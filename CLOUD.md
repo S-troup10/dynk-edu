@@ -51,3 +51,7 @@ claude          # then /make-video
 - **Speed:** 2 CPUs + swangle ≈ 2 s per 3D frame (a 56 s video ≈ 1 h of rendering). Renders are serialised with a
   lock (`tools/render_locked.sh`); composers check with `tools/still.sh runs/<id> S01 0,30,60` first.
 - **Pushing:** runs/ is gitignored; force-add the final mp4, cover and run docs (`git add -f`).
+
+## Jitter (3D text/cards)
+Two cloud-specific causes, both fixed in-repo: (1) camera-writer race → scene `CamRig` must use `useFrame(..., -10)`;
+(2) multi-tab rendering → `render_scene.sh` forces `--concurrency=1`. Keep both; see `references/v3.1-pacing-and-story.md`.
