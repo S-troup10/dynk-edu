@@ -49,7 +49,7 @@ const Device: React.FC<{ position: Vec3; scale?: number; lit: boolean; mag?: num
 
 const shotA: Shot = { from: [-2.2, 2.0, 9.4], to: [-0.6, 1.7, 8.4], tFrom: [0, 1.3, 0], tTo: [0.1, 1.3, 0], fov: 30, len: 36 };
 const shotB: Shot = { from: [1.2, 1.6, 5.6], to: [-0.5, 1.45, 4.8], tFrom: [0, 1.4, 0], tTo: [-0.2, 1.4, 0], fov: 30, len: 36 };
-const shotC: Shot = { from: [0.5, 1.2, 6.6], to: [0, 1.9, 14.2], tFrom: [0, 0.7, 0], tTo: [0, 1.95, -1], fov: 30, len: 40 };
+const shotC: Shot = { from: [0.4, 1.7, 11.0], to: [0, 1.9, 14.2], tFrom: [0, 1.5, 0], tTo: [0, 1.95, -1], fov: 30, len: 40 };
 
 const CARD_POS: Vec3 = [0, 2.75, -2.5];
 const CARD_S = 1.6;
