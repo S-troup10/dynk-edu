@@ -67,7 +67,7 @@ const ShotHex: React.FC<{ len: number }> = ({ len }) => {
 /* ---------------------------------------------------------------- 3D world: open vault + token stream */
 const NTOK = 40;
 const TOK_T0 = 80;   // global frame the first token leaves (≈ "401,000")
-const TOK_DUR = 58;
+const TOK_DUR = 84;
 const tokStart = (i: number) => TOK_T0 + i * 1.0;
 
 const glowTex = (() => {
@@ -117,8 +117,8 @@ const Tokens: React.FC<{ g: number }> = ({ g }) => (
       if (p < 0 || p > 1) return null;
       const side = rand(i + 1) < 0.5 ? -1 : 1;
       const sx = (rand(i + 7) - 0.5) * 1.5, sy = VAULT[1] + (rand(i + 13) - 0.5) * 1.4;
-      const ex = side * (1.2 + rand(i + 21) * 2.6), ey = VAULT[1] + 2.0 + rand(i + 31) * 2.8, ez = 1.5 + rand(i + 41) * 3.0;
-      const q = 1 - Math.pow(1 - p, 2.2); // eased out: leaves briskly, drifts gently
+      const ex = side * (2.8 + rand(i + 21) * 2.4), ey = VAULT[1] + 0.6 + rand(i + 31) * 1.4, ez = 0.3 + rand(i + 41) * 1.2; // sideways, gentle, below the caption band
+      const q = p * p * (3 - 2 * p); // smooth in-out drift
       const pos: Vec3 = [sx + (ex - sx) * q, sy + (ey - sy) * q + Math.sin(Math.PI * q) * 0.7, -0.9 + (ez + 0.9) * q];
       const sc = Math.min(1, p * 7) * (1.0 - 0.55 * Math.max(0, (p - 0.65) / 0.35));
       return <Token key={i} position={pos} rotation={[0.4 + p * 1.5, p * 3 + i, 0.2]} scale={sc * 1.15} />;
