@@ -37,7 +37,7 @@ const ShotPen: React.FC<{ len: number }> = ({ len }) => {
 /* ---------- shot 2: vault, keys turn ---------- */
 const ShotVault: React.FC<{ len: number; keyAt: number[] }> = ({ len, keyAt }) => {
   const f = useCurrentFrame();
-  const shot: Shot = { from: [0, 1.7, 10.2], to: [0, 1.5, 7.2], tFrom: [0, 1.0, 0], tTo: [0, 0.95, 0], fov: 30, len };
+  const shot: Shot = { from: [0, 2.0, 11.5], to: [0, 1.9, 9.0], tFrom: [0, 2.15, 0], tTo: [0, 2.1, 0], fov: 30, len };
   const keys = keyAt.reduce((s, a) => s + interpolate(f, [a, a + 5], [0, 1], { ...clamp, easing: Easing.out(Easing.cubic) }), 0);
   return (
     <Studio3D tone="dark" shadows={false} camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>

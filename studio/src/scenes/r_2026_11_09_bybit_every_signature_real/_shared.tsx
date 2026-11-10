@@ -227,7 +227,7 @@ export const VaultDoor: React.FC<{ position?: Vec3; rotation?: Vec3; keys?: numb
   return (
     <group position={position} rotation={rotation} scale={scale}>
       <mesh><torusGeometry args={[1.55, 0.14, 24, 96]} /><Mat kind="graphite" /></mesh>
-      <mesh position={[0, 0, -0.25]}><cylinderGeometry args={[1.5, 1.5, 0.1, 64]} /><meshStandardMaterial color="#050506" /></mesh>
+      <mesh position={[0, 0, -0.25]} rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[1.5, 1.5, 0.1, 64]} /><meshStandardMaterial color="#050506" /></mesh>
       <group position={[-1.4, 0, 0]} rotation={[0, -open * 1.9, 0]}>
         <group position={[1.4, 0, 0]}>
           <mesh rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[1.4, 1.4, 0.32, 96]} /><Mat kind="chrome" /></mesh>

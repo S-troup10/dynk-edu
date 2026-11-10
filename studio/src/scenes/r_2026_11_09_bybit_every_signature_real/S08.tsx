@@ -10,7 +10,7 @@ import { brand } from "../../brand";
 import { W, Sfx, CamRig, Cam2D, InkPath2D, PaperStack, ORANGE, clamp, type Shot, type Vec3 } from "./_shared";
 
 const TOWERS: { p: Vec3; n: number }[] = [
-  { p: [0, 0, 0], n: 400 }, { p: [-2.6, 0, -1.2], n: 250 }, { p: [2.7, 0, -2.0], n: 330 }, { p: [-1.2, 0, -4.2], n: 180 },
+  { p: [0, 0, 0], n: 300 }, { p: [-2.6, 0, -1.2], n: 250 }, { p: [2.7, 0, -2.0], n: 330 }, { p: [-1.2, 0, -4.2], n: 180 },
   { p: [1.5, 0, -6.0], n: 300 }, { p: [-3.4, 0, -7.2], n: 220 }, { p: [3.6, 0, -9.0], n: 380 }, { p: [-0.4, 0, -10.5], n: 260 },
   { p: [-2.8, 0, -13], n: 340 },
 ];
@@ -66,7 +66,7 @@ const Tower: React.FC<{ off: number; showFalling?: boolean }> = ({ off, showFall
 
 const shotA: Shot = { from: [2.6, 0.3, 3.6], to: [2.1, 1.0, 4.4], tFrom: [0, 0.1, 0], tTo: [0, 0.6, 0], fov: 32, len: 52 };
 const shotB: Shot = { from: [-3.4, 1.2, 6.0], to: [-2.8, 3.2, 7.6], tFrom: [0, 1.5, 0], tTo: [0, 2.0, 0], fov: 32, len: 74 };
-const shotC: Shot = { from: [0.4, 1.0, 6.2], to: [0.2, 7.5, 13.5], tFrom: [0, 1.3, -3], tTo: [0, 1.4, -6], fov: 34, len: 86 };
+const shotC: Shot = { from: [0.4, 3.6, 12.5], to: [0.2, 8.5, 18], tFrom: [0, 1.0, -3], tTo: [0, 1.0, -6], fov: 34, len: 86 };
 
 const Scene: React.FC<SceneProps> = (props) => {
   const fSig = W(props, "signature", 0, 1.375);
