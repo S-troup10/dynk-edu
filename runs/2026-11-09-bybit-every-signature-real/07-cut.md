@@ -1,6 +1,6 @@
 # 07 — Cut (v3, race-fixed)
 
-- Final: `final/2026-11-09-bybit-every-signature-real.mp4` — 59.2 s, 1080×1920, 30 fps, −14.2 LUFS, true peak −2.0 dBTP.
+- Final: `final/2026-11-09-bybit-every-signature-real.mp4` — 59.2 s, 1080×1920, 30 fps, −14 LUFS. v3.1 (11 Nov): cursive signature sits on each card’s x____ line (`sigOnCard`), S01/S02/S06/S11/S12 re-rendered.
 - Bed: `brand/audio/music/bed_drone.wav`; VO Kokoro am_michael ×1.12.
 - 12 scenes, all re-rendered after two jitter root causes were fixed:
   1. **Camera-writer race** — Studio3D's built-in rig (useLayoutEffect) and the scene `CamRig` both wrote the camera; frames alternated between them. `CamRig` now drives the camera in `useFrame(..., -10)` so it always wins.
