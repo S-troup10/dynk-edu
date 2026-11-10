@@ -113,7 +113,7 @@ const cardTexture = (lines: CardLine[], glow: boolean, dim: boolean, button?: st
     x.fillStyle = "#0b0b0b"; x.font = "700 60px Outfit, 'DejaVu Sans', sans-serif"; x.textAlign = "center";
     x.fillText(button, W0 / 2, by + bh / 2 + 3);
   }
-  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.generateMipmaps = true; t.minFilter = THREE.LinearMipmapLinearFilter; t.anisotropy = 16;
   cardTexCache.set(key, t);
   return t;
 };
@@ -320,7 +320,7 @@ export const PaperStack: React.FC<{ position?: Vec3; count?: number; grow?: numb
 /* ---------- KEYCAP: a big physical CONFIRM key (1.6 × 0.7), press 0..1 pushes it down; glow = orange legend + rim. ---------- */
 export const Keycap: React.FC<{ position?: Vec3; rotation?: Vec3; press?: number; glow?: boolean; label?: string; scale?: number }> = ({
   position = [0, 0, 0], rotation = [0, 0, 0], press = 0, glow = true, label = "CONFIRM", scale = 1 }) => {
-  const tex = useMemo(() => glyphTexture(label, { font: "800 150px Outfit, 'DejaVu Sans', sans-serif", w: 1024, h: 400, fg: glow ? "#1a0c00" : "#e8e8e8", bg: glow ? ORANGE : "#1b1c1f" }), [label, glow]);
+  const tex = useMemo(() => glyphTexture(label, { font: "800 150px Outfit, 'DejaVu Sans', sans-serif", w: 1024, h: 512, fg: glow ? "#1a0c00" : "#e8e8e8", bg: glow ? ORANGE : "#1b1c1f" }), [label, glow]);
   return (
     <group position={position} rotation={rotation} scale={scale}>
       <RoundedBox args={[1.9, 0.18, 1.0]} radius={0.05} position={[0, 0.09, 0]}><Mat kind="ink" /></RoundedBox>

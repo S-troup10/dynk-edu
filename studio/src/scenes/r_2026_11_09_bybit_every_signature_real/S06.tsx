@@ -108,7 +108,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const tap = W(props, "tap", 0, 2.48);   // ~74
   const cC = W(props, "you", 1, 3.14);    // ~94
   const cD = W(props, "you", 2, 4.33);    // ~130
-  const shotA: Shot = { from: [0.4, 4.6, 6.4], to: [0.2, 2.0, 4.6], tFrom: [0, 0.3, 0], tTo: [0, 0.3, 0], fov: 30, len: cB };
+  const shotA: Shot = { from: [0.4, 3.1, 6.6], to: [0.2, 1.9, 5.0], tFrom: [0, 0.35, 0], tTo: [0, 0.3, 0], fov: 30, len: cB };
   const shotB: Shot = { from: [2.4, 1.5, 4.9], to: [1.6, 1.15, 4.1], tFrom: [0, 0.3, 0], tTo: [0, 0.3, 0], fov: 30, len: cC - cB };
   const shotC: Shot = { from: [-2.4, 1.7, 5.2], to: [-1.2, 1.8, 4.6], tFrom: [0, 1.1, 0], tTo: [0, 1.1, 0], fov: 30, len: cD - cC };
   return (

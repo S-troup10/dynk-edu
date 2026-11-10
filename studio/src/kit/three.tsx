@@ -53,7 +53,9 @@ export const glyphTexture = (text: string, opts: { font?: string; fg?: string; b
   x.fillText(text, w / 2, h / 2 + h * 0.03);
   const t = new THREE.CanvasTexture(c);
   t.colorSpace = THREE.SRGBColorSpace;
-  t.anisotropy = 8;
+  t.generateMipmaps = true;
+  t.minFilter = THREE.LinearMipmapLinearFilter;
+  t.anisotropy = 16;
   texCache.set(key, t);
   return t;
 };
