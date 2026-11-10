@@ -164,7 +164,7 @@ export const Cam2D: React.FC<{ shot: Shot2D; children: React.ReactNode; originX?
 
 /* ---------- INK (2D): an SVG path drawn on with glowing orange ink. progress 0..1. Use for handwritten signatures,
    underlines, strike-throughs, "$1.5B" written by hand (pass several d strings, drawn in sequence). ---------- */
-export const SIG_D = "M20 120 C 60 40, 90 40, 100 100 S 140 170, 170 90 S 210 20, 230 100 C 240 140, 260 140, 280 90 C 300 50, 320 70, 330 110 C 340 140, 370 130, 400 80 M 120 150 C 220 145, 330 140, 430 132";
+export const SIG_D = "M17 120 L27 91 L38 56 L36 53 L38 40 L43 30 L51 25 L60 25 L67 30 L73 40 L75 72 L71 101 L75 109 L72 116 L66 121 L57 121 L50 118 L46 111 L47 104 L52 98 L81 117 L97 120 L99 106 L103 95 L109 89 L117 89 L123 95 L127 106 L129 120 L131 106 L135 95 L141 89 L149 89 L155 95 L159 106 L161 120 L163 106 L167 95 L173 89 L181 89 L187 95 L191 106 L209 120 L220 80 L220 53 L222 40 L226 31 L231 27 L237 31 L241 40 L244 88 L247 120 L244 131 L245 137 L248 142 L253 145 L258 146 L263 144 L267 140 L269 134 L273 117 L275 120 L276 108 L281 97 L288 92 L296 92 L303 97 L308 108 L310 120 L312 110 L316 101 L324 97 L331 97 L338 101 L343 110 L345 120 L347 112 L352 105 L359 101 L366 101 L374 105 L378 112 L401 120 L417 110 L433 106";
 export const InkPath2D: React.FC<{ d: string | string[]; progress: number; width?: number; viewBox?: string; style?: React.CSSProperties; color?: string }> = ({
   d, progress, width = 10, viewBox = "0 0 450 180", style, color = ORANGE }) => {
   const paths = Array.isArray(d) ? d : [d];
@@ -185,19 +185,47 @@ export const InkPath2D: React.FC<{ d: string | string[]; progress: number; width
 /* ---------- INK (3D): a glowing orange tube that draws itself along a smooth curve. points in world space. ---------- */
 export const InkStroke: React.FC<{ points: Vec3[]; progress: number; radius?: number }> = ({ points, progress, radius = 0.03 }) => {
   const geo = useMemo(() => {
-    const curve = new THREE.CatmullRomCurve3(points.map((p) => new THREE.Vector3(...p)));
-    return new THREE.TubeGeometry(curve, 240, radius, 10, false);
+    const curve = new THREE.CatmullRomCurve3(points.map((p) => new THREE.Vector3(...p)), false, "centripetal");
+    return new THREE.TubeGeometry(curve, 480, radius, 12, false);
   }, [JSON.stringify(points), radius]);
   const total = geo.index ? geo.index.count : 0;
-  geo.setDrawRange(0, Math.floor(total * Math.min(1, Math.max(0, progress)) / 60) * 60);
+  geo.setDrawRange(0, Math.floor(total * Math.min(1, Math.max(0, progress)) / 72) * 72);
   return (
     <mesh geometry={geo}>
       <meshStandardMaterial color={ORANGE} emissive={"#FF6A00"} emissiveIntensity={1.6} roughness={0.35} metalness={0.1} toneMapped={false} />
     </mesh>
   );
 };
-/** A signature-shaped scribble in the XY plane (width ≈ 2.6, centred at origin) for InkStroke. */
-export const SIG_POINTS: Vec3[] = [[-1.3, -0.1, 0], [-1.05, 0.5, 0], [-0.85, 0.15, 0], [-1.0, -0.2, 0], [-0.7, -0.05, 0], [-0.45, 0.35, 0], [-0.3, -0.25, 0], [-0.1, 0.2, 0], [0.05, 0.0, 0], [0.25, 0.45, 0], [0.3, -0.3, 0], [0.5, 0.05, 0], [0.75, -0.1, 0], [1.0, 0.15, 0], [1.3, -0.15, 0]];
+/** A signature (cursive letterforms, baseline at y=0, x -1.3..1.3, ascenders to +0.56, one descender to -0.16) for InkStroke.
+    Baseline y=0 is the line it sits on: place it with sigOnCard() for cards. */
+export const SIG_POINTS: Vec3[] = [[-1.3, 0.0, 0], [-1.24, 0.18, 0], [-1.17, 0.4, 0], [-1.18, 0.42, 0], [-1.168, 0.498, 0], [-1.135, 0.561, 0], [-1.087, 0.595, 0], [-1.033, 0.595, 0], [-0.985, 0.561, 0], [-0.952, 0.498, 0], [-0.94, 0.3, 0], [-0.96, 0.12, 0], [-0.94, 0.07, 0], [-0.955, 0.026, 0], [-0.996, -0.004, 0], [-1.048, -0.008, 0], [-1.094, 0.013, 0], [-1.118, 0.054, 0], [-1.113, 0.101, 0], [-1.08, 0.137, 0], [-0.9, 0.02, 0], [-0.8, 0.0, 0], [-0.79, 0.087, 0], [-0.762, 0.156, 0], [-0.722, 0.195, 0], [-0.678, 0.195, 0], [-0.638, 0.156, 0], [-0.61, 0.087, 0], [-0.6, 0.0, 0], [-0.59, 0.087, 0], [-0.562, 0.156, 0], [-0.522, 0.195, 0], [-0.478, 0.195, 0], [-0.438, 0.156, 0], [-0.41, 0.087, 0], [-0.4, 0.0, 0], [-0.39, 0.087, 0], [-0.362, 0.156, 0], [-0.322, 0.195, 0], [-0.278, 0.195, 0], [-0.238, 0.156, 0], [-0.21, 0.087, 0], [-0.1, 0.0, 0], [-0.03, 0.25, 0], [-0.03, 0.42, 0], [-0.021, 0.5, 0], [0.005, 0.559, 0], [0.04, 0.58, 0], [0.075, 0.559, 0], [0.101, 0.5, 0], [0.12, 0.2, 0], [0.14, 0.0, 0], [0.12, -0.07, 0], [0.127, -0.107, 0], [0.146, -0.137, 0], [0.175, -0.155, 0], [0.208, -0.16, 0], [0.24, -0.148, 0], [0.264, -0.123, 0], [0.278, -0.089, 0], [0.3, 0.02, 0], [0.31, 0.0, 0], [0.321, 0.078, 0], [0.351, 0.141, 0], [0.396, 0.175, 0], [0.444, 0.175, 0], [0.489, 0.141, 0], [0.519, 0.078, 0], [0.53, 0.0, 0], [0.541, 0.065, 0], [0.571, 0.117, 0], [0.616, 0.146, 0], [0.664, 0.146, 0], [0.709, 0.117, 0], [0.739, 0.065, 0], [0.75, 0.0, 0], [0.761, 0.052, 0], [0.791, 0.094, 0], [0.836, 0.117, 0], [0.884, 0.117, 0], [0.929, 0.094, 0], [0.959, 0.052, 0], [1.1, 0.0, 0], [1.2, 0.06, 0], [1.3, 0.09, 0]];
+/* ---------- SIGNATURE ON A CARD'S LINE. Finds the "x ____" line in `lines`, measures it with the same canvas font as
+   cardTexture, and returns SIG_POINTS in card-LOCAL space (z = 0.05, just above the face) sized to sit ON that line:
+   baseline on the underscores, spanning `fill` of their width. Wrap in the card's <group position/rotation/scale>. ---------- */
+export const sigOnCard = (lines: CardLine[], fill = 0.92, points: Vec3[] = SIG_POINTS): Vec3[] => {
+  const PX = 2.3 / 1200; // texture px -> card-local units (same ratio on both axes)
+  let y = 110, li = -1, size = 48;
+  for (let i = 0; i < lines.length; i++) {
+    const sz = lines[i].size ?? 56;
+    if (/^x\s*_+/.test(lines[i].text)) { li = i; size = sz; break; }
+    y += sz * 1.55;
+  }
+  let x0 = 110, x1 = 690;
+  if (li >= 0) {
+    const l = lines[li];
+    try {
+      const c = document.createElement("canvas").getContext("2d")!;
+      c.font = `${l.weight ?? 600} ${size}px ${l.mono ? "'DejaVu Sans Mono', monospace" : "Outfit, 'DejaVu Sans', sans-serif"}`;
+      const pre = l.text.match(/^x\s*/)![0];
+      x0 = 80 + c.measureText(pre).width; x1 = 80 + c.measureText(l.text).width;
+    } catch { /* keep estimate */ }
+  }
+  const baseY = y + size * 0.30;             // underscores sit below the middle baseline
+  const cx = (x0 + x1) / 2, w = (x1 - x0) * fill;
+  const k = w / 2.6;                          // SIG_POINTS spans 2.6 units
+  return points.map(([px, py]) => [(cx - 600) * PX + px * k * PX, (375 - baseY) * PX + py * k * PX, 0.05] as Vec3);
+};
+
 
 /* ---------- PEN: chrome fountain pen, nib at local origin pointing -Y, body up +Y (length ≈ 2.2). capped 0..1 slides
    the cap down over the nib. inkGlow = orange glow at the nib tip. ---------- */

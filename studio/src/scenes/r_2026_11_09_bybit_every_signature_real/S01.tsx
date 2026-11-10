@@ -9,7 +9,7 @@ import * as THREE from "three";
 import { Shell, Studio3D, Callout, Disclaimer, type SceneProps } from "../../kit";
 import { brand } from "../../brand";
 import {
-  CamRig, Cam2D, InkStroke, InkPath2D, Pen, VaultDoor, SignCard, Sfx, W, project, clamp, ORANGE, SAW, SIG_POINTS,
+  CamRig, Cam2D, InkStroke, InkPath2D, Pen, VaultDoor, SignCard, Sfx, W, project, clamp, ORANGE, SAW, sigOnCard,
   type Shot, type Vec3,
 } from "./_shared";
 
@@ -90,7 +90,8 @@ const cardLines = (n: number) => [
   { text: "", size: 110 },
   { text: "x " + "_".repeat(38), size: 44, color: "#6a6a6a", weight: 500 },
 ];
-const SIG_POS: Vec3 = [-0.1, -0.02, 0.07];
+let _sigLocal: Vec3[] | null = null;
+const sigLocal = () => (_sigLocal ??= sigOnCard(cardLines(3)));
 const Cards: React.FC<{ sig?: number }> = ({ sig = 0 }) => (
   <>
     {CARD_X.map((x, i) => (
@@ -100,9 +101,7 @@ const Cards: React.FC<{ sig?: number }> = ({ sig = 0 }) => (
     ))}
     {sig > 0 && (
       <group position={[CARD_X[2], 0.78, 0]} rotation={[0, -0.12, 0]}>
-        <group position={SIG_POS} scale={0.52}>
-          <InkStroke points={SIG_POINTS} progress={sig} radius={0.045} />
-        </group>
+        <InkStroke points={sigLocal()} progress={sig} radius={0.022} />
       </group>
     )}
   </>

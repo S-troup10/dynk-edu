@@ -5,7 +5,7 @@ import React from "react";
 import * as THREE from "three";
 import { interpolate, Sequence, useCurrentFrame } from "remotion";
 import { Shell, Studio3D, Callout, Disclaimer, type SceneProps } from "../../kit";
-import { SignCard, Pen, InkStroke, KeyObj, CamRig, project, Sfx, W, SIG_POINTS, clamp, type Shot, type Vec3 } from "./_shared";
+import { SignCard, Pen, InkStroke, KeyObj, CamRig, project, Sfx, W, sigOnCard, clamp, type Shot, type Vec3 } from "./_shared";
 
 /* ---------- shot 1: keys ---------- */
 const KEY_X = [-1.0, 0, 1.0];
@@ -22,9 +22,13 @@ const CARD_LINES = (n: number) => [
   { text: " ", size: 100 },
   { text: "x ____________________", size: 48, color: "#6c6c6c" },
 ];
-// signature scribble laid flat on card i (world space); card face "up" is -z
-const sigPts = (i: number): Vec3[] => SIG_POINTS.map((p) => [p[0] * 0.3, INK_Y, CARD_Z[i] + 0.15 - p[1] * 0.3] as Vec3);
-const curves = [0, 1, 2].map((i) => new THREE.CatmullRomCurve3(sigPts(i).map((p) => new THREE.Vector3(...p))));
+// signature ON the card's "x ____" line (measured), card i lies flat: local x->world x, local y->world -z, local z->world +y
+// (measured lazily, after fonts load — not at module load)
+let _sigLocal: Vec3[] | null = null;
+const sigLocal = () => (_sigLocal ??= sigOnCard(CARD_LINES(1)));
+const sigPts = (i: number): Vec3[] => sigLocal().map(([lx, ly, lz]) => [CARD_S * lx, 0.04 + CARD_S * lz + 0.015, CARD_Z[i] - CARD_S * ly] as Vec3);
+let _curves: THREE.CatmullRomCurve3[] | null = null;
+const curves = () => (_curves ??= [0, 1, 2].map((i) => new THREE.CatmullRomCurve3(sigPts(i).map((p) => new THREE.Vector3(...p)))));
 const START = [1, 7, 13];  // frames (shot 3 local): 6 apart
 const DUR = 11;
 const sigP = (i: number, f: number) => interpolate(f, [START[i], START[i] + DUR], [0, 1], clamp);
@@ -44,12 +48,12 @@ const Cards: React.FC = () => (
 const PenRow: React.FC<{ f: number; signing: boolean }> = ({ f, signing }) => (
   <>
     {[0, 1, 2].map((i) => {
-      let pos: Vec3 = [0.1, INK_Y + HOVER, CARD_Z[i] + 0.15];
+      let pos: Vec3 = [sigPts(i)[0][0], INK_Y + HOVER, sigPts(i)[0][2]];
       if (signing) {
         const p = sigP(i, f);
         const drop = interpolate(f, [START[i] - 1, START[i] + 1], [HOVER, 0.0], clamp);
         const rise = interpolate(f, [START[i] + DUR, START[i] + DUR + 6], [0, HOVER * 0.6], clamp);
-        const h = curves[i].getPointAt(Math.min(1, Math.max(0, p)));
+        const h = curves()[i].getPointAt(Math.min(1, Math.max(0, p)));
         pos = [h.x, INK_Y + drop + rise, h.z];
       }
       return <Pen key={i} position={pos} rotation={[0.1, 0, 0.5]} scale={0.55} />;
@@ -94,10 +98,10 @@ const PensSign: React.FC = () => {
       <Studio3D tone="dark" shadows={false} camera={{ from: S3.from, to: S3.to, target: S3.tFrom }}>
         <CamRig shot={S3} />
         <Cards />
-        {[0, 1, 2].map((i) => <InkStroke key={i} points={sigPts(i)} progress={sigP(i, f)} radius={0.022} />)}
+        {[0, 1, 2].map((i) => <InkStroke key={i} points={sigPts(i)} progress={sigP(i, f)} radius={0.013} />)}
         <PenRow f={f} signing />
       </Studio3D>
-      <Callout text="3 OF 3 SIGNED" at={project(S3, f, [0.0, INK_Y, CARD_Z[0] + 0.15])} label={[760, 470]} startFrame={15} accent />
+      <Callout text="3 OF 3 SIGNED" at={project(S3, f, [sigPts(0)[15][0], INK_Y, sigPts(0)[15][2]])} label={[760, 470]} startFrame={15} accent />
     </>
   );
 };
