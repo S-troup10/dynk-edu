@@ -15,7 +15,7 @@
 // Story numbers: FBI PSA I-022625-PSA (26 Feb 2025), NCC Group analysis (10 Mar 2025), Scam Sniffer 2024 report.
 import React, { useLayoutEffect, useMemo } from "react";
 import { Audio, Easing, interpolate, Sequence, staticFile, useCurrentFrame } from "remotion";
-import { useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
 import { glyphTexture, Mat, type SceneProps } from "../../kit";
@@ -58,17 +58,19 @@ export const camAt = (s: Shot, f: number) => {
   const q = Easing.bezier(0.33, 0.12, 0.25, 1)(p); // soft start (already moving), long smooth settle — no jolts
   return { pos: lerp3(s.from, s.to, q), tgt: lerp3(s.tFrom, s.tTo, q) };
 };
-/** Put inside <Studio3D>; drives the camera for `shot` using the current (Sequence-local) frame. */
+/** Put inside <Studio3D>; drives the camera for `shot` using the current (Sequence-local) frame.
+ *  Runs in useFrame (the draw loop), so it always applies AFTER Studio3D's own built-in Rig layout effect —
+ *  with useLayoutEffect the two camera writers raced and alternate frames came out at two different camera
+ *  positions (the "glitching" on the card shots). One writer, deterministic order, no flip. */
 export const CamRig: React.FC<{ shot: Shot }> = ({ shot }) => {
   const f = useCurrentFrame();
-  const { camera } = useThree();
-  useLayoutEffect(() => {
+  useFrame(({ camera }) => {
     const { pos, tgt } = camAt(shot, f);
     camera.position.set(...pos);
     (camera as THREE.PerspectiveCamera).fov = shot.fov;
     (camera as THREE.PerspectiveCamera).updateProjectionMatrix();
     camera.lookAt(...tgt);
-  });
+  }, -10);
   return null;
 };
 /** World point → screen px (1080×1920) for the same camera, so Callouts track 3D parts. */
