@@ -31,8 +31,9 @@ const Card: React.FC<{ f: number; inkStart: number; inkLen: number }> = ({ f, in
       <div style={{ position: "absolute", left: 56, top: 395, fontSize: 40, fontWeight: 300, color: "rgba(255,255,255,0.4)" }}>×</div>
       <div style={{ position: "absolute", left: 100, top: 438, width: 624, height: 2, background: "rgba(255,255,255,0.35)" }} />
       <div style={{ position: "absolute", left: 100, top: 452, fontSize: 20, letterSpacing: 5, fontWeight: 600, color: "rgba(255,255,255,0.35)" }}>YOUR SIGNATURE</div>
-      <div style={{ position: "absolute", left: 200, top: 300, width: 420 }}>
-        <InkPath2D d={SIG_D} progress={ink} width={9} style={{ width: 420, height: 168 }} />
+      {/* SIG_D baseline is y=120 of its 450×180 viewBox; at 560 px wide that is 149 px down, so top = 438 − 149 puts the ink ON the line */}
+      <div style={{ position: "absolute", left: 92, top: 289, width: 560 }}>
+        <InkPath2D d={SIG_D} progress={ink} width={9} style={{ width: 560, height: 224 }} />
       </div>
       {/* button */}
       <div style={{ position: "absolute", right: 56, bottom: 38, width: 230, height: 72, borderRadius: 36, background: ORANGE,
