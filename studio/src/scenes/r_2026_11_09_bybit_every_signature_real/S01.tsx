@@ -69,7 +69,7 @@ const ShotInk: React.FC<{ len: number; written: number }> = ({ len, written }) =
         <div style={{ position: "absolute", left: 210, top: 740, width: 660, height: 330 }}>
           {GLYPHS.map((g, i) => {
             const a = acc / tot; acc += g.w; const b = acc / tot;
-            const pr = interpolate(t, [a, b], [0, 1], { ...clamp, easing: Easing.inOut(Easing.sine) });
+            const pr = interpolate(t, [a, b], [0, 1], { ...clamp, easing: Easing.inOut(Easing.sin) });
             return <InkPath2D key={i} d={g.d} progress={pr} width={22} viewBox="0 0 580 290" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />;
           })}
         </div>
@@ -120,7 +120,7 @@ const ShotCards: React.FC<{ len: number }> = ({ len }) => {
 const ShotSign: React.FC<{ len: number }> = ({ len }) => {
   const f = useCurrentFrame();
   const shot: Shot = { from: [2.3, 0.85, 7.2], to: [3.2, 0.9, 6.5], tFrom: [3.2, 0.8, 0], tTo: [3.3, 0.78, 0], fov: 36, len };
-  const sig = interpolate(f, [1, 24], [0, 1], { ...clamp, easing: Easing.inOut(Easing.sine) });
+  const sig = interpolate(f, [1, 24], [0, 1], { ...clamp, easing: Easing.inOut(Easing.sin) });
   const end = project(shot, f, [CARD_X[2] + 0.45, 0.78 - 0.05, 0.1]);
   return (
     <AbsoluteFill>

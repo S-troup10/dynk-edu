@@ -38,8 +38,8 @@ const FinePrint: React.FC = () => {
 };
 
 /* ---------- shots 2 + 3: pen over a flat card ---------- */
-const SHOT_B: Shot = { from: [1.9, 2.5, 4.3], to: [1.2, 1.9, 3.5], tFrom: [0.1, 0.3, 0.1], tTo: [0.2, 0.35, 0.3], fov: 30, len: 46 };
-const SHOT_C: Shot = { from: [-1.6, 1.7, 3.5], to: [-0.8, 2.1, 4.3], tFrom: [0.25, 0.9, 0.35], tTo: [0.3, 1.0, 0.4], fov: 30, len: 29 };
+const SHOT_B: Shot = { from: [2.2, 7.6, 6.0], to: [1.4, 7.2, 5.4], tFrom: [0, 0.4, 0.1], tTo: [0, 0.4, 0.2], fov: 30, len: 46 };
+const SHOT_C: Shot = { from: [-1.6, 7.2, 5.8], to: [-0.8, 7.5, 6.4], tFrom: [0, 0.5, 0.2], tTo: [0, 0.5, 0.3], fov: 30, len: 29 };
 const LINE_Z = 0.45;
 const NIB_X = 0.35;
 const CARD_Y = 0.06;
@@ -51,7 +51,7 @@ const CardAndPen: React.FC<{ shot: Shot; base: number; callout?: boolean }> = ({
   const capped = ease(interpolate(f, [CUT3 + 14, CUT3 + 26], [0, 1], clamp));
   const trem = 1 - lift;
   const tx = Math.sin(f * 0.23) * 0.008 * trem, tz = Math.sin(f * 0.17 + 1) * 0.006 * trem;
-  const penPos: Vec3 = [NIB_X + tx - lift * 0.5, CARD_Y + 0.5 + lift * 1.2, LINE_Z + tz + lift * 0.2];
+  const penPos: Vec3 = [NIB_X + tx - lift * 0.3, CARD_Y + 0.5 + lift * 0.55, LINE_Z + tz + lift * 0.2];
   const [px, py] = project(shot, lf, [-0.55, CARD_Y + 0.02, LINE_Z]);
   return (
     <AbsoluteFill>
@@ -78,9 +78,9 @@ const CardAndPen: React.FC<{ shot: Shot; base: number; callout?: boolean }> = ({
           <planeGeometry args={[0.1, 0.012]} />
           <meshBasicMaterial color="#8a8a8a" />
         </mesh>
-        <Pen position={penPos} rotation={[0.28, 0, -0.22]} scale={0.8} capped={capped} />
+        <Pen position={penPos} rotation={[0.28, 0, -0.22]} scale={0.6} capped={capped} />
       </Studio3D>
-      {callout && <Callout text="DON'T SIGN" at={[px, py]} label={[Math.min(Math.max(px - 40, 300), 760), Math.max(py - 330, 520)]} startFrame={10} accent />}
+      {callout && <Callout text="DON'T SIGN" at={[px, py]} label={[Math.min(Math.max(px - 40, 300), 760), Math.max(py - 260, 520)]} startFrame={10} accent />}
     </AbsoluteFill>
   );
 };

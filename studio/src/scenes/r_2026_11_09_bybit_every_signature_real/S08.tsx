@@ -16,7 +16,7 @@ const TOWERS: { p: Vec3; n: number }[] = [
 ];
 
 const GROW0 = 52, GROW1 = 150; // global frames the main tower climbs
-const growAt = (gf: number) => Math.pow(interpolate(gf, [GROW0, GROW1], [0, 1], clamp), 1.6);
+const growAt = (gf: number) => 0.7 * Math.pow(interpolate(gf, [GROW0, GROW1], [0, 1], clamp), 1.6); // capped so the top stays out of the caption band
 
 const Plate: React.FC = () => {
   const f = useCurrentFrame();
@@ -65,7 +65,7 @@ const Tower: React.FC<{ off: number; showFalling?: boolean }> = ({ off, showFall
 };
 
 const shotA: Shot = { from: [2.6, 0.3, 3.6], to: [2.1, 1.0, 4.4], tFrom: [0, 0.1, 0], tTo: [0, 0.6, 0], fov: 32, len: 52 };
-const shotB: Shot = { from: [-3.4, 1.2, 6.0], to: [-2.8, 3.2, 7.6], tFrom: [0, 1.3, 0], tTo: [0, 2.3, 0], fov: 32, len: 74 };
+const shotB: Shot = { from: [-3.4, 1.2, 6.0], to: [-2.8, 3.2, 7.6], tFrom: [0, 1.5, 0], tTo: [0, 2.0, 0], fov: 32, len: 74 };
 const shotC: Shot = { from: [0.4, 1.0, 6.2], to: [0.2, 7.5, 13.5], tFrom: [0, 1.3, -3], tTo: [0, 1.4, -6], fov: 34, len: 86 };
 
 const Scene: React.FC<SceneProps> = (props) => {
