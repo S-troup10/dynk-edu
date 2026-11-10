@@ -38,8 +38,8 @@ const FinePrint: React.FC = () => {
 };
 
 /* ---------- shots 2 + 3: pen over a flat card ---------- */
-const SHOT_B: Shot = { from: [2.2, 7.6, 6.0], to: [1.4, 7.2, 5.4], tFrom: [0, 0.4, 0.1], tTo: [0, 0.4, 0.2], fov: 30, len: 46 };
-const SHOT_C: Shot = { from: [-1.6, 7.2, 5.8], to: [-0.8, 7.5, 6.4], tFrom: [0, 0.5, 0.2], tTo: [0, 0.5, 0.3], fov: 30, len: 29 };
+const SHOT_B: Shot = { from: [4.0, 13.5, 10.5], to: [2.6, 13.0, 9.8], tFrom: [0, 0.4, 0.1], tTo: [0, 0.4, 0.2], fov: 30, len: 46 };
+const SHOT_C: Shot = { from: [-2.8, 13.0, 10.2], to: [-1.6, 13.4, 10.8], tFrom: [0, 0.5, 0.2], tTo: [0, 0.5, 0.3], fov: 30, len: 29 };
 const LINE_Z = 0.45;
 const NIB_X = 0.35;
 const CARD_Y = 0.06;
