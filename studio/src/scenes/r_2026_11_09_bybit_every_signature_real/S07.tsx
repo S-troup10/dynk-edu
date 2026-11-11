@@ -59,7 +59,7 @@ const Glow: React.FC<{ pos?: Vec3; i?: number }> = ({ pos = [0.6, 2.2, -2.2], i 
 const CAM_A: Shot = { from: [-5.2, 3.4, 10.4], to: [4.2, 3.0, 10.2], tFrom: [0, 1.7, 0], tTo: [0, 1.8, 0], fov: 32, len: 48 };
 const CAM_B: Shot = { from: [3.4, 3.6, 12.2], to: [-0.6, 3.5, 11.0], tFrom: [0, 2.4, 0], tTo: [0, 2.7, 0], fov: 32, len: 43 };
 const CAM_C: Shot = { from: [0.7, 2.0, 9.2], to: [0.1, 1.9, 8.2], tFrom: [0, 1.9, 0], tTo: [0, 1.9, 0], fov: 32, len: 30 };
-const CAM_D: Shot = { from: [0.9, 1.4, 13.2], to: [0.2, 1.3, 12.2], tFrom: [0, 1.6, 0], tTo: [0, 1.6, 0], fov: 32, len: 50 };
+const CAM_D: Shot = { from: [0.9, 1.4, 13.2], to: [0.2, 1.3, 12.2], tFrom: [0, 1.6, 0], tTo: [0, 1.6, 0], fov: 32, len: 57 };
 
 /* ---------------- the card (front: "Sign to claim", back: the real permit) ---------------- */
 const FRONT = [

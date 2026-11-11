@@ -35,7 +35,7 @@ const sigP = (i: number, f: number) => interpolate(f, [START[i], START[i] + DUR]
 const HOVER = 0.4;
 
 const S2: Shot = { from: [0.8, 7.0, 10.2], to: [0.2, 11.5, 6.8], tFrom: [0, 0, 0.2], tTo: [0, 0, 0.1], fov: 30, len: 38 };
-const S3: Shot = { from: [1.8, 9.5, 7.8], to: [0.4, 11.3, 6.6], tFrom: [0, 0, 0.1], tTo: [0, 0, 0.1], fov: 30, len: 28 };
+const S3: Shot = { from: [1.8, 9.5, 7.8], to: [0.4, 11.3, 6.6], tFrom: [0, 0, 0.1], tTo: [0, 0, 0.1], fov: 30, len: 33 };
 
 const Cards: React.FC = () => (
   <>

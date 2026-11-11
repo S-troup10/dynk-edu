@@ -11,8 +11,9 @@ One-time install (~350 MB model files, from GitHub releases):
 
   python3 tools/tts_kokoro.py --batch runs/<id>/vo_lines.json --outdir runs/<id>/audio/vo [--voice am_michael --speed 1.1]
 
-Word timings: every phrase (split on , . ? ! ; :) is synthesised separately, so phrase edges are exact;
-words inside a phrase are spread by a syllable-ish weight. Good for sentence-building captions.
+Each line is synthesised in ONE call (natural prosody; per-phrase synthesis made the tone jump and pause awkwardly).
+Word timings: phrase edges (split on , . ? ! ; :) are snapped to the real pauses in the take, with per-phrase
+synthesis only used for relative lengths; words inside a phrase are spread by a syllable-ish weight. Good for sentence-building captions.
 Optional per-line "say" field = what is spoken (e.g. numbers written out), "text" = what captions show;
 they must have the same number of words.
 """
@@ -30,6 +31,25 @@ def trim(a, sr, thresh=0.012, pad=0.03):
     if len(idx) == 0:
         return a
     return a[max(0, idx[0] - int(pad * sr)): min(len(a), idx[-1] + int(pad * sr))]
+
+
+def silences(a, sr, thresh=0.02, min_len=0.07):
+    """Pauses inside a take: [(start, end)] where |a| stays under thresh for >= min_len seconds (edges excluded)."""
+    win = int(0.01 * sr)
+    env = np.array([np.abs(a[i:i + win]).max() for i in range(0, len(a) - win, win)])
+    quiet = env < thresh
+    out, i = [], 0
+    while i < len(quiet):
+        if quiet[i]:
+            j = i
+            while j < len(quiet) and quiet[j]:
+                j += 1
+            if (j - i) * 0.01 >= min_len and i > 0 and j < len(quiet):
+                out.append((i * 0.01, j * 0.01))
+            i = j
+        else:
+            i += 1
+    return out
 
 
 def weight(w):
@@ -70,27 +90,36 @@ def main():
                 phrases.append(cur)
                 cur = []
         sr = 24000
-        chunks, words, t = [], [], 0.0
-        for pi, idxs in enumerate(phrases):
-            ptxt = " ".join(say_words[i] for i in idxs)
-            audio, sr = k.create(ptxt, voice=line.get("voice", a.voice), speed=speed, lang="en-us")
-            audio = trim(np.asarray(audio, dtype=np.float32), sr)
-            dur = len(audio) / sr
+        voice = line.get("voice", a.voice)
+        # 1) ONE synthesis of the whole line -> natural prosody (per-phrase synthesis made the tone reset and
+        #    pause awkwardly at every comma/full stop).
+        full, sr = k.create(say, voice=voice, speed=speed, lang="en-us")
+        full = trim(np.asarray(full, dtype=np.float32), sr)
+        # 2) word timings: relative phrase lengths from per-phrase synthesis, snapped to the real silences in
+        #    the whole-line take when the counts agree.
+        pdur = []
+        for idxs in phrases:
+            pa, _ = k.create(" ".join(say_words[i] for i in idxs), voice=voice, speed=speed, lang="en-us")
+            pdur.append(len(trim(np.asarray(pa, dtype=np.float32), sr)) / sr)
+        total = len(full) / sr
+        gaps = silences(full, sr)  # [(start, end)] of pauses >= 70 ms
+        if len(gaps) == len(phrases) - 1:
+            edges = [0.0] + [(g0 + g1) / 2 for g0, g1 in gaps] + [total]
+            bounds = [(edges[i], gaps[i][0] if i < len(gaps) else total) for i in range(len(phrases))]
+            bounds = [(gaps[i - 1][1] if i > 0 else 0.0, e) for i, (_, e) in enumerate(bounds)]
+        else:
+            scale = total / max(1e-6, sum(pdur))
+            acc, bounds = 0.0, []
+            for d in pdur:
+                bounds.append((acc, acc + d * scale)); acc += d * scale
+        words = []
+        for idxs, (b0, b1) in zip(phrases, bounds):
             ws = [weight(say_words[i]) for i in idxs]
-            tot = sum(ws)
-            acc = t
+            tot = sum(ws); acc = b0
             for i, wv in zip(idxs, ws):
-                d = dur * wv / tot
+                d = (b1 - b0) * wv / tot
                 words.append({"text": show_words[i], "start": round(acc, 3), "end": round(acc + d, 3)})
                 acc += d
-            chunks.append(audio)
-            t += dur
-            if pi < len(phrases) - 1:
-                last = say_words[idxs[-1]]
-                gap = a.stop if re.search(r"[.?!]$", last) else a.comma
-                chunks.append(np.zeros(int(gap * sr), dtype=np.float32))
-                t += gap
-        full = np.concatenate(chunks)
         mp3 = os.path.join(a.outdir, f"{sid}.mp3")
         with tempfile.TemporaryDirectory() as td:
             raw = os.path.join(td, "raw.wav")

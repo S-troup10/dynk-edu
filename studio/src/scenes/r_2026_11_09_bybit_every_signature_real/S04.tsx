@@ -121,7 +121,7 @@ const az = (a: number, R: number, h: number): Vec3 => [R * Math.sin((a * Math.PI
 const SHOT1: Shot = { from: az(-50, 14.2, 4.6), to: az(-36, 13.6, 4.2), tFrom: [0, Y0 + 0.1, 0], tTo: [0, Y0, 0], fov: 30, len: 46 };
 const SHOT2: Shot = { from: az(-36, 13.6, 4.2), to: az(0, 11.4, 2.7), tFrom: [0, Y0, 0], tTo: [0, Y0 - 0.1, 0], fov: 30, len: 38 };
 const SHOT3: Shot = { from: az(0, 11.4, 2.7), to: az(4, 10.6, 2.5), tFrom: [0, Y0 - 0.1, 0], tTo: [0.05, Y0 - 0.12, 0], fov: 30, len: 54 };
-const SHOT4: Shot = { from: az(4, 10.6, 2.5), to: az(-3, 10.0, 2.4), tFrom: [0.05, Y0 - 0.12, 0], tTo: [0, Y0 - 0.1, 0], fov: 30, len: 44 };
+const SHOT4: Shot = { from: az(4, 10.6, 2.5), to: az(-3, 10.0, 2.4), tFrom: [0.05, Y0 - 0.12, 0], tTo: [0, Y0 - 0.1, 0], fov: 30, len: 62 };
 
 const Scene: React.FC<SceneProps> = (props) => {
   const fCode = W(props, "code", 0, 0.82);

@@ -1,14 +1,53 @@
 [
- {"id":"S01","text":"The biggest crypto theft ever. $1.5 billion. And every signature was real.","say":"The biggest crypto theft ever. One-point-five-billion dollars. And every signature was real."},
- {"id":"S02","text":"Nobody stole their keys. The exchange's own signers approved it."},
- {"id":"S03","text":"Because on their screens, it looked like a routine transfer."},
- {"id":"S04","text":"Hackers had slipped code into the wallet's website. The screen showed one transaction. The signature said another."},
- {"id":"S05","text":"What they really signed handed over the whole wallet. 401,000 ether, gone.","say":"What they really signed handed over the whole wallet. Four-hundred-and-one-thousand ether, gone."},
- {"id":"S06","text":"Here's the part about you. Every time you tap confirm, you sign a message you probably can't read."},
- {"id":"S07","text":"That's why fake airdrop sites just ask you to sign. One signature can let them spend your tokens."},
- {"id":"S08","text":"In 2024, signature scams drained $494 million from 332,000 wallets.","say":"In twenty-twenty-four, signature scams drained four-hundred-ninety-four million-dollars from three-hundred-thirty-two-thousand wallets."},
- {"id":"S09","text":"It's why you check what your wallet says, not what the website says."},
- {"id":"S10","text":"And if it says unlimited, or you can't tell what it does, don't sign."},
- {"id":"S11","text":"Hackers don't need your keys. They just need your signature."},
- {"id":"S12","text":"Send this to someone who taps confirm without reading."}
+ {
+  "id": "S01",
+  "text": "The biggest crypto theft ever. $1.5 billion. And every signature was real.",
+  "say": "The biggest crypto theft ever. One-point-five-billion dollars. And every signature was real."
+ },
+ {
+  "id": "S02",
+  "text": "Nobody stole their keys. The exchange's own signers approved it."
+ },
+ {
+  "id": "S03",
+  "text": "Because on their screens, it looked like a routine transfer."
+ },
+ {
+  "id": "S04",
+  "text": "Hackers had slipped code into the wallet's website. The screen showed one transaction. The signature said another."
+ },
+ {
+  "id": "S05",
+  "text": "What they really signed handed over the whole wallet. 401,000 Ethereum, gone.",
+  "say": "What they really signed handed over the whole wallet. Four-hundred-and-one-thousand Etheerium, gone."
+ },
+ {
+  "id": "S06",
+  "text": "Here's the part about you. Every time you tap confirm, you sign a message you probably can't read."
+ },
+ {
+  "id": "S07",
+  "text": "That's why fake airdrop sites just ask you to sign. One signature can let them spend your tokens."
+ },
+ {
+  "id": "S08",
+  "text": "In 2024, signature scams drained $494 million from 332,000 wallets.",
+  "say": "In twenty-twenty-four, signature scams drained four-hundred-ninety-four million-dollars from three-hundred-thirty-two-thousand wallets."
+ },
+ {
+  "id": "S09",
+  "text": "It's why you check what your wallet says, not what the website says."
+ },
+ {
+  "id": "S10",
+  "text": "And if it says unlimited, or you can't tell what it does, don't sign."
+ },
+ {
+  "id": "S11",
+  "text": "Hackers don't need your keys. They just need your signature."
+ },
+ {
+  "id": "S12",
+  "text": "Send this to someone who taps confirm without reading."
+ }
 ]
