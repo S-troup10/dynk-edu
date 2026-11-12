@@ -1,0 +1,14 @@
+[
+ {"id":"S01","text":"This man's 8,000 bitcoin are buried in a rubbish tip. Except they're not.","say":"This man's eight-thousand bitcoin are buried in a rubbish tip. Except they're not."},
+ {"id":"S02","text":"Not one coin ever left the blockchain. You could look at them right now."},
+ {"id":"S03","text":"Because a crypto wallet doesn't hold your coins. It holds a key."},
+ {"id":"S04","text":"The coins live on a public ledger, copied across thousands of computers."},
+ {"id":"S05","text":"Your address is a glass letterbox. Anyone can look in. Anyone can drop coins in."},
+ {"id":"S06","text":"But only one key opens it. And that key is just a very long secret number."},
+ {"id":"S07","text":"In 2013, James Howells threw out an old hard drive, with the only copy of his key.","say":"In twenty-thirteen, James Howells threw out an old hard drive, with the only copy of his key."},
+ {"id":"S08","text":"It's somewhere under 1.4 million tonnes of rubbish. And the courts said no digging.","say":"It's somewhere under one-point-four million tons of rubbish. And the courts said no digging."},
+ {"id":"S09","text":"That's why your wallet app gives you twelve words. They're your key, written so a human can copy it."},
+ {"id":"S10","text":"That's why losing your phone doesn't lose your coins. And why anyone with those words gets everything."},
+ {"id":"S11","text":"So his bitcoin was never lost. It's exactly where it always was. Just locked."},
+ {"id":"S12","text":"Send this to someone who's about to set up their first wallet."}
+]

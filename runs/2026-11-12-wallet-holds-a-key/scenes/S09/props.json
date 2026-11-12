@@ -1,0 +1,116 @@
+{
+  "runId": "2026-11-12-wallet-holds-a-key",
+  "sceneId": "S09",
+  "durationInFrames": 170,
+  "vo": {
+    "src": "runs/2026-11-12-wallet-holds-a-key/S09.mp3",
+    "words": [
+      {
+        "text": "That's",
+        "start": 0,
+        "end": 0.258
+      },
+      {
+        "text": "why",
+        "start": 0.258,
+        "end": 0.508
+      },
+      {
+        "text": "your",
+        "start": 0.508,
+        "end": 0.761
+      },
+      {
+        "text": "wallet",
+        "start": 0.761,
+        "end": 1.177
+      },
+      {
+        "text": "app",
+        "start": 1.177,
+        "end": 1.426
+      },
+      {
+        "text": "gives",
+        "start": 1.426,
+        "end": 1.838
+      },
+      {
+        "text": "you",
+        "start": 1.838,
+        "end": 2.087
+      },
+      {
+        "text": "twelve",
+        "start": 2.087,
+        "end": 2.503
+      },
+      {
+        "text": "words.",
+        "start": 2.503,
+        "end": 2.761
+      },
+      {
+        "text": "They're",
+        "start": 2.761,
+        "end": 3.196
+      },
+      {
+        "text": "your",
+        "start": 3.196,
+        "end": 3.462
+      },
+      {
+        "text": "key,",
+        "start": 3.462,
+        "end": 3.722
+      },
+      {
+        "text": "written",
+        "start": 3.722,
+        "end": 4.058
+      },
+      {
+        "text": "so",
+        "start": 4.058,
+        "end": 4.253
+      },
+      {
+        "text": "a",
+        "start": 4.253,
+        "end": 4.445
+      },
+      {
+        "text": "human",
+        "start": 4.445,
+        "end": 4.773
+      },
+      {
+        "text": "can",
+        "start": 4.773,
+        "end": 4.972
+      },
+      {
+        "text": "copy",
+        "start": 4.972,
+        "end": 5.296
+      },
+      {
+        "text": "it.",
+        "start": 5.296,
+        "end": 5.491
+      }
+    ]
+  },
+  "sfx": [],
+  "assets": {},
+  "onScreenText": "",
+  "accentWords": [],
+  "showCaptions": true,
+  "captionStyle": "phrase",
+  "captionKeywords": [
+    "twelve",
+    "key,"
+  ],
+  "captionEmoji": {}
+}

@@ -1,0 +1,91 @@
+{
+  "runId": "2026-11-12-wallet-holds-a-key",
+  "sceneId": "S08",
+  "durationInFrames": 157,
+  "vo": {
+    "src": "runs/2026-11-12-wallet-holds-a-key/S08.mp3",
+    "words": [
+      {
+        "text": "It's",
+        "start": 0,
+        "end": 0.229
+      },
+      {
+        "text": "somewhere",
+        "start": 0.229,
+        "end": 0.904
+      },
+      {
+        "text": "under",
+        "start": 0.904,
+        "end": 1.282
+      },
+      {
+        "text": "1.4",
+        "start": 1.282,
+        "end": 1.97
+      },
+      {
+        "text": "million",
+        "start": 1.97,
+        "end": 2.356
+      },
+      {
+        "text": "tonnes",
+        "start": 2.356,
+        "end": 2.589
+      },
+      {
+        "text": "of",
+        "start": 2.589,
+        "end": 2.814
+      },
+      {
+        "text": "rubbish.",
+        "start": 2.814,
+        "end": 3.2
+      },
+      {
+        "text": "And",
+        "start": 3.61,
+        "end": 3.818
+      },
+      {
+        "text": "the",
+        "start": 3.818,
+        "end": 4.026
+      },
+      {
+        "text": "courts",
+        "start": 4.026,
+        "end": 4.245
+      },
+      {
+        "text": "said",
+        "start": 4.245,
+        "end": 4.457
+      },
+      {
+        "text": "no",
+        "start": 4.457,
+        "end": 4.661
+      },
+      {
+        "text": "digging.",
+        "start": 4.661,
+        "end": 5.011
+      }
+    ]
+  },
+  "sfx": [],
+  "assets": {},
+  "onScreenText": "",
+  "accentWords": [],
+  "showCaptions": true,
+  "captionStyle": "phrase",
+  "captionKeywords": [
+    "1.4",
+    "no"
+  ],
+  "captionEmoji": {}
+}

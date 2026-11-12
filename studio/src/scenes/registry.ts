@@ -2,31 +2,31 @@
 // Composer agents edit only their own scene file, never this registry.
 import type React from "react";
 import Demo_S01 from "./_demo/S01";
-import r_2026_11_09_bybit_every_signature_real_S01 from "./r_2026_11_09_bybit_every_signature_real/S01";
-import r_2026_11_09_bybit_every_signature_real_S02 from "./r_2026_11_09_bybit_every_signature_real/S02";
-import r_2026_11_09_bybit_every_signature_real_S03 from "./r_2026_11_09_bybit_every_signature_real/S03";
-import r_2026_11_09_bybit_every_signature_real_S04 from "./r_2026_11_09_bybit_every_signature_real/S04";
-import r_2026_11_09_bybit_every_signature_real_S05 from "./r_2026_11_09_bybit_every_signature_real/S05";
-import r_2026_11_09_bybit_every_signature_real_S06 from "./r_2026_11_09_bybit_every_signature_real/S06";
-import r_2026_11_09_bybit_every_signature_real_S07 from "./r_2026_11_09_bybit_every_signature_real/S07";
-import r_2026_11_09_bybit_every_signature_real_S08 from "./r_2026_11_09_bybit_every_signature_real/S08";
-import r_2026_11_09_bybit_every_signature_real_S09 from "./r_2026_11_09_bybit_every_signature_real/S09";
-import r_2026_11_09_bybit_every_signature_real_S10 from "./r_2026_11_09_bybit_every_signature_real/S10";
-import r_2026_11_09_bybit_every_signature_real_S11 from "./r_2026_11_09_bybit_every_signature_real/S11";
-import r_2026_11_09_bybit_every_signature_real_S12 from "./r_2026_11_09_bybit_every_signature_real/S12";
+import r_2026_11_12_wallet_holds_a_key_S01 from "./r_2026_11_12_wallet_holds_a_key/S01";
+import r_2026_11_12_wallet_holds_a_key_S02 from "./r_2026_11_12_wallet_holds_a_key/S02";
+import r_2026_11_12_wallet_holds_a_key_S03 from "./r_2026_11_12_wallet_holds_a_key/S03";
+import r_2026_11_12_wallet_holds_a_key_S04 from "./r_2026_11_12_wallet_holds_a_key/S04";
+import r_2026_11_12_wallet_holds_a_key_S05 from "./r_2026_11_12_wallet_holds_a_key/S05";
+import r_2026_11_12_wallet_holds_a_key_S06 from "./r_2026_11_12_wallet_holds_a_key/S06";
+import r_2026_11_12_wallet_holds_a_key_S07 from "./r_2026_11_12_wallet_holds_a_key/S07";
+import r_2026_11_12_wallet_holds_a_key_S08 from "./r_2026_11_12_wallet_holds_a_key/S08";
+import r_2026_11_12_wallet_holds_a_key_S09 from "./r_2026_11_12_wallet_holds_a_key/S09";
+import r_2026_11_12_wallet_holds_a_key_S10 from "./r_2026_11_12_wallet_holds_a_key/S10";
+import r_2026_11_12_wallet_holds_a_key_S11 from "./r_2026_11_12_wallet_holds_a_key/S11";
+import r_2026_11_12_wallet_holds_a_key_S12 from "./r_2026_11_12_wallet_holds_a_key/S12";
 
 export const scenes: { id: string; component: React.FC<any> }[] = [
   { id: "demo-S01", component: Demo_S01 },
-  { id: "2026-11-09-bybit-every-signature-real-S01", component: r_2026_11_09_bybit_every_signature_real_S01 },
-  { id: "2026-11-09-bybit-every-signature-real-S02", component: r_2026_11_09_bybit_every_signature_real_S02 },
-  { id: "2026-11-09-bybit-every-signature-real-S03", component: r_2026_11_09_bybit_every_signature_real_S03 },
-  { id: "2026-11-09-bybit-every-signature-real-S04", component: r_2026_11_09_bybit_every_signature_real_S04 },
-  { id: "2026-11-09-bybit-every-signature-real-S05", component: r_2026_11_09_bybit_every_signature_real_S05 },
-  { id: "2026-11-09-bybit-every-signature-real-S06", component: r_2026_11_09_bybit_every_signature_real_S06 },
-  { id: "2026-11-09-bybit-every-signature-real-S07", component: r_2026_11_09_bybit_every_signature_real_S07 },
-  { id: "2026-11-09-bybit-every-signature-real-S08", component: r_2026_11_09_bybit_every_signature_real_S08 },
-  { id: "2026-11-09-bybit-every-signature-real-S09", component: r_2026_11_09_bybit_every_signature_real_S09 },
-  { id: "2026-11-09-bybit-every-signature-real-S10", component: r_2026_11_09_bybit_every_signature_real_S10 },
-  { id: "2026-11-09-bybit-every-signature-real-S11", component: r_2026_11_09_bybit_every_signature_real_S11 },
-  { id: "2026-11-09-bybit-every-signature-real-S12", component: r_2026_11_09_bybit_every_signature_real_S12 },
+  { id: "2026-11-12-wallet-holds-a-key-S01", component: r_2026_11_12_wallet_holds_a_key_S01 },
+  { id: "2026-11-12-wallet-holds-a-key-S02", component: r_2026_11_12_wallet_holds_a_key_S02 },
+  { id: "2026-11-12-wallet-holds-a-key-S03", component: r_2026_11_12_wallet_holds_a_key_S03 },
+  { id: "2026-11-12-wallet-holds-a-key-S04", component: r_2026_11_12_wallet_holds_a_key_S04 },
+  { id: "2026-11-12-wallet-holds-a-key-S05", component: r_2026_11_12_wallet_holds_a_key_S05 },
+  { id: "2026-11-12-wallet-holds-a-key-S06", component: r_2026_11_12_wallet_holds_a_key_S06 },
+  { id: "2026-11-12-wallet-holds-a-key-S07", component: r_2026_11_12_wallet_holds_a_key_S07 },
+  { id: "2026-11-12-wallet-holds-a-key-S08", component: r_2026_11_12_wallet_holds_a_key_S08 },
+  { id: "2026-11-12-wallet-holds-a-key-S09", component: r_2026_11_12_wallet_holds_a_key_S09 },
+  { id: "2026-11-12-wallet-holds-a-key-S10", component: r_2026_11_12_wallet_holds_a_key_S10 },
+  { id: "2026-11-12-wallet-holds-a-key-S11", component: r_2026_11_12_wallet_holds_a_key_S11 },
+  { id: "2026-11-12-wallet-holds-a-key-S12", component: r_2026_11_12_wallet_holds_a_key_S12 },
 ];

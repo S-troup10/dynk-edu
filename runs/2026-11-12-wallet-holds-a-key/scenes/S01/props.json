@@ -1,0 +1,86 @@
+{
+  "runId": "2026-11-12-wallet-holds-a-key",
+  "sceneId": "S01",
+  "durationInFrames": 135,
+  "vo": {
+    "src": "runs/2026-11-12-wallet-holds-a-key/S01.mp3",
+    "words": [
+      {
+        "text": "This",
+        "start": 0,
+        "end": 0.242
+      },
+      {
+        "text": "man's",
+        "start": 0.242,
+        "end": 0.483
+      },
+      {
+        "text": "8,000",
+        "start": 0.483,
+        "end": 1.056
+      },
+      {
+        "text": "bitcoin",
+        "start": 1.056,
+        "end": 1.456
+      },
+      {
+        "text": "are",
+        "start": 1.456,
+        "end": 1.838
+      },
+      {
+        "text": "buried",
+        "start": 1.838,
+        "end": 2.234
+      },
+      {
+        "text": "in",
+        "start": 2.234,
+        "end": 2.467
+      },
+      {
+        "text": "a",
+        "start": 2.467,
+        "end": 2.695
+      },
+      {
+        "text": "rubbish",
+        "start": 2.695,
+        "end": 3.095
+      },
+      {
+        "text": "tip.",
+        "start": 3.095,
+        "end": 3.332
+      },
+      {
+        "text": "Except",
+        "start": 3.332,
+        "end": 3.732
+      },
+      {
+        "text": "they're",
+        "start": 3.732,
+        "end": 4.131
+      },
+      {
+        "text": "not.",
+        "start": 4.131,
+        "end": 4.37
+      }
+    ]
+  },
+  "sfx": [],
+  "assets": {},
+  "onScreenText": "",
+  "accentWords": [],
+  "showCaptions": true,
+  "captionStyle": "phrase",
+  "captionKeywords": [
+    "rubbish",
+    "not."
+  ],
+  "captionEmoji": {}
+}

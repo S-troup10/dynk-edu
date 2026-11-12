@@ -1,0 +1,81 @@
+{
+  "runId": "2026-11-12-wallet-holds-a-key",
+  "sceneId": "S03",
+  "durationInFrames": 113,
+  "vo": {
+    "src": "runs/2026-11-12-wallet-holds-a-key/S03.mp3",
+    "words": [
+      {
+        "text": "Because",
+        "start": 0,
+        "end": 0.56
+      },
+      {
+        "text": "a",
+        "start": 0.56,
+        "end": 0.794
+      },
+      {
+        "text": "crypto",
+        "start": 0.794,
+        "end": 1.2
+      },
+      {
+        "text": "wallet",
+        "start": 1.2,
+        "end": 1.606
+      },
+      {
+        "text": "doesn't",
+        "start": 1.606,
+        "end": 1.863
+      },
+      {
+        "text": "hold",
+        "start": 1.863,
+        "end": 2.11
+      },
+      {
+        "text": "your",
+        "start": 2.11,
+        "end": 2.358
+      },
+      {
+        "text": "coins.",
+        "start": 2.358,
+        "end": 2.61
+      },
+      {
+        "text": "It",
+        "start": 2.61,
+        "end": 2.856
+      },
+      {
+        "text": "holds",
+        "start": 2.856,
+        "end": 3.115
+      },
+      {
+        "text": "a",
+        "start": 3.115,
+        "end": 3.356
+      },
+      {
+        "text": "key.",
+        "start": 3.356,
+        "end": 3.606
+      }
+    ]
+  },
+  "sfx": [],
+  "assets": {},
+  "onScreenText": "",
+  "accentWords": [],
+  "showCaptions": true,
+  "captionStyle": "phrase",
+  "captionKeywords": [
+    "coins.",
+    "key."
+  ],
+  "captionEmoji": {}
+}

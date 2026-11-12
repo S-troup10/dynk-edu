@@ -1,0 +1,62 @@
+[
+  {
+    "sceneId": "S01",
+    "composition": "2026-11-12-wallet-holds-a-key-S01",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S01.tsx"
+  },
+  {
+    "sceneId": "S02",
+    "composition": "2026-11-12-wallet-holds-a-key-S02",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S02.tsx"
+  },
+  {
+    "sceneId": "S03",
+    "composition": "2026-11-12-wallet-holds-a-key-S03",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S03.tsx"
+  },
+  {
+    "sceneId": "S04",
+    "composition": "2026-11-12-wallet-holds-a-key-S04",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S04.tsx"
+  },
+  {
+    "sceneId": "S05",
+    "composition": "2026-11-12-wallet-holds-a-key-S05",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S05.tsx"
+  },
+  {
+    "sceneId": "S06",
+    "composition": "2026-11-12-wallet-holds-a-key-S06",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S06.tsx"
+  },
+  {
+    "sceneId": "S07",
+    "composition": "2026-11-12-wallet-holds-a-key-S07",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S07.tsx"
+  },
+  {
+    "sceneId": "S08",
+    "composition": "2026-11-12-wallet-holds-a-key-S08",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S08.tsx"
+  },
+  {
+    "sceneId": "S09",
+    "composition": "2026-11-12-wallet-holds-a-key-S09",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S09.tsx"
+  },
+  {
+    "sceneId": "S10",
+    "composition": "2026-11-12-wallet-holds-a-key-S10",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S10.tsx"
+  },
+  {
+    "sceneId": "S11",
+    "composition": "2026-11-12-wallet-holds-a-key-S11",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S11.tsx"
+  },
+  {
+    "sceneId": "S12",
+    "composition": "2026-11-12-wallet-holds-a-key-S12",
+    "file": "studio/src/scenes/r_2026_11_12_wallet_holds_a_key/S12.tsx"
+  }
+]

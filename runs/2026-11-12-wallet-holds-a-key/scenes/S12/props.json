@@ -1,0 +1,80 @@
+{
+  "runId": "2026-11-12-wallet-holds-a-key",
+  "sceneId": "S12",
+  "durationInFrames": 121,
+  "vo": {
+    "src": "runs/2026-11-12-wallet-holds-a-key/S12.mp3",
+    "words": [
+      {
+        "text": "Send",
+        "start": 0,
+        "end": 0.216
+      },
+      {
+        "text": "this",
+        "start": 0.216,
+        "end": 0.432
+      },
+      {
+        "text": "to",
+        "start": 0.432,
+        "end": 0.64
+      },
+      {
+        "text": "someone",
+        "start": 0.64,
+        "end": 1.128
+      },
+      {
+        "text": "who's",
+        "start": 1.128,
+        "end": 1.344
+      },
+      {
+        "text": "about",
+        "start": 1.344,
+        "end": 1.694
+      },
+      {
+        "text": "to",
+        "start": 1.694,
+        "end": 1.901
+      },
+      {
+        "text": "set",
+        "start": 1.901,
+        "end": 2.113
+      },
+      {
+        "text": "up",
+        "start": 2.113,
+        "end": 2.321
+      },
+      {
+        "text": "their",
+        "start": 2.321,
+        "end": 2.541
+      },
+      {
+        "text": "first",
+        "start": 2.541,
+        "end": 2.761
+      },
+      {
+        "text": "wallet.",
+        "start": 2.761,
+        "end": 3.115
+      }
+    ]
+  },
+  "sfx": [],
+  "assets": {},
+  "onScreenText": "",
+  "accentWords": [],
+  "showCaptions": true,
+  "captionStyle": "phrase",
+  "captionKeywords": [
+    "first"
+  ],
+  "captionEmoji": {}
+}

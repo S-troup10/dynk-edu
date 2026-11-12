@@ -1,0 +1,150 @@
+{
+ "runId": "2026-11-12-wallet-holds-a-key",
+ "fps": 30,
+ "scenes": [
+  {
+   "id": "S01",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S01.mp3"
+   },
+   "padSec": 0.1,
+   "captionKeywords": [
+    "rubbish",
+    "not."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S02",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S02.mp3"
+   },
+   "padSec": 0.1,
+   "captionKeywords": [
+    "blockchain.",
+    "now."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S03",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S03.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "coins.",
+    "key."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S04",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S04.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "ledger,",
+    "thousands"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S05",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S05.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "letterbox.",
+    "look",
+    "drop"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S06",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S06.mp3"
+   },
+   "padSec": 0.2,
+   "captionKeywords": [
+    "one",
+    "number."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S07",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S07.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "2013,",
+    "only"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S08",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S08.mp3"
+   },
+   "padSec": 0.2,
+   "captionKeywords": [
+    "1.4",
+    "no"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S09",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S09.mp3"
+   },
+   "padSec": 0.15,
+   "captionKeywords": [
+    "twelve",
+    "key,"
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S10",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S10.mp3"
+   },
+   "padSec": 0.2,
+   "captionKeywords": [
+    "phone",
+    "everything."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S11",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S11.mp3"
+   },
+   "padSec": 0.3,
+   "captionKeywords": [
+    "never",
+    "locked."
+   ],
+   "captionEmoji": {}
+  },
+  {
+   "id": "S12",
+   "vo": {
+    "file": "runs/2026-11-12-wallet-holds-a-key/audio/vo/S12.mp3"
+   },
+   "padSec": 0.9,
+   "captionKeywords": [
+    "first"
+   ],
+   "captionEmoji": {}
+  }
+ ]
+}

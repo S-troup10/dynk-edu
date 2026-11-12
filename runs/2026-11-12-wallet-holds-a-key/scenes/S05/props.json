@@ -1,0 +1,97 @@
+{
+  "runId": "2026-11-12-wallet-holds-a-key",
+  "sceneId": "S05",
+  "durationInFrames": 162,
+  "vo": {
+    "src": "runs/2026-11-12-wallet-holds-a-key/S05.mp3",
+    "words": [
+      {
+        "text": "Your",
+        "start": 0,
+        "end": 0.277
+      },
+      {
+        "text": "address",
+        "start": 0.277,
+        "end": 0.735
+      },
+      {
+        "text": "is",
+        "start": 0.735,
+        "end": 1.001
+      },
+      {
+        "text": "a",
+        "start": 1.001,
+        "end": 1.263
+      },
+      {
+        "text": "glass",
+        "start": 1.263,
+        "end": 1.544
+      },
+      {
+        "text": "letterbox.",
+        "start": 1.544,
+        "end": 2.18
+      },
+      {
+        "text": "Anyone",
+        "start": 2.18,
+        "end": 2.725
+      },
+      {
+        "text": "can",
+        "start": 2.725,
+        "end": 2.964
+      },
+      {
+        "text": "look",
+        "start": 2.964,
+        "end": 3.207
+      },
+      {
+        "text": "in.",
+        "start": 3.207,
+        "end": 3.441
+      },
+      {
+        "text": "Anyone",
+        "start": 3.441,
+        "end": 4.088
+      },
+      {
+        "text": "can",
+        "start": 4.088,
+        "end": 4.371
+      },
+      {
+        "text": "drop",
+        "start": 4.371,
+        "end": 4.66
+      },
+      {
+        "text": "coins",
+        "start": 4.66,
+        "end": 4.954
+      },
+      {
+        "text": "in.",
+        "start": 4.954,
+        "end": 5.232
+      }
+    ]
+  },
+  "sfx": [],
+  "assets": {},
+  "onScreenText": "",
+  "accentWords": [],
+  "showCaptions": true,
+  "captionStyle": "phrase",
+  "captionKeywords": [
+    "letterbox.",
+    "look",
+    "drop"
+  ],
+  "captionEmoji": {}
+}
