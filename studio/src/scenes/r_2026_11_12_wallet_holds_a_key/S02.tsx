@@ -24,7 +24,7 @@ const ShotA: React.FC<{ shot: Shot }> = ({ shot }) => {
         <CamRig shot={shot} />
         <LedgerWall rows={ROWS} cols={COLS} hot={HOT} position={[0, 0, 0]} />
       </Studio3D>
-      <Callout text="THE BLOCKCHAIN = A PUBLIC LEDGER" at={at} label={[at[0] + 20, 1330]} startFrame={10} />
+      <Callout text="THE BLOCKCHAIN = A PUBLIC LEDGER" at={at} label={[540, 1330]} startFrame={10} />
     </AbsoluteFill>
   );
 };
@@ -85,8 +85,8 @@ const Scene: React.FC<SceneProps> = (props) => {
   const cutB = Math.max(40, W(props, "you", 0, 2.309) - 2);
   const cutC = Math.max(cutB + 24, W(props, "right", 0, 3.484) - 1);
   const hx = wallPos(ROWS, COLS, HOT)[0];
-  const shotA: Shot = { from: [hx - 5.6, 2.9, 11.5], to: [hx - 1.2, 2.9, 11.5], tFrom: [hx - 5.7, 2.45, 0], tTo: [hx - 1.5, 2.45, 0], fov: 30, len: cutB };
-  const shotC: Shot = { from: [0.8, 1.1, 3.5], to: [0.35, 0.95, 2.9], tFrom: [0, 0.85, 0], tTo: [0, 0.85, 0], fov: 30, len: total - cutC };
+  const shotA: Shot = { from: [hx - 4.6, 2.9, 12.5], to: [hx - 0.6, 2.9, 12.5], tFrom: [hx - 4.7, 2.5, 0], tTo: [hx - 0.8, 2.5, 0], fov: 30, len: cutB };
+  const shotC: Shot = { from: [1.0, 1.4, 5.4], to: [0.5, 1.3, 4.6], tFrom: [0, 1.25, 0], tTo: [0, 1.25, 0], fov: 30, len: total - cutC };
   return (
     <Shell props={props} tone="dark">
       <Sequence from={0} durationInFrames={cutB} layout="none"><ShotA shot={shotA} /></Sequence>

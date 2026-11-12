@@ -13,10 +13,10 @@ const PHONE_LINES = [
   { text: "0.42 BTC", size: 84, weight: 700 },
   { text: "Send   Receive", size: 44, color: "#b8b8b8" },
 ];
-const KEY_S = 0.5;
+const KEY_S = 0.34;
 const BOX: Vec3 = [0.3, 0, -0.5];
-const PLATE: Vec3 = [0, 0.78, 2.6];
-const PLATE_ROT: Vec3 = [-0.32, 0, 0];
+const PLATE: Vec3 = [0.3, 0.95, 2.6];
+const PLATE_ROT: Vec3 = [-0.4, 0, 0];
 
 const lerp = (a: number, b: number, p: number) => a + (b - a) * p;
 const lerp3 = (a: Vec3, b: Vec3, p: number): Vec3 => [lerp(a[0], b[0], p), lerp(a[1], b[1], p), lerp(a[2], b[2], p)];
@@ -27,15 +27,15 @@ const ShotA: React.FC<{ shot: Shot }> = ({ shot }) => {
   const p = interpolate(f, [6, 44], [0, 1], clamp);
   const tip = ease(interpolate(f, [0, 16], [0, 1], clamp));
   const fall = p * p;
-  const pos: Vec3 = [-1.5 - p * 0.5, 1.15 - fall * 4.2, 1.6 + fall * 1.4];
+  const pos: Vec3 = [-0.75 - p * 0.35, 1.15 - fall * 4.2, 1.6 + fall * 1.4];
   const rot: Vec3 = [tip * 0.25 + p * 0.9, 0.15, -tip * 0.5 - p * 1.1];
-  const at = project(shot, 24, [-1.5, 0.9, 1.6]);
+  const at = project(shot, 28, [-0.8, 0.5, 1.6]);
   return (
     <AbsoluteFill>
       <Studio3D tone="dark" camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
         <CamRig shot={shot} />
         <Handset position={pos} rotation={rot} lines={PHONE_LINES} />
-        <Letterbox position={[0.9, 0, -0.8]} coins={30} glow />
+        <Letterbox position={[0.8, 0, -0.8]} coins={30} glow />
       </Studio3D>
       <Callout text="PHONE: GONE" at={[at[0], at[1]]} label={[at[0] + 20, 1330]} startFrame={26} />
     </AbsoluteFill>
@@ -47,14 +47,14 @@ const KeyShot: React.FC<{ shot: Shot; stranger?: boolean }> = ({ shot, stranger 
   const f = useCurrentFrame();
   const rise = ease(interpolate(f, [4, stranger ? 18 : 20], [0, 1], clamp));
   const glide = ease(interpolate(f, [stranger ? 16 : 18, shot.len - 1], [0, 1], clamp));
-  const start: Vec3 = [-0.5, PLATE[1] + 0.25, PLATE[2] + 0.1];
-  const up: Vec3 = [-0.5, PLATE[1] + 1.05, PLATE[2] + 0.1];
-  const end: Vec3 = [-0.45, 1.12, 0.95];
+  const start: Vec3 = [-0.1, PLATE[1] + 0.25, PLATE[2] + 0.1];
+  const up: Vec3 = [-0.1, PLATE[1] + 0.9, PLATE[2] + 0.1];
+  const end: Vec3 = [-0.1, 1.12, 0.7];
   const pos = lerp3(lerp3(start, up, rise), end, glide);
   const rotY = glide * 0.5;
   const rotZ = (1 - rise) * 0.5;
   const sc = KEY_S * (0.4 + rise * 0.6);
-  const at = project(shot, 20, [0.4, PLATE[1] + 0.2, PLATE[2]]);
+  const at = project(shot, 20, [0.95, PLATE[1] - 0.1, PLATE[2]]);
   return (
     <AbsoluteFill>
       <Studio3D tone="dark" camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
@@ -63,7 +63,7 @@ const KeyShot: React.FC<{ shot: Shot; stranger?: boolean }> = ({ shot, stranger 
         <WordPlate position={PLATE} rotation={PLATE_ROT} scale={0.45} count={12} />
         {rise > 0.02 && <NumberKey position={pos} rotation={[0, rotY, rotZ]} scale={sc} dim={stranger} glowLight={!stranger} />}
       </Studio3D>
-      {!stranger && <Callout text="SAME WORDS → SAME KEY" at={[at[0], at[1]]} label={[at[0] + 60, 1500]} startFrame={14} accent />}
+      {!stranger && <Callout text="SAME WORDS → SAME KEY" at={[at[0], at[1]]} label={[790, 1530]} startFrame={14} accent />}
     </AbsoluteFill>
   );
 };
@@ -107,9 +107,9 @@ const Scene: React.FC<SceneProps> = (props) => {
   const b = Math.max(40, W(props, "doesn't", 0, 1.7) - 1);
   const c = Math.max(b + 30, W(props, "And", 0, 2.97) - 1);
   const d = Math.max(c + 30, W(props, "gets", 0, 4.87) - 1);
-  const s1: Shot = { from: [1.2, 1.7, 8.4], to: [0.5, 1.5, 7.4], tFrom: [0.1, 1.2, 0], tTo: [0.2, 1.1, 0], fov: 32, len: b };
-  const s2: Shot = { from: [1.0, 2.0, 8.3], to: [0.3, 1.8, 7.3], tFrom: [0.2, 1.15, 0.3], tTo: [0.1, 1.2, 0.3], fov: 32, len: c - b };
-  const s3: Shot = { from: [-1.1, 1.8, 7.9], to: [-0.2, 1.95, 7.0], tFrom: [0.0, 1.15, 0.3], tTo: [0.1, 1.2, 0.3], fov: 32, len: d - c };
+  const s1: Shot = { from: [0.3, 1.7, 9.6], to: [0.1, 1.5, 8.6], tFrom: [0.0, 1.2, 0], tTo: [0.05, 1.1, 0], fov: 32, len: b };
+  const s2: Shot = { from: [0.8, 2.0, 8.3], to: [0.45, 1.8, 7.3], tFrom: [0.3, 1.1, 0.3], tTo: [0.3, 1.1, 0.3], fov: 32, len: c - b };
+  const s3: Shot = { from: [-0.3, 1.8, 7.9], to: [0.1, 1.95, 7.0], tFrom: [0.3, 1.1, 0.3], tTo: [0.3, 1.1, 0.3], fov: 32, len: d - c };
   const s4: Shot = { from: [-1.4, 1.7, 6.8], to: [0.2, 1.55, 6.0], tFrom: [0.3, 1.15, 0], tTo: [1.1, 1.0, 0], fov: 34, len: total - d };
   return (
     <Shell props={props} tone="dark">

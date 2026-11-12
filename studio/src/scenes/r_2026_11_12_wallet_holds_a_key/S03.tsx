@@ -33,25 +33,27 @@ const ShotB: React.FC<{ shot: Shot }> = ({ shot }) => {
     <AbsoluteFill>
       <Studio3D tone="dark" camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
         <CamRig shot={shot} />
+        <pointLight position={[2.5, 3, 3]} intensity={30} color="#9db4cc" distance={12} /><pointLight position={[-2.5, 0, 3]} intensity={18} color="#9db4cc" distance={12} />
         <Handset position={[0, PY, 0]} lines={PHONE_LINES} xray={xr} />
       </Studio3D>
-      <Callout text="NO COINS IN HERE" at={[at[0] + 20, at[1]]} label={[740, 560]} startFrame={10} />
+      <Callout text="NO COINS IN HERE" at={[at[0] - 40, at[1] + 200]} label={[540, 1640]} startFrame={10} />
     </AbsoluteFill>
   );
 };
 
 const ShotC: React.FC<{ shot: Shot }> = ({ shot }) => {
   const f = useCurrentFrame();
-  const at = project(shot, f, [0, PY + 0.1, 0] as Vec3);
+  const at = project(shot, f, [0.12, PY + 0.2, 0] as Vec3);
   return (
     <AbsoluteFill>
       <Studio3D tone="dark" camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
         <CamRig shot={shot} />
+        <pointLight position={[2.5, 3, 3]} intensity={30} color="#9db4cc" distance={12} /><pointLight position={[-2.5, 0, 3]} intensity={18} color="#9db4cc" distance={12} />
         <Handset position={[0, PY, 0]} lines={PHONE_LINES} xray={1}>
-          <NumberKey position={[0, -0.32, 0]} rotation={[0, 0, Math.PI / 2]} scale={0.34} glowLight />
+          <NumberKey position={[0, -0.5, 0]} rotation={[0, 0, Math.PI / 2]} scale={0.5} glowLight />
         </Handset>
       </Studio3D>
-      <Callout text="JUST A KEY" at={[at[0] + 30, at[1]]} label={[790, 520]} startFrame={9} accent />
+      <Callout text="JUST A KEY" at={[at[0] + 30, at[1]]} label={[860, 560]} startFrame={9} accent />
     </AbsoluteFill>
   );
 };
@@ -62,7 +64,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const cutC = Math.max(cutB + 24, W(props, "It", 0, 2.61) - 1);
   const A: Shot = { from: [-3.4, 1.7, 6.2], to: [0.3, 1.45, 7.0], tFrom: [0, PY, 0], tTo: [0, PY, 0], fov: 30, len: cutB };
   const B: Shot = { from: [0.3, 1.45, 7.0], to: [0.0, 1.35, 6.2], tFrom: [0, PY, 0], tTo: [0, PY, 0], fov: 30, len: cutC - cutB };
-  const C: Shot = { from: [0.9, 1.5, 4.2], to: [0.2, 1.3, 3.5], tFrom: [0, PY, 0], tTo: [0, PY, 0], fov: 30, len: total - cutC };
+  const C: Shot = { from: [0.7, 1.5, 6.5], to: [0.1, 1.3, 5.8], tFrom: [0, PY, 0], tTo: [0, PY, 0], fov: 30, len: total - cutC };
   return (
     <Shell props={props} tone="dark">
       <Sequence from={0} durationInFrames={cutB} layout="none"><ShotA shot={A} /></Sequence>
@@ -72,7 +74,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       <Sfx name="tick" at={cutB + 10} volume={0.3} />
       <Sfx name="whoosh_soft" at={cutC} volume={0.3} />
       <Sfx name="thud" at={W(props, "key.", 0, 3.36)} volume={0.4} />
-      <Disclaimer text="Illustration · simplified" />
+      <Disclaimer text="Illustration · simplified" y={1700} />
     </Shell>
   );
 };

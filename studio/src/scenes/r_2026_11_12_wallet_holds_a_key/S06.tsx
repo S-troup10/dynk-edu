@@ -63,7 +63,7 @@ const ShotC: React.FC<{ shot: Shot }> = ({ shot }) => (
   <AbsoluteFill>
     <Studio3D tone="dark" shadows={false} camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
       <CamRig shot={shot} />
-      <NumberKey position={[0, 0, 0]} rotation={[0, -0.28, 0.1]} glowLight digits={KEY_DIGITS.slice(0, 28)} />
+      <NumberKey position={[0, 0, 0]} rotation={[0, -0.2, 0]} glowLight digits={KEY_DIGITS.slice(0, 28)} />
     </Studio3D>
   </AbsoluteFill>
 );
@@ -106,9 +106,9 @@ const Scene: React.FC<SceneProps> = (props) => {
   const c1 = Math.max(24, W(props, "opens", 0, 1.17));
   const c2 = Math.max(c1 + 16, W(props, "and", 0, 1.77) - 0);
   const c3 = Math.max(c2 + 30, W(props, "a", 0, 3.0) - 0);
-  const sA: Shot = { from: [4.3, 1.75, 4.7], to: [3.9, 1.6, 3.9], tFrom: [0.2, 1.05, 1.0], tTo: [0.25, 1.1, 0.7], fov: 36, len: c1 };
-  const sB: Shot = { from: [3.3, 1.55, 3.3], to: [2.6, 1.45, 2.8], tFrom: [0.1, 1.1, 0.7], tTo: [0.0, 1.1, 0.7], fov: 38, len: c2 - c1 };
-  const sC: Shot = { from: [0.5, 0.3, 1.6], to: [1.9, 0.18, 1.45], tFrom: [0.8, 0.0, 0], tTo: [2.0, 0.0, 0], fov: 28, len: c3 - c2 };
+  const sA: Shot = { from: [4.6, 1.75, 5.2], to: [4.2, 1.65, 4.5], tFrom: [-0.1, 1.0, 1.3], tTo: [0.15, 1.05, 0.9], fov: 38, len: c1 };
+  const sB: Shot = { from: [4.2, 1.7, 4.9], to: [3.7, 1.6, 4.4], tFrom: [0.2, 1.0, 0.9], tTo: [0.3, 1.0, 0.9], fov: 38, len: c2 - c1 };
+  const sC: Shot = { from: [0.4, 0.05, 3.1], to: [1.5, 0.05, 2.8], tFrom: [0.8, 0.0, 0], tTo: [1.7, 0.0, 0], fov: 28, len: c3 - c2 };
   return (
     <Shell props={props} tone="dark">
       <Sequence from={0} durationInFrames={c1} layout="none"><ShotA shot={sA} /></Sequence>

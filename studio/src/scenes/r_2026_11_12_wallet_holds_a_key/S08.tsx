@@ -32,7 +32,7 @@ const ShotB: React.FC<{ shot: Shot }> = ({ shot }) => {
         <CamRig shot={shot} />
         <RubbishHeap R={6} H={4} glowAt={GLOW} />
       </Studio3D>
-      <div style={{ position: "absolute", left: 0, right: 0, top: 1290, textAlign: "center", opacity: op, transform: `translateY(${(1 - op) * 14}px)` }}>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 1290, padding: "40px 0", background: "radial-gradient(ellipse at center, rgba(8,8,10,0.85) 0%, rgba(8,8,10,0.55) 55%, rgba(8,8,10,0) 80%)", textAlign: "center", opacity: op, transform: `translateY(${(1 - op) * 14}px)` }}>
         <div style={{ fontFamily: "Orbitron, sans-serif", fontWeight: 700, fontSize: 88, color: "#f2f2f2", fontVariantNumeric: "tabular-nums", letterSpacing: 2 }}>
           {shown.toLocaleString("en-US")}
         </div>
@@ -53,7 +53,7 @@ const ShotC: React.FC = () => {
   return (
     <AbsoluteFill style={{ background: "#0d0e10" }}>
       <Cam2D shot={{ from: { x: 14, y: 12, s: 1.0 }, to: { x: -10, y: -8, s: 1.05 }, len: 28 }}>
-        <div style={{ position: "absolute", left: 110, width: 860, top: 560, height: 700, background: "#eeeae0", borderRadius: 10,
+        <div style={{ position: "absolute", left: 110, width: 860, top: 600, height: 640, background: "#eeeae0", borderRadius: 10,
           boxShadow: "0 30px 80px rgba(0,0,0,0.6)", padding: "64px 56px", boxSizing: "border-box", opacity: e(0, 5) }}>
           <div style={{ ...mono, fontWeight: 600, fontSize: 26, letterSpacing: 6, color: "#6a6a66", marginBottom: 44 }}>Court notice</div>
           <div style={{ opacity: e(1, 6) }}>
@@ -101,9 +101,9 @@ const Scene: React.FC<SceneProps> = (props) => {
   const c2 = Math.max(30, W(props, "1.4", 0, 1.28) - 0);
   const c3 = Math.max(c2 + 40, W(props, "and", 0, 3.6) - 2);
   const c4 = Math.max(c3 + 24, W(props, "no", 0, 4.47));
-  const shotA: Shot = { from: [-1.5, 0.5, 9.2], to: [1.5, 2.1, 8.4], tFrom: [0, 1.4, 0], tTo: [0, 2.4, 0], fov: 45, len: c2 };
-  const shotB: Shot = { from: [-2.4, 9.2, 15.5], to: [1.8, 10.4, 14.4], tFrom: [0, 1.6, 0], tTo: [0, 1.6, 0], fov: 34, len: c3 - c2 };
-  const shotD: Shot = { from: [-2.6, 2.4, 12.8], to: [1.2, 3.1, 11.4], tFrom: [0, 1.3, 1.5], tTo: [0, 1.5, 1.5], fov: 38, len: total - c4 };
+  const shotA: Shot = { from: [-1.2, 0.6, 14.5], to: [1.6, 2.2, 13.2], tFrom: [0, 1.2, 0], tTo: [0, 2.2, 0], fov: 46, len: c2 };
+  const shotB: Shot = { from: [-3, 12, 34], to: [2, 13.4, 32], tFrom: [0, 0.6, 0], tTo: [0, 0.6, 0], fov: 34, len: c3 - c2 };
+  const shotD: Shot = { from: [-3, 3.4, 23], to: [1.6, 4.2, 21.2], tFrom: [0, 1.0, 1.5], tTo: [0, 1.2, 1.5], fov: 40, len: total - c4 };
   return (
     <Shell props={props} tone="dark">
       <Sequence from={0} durationInFrames={c2} layout="none"><ShotA shot={shotA} /></Sequence>
@@ -115,7 +115,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       <Sfx name="click" at={c3 + 6} volume={0.5} />
       <Sfx name="click" at={c3 + 17} volume={0.5} />
       <Sfx name="whoosh_soft" at={c4} volume={0.3} />
-      <Disclaimer text="Sources in caption" />
+      <Sequence from={c4} layout="none"><Disclaimer text="Sources in caption" /></Sequence>
     </Shell>
   );
 };

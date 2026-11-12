@@ -13,18 +13,18 @@ const ShotA: React.FC<{ shot: Shot }> = ({ shot }) => {
   const f = useCurrentFrame();
   const hot = wallPos(ROWS, COLS, HOT);
   const [px, py] = project(shot, f, [hot[0], hot[1] + 0.3, hot[2]]);
-  const [wx, wy] = project(shot, f, [-1.0, 2.4, 0]);
+  const [wx, wy] = project(shot, f, [hot[0] + 0.7 * 0.72 * 2, hot[1] + 0.72, 0]);
   void px; void py;
   return (
     <AbsoluteFill>
       <Studio3D tone="dark" camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
         <CamRig shot={shot} />
         <LedgerWall rows={ROWS} cols={COLS} hot={HOT} position={[0, 0, 0]} />
-        <Discs n={16} max={16} w={2.4} d={1.0} position={[-1.2, 0, 1.4]} seed={5} />
+        <Discs n={16} max={16} w={2.4} d={1.0} position={[0.4, 0, 1.6]} seed={5} />
         <Disc position={[1.6, 0.03, 1.9]} rotation={[0.1, 0.5, 0.05]} />
         <Disc position={[2.0, 0.03, 1.5]} rotation={[0, 1.2, 0]} />
       </Studio3D>
-      <Callout text="THE LEDGER" at={[wx, wy]} label={[Math.min(Math.max(wx + 180, 300), 760), Math.max(wy - 80, 470)]} startFrame={10} />
+      <Callout text="THE LEDGER" at={[wx, wy]} label={[Math.min(wx + 200, 800), Math.max(wy - 120, 480)]} startFrame={10} />
     </AbsoluteFill>
   );
 };
@@ -61,8 +61,8 @@ const Scene: React.FC<SceneProps> = (props) => {
   const total = props.durationInFrames ?? 135;
   const c1 = Math.max(40, W(props, "copied", 0, 2.09) - 1);
   const c2 = Math.max(c1 + 20, W(props, "thousands", 0, 2.98) - 1);
-  const a: Shot = { from: [-4.2, 6.2, 9.6], to: [-2.2, 3.4, 9.2], tFrom: [0, 2.0, 0], tTo: [0, 1.9, 0], fov: 32, len: c1 };
-  const b: Shot = { from: [-1.2, 0.8, 9.0], to: [0.4, 1.1, 5.6], tFrom: [0, 0.6, 0], tTo: [0, 0.5, -2], fov: 40, len: c2 - c1 };
+  const a: Shot = { from: [-5.5, 7.5, 15.5], to: [-3.2, 4.4, 14.5], tFrom: [0, 1.7, 0], tTo: [0, 1.7, 0], fov: 32, len: c1 };
+  const b: Shot = { from: [-1.2, 3.4, 14.5], to: [0.5, 2.5, 11.0], tFrom: [0, 0, 2], tTo: [0, 0, -2], fov: 40, len: c2 - c1 };
   const c: Shot = { from: [0, 7.5, 14.5], to: [0, 10.5, 15.5], tFrom: [0, 0, 0], tTo: [0, 0, 0], fov: 40, len: total - c2 };
   return (
     <Shell props={props} tone="dark">

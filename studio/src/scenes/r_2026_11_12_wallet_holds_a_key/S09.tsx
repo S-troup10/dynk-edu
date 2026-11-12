@@ -22,9 +22,9 @@ const ShotA: React.FC<{ shot: Shot }> = ({ shot }) => {
         <CamRig shot={shot} />
         <Handset position={[0, 1.15 + bob - (1 - arrive) * 0.25, 0]} scale={1}
           lines={[
-            { text: "Back up your wallet", size: 52, weight: 700 },
-            { text: "Write these", size: 44, color: "#b8b8b8", weight: 500 },
-            { text: "12 words down", size: 56, weight: 800, color: ORANGE },
+            { text: "Back up your wallet", size: 44, weight: 700 },
+            { text: "Write these", size: 40, color: "#b8b8b8", weight: 500 },
+            { text: "12 words down", size: 50, weight: 800, color: ORANGE },
           ]} />
       </Studio3D>
     </AbsoluteFill>
@@ -60,7 +60,7 @@ const ShotB: React.FC<{ len: number }> = ({ len }) => {
 };
 
 /* ---------- shot 3 ---------- */
-const KEY_P: [number, number, number] = [-0.85, 2.15, 0];
+const KEY_P: [number, number, number] = [-0.62, 2.15, 0];
 const PLATE_P: [number, number, number] = [0, 0.75, 0];
 const ShotC: React.FC<{ shot: Shot }> = ({ shot }) => {
   const f = useCurrentFrame();
@@ -77,11 +77,11 @@ const ShotC: React.FC<{ shot: Shot }> = ({ shot }) => {
     <AbsoluteFill>
       <Studio3D tone="dark" shadows={false} camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
         <CamRig shot={shot} />
-        <NumberKey position={[KEY_P[0], KEY_P[1] + (1 - k) * 0.3, 0]} scale={0.82} digits="83917265048271936450" glowLight />
+        <NumberKey position={[KEY_P[0], KEY_P[1] + (1 - k) * 0.3, 0]} scale={0.7} digits="83917265048271936450" glowLight />
         <WordPlate position={PLATE_P} scale={0.85} count={12} />
-        {bar(-0.55)}{bar(0.75)}
+        {bar(-0.5)}{bar(0.7)}
       </Studio3D>
-      <Callout text="SAME KEY" at={[mid[0] + 40, mid[1]]} label={[mid[0] + 340, mid[1] - 10]} startFrame={10} accent />
+      <Callout text="SAME KEY" at={[mid[0], mid[1] - 20]} label={[mid[0], mid[1] + 60]} startFrame={10} accent />
     </AbsoluteFill>
   );
 };
@@ -89,14 +89,14 @@ const ShotC: React.FC<{ shot: Shot }> = ({ shot }) => {
 /* ---------- shot 4 ---------- */
 const ShotD: React.FC<{ shot: Shot }> = ({ shot }) => {
   const f = useCurrentFrame();
-  const a = project(shot, f, [0, 0.55, 0.05]);
+  const a = project(shot, f, [0, 0.5, 0.05]);
   return (
     <AbsoluteFill>
       <Studio3D tone="dark" shadows={false} camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
         <CamRig shot={shot} />
         <WordPlate position={[0, 1.3, 0]} rotation={[0, -0.28, 0.02]} count={12} />
       </Studio3D>
-      <Callout text="ON PAPER OR STEEL · OFFLINE" at={[a[0], a[1]]} label={[540, Math.min(1380, a[1] + 170)]} startFrame={8} accent={false} size={26} />
+      <Callout text="ON PAPER OR STEEL · OFFLINE" at={[a[0], a[1]]} label={[a[0], a[1] + 110]} startFrame={8} accent={false} size={26} />
     </AbsoluteFill>
   );
 };
@@ -108,7 +108,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const c4 = Math.max(c3 + 25, W(props, "written", 0, 3.72) - 1);
   const s1: Shot = { from: [-1.4, 1.5, 8.2], to: [0.2, 1.25, 6.4], tFrom: [0, 1.15, 0], tTo: [0, 1.15, 0], fov: 32, len: c2 };
   const s3: Shot = { from: [-0.9, 1.7, 7.4], to: [0.5, 1.5, 6.6], tFrom: [0, 1.45, 0], tTo: [0, 1.45, 0], fov: 36, len: c4 - c3 };
-  const s4: Shot = { from: [-1.5, 1.5, 6.6], to: [1.3, 1.2, 6.2], tFrom: [-0.6, 1.3, 0], tTo: [0.5, 1.3, 0], fov: 34, len: total - c4 };
+  const s4: Shot = { from: [-1.0, 1.5, 8.2], to: [1.0, 1.3, 7.8], tFrom: [-0.3, 1.3, 0], tTo: [0.3, 1.3, 0], fov: 34, len: total - c4 };
   return (
     <Shell props={props} tone="dark">
       <Sequence from={0} durationInFrames={c2} layout="none"><ShotA shot={s1} /></Sequence>
