@@ -1,91 +1,92 @@
 {
-  "runId": "2026-11-12-wallet-holds-a-key",
-  "sceneId": "S02",
-  "durationInFrames": 122,
-  "vo": {
-    "src": "runs/2026-11-12-wallet-holds-a-key/S02.mp3",
-    "words": [
-      {
-        "text": "Not",
-        "start": 0,
-        "end": 0.256
-      },
-      {
-        "text": "one",
-        "start": 0.256,
-        "end": 0.668
-      },
-      {
-        "text": "coin",
-        "start": 0.668,
-        "end": 0.929
-      },
-      {
-        "text": "ever",
-        "start": 0.929,
-        "end": 1.346
-      },
-      {
-        "text": "left",
-        "start": 1.346,
-        "end": 1.607
-      },
-      {
-        "text": "the",
-        "start": 1.607,
-        "end": 1.863
-      },
-      {
-        "text": "blockchain.",
-        "start": 1.863,
-        "end": 2.309
-      },
-      {
-        "text": "You",
-        "start": 2.309,
-        "end": 2.541
-      },
-      {
-        "text": "could",
-        "start": 2.541,
-        "end": 2.782
-      },
-      {
-        "text": "look",
-        "start": 2.782,
-        "end": 3.019
-      },
-      {
-        "text": "at",
-        "start": 3.019,
-        "end": 3.247
-      },
-      {
-        "text": "them",
-        "start": 3.247,
-        "end": 3.484
-      },
-      {
-        "text": "right",
-        "start": 3.484,
-        "end": 3.725
-      },
-      {
-        "text": "now.",
-        "start": 3.725,
-        "end": 3.957
-      }
-    ]
-  },
-  "sfx": [],
-  "assets": {},
-  "onScreenText": "",
-  "accentWords": [],
-  "showCaptions": true,
-  "captionStyle": "phrase",
-  "captionKeywords": [
-    "blockchain.",
-    "now."
+ "runId": "2026-11-12-wallet-holds-a-key",
+ "sceneId": "S02",
+ "durationInFrames": 133,
+ "vo": {
+  "src": "",
+  "words": [
+   {
+    "text": "Not",
+    "start": 0.287,
+    "end": 0.516
+   },
+   {
+    "text": "one",
+    "start": 0.516,
+    "end": 0.886
+   },
+   {
+    "text": "coin",
+    "start": 0.886,
+    "end": 1.119
+   },
+   {
+    "text": "ever",
+    "start": 1.119,
+    "end": 1.494
+   },
+   {
+    "text": "left",
+    "start": 1.494,
+    "end": 1.727
+   },
+   {
+    "text": "the",
+    "start": 1.727,
+    "end": 1.957
+   },
+   {
+    "text": "blockchain.",
+    "start": 1.957,
+    "end": 2.357
+   },
+   {
+    "text": "You",
+    "start": 2.867,
+    "end": 3.056
+   },
+   {
+    "text": "could",
+    "start": 3.056,
+    "end": 3.252
+   },
+   {
+    "text": "look",
+    "start": 3.252,
+    "end": 3.444
+   },
+   {
+    "text": "at",
+    "start": 3.444,
+    "end": 3.629
+   },
+   {
+    "text": "them",
+    "start": 3.629,
+    "end": 3.822
+   },
+   {
+    "text": "right",
+    "start": 3.822,
+    "end": 4.018
+   },
+   {
+    "text": "now.",
+    "start": 4.018,
+    "end": 4.207
+   }
   ],
-  "captionEmoji": {}
+  "durationSec": 4.433
+ },
+ "sfx": [],
+ "assets": {},
+ "onScreenText": "",
+ "accentWords": [],
+ "showCaptions": true,
+ "captionStyle": "phrase",
+ "captionKeywords": [
+  "blockchain.",
+  "now."
+ ],
+ "captionEmoji": {}
 }

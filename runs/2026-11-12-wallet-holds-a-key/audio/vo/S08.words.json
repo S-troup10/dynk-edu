@@ -1,75 +1,75 @@
 {
- "durationSec": 5.011,
+ "durationSec": 5.667,
  "words": [
   {
    "text": "It's",
-   "start": 0.0,
-   "end": 0.229
+   "start": 0.314,
+   "end": 0.546
   },
   {
    "text": "somewhere",
-   "start": 0.229,
-   "end": 0.904
+   "start": 0.546,
+   "end": 1.232
   },
   {
    "text": "under",
-   "start": 0.904,
-   "end": 1.282
+   "start": 1.232,
+   "end": 1.616
   },
   {
    "text": "1.4",
-   "start": 1.282,
-   "end": 1.97
+   "start": 1.616,
+   "end": 2.315
   },
   {
    "text": "million",
-   "start": 1.97,
-   "end": 2.356
+   "start": 2.315,
+   "end": 2.707
   },
   {
    "text": "tonnes",
-   "start": 2.356,
-   "end": 2.589
+   "start": 2.707,
+   "end": 2.944
   },
   {
    "text": "of",
-   "start": 2.589,
-   "end": 2.814
+   "start": 2.944,
+   "end": 3.172
   },
   {
    "text": "rubbish.",
-   "start": 2.814,
-   "end": 3.2
+   "start": 3.172,
+   "end": 3.564
   },
   {
    "text": "And",
-   "start": 3.61,
-   "end": 3.818
+   "start": 3.964,
+   "end": 4.173
   },
   {
    "text": "the",
-   "start": 3.818,
-   "end": 4.026
+   "start": 4.173,
+   "end": 4.382
   },
   {
    "text": "courts",
-   "start": 4.026,
-   "end": 4.245
+   "start": 4.382,
+   "end": 4.603
   },
   {
    "text": "said",
-   "start": 4.245,
-   "end": 4.457
+   "start": 4.603,
+   "end": 4.816
   },
   {
    "text": "no",
-   "start": 4.457,
-   "end": 4.661
+   "start": 4.816,
+   "end": 5.021
   },
   {
    "text": "digging.",
-   "start": 4.661,
-   "end": 5.011
+   "start": 5.021,
+   "end": 5.374
   }
  ]
 }

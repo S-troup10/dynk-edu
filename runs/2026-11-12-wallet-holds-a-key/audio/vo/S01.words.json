@@ -1,70 +1,70 @@
 {
- "durationSec": 4.37,
+ "durationSec": 4.933,
  "words": [
   {
    "text": "This",
-   "start": 0.0,
-   "end": 0.242
+   "start": 0,
+   "end": 0.247
   },
   {
    "text": "man's",
-   "start": 0.242,
-   "end": 0.483
+   "start": 0.247,
+   "end": 0.494
   },
   {
    "text": "8,000",
-   "start": 0.483,
-   "end": 1.056
+   "start": 0.494,
+   "end": 1.08
   },
   {
    "text": "bitcoin",
-   "start": 1.056,
-   "end": 1.456
+   "start": 1.08,
+   "end": 1.49
   },
   {
    "text": "are",
-   "start": 1.456,
-   "end": 1.838
+   "start": 1.49,
+   "end": 1.881
   },
   {
    "text": "buried",
-   "start": 1.838,
-   "end": 2.234
+   "start": 1.881,
+   "end": 2.286
   },
   {
    "text": "in",
-   "start": 2.234,
-   "end": 2.467
+   "start": 2.286,
+   "end": 2.524
   },
   {
    "text": "a",
-   "start": 2.467,
-   "end": 2.695
+   "start": 2.524,
+   "end": 2.758
   },
   {
    "text": "rubbish",
-   "start": 2.695,
-   "end": 3.095
+   "start": 2.758,
+   "end": 3.167
   },
   {
    "text": "tip.",
-   "start": 3.095,
-   "end": 3.332
+   "start": 3.167,
+   "end": 3.41
   },
   {
    "text": "Except",
-   "start": 3.332,
-   "end": 3.732
+   "start": 3.74,
+   "end": 4.094
   },
   {
    "text": "they're",
-   "start": 3.732,
-   "end": 4.131
+   "start": 4.094,
+   "end": 4.448
   },
   {
    "text": "not.",
-   "start": 4.131,
-   "end": 4.37
+   "start": 4.448,
+   "end": 4.66
   }
  ]
 }

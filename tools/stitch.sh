@@ -19,7 +19,24 @@ RAW="$RUN/final/_joined.mp4"
 ffmpeg -v error -y -f concat -safe 0 -i "$LIST" -c:v libx264 -preset veryfast -crf 18 -pix_fmt yuv420p -r 30 -c:a aac -ar 48000 -b:a 192k "$RAW"
 EXPORT_LUFS=$(python3 -c "import json;print(json.load(open('$ROOT/brand/tokens.json'))['audio']['exportLufs'])")
 FINAL="$RUN/final/$ID.mp4"
-if [ -n "$MUSIC" ]; then
+VO="$RUN/audio/vo_full.wav"
+if [ -f "$VO" ]; then
+  # One continuous voice take (tools/tts_take.py): scenes carry only SFX; mix take + SFX + bed with STATIC gains
+  # (no dynamic loudnorm - it pumps the voice), then one measured gain to the export loudness and a peak limiter.
+  MUSIC_DB=$(python3 -c "import json;print(json.load(open('$ROOT/brand/tokens.json'))['audio']['musicDb'])")
+  MIX="$RUN/final/_mix.wav"
+  if [ -n "$MUSIC" ]; then
+    ffmpeg -v error -y -i "$RAW" -i "$VO" -stream_loop -1 -i "$MUSIC" -filter_complex \
+      "[0:a]volume=0dB[s];[2:a]volume=${MUSIC_DB}dB[m];[s][1:a][m]amix=inputs=3:duration=first:dropout_transition=0:normalize=0[a]" -map "[a]" -ar 48000 "$MIX"
+  else
+    ffmpeg -v error -y -i "$RAW" -i "$VO" -filter_complex "[0:a]volume=0dB[s];[s][1:a]amix=inputs=2:duration=first:dropout_transition=0:normalize=0[a]" -map "[a]" -ar 48000 "$MIX"
+  fi
+  I=$(ffmpeg -i "$MIX" -af ebur128 -f null - 2>&1 | grep -oE "I: +-?[0-9.]+ LUFS" | tail -1 | grep -oE "\-?[0-9.]+")
+  GAIN=$(python3 -c "print(round($EXPORT_LUFS - ($I), 2))")
+  ffmpeg -v error -y -i "$RAW" -i "$MIX" -map 0:v -map 1:a -af "volume=${GAIN}dB,alimiter=limit=0.89:attack=5:release=80:level=false" \
+    -c:v copy -c:a aac -b:a 192k -movflags +faststart "$FINAL"
+  rm -f "$MIX"
+elif [ -n "$MUSIC" ]; then
   MUSIC_DB=$(python3 -c "import json;print(json.load(open('$ROOT/brand/tokens.json'))['audio']['musicDb'])")
   ffmpeg -v error -y -i "$RAW" -stream_loop -1 -i "$MUSIC" -filter_complex \
     "[1:a]volume=${MUSIC_DB}dB[m];[0:a][m]amix=inputs=2:duration=first:dropout_transition=0,loudnorm=I=${EXPORT_LUFS}:TP=-1.0:LRA=11[a]" \

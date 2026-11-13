@@ -1,75 +1,75 @@
 {
- "durationSec": 4.977,
+ "durationSec": 5.667,
  "words": [
   {
    "text": "So",
-   "start": 0.0,
-   "end": 0.262
+   "start": 0.261,
+   "end": 0.496
   },
   {
    "text": "his",
-   "start": 0.262,
-   "end": 0.529
+   "start": 0.496,
+   "end": 0.736
   },
   {
    "text": "bitcoin",
-   "start": 0.529,
-   "end": 0.98
+   "start": 0.736,
+   "end": 1.141
   },
   {
    "text": "was",
-   "start": 0.98,
-   "end": 1.247
+   "start": 1.141,
+   "end": 1.381
   },
   {
    "text": "never",
-   "start": 1.247,
-   "end": 1.687
+   "start": 1.381,
+   "end": 1.777
   },
   {
    "text": "lost.",
-   "start": 1.687,
-   "end": 1.959
+   "start": 1.777,
+   "end": 2.021
   },
   {
    "text": "It's",
-   "start": 1.959,
-   "end": 2.199
+   "start": 2.461,
+   "end": 2.678
   },
   {
    "text": "exactly",
-   "start": 2.199,
-   "end": 2.752
+   "start": 2.678,
+   "end": 3.179
   },
   {
    "text": "where",
-   "start": 2.752,
-   "end": 3.148
+   "start": 3.179,
+   "end": 3.538
   },
   {
    "text": "it",
-   "start": 3.148,
-   "end": 3.384
+   "start": 3.538,
+   "end": 3.751
   },
   {
    "text": "always",
-   "start": 3.384,
-   "end": 3.785
+   "start": 3.751,
+   "end": 4.114
   },
   {
    "text": "was.",
-   "start": 3.785,
-   "end": 4.025
+   "start": 4.114,
+   "end": 4.331
   },
   {
    "text": "Just",
-   "start": 4.025,
-   "end": 4.385
+   "start": 4.671,
+   "end": 4.967
   },
   {
    "text": "locked.",
-   "start": 4.385,
-   "end": 4.977
+   "start": 4.967,
+   "end": 5.451
   }
  ]
 }

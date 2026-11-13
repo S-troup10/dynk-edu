@@ -1,65 +1,65 @@
 {
- "durationSec": 4.327,
+ "durationSec": 4.433,
  "words": [
   {
    "text": "The",
-   "start": 0.0,
-   "end": 0.233
+   "start": 0.18,
+   "end": 0.397
   },
   {
    "text": "coins",
-   "start": 0.233,
-   "end": 0.475
+   "start": 0.397,
+   "end": 0.622
   },
   {
    "text": "live",
-   "start": 0.475,
-   "end": 0.855
+   "start": 0.622,
+   "end": 0.976
   },
   {
    "text": "on",
-   "start": 0.855,
-   "end": 1.084
+   "start": 0.976,
+   "end": 1.188
   },
   {
    "text": "a",
-   "start": 1.084,
-   "end": 1.309
+   "start": 1.188,
+   "end": 1.397
   },
   {
    "text": "public",
-   "start": 1.309,
-   "end": 1.698
+   "start": 1.397,
+   "end": 1.759
   },
   {
    "text": "ledger,",
-   "start": 1.698,
-   "end": 2.087
+   "start": 1.759,
+   "end": 2.12
   },
   {
    "text": "copied",
-   "start": 2.087,
-   "end": 2.533
+   "start": 2.21,
+   "end": 2.611
   },
   {
    "text": "across",
-   "start": 2.533,
-   "end": 2.979
+   "start": 2.611,
+   "end": 3.011
   },
   {
    "text": "thousands",
-   "start": 2.979,
-   "end": 3.44
+   "start": 3.011,
+   "end": 3.425
   },
   {
    "text": "of",
-   "start": 3.44,
-   "end": 3.702
+   "start": 3.425,
+   "end": 3.66
   },
   {
    "text": "computers.",
-   "start": 3.702,
-   "end": 4.327
+   "start": 3.66,
+   "end": 4.22
   }
  ]
 }

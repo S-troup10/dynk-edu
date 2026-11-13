@@ -1,80 +1,80 @@
 {
- "durationSec": 5.232,
+ "durationSec": 5.867,
  "words": [
   {
    "text": "Your",
-   "start": 0.0,
-   "end": 0.277
+   "start": 0.237,
+   "end": 0.482
   },
   {
    "text": "address",
-   "start": 0.277,
-   "end": 0.735
+   "start": 0.482,
+   "end": 0.888
   },
   {
    "text": "is",
-   "start": 0.735,
-   "end": 1.001
+   "start": 0.888,
+   "end": 1.124
   },
   {
    "text": "a",
-   "start": 1.001,
-   "end": 1.263
+   "start": 1.124,
+   "end": 1.355
   },
   {
    "text": "glass",
-   "start": 1.263,
-   "end": 1.544
+   "start": 1.355,
+   "end": 1.605
   },
   {
    "text": "letterbox.",
-   "start": 1.544,
-   "end": 2.18
+   "start": 1.605,
+   "end": 2.167
   },
   {
    "text": "Anyone",
-   "start": 2.18,
-   "end": 2.725
+   "start": 2.507,
+   "end": 2.944
   },
   {
    "text": "can",
-   "start": 2.725,
-   "end": 2.964
+   "start": 2.944,
+   "end": 3.135
   },
   {
    "text": "look",
-   "start": 2.964,
-   "end": 3.207
+   "start": 3.135,
+   "end": 3.329
   },
   {
    "text": "in.",
-   "start": 3.207,
-   "end": 3.441
+   "start": 3.329,
+   "end": 3.517
   },
   {
    "text": "Anyone",
-   "start": 3.441,
-   "end": 4.088
+   "start": 4.057,
+   "end": 4.613
   },
   {
    "text": "can",
-   "start": 4.088,
-   "end": 4.371
+   "start": 4.613,
+   "end": 4.857
   },
   {
    "text": "drop",
-   "start": 4.371,
-   "end": 4.66
+   "start": 4.857,
+   "end": 5.105
   },
   {
    "text": "coins",
-   "start": 4.66,
-   "end": 4.954
+   "start": 5.105,
+   "end": 5.358
   },
   {
    "text": "in.",
-   "start": 4.954,
-   "end": 5.232
+   "start": 5.358,
+   "end": 5.597
   }
  ]
 }

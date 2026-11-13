@@ -1,0 +1,79 @@
+{
+ "durationSec": 62.167,
+ "voice": "am_michael",
+ "speed": 1.14,
+ "scenes": [
+  {
+   "id": "S01",
+   "startFrame": 0,
+   "frames": 148,
+   "startSec": 0.0
+  },
+  {
+   "id": "S02",
+   "startFrame": 148,
+   "frames": 133,
+   "startSec": 4.933
+  },
+  {
+   "id": "S03",
+   "startFrame": 281,
+   "frames": 120,
+   "startSec": 9.367
+  },
+  {
+   "id": "S04",
+   "startFrame": 401,
+   "frames": 133,
+   "startSec": 13.367
+  },
+  {
+   "id": "S05",
+   "startFrame": 534,
+   "frames": 176,
+   "startSec": 17.8
+  },
+  {
+   "id": "S06",
+   "startFrame": 710,
+   "frames": 157,
+   "startSec": 23.667
+  },
+  {
+   "id": "S07",
+   "startFrame": 867,
+   "frames": 171,
+   "startSec": 28.9
+  },
+  {
+   "id": "S08",
+   "startFrame": 1038,
+   "frames": 170,
+   "startSec": 34.6
+  },
+  {
+   "id": "S09",
+   "startFrame": 1208,
+   "frames": 185,
+   "startSec": 40.267
+  },
+  {
+   "id": "S10",
+   "startFrame": 1393,
+   "frames": 180,
+   "startSec": 46.433
+  },
+  {
+   "id": "S11",
+   "startFrame": 1573,
+   "frames": 170,
+   "startSec": 52.433
+  },
+  {
+   "id": "S12",
+   "startFrame": 1743,
+   "frames": 123,
+   "startSec": 58.1
+  }
+ ]
+}

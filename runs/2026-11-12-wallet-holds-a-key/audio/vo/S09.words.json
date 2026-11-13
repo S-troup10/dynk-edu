@@ -1,100 +1,100 @@
 {
- "durationSec": 5.491,
+ "durationSec": 6.167,
  "words": [
   {
    "text": "That's",
-   "start": 0.0,
-   "end": 0.258
+   "start": 0.267,
+   "end": 0.502
   },
   {
    "text": "why",
-   "start": 0.258,
-   "end": 0.508
+   "start": 0.502,
+   "end": 0.729
   },
   {
    "text": "your",
-   "start": 0.508,
-   "end": 0.761
+   "start": 0.729,
+   "end": 0.959
   },
   {
    "text": "wallet",
-   "start": 0.761,
-   "end": 1.177
+   "start": 0.959,
+   "end": 1.337
   },
   {
    "text": "app",
-   "start": 1.177,
-   "end": 1.426
+   "start": 1.337,
+   "end": 1.564
   },
   {
    "text": "gives",
-   "start": 1.426,
-   "end": 1.838
+   "start": 1.564,
+   "end": 1.938
   },
   {
    "text": "you",
-   "start": 1.838,
-   "end": 2.087
+   "start": 1.938,
+   "end": 2.164
   },
   {
    "text": "twelve",
-   "start": 2.087,
-   "end": 2.503
+   "start": 2.164,
+   "end": 2.542
   },
   {
    "text": "words.",
-   "start": 2.503,
-   "end": 2.761
+   "start": 2.542,
+   "end": 2.777
   },
   {
    "text": "They're",
-   "start": 2.761,
-   "end": 3.196
+   "start": 3.227,
+   "end": 3.553
   },
   {
    "text": "your",
-   "start": 3.196,
-   "end": 3.462
+   "start": 3.553,
+   "end": 3.752
   },
   {
    "text": "key,",
-   "start": 3.462,
-   "end": 3.722
+   "start": 3.752,
+   "end": 3.947
   },
   {
    "text": "written",
-   "start": 3.722,
-   "end": 4.058
+   "start": 4.317,
+   "end": 4.636
   },
   {
    "text": "so",
-   "start": 4.058,
-   "end": 4.253
+   "start": 4.636,
+   "end": 4.822
   },
   {
    "text": "a",
-   "start": 4.253,
-   "end": 4.445
+   "start": 4.822,
+   "end": 5.003
   },
   {
    "text": "human",
-   "start": 4.445,
-   "end": 4.773
+   "start": 5.003,
+   "end": 5.315
   },
   {
    "text": "can",
-   "start": 4.773,
-   "end": 4.972
+   "start": 5.315,
+   "end": 5.504
   },
   {
    "text": "copy",
-   "start": 4.972,
-   "end": 5.296
+   "start": 5.504,
+   "end": 5.812
   },
   {
    "text": "it.",
-   "start": 5.296,
-   "end": 5.491
+   "start": 5.812,
+   "end": 5.998
   }
  ]
 }

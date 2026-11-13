@@ -1,65 +1,65 @@
 {
- "durationSec": 3.115,
+ "durationSec": 4.1,
  "words": [
   {
    "text": "Send",
-   "start": 0.0,
-   "end": 0.216
+   "start": 0.244,
+   "end": 0.447
   },
   {
    "text": "this",
-   "start": 0.216,
-   "end": 0.432
+   "start": 0.447,
+   "end": 0.65
   },
   {
    "text": "to",
-   "start": 0.432,
-   "end": 0.64
+   "start": 0.65,
+   "end": 0.845
   },
   {
    "text": "someone",
-   "start": 0.64,
-   "end": 1.128
+   "start": 0.845,
+   "end": 1.302
   },
   {
    "text": "who's",
-   "start": 1.128,
-   "end": 1.344
+   "start": 1.302,
+   "end": 1.505
   },
   {
    "text": "about",
-   "start": 1.344,
-   "end": 1.694
+   "start": 1.505,
+   "end": 1.833
   },
   {
    "text": "to",
-   "start": 1.694,
-   "end": 1.901
+   "start": 1.833,
+   "end": 2.028
   },
   {
    "text": "set",
-   "start": 1.901,
-   "end": 2.113
+   "start": 2.028,
+   "end": 2.227
   },
   {
    "text": "up",
-   "start": 2.113,
-   "end": 2.321
+   "start": 2.227,
+   "end": 2.422
   },
   {
    "text": "their",
-   "start": 2.321,
-   "end": 2.541
+   "start": 2.422,
+   "end": 2.629
   },
   {
    "text": "first",
-   "start": 2.541,
-   "end": 2.761
+   "start": 2.629,
+   "end": 2.835
   },
   {
    "text": "wallet.",
-   "start": 2.761,
-   "end": 3.115
+   "start": 2.835,
+   "end": 3.167
   }
  ]
 }

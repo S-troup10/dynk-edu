@@ -1,106 +1,107 @@
 {
-  "runId": "2026-11-12-wallet-holds-a-key",
-  "sceneId": "S07",
-  "durationInFrames": 182,
-  "vo": {
-    "src": "runs/2026-11-12-wallet-holds-a-key/S07.mp3",
-    "words": [
-      {
-        "text": "In",
-        "start": 0,
-        "end": 0.222
-      },
-      {
-        "text": "2013,",
-        "start": 0.222,
-        "end": 0.91
-      },
-      {
-        "text": "James",
-        "start": 1.32,
-        "end": 1.727
-      },
-      {
-        "text": "Howells",
-        "start": 1.727,
-        "end": 2.143
-      },
-      {
-        "text": "threw",
-        "start": 2.143,
-        "end": 2.398
-      },
-      {
-        "text": "out",
-        "start": 2.398,
-        "end": 2.644
-      },
-      {
-        "text": "an",
-        "start": 2.644,
-        "end": 2.886
-      },
-      {
-        "text": "old",
-        "start": 2.886,
-        "end": 3.132
-      },
-      {
-        "text": "hard",
-        "start": 3.132,
-        "end": 3.383
-      },
-      {
-        "text": "drive,",
-        "start": 3.383,
-        "end": 3.79
-      },
-      {
-        "text": "with",
-        "start": 4.29,
-        "end": 4.488
-      },
-      {
-        "text": "the",
-        "start": 4.488,
-        "end": 4.682
-      },
-      {
-        "text": "only",
-        "start": 4.682,
-        "end": 4.999
-      },
-      {
-        "text": "copy",
-        "start": 4.999,
-        "end": 5.316
-      },
-      {
-        "text": "of",
-        "start": 5.316,
-        "end": 5.506
-      },
-      {
-        "text": "his",
-        "start": 5.506,
-        "end": 5.701
-      },
-      {
-        "text": "key.",
-        "start": 5.701,
-        "end": 5.895
-      }
-    ]
-  },
-  "sfx": [],
-  "assets": {},
-  "onScreenText": "",
-  "accentWords": [],
-  "showCaptions": true,
-  "captionStyle": "phrase",
-  "captionKeywords": [
-    "2013,",
-    "only"
+ "runId": "2026-11-12-wallet-holds-a-key",
+ "sceneId": "S07",
+ "durationInFrames": 171,
+ "vo": {
+  "src": "",
+  "words": [
+   {
+    "text": "In",
+    "start": 0.174,
+    "end": 0.768
+   },
+   {
+    "text": "2013,",
+    "start": 0.768,
+    "end": 2.614
+   },
+   {
+    "text": "James",
+    "start": 2.674,
+    "end": 2.855
+   },
+   {
+    "text": "Howells",
+    "start": 2.855,
+    "end": 3.04
+   },
+   {
+    "text": "threw",
+    "start": 3.04,
+    "end": 3.154
+   },
+   {
+    "text": "out",
+    "start": 3.154,
+    "end": 3.264
+   },
+   {
+    "text": "an",
+    "start": 3.264,
+    "end": 3.371
+   },
+   {
+    "text": "old",
+    "start": 3.371,
+    "end": 3.481
+   },
+   {
+    "text": "hard",
+    "start": 3.481,
+    "end": 3.593
+   },
+   {
+    "text": "drive,",
+    "start": 3.593,
+    "end": 3.774
+   },
+   {
+    "text": "with",
+    "start": 3.884,
+    "end": 4.073
+   },
+   {
+    "text": "the",
+    "start": 4.073,
+    "end": 4.258
+   },
+   {
+    "text": "only",
+    "start": 4.258,
+    "end": 4.56
+   },
+   {
+    "text": "copy",
+    "start": 4.56,
+    "end": 4.862
+   },
+   {
+    "text": "of",
+    "start": 4.862,
+    "end": 5.044
+   },
+   {
+    "text": "his",
+    "start": 5.044,
+    "end": 5.229
+   },
+   {
+    "text": "key.",
+    "start": 5.229,
+    "end": 5.414
+   }
   ],
-  "captionEmoji": {}
+  "durationSec": 5.7
+ },
+ "sfx": [],
+ "assets": {},
+ "onScreenText": "",
+ "accentWords": [],
+ "showCaptions": true,
+ "captionStyle": "phrase",
+ "captionKeywords": [
+  "2013,",
+  "only"
+ ],
+ "captionEmoji": {}
 }

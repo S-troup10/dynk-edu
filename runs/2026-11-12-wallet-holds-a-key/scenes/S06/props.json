@@ -1,101 +1,102 @@
 {
-  "runId": "2026-11-12-wallet-holds-a-key",
-  "sceneId": "S06",
-  "durationInFrames": 147,
-  "vo": {
-    "src": "runs/2026-11-12-wallet-holds-a-key/S06.mp3",
-    "words": [
-      {
-        "text": "But",
-        "start": 0,
-        "end": 0.224
-      },
-      {
-        "text": "only",
-        "start": 0.224,
-        "end": 0.59
-      },
-      {
-        "text": "one",
-        "start": 0.59,
-        "end": 0.952
-      },
-      {
-        "text": "key",
-        "start": 0.952,
-        "end": 1.176
-      },
-      {
-        "text": "opens",
-        "start": 1.176,
-        "end": 1.546
-      },
-      {
-        "text": "it.",
-        "start": 1.546,
-        "end": 1.766
-      },
-      {
-        "text": "And",
-        "start": 1.766,
-        "end": 2.009
-      },
-      {
-        "text": "that",
-        "start": 2.009,
-        "end": 2.257
-      },
-      {
-        "text": "key",
-        "start": 2.257,
-        "end": 2.501
-      },
-      {
-        "text": "is",
-        "start": 2.501,
-        "end": 2.74
-      },
-      {
-        "text": "just",
-        "start": 2.74,
-        "end": 2.988
-      },
-      {
-        "text": "a",
-        "start": 2.988,
-        "end": 3.223
-      },
-      {
-        "text": "very",
-        "start": 3.223,
-        "end": 3.62
-      },
-      {
-        "text": "long",
-        "start": 3.62,
-        "end": 3.868
-      },
-      {
-        "text": "secret",
-        "start": 3.868,
-        "end": 4.275
-      },
-      {
-        "text": "number.",
-        "start": 4.275,
-        "end": 4.682
-      }
-    ]
-  },
-  "sfx": [],
-  "assets": {},
-  "onScreenText": "",
-  "accentWords": [],
-  "showCaptions": true,
-  "captionStyle": "phrase",
-  "captionKeywords": [
-    "one",
-    "number."
+ "runId": "2026-11-12-wallet-holds-a-key",
+ "sceneId": "S06",
+ "durationInFrames": 157,
+ "vo": {
+  "src": "",
+  "words": [
+   {
+    "text": "But",
+    "start": 0.27,
+    "end": 0.463
+   },
+   {
+    "text": "only",
+    "start": 0.463,
+    "end": 0.778
+   },
+   {
+    "text": "one",
+    "start": 0.778,
+    "end": 1.09
+   },
+   {
+    "text": "key",
+    "start": 1.09,
+    "end": 1.282
+   },
+   {
+    "text": "opens",
+    "start": 1.282,
+    "end": 1.601
+   },
+   {
+    "text": "it.",
+    "start": 1.601,
+    "end": 1.79
+   },
+   {
+    "text": "And",
+    "start": 2.24,
+    "end": 2.477
+   },
+   {
+    "text": "that",
+    "start": 2.477,
+    "end": 2.717
+   },
+   {
+    "text": "key",
+    "start": 2.717,
+    "end": 2.953
+   },
+   {
+    "text": "is",
+    "start": 2.953,
+    "end": 3.185
+   },
+   {
+    "text": "just",
+    "start": 3.185,
+    "end": 3.425
+   },
+   {
+    "text": "a",
+    "start": 3.425,
+    "end": 3.653
+   },
+   {
+    "text": "very",
+    "start": 3.653,
+    "end": 4.038
+   },
+   {
+    "text": "long",
+    "start": 4.038,
+    "end": 4.279
+   },
+   {
+    "text": "secret",
+    "start": 4.279,
+    "end": 4.673
+   },
+   {
+    "text": "number.",
+    "start": 4.673,
+    "end": 5.067
+   }
   ],
-  "captionEmoji": {}
+  "durationSec": 5.233
+ },
+ "sfx": [],
+ "assets": {},
+ "onScreenText": "",
+ "accentWords": [],
+ "showCaptions": true,
+ "captionStyle": "phrase",
+ "captionKeywords": [
+  "one",
+  "number."
+ ],
+ "captionEmoji": {}
 }
