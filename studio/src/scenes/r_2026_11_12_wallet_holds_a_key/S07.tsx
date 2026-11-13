@@ -108,7 +108,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const c4 = Math.max(c3 + 20, W(props, "of", 0, 5.32));
   const s1: Shot = { from: [-3.6, 2.4, 8.8], to: [3.0, 2.5, 8.6], tFrom: [-0.5, 0.3, 0], tTo: [0.5, 0.3, 0], fov: 30, len: c1 };
   const s2: Shot = { from: [2.6, 2.0, 7.4], to: [1.3, 2.6, 6.8], tFrom: [0.1, 0.5, 0], tTo: [0, 0.8, 0], fov: 30, len: c2 - c1 };
-  const s3: Shot = { from: [3.6, 3.2, 8.6], to: [2.2, 2.9, 7.6], tFrom: [0, 1.0, 0], tTo: [0, 0.95, 0], fov: 32, len: c3 - c2 };
+  const s3: Shot = { from: [3.6, 3.2, 8.6], to: [2.2, 2.9, 7.6], tFrom: [0, 1.55, 0], tTo: [0, 1.5, 0], fov: 32, len: c3 - c2 };
   const s4: Shot = { from: [0.3, 4.6, 5.0], to: [0, 3.8, 3.8], tFrom: [0, 0.2, -0.3], tTo: [0, 0.2, -0.3], fov: 30, len: c4 - c3 };
   const s5: Shot = { from: [-2.4, 2.6, 3.9], to: [-1.2, 2.0, 3.0], tFrom: [0.1, 0.4, -0.5], tTo: [0.1, 0.4, -0.6], fov: 30, len: total - c4 };
   return (
