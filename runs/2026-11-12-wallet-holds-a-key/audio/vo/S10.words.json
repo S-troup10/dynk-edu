@@ -1,0 +1,90 @@
+{
+ "durationSec": 5.785,
+ "words": [
+  {
+   "text": "That's",
+   "start": 0.0,
+   "end": 0.278
+  },
+  {
+   "text": "why",
+   "start": 0.278,
+   "end": 0.546
+  },
+  {
+   "text": "losing",
+   "start": 0.546,
+   "end": 0.994
+  },
+  {
+   "text": "your",
+   "start": 0.994,
+   "end": 1.267
+  },
+  {
+   "text": "phone",
+   "start": 1.267,
+   "end": 1.71
+  },
+  {
+   "text": "doesn't",
+   "start": 1.71,
+   "end": 1.993
+  },
+  {
+   "text": "lose",
+   "start": 1.993,
+   "end": 2.431
+  },
+  {
+   "text": "your",
+   "start": 2.431,
+   "end": 2.704
+  },
+  {
+   "text": "coins.",
+   "start": 2.704,
+   "end": 2.982
+  },
+  {
+   "text": "And",
+   "start": 2.982,
+   "end": 3.216
+  },
+  {
+   "text": "why",
+   "start": 3.216,
+   "end": 3.45
+  },
+  {
+   "text": "anyone",
+   "start": 3.45,
+   "end": 3.984
+  },
+  {
+   "text": "with",
+   "start": 3.984,
+   "end": 4.222
+  },
+  {
+   "text": "those",
+   "start": 4.222,
+   "end": 4.609
+  },
+  {
+   "text": "words",
+   "start": 4.609,
+   "end": 4.852
+  },
+  {
+   "text": "gets",
+   "start": 4.852,
+   "end": 5.09
+  },
+  {
+   "text": "everything.",
+   "start": 5.09,
+   "end": 5.785
+  }
+ ]
+}

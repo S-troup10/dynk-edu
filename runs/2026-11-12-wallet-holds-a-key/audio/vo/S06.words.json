@@ -1,0 +1,85 @@
+{
+ "durationSec": 4.682,
+ "words": [
+  {
+   "text": "But",
+   "start": 0.0,
+   "end": 0.224
+  },
+  {
+   "text": "only",
+   "start": 0.224,
+   "end": 0.59
+  },
+  {
+   "text": "one",
+   "start": 0.59,
+   "end": 0.952
+  },
+  {
+   "text": "key",
+   "start": 0.952,
+   "end": 1.176
+  },
+  {
+   "text": "opens",
+   "start": 1.176,
+   "end": 1.546
+  },
+  {
+   "text": "it.",
+   "start": 1.546,
+   "end": 1.766
+  },
+  {
+   "text": "And",
+   "start": 1.766,
+   "end": 2.009
+  },
+  {
+   "text": "that",
+   "start": 2.009,
+   "end": 2.257
+  },
+  {
+   "text": "key",
+   "start": 2.257,
+   "end": 2.501
+  },
+  {
+   "text": "is",
+   "start": 2.501,
+   "end": 2.74
+  },
+  {
+   "text": "just",
+   "start": 2.74,
+   "end": 2.988
+  },
+  {
+   "text": "a",
+   "start": 2.988,
+   "end": 3.223
+  },
+  {
+   "text": "very",
+   "start": 3.223,
+   "end": 3.62
+  },
+  {
+   "text": "long",
+   "start": 3.62,
+   "end": 3.868
+  },
+  {
+   "text": "secret",
+   "start": 3.868,
+   "end": 4.275
+  },
+  {
+   "text": "number.",
+   "start": 4.275,
+   "end": 4.682
+  }
+ ]
+}

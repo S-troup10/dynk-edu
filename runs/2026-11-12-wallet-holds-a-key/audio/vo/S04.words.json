@@ -1,0 +1,65 @@
+{
+ "durationSec": 4.327,
+ "words": [
+  {
+   "text": "The",
+   "start": 0.0,
+   "end": 0.233
+  },
+  {
+   "text": "coins",
+   "start": 0.233,
+   "end": 0.475
+  },
+  {
+   "text": "live",
+   "start": 0.475,
+   "end": 0.855
+  },
+  {
+   "text": "on",
+   "start": 0.855,
+   "end": 1.084
+  },
+  {
+   "text": "a",
+   "start": 1.084,
+   "end": 1.309
+  },
+  {
+   "text": "public",
+   "start": 1.309,
+   "end": 1.698
+  },
+  {
+   "text": "ledger,",
+   "start": 1.698,
+   "end": 2.087
+  },
+  {
+   "text": "copied",
+   "start": 2.087,
+   "end": 2.533
+  },
+  {
+   "text": "across",
+   "start": 2.533,
+   "end": 2.979
+  },
+  {
+   "text": "thousands",
+   "start": 2.979,
+   "end": 3.44
+  },
+  {
+   "text": "of",
+   "start": 3.44,
+   "end": 3.702
+  },
+  {
+   "text": "computers.",
+   "start": 3.702,
+   "end": 4.327
+  }
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "durationSec": 5.895,
+ "words": [
+  {
+   "text": "In",
+   "start": 0.0,
+   "end": 0.222
+  },
+  {
+   "text": "2013,",
+   "start": 0.222,
+   "end": 0.91
+  },
+  {
+   "text": "James",
+   "start": 1.32,
+   "end": 1.727
+  },
+  {
+   "text": "Howells",
+   "start": 1.727,
+   "end": 2.143
+  },
+  {
+   "text": "threw",
+   "start": 2.143,
+   "end": 2.398
+  },
+  {
+   "text": "out",
+   "start": 2.398,
+   "end": 2.644
+  },
+  {
+   "text": "an",
+   "start": 2.644,
+   "end": 2.886
+  },
+  {
+   "text": "old",
+   "start": 2.886,
+   "end": 3.132
+  },
+  {
+   "text": "hard",
+   "start": 3.132,
+   "end": 3.383
+  },
+  {
+   "text": "drive,",
+   "start": 3.383,
+   "end": 3.79
+  },
+  {
+   "text": "with",
+   "start": 4.29,
+   "end": 4.488
+  },
+  {
+   "text": "the",
+   "start": 4.488,
+   "end": 4.682
+  },
+  {
+   "text": "only",
+   "start": 4.682,
+   "end": 4.999
+  },
+  {
+   "text": "copy",
+   "start": 4.999,
+   "end": 5.316
+  },
+  {
+   "text": "of",
+   "start": 5.316,
+   "end": 5.506
+  },
+  {
+   "text": "his",
+   "start": 5.506,
+   "end": 5.701
+  },
+  {
+   "text": "key.",
+   "start": 5.701,
+   "end": 5.895
+  }
+ ]
+}
