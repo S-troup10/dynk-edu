@@ -45,7 +45,7 @@ const LAND = 11;
 const ShotC: React.FC<{ shot: Shot }> = ({ shot }) => {
   const f = useCurrentFrame();
   const fall = inQ(interpolate(f, [0, LAND], [0, 1], clamp));
-  const y = 3.2 + (1.05 - 3.2) * fall;
+  const y = 2.35 + (1.05 - 2.35) * fall; // starts below the caption band
   const settle = outC(interpolate(f, [LAND, LAND + 8], [0, 1], clamp));
   const rot: Vec3 = [0.5 - 0.5 * fall + 0.06 * settle, 0.3 + f * 0.05 * (1 - settle), 0.2 * (1 - fall)];
   const grow = 0.25 + 0.35 * outC(interpolate(f, [LAND, LAND + 14], [0, 1], clamp));
@@ -97,10 +97,10 @@ const Scene: React.FC<SceneProps> = (props) => {
   const c4 = Math.max(c3 + 24, W(props, "Except", 0, 3.332) - 1);
   const notF = W(props, "not.", 0, 4.131);
   const a: Shot = { from: [0.4, 3.0, 5.6], to: [0.2, 1.4, 5.0], tFrom: [0, 1.9, 0], tTo: [0, 1.3, 0], fov: 32, len: c1 };
-  const b: Shot = { from: [1.7, 2.2, 5.4], to: [0.5, 1.7, 3.9], tFrom: [0, 1.85, 0], tTo: [0, 1.8, 0], fov: 34, len: c2 - c1 };
+  const b: Shot = { from: [2.3, 2.2, 8.4], to: [0.9, 1.8, 6.8], tFrom: [0, 1.3, 0], tTo: [0, 1.3, 0], fov: 34, len: c2 - c1 };
   const c: Shot = { from: [2.8, 0.45, 4.4], to: [1.6, 0.8, 3.8], tFrom: [0, 1.6, 0], tTo: [0, 1.5, 0], fov: 38, len: c3 - c2 };
   const d: Shot = { from: [0, 3.0, 11.5], to: [0, 6.0, 15], tFrom: [0, 2.6, 0], tTo: [0, 2.2, 0], fov: 38, len: c4 - c3 };
-  const e: Shot = { from: [-1.6, 1.8, 5.2], to: [-0.4, 1.7, 3.7], tFrom: [0, 1.85, 0], tTo: [0, 1.8, 0], fov: 34, len: total - c4 };
+  const e: Shot = { from: [-1.9, 1.9, 8.2], to: [-0.6, 1.7, 6.6], tFrom: [0, 1.3, 0], tTo: [0, 1.3, 0], fov: 34, len: total - c4 };
   return (
     <Shell props={props} tone="dark">
       <Sequence from={0} durationInFrames={c1} layout="none"><ShotA shot={a} /></Sequence>

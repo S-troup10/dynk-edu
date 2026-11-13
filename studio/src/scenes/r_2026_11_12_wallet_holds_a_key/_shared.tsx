@@ -181,7 +181,7 @@ export const Discs: React.FC<{ n?: number; max?: number; w?: number; d?: number;
 export const Disc: React.FC<{ position?: Vec3; rotation?: Vec3; radius?: number; warm?: boolean }> = ({ position = [0, 0, 0], rotation = [0, 0, 0], radius = 0.11, warm = false }) => (
   <mesh position={position} rotation={rotation}>
     <cylinderGeometry args={[radius, radius, 0.03, 28]} />
-    <meshStandardMaterial color={warm ? "#ffd9ad" : "#e6e6e6"} metalness={0.95} roughness={0.22} emissive={warm ? "#FF6A00" : "#000"} emissiveIntensity={warm ? 0.18 : 0} />
+    <meshStandardMaterial color={warm ? "#ffd9ad" : "#b9b9b9"} metalness={0.9} roughness={0.34} emissive={warm ? "#FF6A00" : "#000"} emissiveIntensity={warm ? 0.18 : 0} />
   </mesh>
 );
 

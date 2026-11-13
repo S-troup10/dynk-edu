@@ -20,8 +20,8 @@ const ShotA: React.FC<{ shot: Shot }> = ({ shot }) => {
     <AbsoluteFill>
       <Studio3D tone="dark" camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
         <CamRig shot={shot} />
-        <Letterbox position={[-0.75, lbY, 0]} coins={0} address="bc1q9r…m3ze" />
-        <NumberKey position={[0.35, keyY, 0.8]} rotation={[-Math.PI / 2 + 0.25 * (1 - drop), 0, keyRot]} scale={0.5} glowLight />
+        <Letterbox position={[-0.35, lbY, 0]} coins={0} address="bc1q9r…m3ze" />
+        <NumberKey position={[-0.25, keyY, 1.2]} rotation={[-Math.PI / 2 + 0.25 * (1 - drop), 0, keyRot]} scale={0.5} glowLight />
       </Studio3D>
     </AbsoluteFill>
   );
@@ -31,7 +31,7 @@ const ShotB: React.FC = () => {
   const f = useCurrentFrame();
   const e = (a: number, d = 8) => outC(interpolate(f, [a, a + d], [0, 1], clamp));
   const line = (t: string, color: string, a: number) => (
-    <div style={{ opacity: e(a), transform: `translate3d(0, ${(1 - e(a)) * 22}px, 0)`, color, fontWeight: 800, fontSize: 76,
+    <div style={{ opacity: e(a), transform: `translate3d(0, ${(1 - e(a)) * 22}px, 0)`, color, fontWeight: 800, fontSize: 66,
       lineHeight: 1.12, letterSpacing: -1 }}>{t}</div>
   );
   return (
@@ -55,7 +55,7 @@ const ShotB: React.FC = () => {
 const Scene: React.FC<SceneProps> = (props) => {
   const total = props.durationInFrames ?? 121;
   const cut = 55;
-  const shotA: Shot = { from: [-1.9, 2.4, 9.2], to: [1.7, 2.2, 9.0], tFrom: [0, 0.9, 0], tTo: [0, 0.9, 0], fov: 34, len: cut };
+  const shotA: Shot = { from: [-1.9, 2.4, 9.2], to: [1.5, 2.2, 9.0], tFrom: [0, 1.0, 0], tTo: [0, 1.0, 0], fov: 34, len: cut };
   return (
     <Shell props={props} tone="dark">
       <Sequence from={0} durationInFrames={cut} layout="none"><ShotA shot={shotA} /></Sequence>

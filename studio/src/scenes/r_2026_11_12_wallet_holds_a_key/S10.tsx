@@ -83,7 +83,7 @@ const ShotD: React.FC<{ shot: Shot }> = ({ shot }) => {
     if (f < s) continue;
     const e = p * p * (3 - 2 * p) * 0.4 + p * 0.6;
     const sx = (rand(i + 1) - 0.5) * 0.7, sz = (rand(i + 9) - 0.5) * 0.4;
-    const x = origin[0] + sx + e * (3.6 + rand(i + 4) * 1.6);
+    const x = origin[0] + sx + e * (2.3 + rand(i + 4) * 1.2);
     const outside = Math.max(0, x - origin[0] - 0.65);
     const y = 0.53 - outside * outside * 0.12;
     const z = origin[2] + sz + e * (0.6 + rand(i + 6) * 0.9);
@@ -94,7 +94,7 @@ const ShotD: React.FC<{ shot: Shot }> = ({ shot }) => {
     <AbsoluteFill>
       <Studio3D tone="dark" camera={{ from: shot.from, target: shot.tFrom, fov: shot.fov }}>
         <CamRig shot={shot} />
-        <Letterbox position={origin} coins={coins} open={open} glow={!dim} dim={dim} />
+        <Letterbox position={origin} coins={coins} open={open} glow />
         {discs}
       </Studio3D>
       <Callout text="NO UNDO" at={[at[0] - 120, at[1] + 120]} label={[330, 1420]} startFrame={18} accent />
@@ -110,7 +110,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const s1: Shot = { from: [0.3, 1.7, 9.6], to: [0.1, 1.5, 8.6], tFrom: [0.0, 1.2, 0], tTo: [0.05, 1.1, 0], fov: 32, len: b };
   const s2: Shot = { from: [0.8, 2.0, 8.3], to: [0.45, 1.8, 7.3], tFrom: [0.3, 1.1, 0.3], tTo: [0.3, 1.1, 0.3], fov: 32, len: c - b };
   const s3: Shot = { from: [-0.3, 1.8, 7.9], to: [0.1, 1.95, 7.0], tFrom: [0.3, 1.1, 0.3], tTo: [0.3, 1.1, 0.3], fov: 32, len: d - c };
-  const s4: Shot = { from: [-1.4, 1.7, 6.8], to: [0.2, 1.55, 6.0], tFrom: [0.3, 1.15, 0], tTo: [1.1, 1.0, 0], fov: 34, len: total - d };
+  const s4: Shot = { from: [-0.6, 1.8, 9.2], to: [0.6, 1.6, 8.4], tFrom: [0.0, 1.15, 0], tTo: [0.3, 1.05, 0], fov: 34, len: total - d };
   return (
     <Shell props={props} tone="dark">
       <Sequence from={0} durationInFrames={b} layout="none"><ShotA shot={s1} /></Sequence>

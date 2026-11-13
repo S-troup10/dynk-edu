@@ -36,7 +36,7 @@ const ShotB: React.FC<{ shot: Shot }> = ({ shot }) => {
         <pointLight position={[2.5, 3, 3]} intensity={30} color="#9db4cc" distance={12} /><pointLight position={[-2.5, 0, 3]} intensity={18} color="#9db4cc" distance={12} />
         <Handset position={[0, PY, 0]} lines={PHONE_LINES} xray={xr} />
       </Studio3D>
-      <Callout text="NO COINS IN HERE" at={[at[0] - 40, at[1] + 200]} label={[540, 1640]} startFrame={10} />
+      <Callout text="NO COINS IN HERE" at={[at[0] - 40, at[1] + 200]} label={[330, 1400]} startFrame={10} />
     </AbsoluteFill>
   );
 };
@@ -74,7 +74,7 @@ const Scene: React.FC<SceneProps> = (props) => {
       <Sfx name="tick" at={cutB + 10} volume={0.3} />
       <Sfx name="whoosh_soft" at={cutC} volume={0.3} />
       <Sfx name="thud" at={W(props, "key.", 0, 3.36)} volume={0.4} />
-      <Disclaimer text="Illustration · simplified" y={1700} />
+      <Disclaimer text="Illustration · simplified" />
     </Shell>
   );
 };

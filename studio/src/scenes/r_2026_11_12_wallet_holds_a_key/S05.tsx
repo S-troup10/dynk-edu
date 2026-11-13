@@ -57,7 +57,7 @@ const ShotC: React.FC<{ shot: Shot }> = ({ shot }) => {
           const p = (f - d) / FALL;
           if (p < 0 || p >= 1) return null;
           const y = 2.4 - (2.4 - 0.62 - i * 0.02) * inQ(p);
-          const flat = interpolate(y, [1.85, 1.0], [0, 1], clamp);
+          const flat = interpolate(y, [1.0, 1.85], [1, 0], clamp);
           const sc = outC(interpolate(f - d, [0, 3], [0, 1], clamp));
           const wob = Math.sin((f + i * 5) / 3) * 0.45 * (1 - flat);
           return (

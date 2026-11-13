@@ -76,7 +76,7 @@ const Scene: React.FC<SceneProps> = (props) => {
   const total = props.durationInFrames ?? 159;
   const c2 = Math.max(40, W(props, "it's", 0, 1.96) - 1);
   const c3 = Math.max(c2 + 40, W(props, "just", 0, 4.03));
-  const a: Shot = { from: [0.5, 2.6, 10], to: [0, 2.51, 6.6], tFrom: [0, 2.51, 0], tTo: [0, 2.51, 0], fov: 30, len: c2 };
+  const a: Shot = { from: [0.5, 3.4, 10.5], to: [0, 3.25, 7.4], tFrom: [0, 3.25, 0], tTo: [0, 3.25, 0], fov: 30, len: c2 };
   const b: Shot = { from: [-2.6, 1.55, 5.6], to: [2.2, 1.45, 5.5], tFrom: [0, 1.2, 0], tTo: [0, 1.2, 0], fov: 30, len: c3 - c2 };
   const c: Shot = { from: [0.75, 1.3, 2.3], to: [0.5, 1.15, 1.8], tFrom: [0.38, 1.1, 0.43], tTo: [0.38, 1.1, 0.43], fov: 30, len: total - c3 };
   return (
